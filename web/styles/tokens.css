@@ -1,0 +1,32 @@
+/* Design tokens from web/DESIGN.md. Light is the default, dark redefines the same names. */
+:root {
+  --bg: #f7f8f5;
+  --surface: #ffffff;
+  --text: #1b1f1b;
+  --muted: #5f675f;
+  --brand: #1f7a4d;
+  --brand-ink: #ffffff;
+  --border: #dde2da;
+  --warn: #b54708;
+  --ok: #067647;
+  --sim: #7a5af8;
+  --radius-card: 16px;
+  --radius-button: 12px;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121512;
+    --surface: #1c201c;
+    --text: #ecefea;
+    --muted: #a3aba2;
+    --brand: #4cc38a;
+    --brand-ink: #0b1a12;
+    --border: #2e342d;
+    --warn: #f79009;
+    --ok: #47cd89;
+    --sim: #a48afb;
+    color-scheme: dark;
+  }
+}
