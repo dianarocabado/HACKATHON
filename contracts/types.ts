@@ -48,6 +48,27 @@ export interface HourlyPoint {                       // stations/{id}.json (arra
   pm10?: number;
 }
 
+export interface EvidenceItem {                      // evidence.json items (A13), all from real data
+  id: string;
+  title: string;                                     // German, short
+  finding: string;                                   // one plain German sentence with the number
+  value: number;                                     // headline number
+  unit: string;                                      // "°C", "Nächte", "%"
+  ci95?: [number, number];                           // 95 % bootstrap interval, if computed
+  n: number;                                         // sample size behind the value
+  nLabel: string;                                    // what n counts, e.g. "Sommertage"
+  conclusive: boolean;                               // false = no clear effect measurable
+  compare?: { label: string; value: number }[];      // bars for a simple chart
+  source: string;
+  method: string;
+  caveat?: string;
+}
+
+export interface EvidenceFile {                      // evidence.json
+  generatedAt: string;
+  items: EvidenceItem[];
+}
+
 // ---------- missions ----------
 
 export type MissionType =
