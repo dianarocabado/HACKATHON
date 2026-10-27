@@ -16,6 +16,8 @@ export interface Store {
   saveMissionState(state: MissionState): Promise<MissionState>;
   /** Remove all reports (demo reset, A15). */
   clearReports(): Promise<void>;
+  /** Reset every mission to open (demo reset, A15). */
+  clearMissionStates(): Promise<void>;
 }
 
 const TIMEOUT_MS = 8000;
@@ -56,6 +58,10 @@ export class MemoryStore implements Store {
 
   async clearReports() {
     this.reports = [];
+  }
+
+  async clearMissionStates() {
+    this.states.clear();
   }
 }
 
@@ -170,6 +176,14 @@ export class SupabaseStore implements Store {
       "clearReports",
       () => this.rest<void>("reports?id=not.is.null", { method: "DELETE" }),
       () => this.fallback.clearReports(),
+    );
+  }
+
+  clearMissionStates() {
+    return this.safe(
+      "clearMissionStates",
+      () => this.rest<void>("mission_states?mission_id=not.is.null", { method: "DELETE" }),
+      () => this.fallback.clearMissionStates(),
     );
   }
 }
