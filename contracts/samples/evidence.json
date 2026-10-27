@@ -1,0 +1,128 @@
+{
+ "generatedAt": "2026-10-27T17:00:07Z",
+ "items": [
+  {
+   "id": "uhi_night",
+   "title": "Innenstadt nachts wärmer",
+   "finding": "Im Sommer war es in der Innenstadt nachts im Schnitt 3,3 °C wärmer als am Stadtrand (THW), zur selben Stunde gemessen.",
+   "value": 3.28,
+   "unit": "°C",
+   "ci95": [
+    3.0,
+    3.56
+   ],
+   "n": 47,
+   "nLabel": "Sommernächte",
+   "conclusive": true,
+   "compare": [
+    {
+     "label": "Innenstadt",
+     "value": 22.7
+    },
+    {
+     "label": "THW Heilbronn",
+     "value": 19.4
+    }
+   ],
+   "source": "senseBox:home Heilbronn (openSenseMap via ATRAI), Juni–August 2026",
+   "method": "Differenz zur selben Stunde, Tagesmittel, 95-%-Bootstrap über Tage",
+   "caveat": "THW ist eine andere Wetterstation als die senseBox in der Innenstadt; ein Teil der Differenz kann an der Hardware liegen."
+  },
+  {
+   "id": "uhi_afternoon",
+   "title": "Innenstadt nachmittags wärmer",
+   "finding": "Im Sommer war es in der Innenstadt nachmittags im Schnitt 2,1 °C wärmer als am Stadtrand (THW), zur selben Stunde gemessen.",
+   "value": 2.08,
+   "unit": "°C",
+   "ci95": [
+    1.68,
+    2.45
+   ],
+   "n": 46,
+   "nLabel": "Sommertage",
+   "conclusive": true,
+   "compare": [
+    {
+     "label": "Innenstadt",
+     "value": 31.9
+    },
+    {
+     "label": "THW Heilbronn",
+     "value": 29.8
+    }
+   ],
+   "source": "senseBox:home Heilbronn (openSenseMap via ATRAI), Juni–August 2026",
+   "method": "Differenz zur selben Stunde, Tagesmittel, 95-%-Bootstrap über Tage",
+   "caveat": "THW ist eine andere Wetterstation als die senseBox in der Innenstadt; ein Teil der Differenz kann an der Hardware liegen."
+  },
+  {
+   "id": "uhi_same_hardware",
+   "title": "Innenstadt vs. OpenSpace (gleiche senseBox)",
+   "finding": "Mit baugleichen Sensoren war die Innenstadt an Sommernachmittagen 0,7 °C wärmer als der OpenSpace.",
+   "value": 0.69,
+   "unit": "°C",
+   "ci95": [
+    0.15,
+    1.2
+   ],
+   "n": 29,
+   "nLabel": "Sommertage",
+   "conclusive": true,
+   "source": "senseBox:home Heilbronn (openSenseMap via ATRAI), Juni–August 2026",
+   "method": "wie oben, beide Stationen senseBox:home"
+  },
+  {
+   "id": "tropical_nights",
+   "title": "Tropennächte",
+   "finding": "In 47 Sommernächten mit Daten an beiden Stationen fiel die Temperatur in der Innenstadt 25-mal nicht unter 20 °C, am Stadtrand nur 7-mal.",
+   "value": 25,
+   "unit": "Nächte",
+   "n": 47,
+   "nLabel": "Sommernächte",
+   "conclusive": true,
+   "compare": [
+    {
+     "label": "Innenstadt",
+     "value": 25
+    },
+    {
+     "label": "THW Heilbronn",
+     "value": 7
+    }
+   ],
+   "source": "senseBox:home Heilbronn (openSenseMap via ATRAI), Juni–August 2026",
+   "method": "Nachtminimum 20–8 Uhr Ortszeit ≥ 20 °C, nur gemeinsame Nächte",
+   "caveat": "Andere Hardware am Stadtrand (siehe oben)."
+  },
+  {
+   "id": "heat_walk_canopy",
+   "title": "Hitzespaziergang: Schatten-Grün vs. versiegelt",
+   "finding": "Auf den Hitzespaziergängen im September (vormittags) war es neben Wald, Parks und Friedhöfen im Schnitt 0,2 °C wärmer als auf versiegelten Strecken – ein klarer Kühleffekt war zu dieser Tageszeit nicht messbar.",
+   "value": 0.21,
+   "unit": "°C",
+   "ci95": [
+    -0.02,
+    0.44
+   ],
+   "n": 21,
+   "nLabel": "Spaziergänge",
+   "conclusive": false,
+   "source": "Green City Heilbronn Summerschool, Hitzespaziergänge 1.–3. September 2026",
+   "method": "Abweichung vom Rest des Spaziergangs (A4); Grünanteil Wald/Park/Garten/Friedhof im 50-m-Radius ≥ 20 % vs. < 5 %; Vergleich innerhalb jedes Spaziergangs, 95-%-Bootstrap über Spaziergänge",
+   "caveat": "Messungen zwischen 10:30 und 14 Uhr; Hitzeinseln sind nachmittags und nachts am stärksten. Nächster Spaziergang am späten Nachmittag."
+  },
+  {
+   "id": "overtaking_under_150",
+   "title": "Zu enges Überholen",
+   "finding": "80 % von 4.721 gemessenen Überholvorgängen waren enger als die erlaubten 150 cm.",
+   "value": 80.3,
+   "unit": "%",
+   "n": 4721,
+   "nLabel": "Überholvorgänge",
+   "conclusive": true,
+   "source": "senseBox:bike Heilbronn (ATRAI), Dez 2025 – Okt 2026",
+   "method": "Summe der Histogramme aller Straßenabschnitte, Klassen 0–150 cm",
+   "caveat": "Gemessen auf den Strecken der Teilnehmenden, nicht flächendeckend."
+  }
+ ]
+}

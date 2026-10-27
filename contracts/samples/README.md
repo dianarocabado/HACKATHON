@@ -11,6 +11,7 @@ Place names are real Heilbronn locations, coordinates are approximate, hexagons 
 | `stations/{id}.json` | `HourlyPoint[]` (last 48 h) | `web/public/data/stations/{id}.json` |
 | `missions.json` | `Mission[]` (one per type) | `web/public/data/missions.json` |
 | `api/missions.json` | `MissionWithState[]` | `GET /api/missions` |
+| `evidence.json` | `EvidenceFile` (copy of the real A13 output, not invented) | `web/public/data/evidence.json` |
 | `api/reports.json` | `Report[]` (incl. one dialect sentence) | `GET /api/reports` |
 
 Regenerate (deterministic): `pip install h3 && python contracts/samples/generate.py contracts/samples`

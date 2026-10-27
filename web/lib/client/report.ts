@@ -28,8 +28,8 @@ const num = (v: number) => new Intl.NumberFormat('de-DE', { maximumFractionDigit
 /** One friendly sentence about what the nearest sensor says. */
 export function sensorSentence(c: SensorCheck): string {
   // Non-breaking space keeps number and unit on one line.
-  const reading = c.value != null ? `${num(c.value)}${c.unit ? ` ${c.unit}` : ''}` : null;
-  const where = c.distM != null ? `, ${Math.round(c.distM)} m entfernt` : '';
+  const reading = c.value != null ? `${num(c.value)}${c.unit ? `\u00a0${c.unit}` : ''}` : null;
+  const where = c.distM != null ? `, ${Math.round(c.distM)}\u00a0m entfernt` : '';
   if (c.status === 'confirmed') return `Der Sensor bestätigt das${reading ? `: ${reading}` : ''}${where}.`;
   if (c.status === 'not_confirmed') {
     return `Der Sensor in der Nähe misst gerade ${reading ?? 'nichts Auffälliges'}${where}. Deine Meldung zählt trotzdem.`;
