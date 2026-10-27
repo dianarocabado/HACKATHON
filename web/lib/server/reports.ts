@@ -44,7 +44,8 @@ export function parseNewReport(body: Record<string, unknown>): NewReport {
   return report;
 }
 
-export async function createReport(input: NewReport, d: ReportDeps = {}): Promise<Report> {
+/** `seeded` is only set by the demo seed (A15), never from the public API. */
+export async function createReport(input: NewReport, d: ReportDeps = {}, opts: { seeded?: boolean } = {}): Promise<Report> {
   const lat = input.lat ?? CITY_CENTRE.lat;
   const lng = input.lng ?? CITY_CENTRE.lng;
   const { report: structured } = await structureReport(input.transcript, d.env);
@@ -63,6 +64,7 @@ export async function createReport(input: NewReport, d: ReportDeps = {}): Promis
     sensorCheck,
   };
   if (!report.placeHint && input.placeName) report.placeHint = input.placeName;
+  if (opts.seeded) report.seeded = true;
   return (d.store ?? getStore()).addReport(report);
 }
 

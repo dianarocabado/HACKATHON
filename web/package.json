@@ -9,6 +9,8 @@
     "prebuild": "npm run sync-data",
     "build": "next build",
     "start": "next start",
+    "demo:seed": "node scripts/demo.mjs seed",
+    "demo:reset": "node scripts/demo.mjs reset",
     "lint": "eslint",
     "test": "node --test \"lib/**/*.test.ts\""
   },
