@@ -1,11 +1,12 @@
 'use client';
-// One mission: "why this mission", claim (with name) and support.
+// One mission: "why this mission", claim (with name), support, mark as done and before/after impact.
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import type { MissionWithState } from '@contracts/types';
 import { api } from '@/lib/client/api';
 import { CATEGORY, EFFORT, WHO, evidenceText } from '@/lib/client/missions';
 import { SimBadge, StatusChip, UrgencyDots } from './Badges';
+import MissionImpact from './MissionImpact';
 
 export default function MissionDetail({ id }: { id: string }) {
   const [mission, setMission] = useState<MissionWithState | null | undefined>(undefined);
@@ -100,6 +101,19 @@ export default function MissionDetail({ id }: { id: string }) {
           </button>
         </form>
       )}
+
+      {state.status === 'claimed' && (
+        <button
+          onClick={() => act(() => api.doneMission(mission.id), 'Super! Wir messen jetzt, ob es etwas bringt.')}
+          disabled={busy}
+          className="min-h-11 w-full rounded-xl px-4 font-medium disabled:opacity-50"
+          style={{ background: 'var(--ok)', color: 'var(--surface)' }}
+        >
+          Als erledigt melden
+        </button>
+      )}
+
+      {state.impact && <MissionImpact impact={state.impact} />}
 
       <button
         onClick={() => act(() => api.supportMission(mission.id), 'Danke für deine Unterstützung!')}

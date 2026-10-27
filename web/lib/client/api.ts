@@ -1,10 +1,11 @@
 // Client API for the UI. Same signatures for mock and real backend, switched by NEXT_PUBLIC_USE_MOCK.
 // Mock mode serves contracts/samples so Agent B can build before Agent A's API is merged.
 import type {
-  LayersFile, Station, HourlyPoint, MissionWithState, MissionState, Report, SensorCheck,
+  EvidenceFile, LayersFile, Station, HourlyPoint, MissionWithState, MissionState, Report, SensorCheck,
 } from '@contracts/types';
 import sampleLayers from '@contracts/samples/layers.json';
 import sampleStations from '@contracts/samples/stations.json';
+import sampleEvidence from '@contracts/samples/evidence.json';
 import sampleMissions from '@contracts/samples/api/missions.json';
 import sampleReports from '@contracts/samples/api/reports.json';
 
@@ -79,6 +80,9 @@ export const api = {
   layers: (): Promise<LayersFile> =>
     USE_MOCK ? delay(sampleLayers as unknown as LayersFile) : http('/data/layers.json'),
 
+  evidence: (): Promise<EvidenceFile> =>
+    USE_MOCK ? delay(sampleEvidence as unknown as EvidenceFile) : http('/data/evidence.json'),
+
   stations: (): Promise<Station[]> =>
     USE_MOCK ? delay(sampleStations as unknown as Station[]) : http('/data/stations.json'),
 
@@ -101,7 +105,11 @@ export const api = {
 
   doneMission: (id: string): Promise<MissionState> =>
     USE_MOCK
-      ? mockState(id, (s) => { s.status = 'done'; s.doneAt = new Date().toISOString(); })
+      ? mockState(id, (s) => {
+        s.status = 'done';
+        s.doneAt = new Date().toISOString();
+        s.impact ??= { metric: 'temperatureC', stationId: 'sb-markt', before: 31.4, cityBefore: 29.8, simulated: true };
+      })
       : post(`/api/missions/${id}/done`),
 
   reports: (since?: string): Promise<Report[]> => {
