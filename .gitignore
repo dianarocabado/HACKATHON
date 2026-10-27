@@ -1,0 +1,23 @@
+# Secrets — copy .env.example to web/.env.local
+.env
+.env.*
+!.env.example
+
+# Raw downloads are cached locally only; commit data/processed
+data/raw/*
+!data/raw/.gitkeep
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Node / Next.js (also covered by web/.gitignore)
+node_modules/
+.next/
+
+# Editor and OS
+.vscode/
+.DS_Store
+Thumbs.db

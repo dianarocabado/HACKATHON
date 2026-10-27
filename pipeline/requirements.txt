@@ -1,0 +1,7 @@
+# HTTP for senseBox, ATRAI, Bright Sky and Overpass
+requests==2.32.3
+# H3 res-9 hexagon grid (A5)
+h3==4.1.2
+# Geometry for OSM areas and distances (A3, A5)
+shapely==2.0.6
+pytest==8.3.4
