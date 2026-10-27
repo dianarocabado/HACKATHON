@@ -1,22 +1,23 @@
-# Willkommen beim Green City Hackathon 🌱
+# Welcome to the Green City Hackathon 🌱
 
-Das ist unser gemeinsames Repository für den TUM Green City Hackathon.
+This is our shared repository for the TUM Green City Hackathon.
 
-## Erste Schritte
+## Getting Started
 
 ```bash
 git clone https://github.com/dianarocabado/HACKATHON.git
 cd HACKATHON
 ```
 
-## Zusammenarbeit
+## Collaboration
 
-- Vor dem Arbeiten immer `git pull` ausführen
-- Für größere Änderungen einen eigenen Branch anlegen: `git checkout -b mein-feature`
-- Kleine, aussagekräftige Commits machen
-- Änderungen mit `git push` hochladen und bei Bedarf einen Pull Request öffnen
+- Always run `git pull` before you start working
+- Create your own branch for larger changes: `git checkout -b my-feature`
+- Make small, meaningful commits
+- Upload your changes with `git push` and open a pull request if needed
 
 ## Team
 
 - Diana
 - Jonas
+- Sila
