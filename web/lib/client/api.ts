@@ -27,8 +27,8 @@ const post = <T>(path: string, body?: unknown) =>
 // ---------- mock state (in memory, resets on reload) ----------
 
 const mock = {
-  missions: structuredClone(sampleMissions) as MissionWithState[],
-  reports: structuredClone(sampleReports) as Report[],
+  missions: structuredClone(sampleMissions) as unknown as MissionWithState[],
+  reports: structuredClone(sampleReports) as unknown as Report[],
 };
 
 const delay = <T>(value: T, ms = 250) => new Promise<T>((r) => setTimeout(() => r(value), ms));
@@ -77,10 +77,10 @@ export interface NewReport { transcript: string; lat?: number; lng?: number; pla
 
 export const api = {
   layers: (): Promise<LayersFile> =>
-    USE_MOCK ? delay(sampleLayers as LayersFile) : http('/data/layers.json'),
+    USE_MOCK ? delay(sampleLayers as unknown as LayersFile) : http('/data/layers.json'),
 
   stations: (): Promise<Station[]> =>
-    USE_MOCK ? delay(sampleStations as Station[]) : http('/data/stations.json'),
+    USE_MOCK ? delay(sampleStations as unknown as Station[]) : http('/data/stations.json'),
 
   stationHistory: async (id: string): Promise<HourlyPoint[]> => {
     if (!USE_MOCK) return http(`/data/stations/${id}.json`);

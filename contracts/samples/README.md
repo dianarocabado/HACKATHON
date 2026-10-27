@@ -15,6 +15,5 @@ Place names are real Heilbronn locations, coordinates are approximate, hexagons 
 
 Regenerate (deterministic): `pip install h3 && python contracts/samples/generate.py contracts/samples`
 
-Used by `web/lib/client/api.ts` when `NEXT_PUBLIC_USE_MOCK` is not `false`. That file imports
-`@contracts/*`, so the Next.js scaffold (A0) needs a tsconfig path `"@contracts/*": ["../contracts/*"]`,
-`resolveJsonModule`, and imports from outside `web/` allowed (`experimental.externalDir` or Turbopack `root: '..'`).
+Used by `web/lib/client/api.ts` when `NEXT_PUBLIC_USE_MOCK` is not `false`. Bundling these files from `web/`
+needs `turbopack.root` set to the repo root in `web/next.config.ts` (issue #38).
