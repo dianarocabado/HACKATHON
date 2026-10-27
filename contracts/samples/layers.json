@@ -1,0 +1,6060 @@
+{
+ "generatedAt": "2026-10-27T15:00:00Z",
+ "resolution": 9,
+ "weights": {
+  "heat": 0.3,
+  "air": 0.2,
+  "bike": 0.15,
+  "green": 0.2,
+  "risk": 0.15,
+  "felt": 0.0
+ },
+ "cells": [
+  {
+   "h3": "891faa00027ffff",
+   "scores": {
+    "heat": 0,
+    "air": 0,
+    "bike": null,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.24,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 2083,
+    "sensitivePlaces": 0,
+    "trees": 27,
+    "busStops": 0,
+    "nearestStationId": "sb-sontheim",
+    "nearestStationDistM": 1067,
+    "pm25": 5
+   }
+  },
+  {
+   "h3": "891faa00037ffff",
+   "scores": {
+    "heat": 0,
+    "air": 0,
+    "bike": 0.24,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.24,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 2010,
+    "sensitivePlaces": 0,
+    "trees": 5,
+    "busStops": 2,
+    "nearestStationId": "sb-sontheim",
+    "nearestStationDistM": 1047,
+    "pm25": 5,
+    "overtakeUnder150Pct": 14
+   }
+  },
+  {
+   "h3": "891faa000a3ffff",
+   "scores": {
+    "heat": 0,
+    "air": 0,
+    "bike": null,
+    "green": 1,
+    "risk": 0.25,
+    "felt": null
+   },
+   "need": 0.28,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 2015,
+    "sensitivePlaces": 1,
+    "trees": 9,
+    "busStops": 0,
+    "nearestStationId": "sb-sontheim",
+    "nearestStationDistM": 1280,
+    "pm25": 5
+   }
+  },
+  {
+   "h3": "891faa000a7ffff",
+   "scores": {
+    "heat": 0,
+    "air": 0,
+    "bike": null,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.24,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1691,
+    "sensitivePlaces": 0,
+    "trees": 29,
+    "busStops": 1,
+    "nearestStationId": "sb-sontheim",
+    "nearestStationDistM": 937,
+    "pm25": 5
+   }
+  },
+  {
+   "h3": "891faa000afffff",
+   "scores": {
+    "heat": 0,
+    "air": 0,
+    "bike": 0.38,
+    "green": 1,
+    "risk": 0.25,
+    "felt": null
+   },
+   "need": 0.29,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1987,
+    "sensitivePlaces": 1,
+    "trees": 19,
+    "busStops": 1,
+    "nearestStationId": "sb-sontheim",
+    "nearestStationDistM": 1124,
+    "pm25": 5,
+    "overtakeUnder150Pct": 23
+   }
+  },
+  {
+   "h3": "891faa000b3ffff",
+   "scores": {
+    "heat": 0,
+    "air": 0,
+    "bike": null,
+    "green": 1,
+    "risk": 0.25,
+    "felt": null
+   },
+   "need": 0.28,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 2094,
+    "sensitivePlaces": 1,
+    "trees": 30,
+    "busStops": 0,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 1358,
+    "pm25": 5
+   }
+  },
+  {
+   "h3": "891faa000b7ffff",
+   "scores": {
+    "heat": 0,
+    "air": 0.01,
+    "bike": 0.89,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.34,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1754,
+    "sensitivePlaces": 0,
+    "trees": 1,
+    "busStops": 1,
+    "nearestStationId": "sb-sontheim",
+    "nearestStationDistM": 1164,
+    "pm25": 5.06,
+    "overtakeUnder150Pct": 53
+   }
+  },
+  {
+   "h3": "891faa00103ffff",
+   "scores": {
+    "heat": 0,
+    "air": 0.06,
+    "bike": 0.7,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.32,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1236,
+    "sensitivePlaces": 0,
+    "trees": 38,
+    "busStops": 1,
+    "nearestStationId": "sb-sontheim",
+    "nearestStationDistM": 592,
+    "pm25": 5.61,
+    "overtakeUnder150Pct": 42
+   }
+  },
+  {
+   "h3": "891faa00107ffff",
+   "scores": {
+    "heat": 0.05,
+    "air": 0.18,
+    "bike": 0.28,
+    "green": 1,
+    "risk": 0.76,
+    "felt": null
+   },
+   "need": 0.41,
+   "facts": {
+    "tempAfternoonC": 27.33,
+    "distToGreenM": 1225,
+    "sensitivePlaces": 3,
+    "trees": 22,
+    "busStops": 0,
+    "nearestStationId": "sb-sontheim",
+    "nearestStationDistM": 875,
+    "pm25": 6.8,
+    "overtakeUnder150Pct": 17
+   }
+  },
+  {
+   "h3": "891faa0010bffff",
+   "scores": {
+    "heat": 0,
+    "air": 0,
+    "bike": 0.68,
+    "green": 1,
+    "risk": 0.5,
+    "felt": null
+   },
+   "need": 0.38,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1555,
+    "sensitivePlaces": 2,
+    "trees": 8,
+    "busStops": 0,
+    "nearestStationId": "sb-sontheim",
+    "nearestStationDistM": 734,
+    "pm25": 5,
+    "overtakeUnder150Pct": 41
+   }
+  },
+  {
+   "h3": "891faa0010fffff",
+   "scores": {
+    "heat": 0,
+    "air": 0.01,
+    "bike": null,
+    "green": 1,
+    "risk": 0.25,
+    "felt": null
+   },
+   "need": 0.28,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1503,
+    "sensitivePlaces": 1,
+    "trees": 2,
+    "busStops": 2,
+    "nearestStationId": "sb-sontheim",
+    "nearestStationDistM": 905,
+    "pm25": 5.15
+   }
+  },
+  {
+   "h3": "891faa00113ffff",
+   "scores": {
+    "heat": 0.03,
+    "air": 0,
+    "bike": 0.36,
+    "green": 0.84,
+    "risk": 0.26,
+    "felt": null
+   },
+   "need": 0.27,
+   "facts": {
+    "tempAfternoonC": 27.18,
+    "distToGreenM": 1004,
+    "sensitivePlaces": 1,
+    "trees": 11,
+    "busStops": 0,
+    "nearestStationId": "sb-sontheim",
+    "nearestStationDistM": 299,
+    "pm25": 5,
+    "overtakeUnder150Pct": 22
+   }
+  },
+  {
+   "h3": "891faa00117ffff",
+   "scores": {
+    "heat": 0.02,
+    "air": 0.14,
+    "bike": 0.52,
+    "green": 0.78,
+    "risk": 0.01,
+    "felt": null
+   },
+   "need": 0.27,
+   "facts": {
+    "tempAfternoonC": 27.16,
+    "distToGreenM": 935,
+    "sensitivePlaces": 0,
+    "trees": 10,
+    "busStops": 1,
+    "nearestStationId": "sb-sontheim",
+    "nearestStationDistM": 630,
+    "pm25": 6.44,
+    "overtakeUnder150Pct": 31
+   }
+  },
+  {
+   "h3": "891faa0011bffff",
+   "scores": {
+    "heat": 0,
+    "air": 0.14,
+    "bike": 0.34,
+    "green": 1,
+    "risk": 0.75,
+    "felt": null
+   },
+   "need": 0.39,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1340,
+    "sensitivePlaces": 3,
+    "trees": 21,
+    "busStops": 0,
+    "nearestStationId": "sb-sontheim",
+    "nearestStationDistM": 420,
+    "pm25": 6.42,
+    "overtakeUnder150Pct": 20
+   }
+  },
+  {
+   "h3": "891faa00123ffff",
+   "scores": {
+    "heat": 0,
+    "air": 0,
+    "bike": 0.28,
+    "green": 1,
+    "risk": 0.5,
+    "felt": null
+   },
+   "need": 0.32,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1631,
+    "sensitivePlaces": 2,
+    "trees": 25,
+    "busStops": 2,
+    "nearestStationId": "sb-sontheim",
+    "nearestStationDistM": 1450,
+    "pm25": 5,
+    "overtakeUnder150Pct": 17
+   }
+  },
+  {
+   "h3": "891faa00127ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": null,
+    "green": 1,
+    "risk": 0.25,
+    "felt": null
+   },
+   "need": 0.37,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1794,
+    "sensitivePlaces": 1,
+    "trees": 7,
+    "busStops": 1,
+    "nearestStationId": "sb-sontheim",
+    "nearestStationDistM": 1762
+   }
+  },
+  {
+   "h3": "891faa00133ffff",
+   "scores": {
+    "heat": 0,
+    "air": 0.14,
+    "bike": null,
+    "green": 1,
+    "risk": 0.25,
+    "felt": null
+   },
+   "need": 0.31,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1310,
+    "sensitivePlaces": 1,
+    "trees": 40,
+    "busStops": 1,
+    "nearestStationId": "sb-sontheim",
+    "nearestStationDistM": 1191,
+    "pm25": 6.36
+   }
+  },
+  {
+   "h3": "891faa00137ffff",
+   "scores": {
+    "heat": 0,
+    "air": 0,
+    "bike": null,
+    "green": 1,
+    "risk": 0.25,
+    "felt": null
+   },
+   "need": 0.28,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1473,
+    "sensitivePlaces": 1,
+    "trees": 20,
+    "busStops": 2,
+    "nearestStationId": "sb-wertwiesen",
+    "nearestStationDistM": 1473,
+    "pm25": 5
+   }
+  },
+  {
+   "h3": "891faa0013bffff",
+   "scores": {
+    "heat": 0,
+    "air": 0,
+    "bike": 0.83,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.32,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1529,
+    "sensitivePlaces": 0,
+    "trees": 26,
+    "busStops": 0,
+    "nearestStationId": "sb-sontheim",
+    "nearestStationDistM": 1158,
+    "pm25": 5,
+    "overtakeUnder150Pct": 50
+   }
+  },
+  {
+   "h3": "891faa00153ffff",
+   "scores": {
+    "heat": 0,
+    "air": 0.0,
+    "bike": null,
+    "green": 1,
+    "risk": 0.25,
+    "felt": null
+   },
+   "need": 0.28,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1860,
+    "sensitivePlaces": 1,
+    "trees": 7,
+    "busStops": 0,
+    "nearestStationId": "sb-sontheim",
+    "nearestStationDistM": 835,
+    "pm25": 5.02
+   }
+  },
+  {
+   "h3": "891faa00157ffff",
+   "scores": {
+    "heat": 0,
+    "air": 0,
+    "bike": 0.4,
+    "green": 1,
+    "risk": 0.5,
+    "felt": null
+   },
+   "need": 0.34,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1679,
+    "sensitivePlaces": 2,
+    "trees": 34,
+    "busStops": 1,
+    "nearestStationId": "sb-sontheim",
+    "nearestStationDistM": 706,
+    "pm25": 5,
+    "overtakeUnder150Pct": 24
+   }
+  },
+  {
+   "h3": "891faa00183ffff",
+   "scores": {
+    "heat": 0.31,
+    "air": 0.33,
+    "bike": 0.62,
+    "green": 0.41,
+    "risk": 0.84,
+    "felt": null
+   },
+   "need": 0.46,
+   "facts": {
+    "tempAfternoonC": 29.19,
+    "distToGreenM": 493,
+    "sensitivePlaces": 3,
+    "trees": 31,
+    "busStops": 2,
+    "nearestStationId": "sb-wertwiesen",
+    "nearestStationDistM": 493,
+    "pm25": 8.25,
+    "overtakeUnder150Pct": 37
+   }
+  },
+  {
+   "h3": "891faa00187ffff",
+   "scores": {
+    "heat": 0.33,
+    "air": 0.43,
+    "bike": null,
+    "green": 0.31,
+    "risk": 0.1,
+    "felt": null
+   },
+   "need": 0.31,
+   "facts": {
+    "tempAfternoonC": 29.34,
+    "distToGreenM": 368,
+    "sensitivePlaces": 0,
+    "trees": 13,
+    "busStops": 1,
+    "nearestStationId": "sb-wertwiesen",
+    "nearestStationDistM": 368,
+    "pm25": 9.28
+   }
+  },
+  {
+   "h3": "891faa0018bffff",
+   "scores": {
+    "heat": 0.13,
+    "air": 0.08,
+    "bike": 0.88,
+    "green": 0.69,
+    "risk": 0.04,
+    "felt": null
+   },
+   "need": 0.33,
+   "facts": {
+    "tempAfternoonC": 27.91,
+    "distToGreenM": 834,
+    "sensitivePlaces": 0,
+    "trees": 34,
+    "busStops": 1,
+    "nearestStationId": "sb-sontheim",
+    "nearestStationDistM": 193,
+    "pm25": 5.81,
+    "overtakeUnder150Pct": 53
+   }
+  },
+  {
+   "h3": "891faa0018fffff",
+   "scores": {
+    "heat": 0.12,
+    "air": 0.13,
+    "bike": 0.86,
+    "green": 0.56,
+    "risk": 0.78,
+    "felt": null
+   },
+   "need": 0.42,
+   "facts": {
+    "tempAfternoonC": 27.81,
+    "distToGreenM": 674,
+    "sensitivePlaces": 3,
+    "trees": 29,
+    "busStops": 0,
+    "nearestStationId": "sb-sontheim",
+    "nearestStationDistM": 487,
+    "pm25": 6.32,
+    "overtakeUnder150Pct": 52
+   }
+  },
+  {
+   "h3": "891faa00193ffff",
+   "scores": {
+    "heat": 0.4,
+    "air": 0.34,
+    "bike": 0.12,
+    "green": 0.41,
+    "risk": 0.87,
+    "felt": null
+   },
+   "need": 0.42,
+   "facts": {
+    "tempAfternoonC": 29.8,
+    "distToGreenM": 490,
+    "sensitivePlaces": 3,
+    "trees": 21,
+    "busStops": 0,
+    "nearestStationId": "sb-wertwiesen",
+    "nearestStationDistM": 490,
+    "pm25": 8.45,
+    "overtakeUnder150Pct": 7
+   }
+  },
+  {
+   "h3": "891faa00197ffff",
+   "scores": {
+    "heat": 0.25,
+    "air": 0.44,
+    "bike": null,
+    "green": 0.13,
+    "risk": 0.82,
+    "felt": null
+   },
+   "need": 0.37,
+   "facts": {
+    "tempAfternoonC": 28.74,
+    "distToGreenM": 160,
+    "sensitivePlaces": 3,
+    "trees": 35,
+    "busStops": 0,
+    "nearestStationId": "sb-wertwiesen",
+    "nearestStationDistM": 160,
+    "pm25": 9.4
+   }
+  },
+  {
+   "h3": "891faa0019bffff",
+   "scores": {
+    "heat": 0.23,
+    "air": 0.3,
+    "bike": null,
+    "green": 0.64,
+    "risk": 0.82,
+    "felt": null
+   },
+   "need": 0.45,
+   "facts": {
+    "tempAfternoonC": 28.61,
+    "distToGreenM": 769,
+    "sensitivePlaces": 3,
+    "trees": 9,
+    "busStops": 2,
+    "nearestStationId": "sb-sontheim",
+    "nearestStationDistM": 439,
+    "pm25": 7.99
+   }
+  },
+  {
+   "h3": "891faa001a3ffff",
+   "scores": {
+    "heat": 0.14,
+    "air": 0.33,
+    "bike": null,
+    "green": 0.69,
+    "risk": 0.04,
+    "felt": null
+   },
+   "need": 0.3,
+   "facts": {
+    "tempAfternoonC": 27.99,
+    "distToGreenM": 833,
+    "sensitivePlaces": 0,
+    "trees": 34,
+    "busStops": 1,
+    "nearestStationId": "sb-wertwiesen",
+    "nearestStationDistM": 833,
+    "pm25": 8.3
+   }
+  },
+  {
+   "h3": "891faa001a7ffff",
+   "scores": {
+    "heat": 0.27,
+    "air": 0.09,
+    "bike": 0.21,
+    "green": 0.9,
+    "risk": 0.08,
+    "felt": null
+   },
+   "need": 0.32,
+   "facts": {
+    "tempAfternoonC": 28.9,
+    "distToGreenM": 1083,
+    "sensitivePlaces": 0,
+    "trees": 15,
+    "busStops": 2,
+    "nearestStationId": "sb-wertwiesen",
+    "nearestStationDistM": 1083,
+    "pm25": 5.87,
+    "overtakeUnder150Pct": 13
+   }
+  },
+  {
+   "h3": "891faa001abffff",
+   "scores": {
+    "heat": 0.08,
+    "air": 0.05,
+    "bike": null,
+    "green": 0.82,
+    "risk": 0.52,
+    "felt": null
+   },
+   "need": 0.32,
+   "facts": {
+    "tempAfternoonC": 27.55,
+    "distToGreenM": 990,
+    "sensitivePlaces": 2,
+    "trees": 26,
+    "busStops": 2,
+    "nearestStationId": "sb-sontheim",
+    "nearestStationDistM": 972,
+    "pm25": 5.46
+   }
+  },
+  {
+   "h3": "891faa001afffff",
+   "scores": {
+    "heat": 0.03,
+    "air": 0.01,
+    "bike": 0.39,
+    "green": 0.96,
+    "risk": 0.26,
+    "felt": null
+   },
+   "need": 0.3,
+   "facts": {
+    "tempAfternoonC": 27.19,
+    "distToGreenM": 1152,
+    "sensitivePlaces": 1,
+    "trees": 6,
+    "busStops": 1,
+    "nearestStationId": "sb-wertwiesen",
+    "nearestStationDistM": 1152,
+    "pm25": 5.06,
+    "overtakeUnder150Pct": 23
+   }
+  },
+  {
+   "h3": "891faa001b3ffff",
+   "scores": {
+    "heat": 0.37,
+    "air": 0.44,
+    "bike": null,
+    "green": 0.43,
+    "risk": 0.86,
+    "felt": null
+   },
+   "need": 0.49,
+   "facts": {
+    "tempAfternoonC": 29.61,
+    "distToGreenM": 518,
+    "sensitivePlaces": 3,
+    "trees": 33,
+    "busStops": 1,
+    "nearestStationId": "sb-wertwiesen",
+    "nearestStationDistM": 518,
+    "pm25": 9.39
+   }
+  },
+  {
+   "h3": "891faa001b7ffff",
+   "scores": {
+    "heat": 0.35,
+    "air": 0.43,
+    "bike": null,
+    "green": 0.67,
+    "risk": 0.35,
+    "felt": null
+   },
+   "need": 0.44,
+   "facts": {
+    "tempAfternoonC": 29.42,
+    "distToGreenM": 801,
+    "sensitivePlaces": 1,
+    "trees": 25,
+    "busStops": 1,
+    "nearestStationId": "sb-wertwiesen",
+    "nearestStationDistM": 801,
+    "pm25": 9.33
+   }
+  },
+  {
+   "h3": "891faa001bbffff",
+   "scores": {
+    "heat": 0.28,
+    "air": 0.22,
+    "bike": 0.16,
+    "green": 0.56,
+    "risk": 0.08,
+    "felt": null
+   },
+   "need": 0.28,
+   "facts": {
+    "tempAfternoonC": 28.93,
+    "distToGreenM": 673,
+    "sensitivePlaces": 0,
+    "trees": 20,
+    "busStops": 2,
+    "nearestStationId": "sb-wertwiesen",
+    "nearestStationDistM": 673,
+    "pm25": 7.18,
+    "overtakeUnder150Pct": 10
+   }
+  },
+  {
+   "h3": "891faa001c3ffff",
+   "scores": {
+    "heat": 0,
+    "air": 0,
+    "bike": 0.57,
+    "green": 1,
+    "risk": 0.5,
+    "felt": null
+   },
+   "need": 0.36,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1413,
+    "sensitivePlaces": 2,
+    "trees": 20,
+    "busStops": 1,
+    "nearestStationId": "sb-sontheim",
+    "nearestStationDistM": 443,
+    "pm25": 5,
+    "overtakeUnder150Pct": 34
+   }
+  },
+  {
+   "h3": "891faa001c7ffff",
+   "scores": {
+    "heat": 0.09,
+    "air": 0.07,
+    "bike": 0.58,
+    "green": 0.98,
+    "risk": 0.03,
+    "felt": null
+   },
+   "need": 0.33,
+   "facts": {
+    "tempAfternoonC": 27.6,
+    "distToGreenM": 1175,
+    "sensitivePlaces": 0,
+    "trees": 7,
+    "busStops": 2,
+    "nearestStationId": "sb-sontheim",
+    "nearestStationDistM": 150,
+    "pm25": 5.72,
+    "overtakeUnder150Pct": 35
+   }
+  },
+  {
+   "h3": "891faa001cbffff",
+   "scores": {
+    "heat": 0,
+    "air": 0,
+    "bike": 0.28,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.24,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1747,
+    "sensitivePlaces": 0,
+    "trees": 29,
+    "busStops": 1,
+    "nearestStationId": "sb-sontheim",
+    "nearestStationDistM": 741,
+    "pm25": 5,
+    "overtakeUnder150Pct": 17
+   }
+  },
+  {
+   "h3": "891faa001cfffff",
+   "scores": {
+    "heat": 0,
+    "air": 0,
+    "bike": 0.63,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.29,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1518,
+    "sensitivePlaces": 0,
+    "trees": 9,
+    "busStops": 1,
+    "nearestStationId": "sb-sontheim",
+    "nearestStationDistM": 493,
+    "pm25": 5,
+    "overtakeUnder150Pct": 38
+   }
+  },
+  {
+   "h3": "891faa001d3ffff",
+   "scores": {
+    "heat": 0,
+    "air": 0.14,
+    "bike": null,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.27,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1378,
+    "sensitivePlaces": 0,
+    "trees": 23,
+    "busStops": 0,
+    "nearestStationId": "sb-sontheim",
+    "nearestStationDistM": 598,
+    "pm25": 6.42
+   }
+  },
+  {
+   "h3": "891faa001d7ffff",
+   "scores": {
+    "heat": 0.07,
+    "air": 0.13,
+    "bike": 0.36,
+    "green": 0.9,
+    "risk": 0.02,
+    "felt": null
+   },
+   "need": 0.28,
+   "facts": {
+    "tempAfternoonC": 27.47,
+    "distToGreenM": 1084,
+    "sensitivePlaces": 0,
+    "trees": 26,
+    "busStops": 1,
+    "nearestStationId": "sb-sontheim",
+    "nearestStationDistM": 278,
+    "pm25": 6.33,
+    "overtakeUnder150Pct": 22
+   }
+  },
+  {
+   "h3": "891faa001dbffff",
+   "scores": {
+    "heat": 0,
+    "air": 0.08,
+    "bike": 0.83,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.34,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1688,
+    "sensitivePlaces": 0,
+    "trees": 18,
+    "busStops": 2,
+    "nearestStationId": "sb-sontheim",
+    "nearestStationDistM": 781,
+    "pm25": 5.79,
+    "overtakeUnder150Pct": 50
+   }
+  },
+  {
+   "h3": "891faa00427ffff",
+   "scores": {
+    "heat": 0,
+    "air": 0,
+    "bike": 0.22,
+    "green": 1,
+    "risk": 0.25,
+    "felt": null
+   },
+   "need": 0.27,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 2570,
+    "sensitivePlaces": 1,
+    "trees": 14,
+    "busStops": 0,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 996,
+    "pm25": 5,
+    "overtakeUnder150Pct": 13
+   }
+  },
+  {
+   "h3": "891faa00437ffff",
+   "scores": {
+    "heat": 0,
+    "air": 0,
+    "bike": null,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.24,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 2726,
+    "sensitivePlaces": 0,
+    "trees": 36,
+    "busStops": 0,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 1061,
+    "pm25": 5
+   }
+  },
+  {
+   "h3": "891faa004a7ffff",
+   "scores": {
+    "heat": 0,
+    "air": 0,
+    "bike": 0.75,
+    "green": 1,
+    "risk": 0.25,
+    "felt": null
+   },
+   "need": 0.35,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 2522,
+    "sensitivePlaces": 1,
+    "trees": 35,
+    "busStops": 0,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 1093,
+    "pm25": 5,
+    "overtakeUnder150Pct": 45
+   }
+  },
+  {
+   "h3": "891faa004afffff",
+   "scores": {
+    "heat": 0,
+    "air": 0,
+    "bike": 0.12,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.22,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 2776,
+    "sensitivePlaces": 0,
+    "trees": 19,
+    "busStops": 1,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 1211,
+    "pm25": 5,
+    "overtakeUnder150Pct": 7
+   }
+  },
+  {
+   "h3": "891faa00503ffff",
+   "scores": {
+    "heat": 0.2,
+    "air": 0.12,
+    "bike": null,
+    "green": 1,
+    "risk": 0.56,
+    "felt": null
+   },
+   "need": 0.43,
+   "facts": {
+    "tempAfternoonC": 28.43,
+    "distToGreenM": 1503,
+    "sensitivePlaces": 2,
+    "trees": 25,
+    "busStops": 0,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 370,
+    "pm25": 6.23
+   }
+  },
+  {
+   "h3": "891faa00507ffff",
+   "scores": {
+    "heat": 0.32,
+    "air": 0.36,
+    "bike": null,
+    "green": 1,
+    "risk": 0.6,
+    "felt": null
+   },
+   "need": 0.54,
+   "facts": {
+    "tempAfternoonC": 29.23,
+    "distToGreenM": 1218,
+    "sensitivePlaces": 2,
+    "trees": 33,
+    "busStops": 0,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 700,
+    "pm25": 8.57
+   }
+  },
+  {
+   "h3": "891faa0050bffff",
+   "scores": {
+    "heat": 0.1,
+    "air": 0.13,
+    "bike": null,
+    "green": 1,
+    "risk": 0.03,
+    "felt": null
+   },
+   "need": 0.31,
+   "facts": {
+    "tempAfternoonC": 27.68,
+    "distToGreenM": 1561,
+    "sensitivePlaces": 0,
+    "trees": 20,
+    "busStops": 2,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 460,
+    "pm25": 6.34
+   }
+  },
+  {
+   "h3": "891faa0050fffff",
+   "scores": {
+    "heat": 0.29,
+    "air": 0.36,
+    "bike": null,
+    "green": 1,
+    "risk": 0.84,
+    "felt": null
+   },
+   "need": 0.57,
+   "facts": {
+    "tempAfternoonC": 29.04,
+    "distToGreenM": 1237,
+    "sensitivePlaces": 3,
+    "trees": 39,
+    "busStops": 0,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 657,
+    "pm25": 8.57
+   }
+  },
+  {
+   "h3": "891faa00513ffff",
+   "scores": {
+    "heat": 0.21,
+    "air": 0.11,
+    "bike": 0.49,
+    "green": 1,
+    "risk": 0.31,
+    "felt": null
+   },
+   "need": 0.41,
+   "facts": {
+    "tempAfternoonC": 28.45,
+    "distToGreenM": 1496,
+    "sensitivePlaces": 1,
+    "trees": 26,
+    "busStops": 1,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 224,
+    "pm25": 6.12,
+    "overtakeUnder150Pct": 29
+   }
+  },
+  {
+   "h3": "891faa00517ffff",
+   "scores": {
+    "heat": 0.27,
+    "air": 0.28,
+    "bike": null,
+    "green": 1,
+    "risk": 0.08,
+    "felt": null
+   },
+   "need": 0.41,
+   "facts": {
+    "tempAfternoonC": 28.91,
+    "distToGreenM": 1213,
+    "sensitivePlaces": 0,
+    "trees": 18,
+    "busStops": 2,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 545,
+    "pm25": 7.83
+   }
+  },
+  {
+   "h3": "891faa0051bffff",
+   "scores": {
+    "heat": 0.08,
+    "air": 0.17,
+    "bike": null,
+    "green": 1,
+    "risk": 0.27,
+    "felt": null
+   },
+   "need": 0.35,
+   "facts": {
+    "tempAfternoonC": 27.53,
+    "distToGreenM": 1809,
+    "sensitivePlaces": 1,
+    "trees": 38,
+    "busStops": 0,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 154,
+    "pm25": 6.71
+   }
+  },
+  {
+   "h3": "891faa00523ffff",
+   "scores": {
+    "heat": 0.46,
+    "air": 0.36,
+    "bike": null,
+    "green": 0.55,
+    "risk": 0.14,
+    "felt": null
+   },
+   "need": 0.4,
+   "facts": {
+    "tempAfternoonC": 30.21,
+    "distToGreenM": 657,
+    "sensitivePlaces": 0,
+    "trees": 16,
+    "busStops": 1,
+    "nearestStationId": "sb-wertwiesen",
+    "nearestStationDistM": 657,
+    "pm25": 8.62
+   }
+  },
+  {
+   "h3": "891faa00527ffff",
+   "scores": {
+    "heat": 0.64,
+    "air": 0.35,
+    "bike": 0.24,
+    "green": 0.41,
+    "risk": 0.44,
+    "felt": null
+   },
+   "need": 0.45,
+   "facts": {
+    "tempAfternoonC": 31.5,
+    "distToGreenM": 493,
+    "sensitivePlaces": 1,
+    "trees": 34,
+    "busStops": 0,
+    "nearestStationId": "sb-wertwiesen",
+    "nearestStationDistM": 493,
+    "pm25": 8.5,
+    "overtakeUnder150Pct": 14
+   }
+  },
+  {
+   "h3": "891faa0052bffff",
+   "scores": {
+    "heat": 0.41,
+    "air": 0.43,
+    "bike": 0.16,
+    "green": 0.56,
+    "risk": 0.87,
+    "felt": null
+   },
+   "need": 0.48,
+   "facts": {
+    "tempAfternoonC": 29.87,
+    "distToGreenM": 668,
+    "sensitivePlaces": 3,
+    "trees": 2,
+    "busStops": 1,
+    "nearestStationId": "sb-wertwiesen",
+    "nearestStationDistM": 668,
+    "pm25": 9.29,
+    "overtakeUnder150Pct": 10
+   }
+  },
+  {
+   "h3": "891faa0052fffff",
+   "scores": {
+    "heat": 0.43,
+    "air": 0.53,
+    "bike": 0.56,
+    "green": 0.29,
+    "risk": 0.38,
+    "felt": null
+   },
+   "need": 0.43,
+   "facts": {
+    "tempAfternoonC": 29.99,
+    "distToGreenM": 353,
+    "sensitivePlaces": 1,
+    "trees": 25,
+    "busStops": 1,
+    "nearestStationId": "sb-wertwiesen",
+    "nearestStationDistM": 353,
+    "pm25": 10.26,
+    "overtakeUnder150Pct": 34
+   }
+  },
+  {
+   "h3": "891faa00533ffff",
+   "scores": {
+    "heat": 0.5,
+    "air": 0.38,
+    "bike": 0.24,
+    "green": 0.81,
+    "risk": 0.4,
+    "felt": null
+   },
+   "need": 0.48,
+   "facts": {
+    "tempAfternoonC": 30.51,
+    "distToGreenM": 973,
+    "sensitivePlaces": 1,
+    "trees": 29,
+    "busStops": 1,
+    "nearestStationId": "sb-bahnhof",
+    "nearestStationDistM": 774,
+    "pm25": 8.85,
+    "overtakeUnder150Pct": 14
+   }
+  },
+  {
+   "h3": "891faa00537ffff",
+   "scores": {
+    "heat": 0.61,
+    "air": 0.61,
+    "bike": null,
+    "green": 0.67,
+    "risk": 0.43,
+    "felt": null
+   },
+   "need": 0.59,
+   "facts": {
+    "tempAfternoonC": 31.28,
+    "distToGreenM": 807,
+    "sensitivePlaces": 1,
+    "trees": 25,
+    "busStops": 2,
+    "nearestStationId": "sb-bahnhof",
+    "nearestStationDistM": 529,
+    "pm25": 11.11
+   }
+  },
+  {
+   "h3": "891faa0053bffff",
+   "scores": {
+    "heat": 0.33,
+    "air": 0.45,
+    "bike": 0.28,
+    "green": 0.77,
+    "risk": 0.85,
+    "felt": null
+   },
+   "need": 0.51,
+   "facts": {
+    "tempAfternoonC": 29.34,
+    "distToGreenM": 927,
+    "sensitivePlaces": 3,
+    "trees": 10,
+    "busStops": 0,
+    "nearestStationId": "sb-wertwiesen",
+    "nearestStationDistM": 927,
+    "pm25": 9.46,
+    "overtakeUnder150Pct": 17
+   }
+  },
+  {
+   "h3": "891faa00543ffff",
+   "scores": {
+    "heat": 0,
+    "air": 0,
+    "bike": 0.82,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.32,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 2034,
+    "sensitivePlaces": 0,
+    "trees": 22,
+    "busStops": 0,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 821,
+    "pm25": 5,
+    "overtakeUnder150Pct": 49
+   }
+  },
+  {
+   "h3": "891faa00547ffff",
+   "scores": {
+    "heat": 0,
+    "air": 0,
+    "bike": null,
+    "green": 1,
+    "risk": 0.25,
+    "felt": null
+   },
+   "need": 0.28,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1689,
+    "sensitivePlaces": 1,
+    "trees": 9,
+    "busStops": 0,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 722,
+    "pm25": 5
+   }
+  },
+  {
+   "h3": "891faa0054bffff",
+   "scores": {
+    "heat": 0,
+    "air": 0,
+    "bike": 0.7,
+    "green": 1,
+    "risk": 0.75,
+    "felt": null
+   },
+   "need": 0.42,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 2218,
+    "sensitivePlaces": 3,
+    "trees": 37,
+    "busStops": 1,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 1163,
+    "pm25": 5,
+    "overtakeUnder150Pct": 42
+   }
+  },
+  {
+   "h3": "891faa0054fffff",
+   "scores": {
+    "heat": 0,
+    "air": 0.1,
+    "bike": 0.89,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.35,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1871,
+    "sensitivePlaces": 0,
+    "trees": 40,
+    "busStops": 1,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 1032,
+    "pm25": 6.01,
+    "overtakeUnder150Pct": 53
+   }
+  },
+  {
+   "h3": "891faa00553ffff",
+   "scores": {
+    "heat": 0,
+    "air": 0,
+    "bike": 0.34,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.25,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 2231,
+    "sensitivePlaces": 0,
+    "trees": 37,
+    "busStops": 0,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 701,
+    "pm25": 5,
+    "overtakeUnder150Pct": 20
+   }
+  },
+  {
+   "h3": "891faa00557ffff",
+   "scores": {
+    "heat": 0,
+    "air": 0,
+    "bike": 0.13,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.22,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1894,
+    "sensitivePlaces": 0,
+    "trees": 18,
+    "busStops": 0,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 481,
+    "pm25": 5,
+    "overtakeUnder150Pct": 8
+   }
+  },
+  {
+   "h3": "891faa0055bffff",
+   "scores": {
+    "heat": 0,
+    "air": 0.03,
+    "bike": null,
+    "green": 1,
+    "risk": 0.25,
+    "felt": null
+   },
+   "need": 0.29,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 2379,
+    "sensitivePlaces": 1,
+    "trees": 32,
+    "busStops": 1,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 1033,
+    "pm25": 5.26
+   }
+  },
+  {
+   "h3": "891faa00563ffff",
+   "scores": {
+    "heat": 0.13,
+    "air": 0.17,
+    "bike": 0.82,
+    "green": 0.98,
+    "risk": 0.29,
+    "felt": null
+   },
+   "need": 0.44,
+   "facts": {
+    "tempAfternoonC": 27.91,
+    "distToGreenM": 1179,
+    "sensitivePlaces": 1,
+    "trees": 36,
+    "busStops": 0,
+    "nearestStationId": "sb-sontheim",
+    "nearestStationDistM": 901,
+    "pm25": 6.74,
+    "overtakeUnder150Pct": 49
+   }
+  },
+  {
+   "h3": "891faa00567ffff",
+   "scores": {
+    "heat": 0.22,
+    "air": 0.23,
+    "bike": null,
+    "green": 0.69,
+    "risk": 0.07,
+    "felt": null
+   },
+   "need": 0.31,
+   "facts": {
+    "tempAfternoonC": 28.57,
+    "distToGreenM": 834,
+    "sensitivePlaces": 0,
+    "trees": 28,
+    "busStops": 0,
+    "nearestStationId": "sb-sontheim",
+    "nearestStationDistM": 747,
+    "pm25": 7.28
+   }
+  },
+  {
+   "h3": "891faa0056bffff",
+   "scores": {
+    "heat": 0.05,
+    "air": 0.17,
+    "bike": 0.17,
+    "green": 1,
+    "risk": 0.52,
+    "felt": null
+   },
+   "need": 0.35,
+   "facts": {
+    "tempAfternoonC": 27.36,
+    "distToGreenM": 1417,
+    "sensitivePlaces": 2,
+    "trees": 11,
+    "busStops": 0,
+    "nearestStationId": "sb-sontheim",
+    "nearestStationDistM": 853,
+    "pm25": 6.66,
+    "overtakeUnder150Pct": 10
+   }
+  },
+  {
+   "h3": "891faa0056fffff",
+   "scores": {
+    "heat": 0.06,
+    "air": 0.12,
+    "bike": 0.52,
+    "green": 0.9,
+    "risk": 0.02,
+    "felt": null
+   },
+   "need": 0.3,
+   "facts": {
+    "tempAfternoonC": 27.4,
+    "distToGreenM": 1086,
+    "sensitivePlaces": 0,
+    "trees": 23,
+    "busStops": 1,
+    "nearestStationId": "sb-sontheim",
+    "nearestStationDistM": 583,
+    "pm25": 6.21,
+    "overtakeUnder150Pct": 31
+   }
+  },
+  {
+   "h3": "891faa00573ffff",
+   "scores": {
+    "heat": 0.23,
+    "air": 0.13,
+    "bike": 0.64,
+    "green": 1,
+    "risk": 0.07,
+    "felt": null
+   },
+   "need": 0.4,
+   "facts": {
+    "tempAfternoonC": 28.58,
+    "distToGreenM": 1345,
+    "sensitivePlaces": 0,
+    "trees": 40,
+    "busStops": 1,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 780,
+    "pm25": 6.27,
+    "overtakeUnder150Pct": 38
+   }
+  },
+  {
+   "h3": "891faa00577ffff",
+   "scores": {
+    "heat": 0.19,
+    "air": 0.13,
+    "bike": 0.33,
+    "green": 0.84,
+    "risk": 0.56,
+    "felt": null
+   },
+   "need": 0.38,
+   "facts": {
+    "tempAfternoonC": 28.36,
+    "distToGreenM": 1004,
+    "sensitivePlaces": 2,
+    "trees": 38,
+    "busStops": 0,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 967,
+    "pm25": 6.26,
+    "overtakeUnder150Pct": 20
+   }
+  },
+  {
+   "h3": "891faa0057bffff",
+   "scores": {
+    "heat": 0,
+    "air": 0.1,
+    "bike": null,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.26,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1525,
+    "sensitivePlaces": 0,
+    "trees": 19,
+    "busStops": 1,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 1010,
+    "pm25": 5.99
+   }
+  },
+  {
+   "h3": "891faa00583ffff",
+   "scores": {
+    "heat": 0.07,
+    "air": 0.23,
+    "bike": null,
+    "green": 1,
+    "risk": 0.27,
+    "felt": null
+   },
+   "need": 0.36,
+   "facts": {
+    "tempAfternoonC": 27.49,
+    "distToGreenM": 1259,
+    "sensitivePlaces": 1,
+    "trees": 24,
+    "busStops": 1,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 731,
+    "pm25": 7.25
+   }
+  },
+  {
+   "h3": "891faa00587ffff",
+   "scores": {
+    "heat": 0.35,
+    "air": 0.31,
+    "bike": 0.69,
+    "green": 0.77,
+    "risk": 0.61,
+    "felt": null
+   },
+   "need": 0.52,
+   "facts": {
+    "tempAfternoonC": 29.48,
+    "distToGreenM": 919,
+    "sensitivePlaces": 2,
+    "trees": 33,
+    "busStops": 0,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 898,
+    "pm25": 8.06,
+    "overtakeUnder150Pct": 41
+   }
+  },
+  {
+   "h3": "891faa0058bffff",
+   "scores": {
+    "heat": 0.12,
+    "air": 0.11,
+    "bike": 0.39,
+    "green": 1,
+    "risk": 0.04,
+    "felt": null
+   },
+   "need": 0.32,
+   "facts": {
+    "tempAfternoonC": 27.84,
+    "distToGreenM": 1516,
+    "sensitivePlaces": 0,
+    "trees": 13,
+    "busStops": 1,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 414,
+    "pm25": 6.06,
+    "overtakeUnder150Pct": 23
+   }
+  },
+  {
+   "h3": "891faa0058fffff",
+   "scores": {
+    "heat": 0.34,
+    "air": 0.22,
+    "bike": null,
+    "green": 0.99,
+    "risk": 0.1,
+    "felt": null
+   },
+   "need": 0.42,
+   "facts": {
+    "tempAfternoonC": 29.35,
+    "distToGreenM": 1193,
+    "sensitivePlaces": 0,
+    "trees": 9,
+    "busStops": 0,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 558,
+    "pm25": 7.22
+   }
+  },
+  {
+   "h3": "891faa00593ffff",
+   "scores": {
+    "heat": 0,
+    "air": 0.18,
+    "bike": 0.53,
+    "green": 1,
+    "risk": 0.5,
+    "felt": null
+   },
+   "need": 0.39,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1397,
+    "sensitivePlaces": 2,
+    "trees": 33,
+    "busStops": 0,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 982,
+    "pm25": 6.78,
+    "overtakeUnder150Pct": 32
+   }
+  },
+  {
+   "h3": "891faa00597ffff",
+   "scores": {
+    "heat": 0.2,
+    "air": 0.29,
+    "bike": 0.58,
+    "green": 0.88,
+    "risk": 0.06,
+    "felt": null
+   },
+   "need": 0.39,
+   "facts": {
+    "tempAfternoonC": 28.43,
+    "distToGreenM": 1052,
+    "sensitivePlaces": 0,
+    "trees": 10,
+    "busStops": 0,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 1064,
+    "pm25": 7.93,
+    "overtakeUnder150Pct": 35
+   }
+  },
+  {
+   "h3": "891faa0059bffff",
+   "scores": {
+    "heat": 0.06,
+    "air": 0.15,
+    "bike": 0.23,
+    "green": 1,
+    "risk": 0.27,
+    "felt": null
+   },
+   "need": 0.32,
+   "facts": {
+    "tempAfternoonC": 27.42,
+    "distToGreenM": 1602,
+    "sensitivePlaces": 1,
+    "trees": 2,
+    "busStops": 1,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 708,
+    "pm25": 6.49,
+    "overtakeUnder150Pct": 14
+   }
+  },
+  {
+   "h3": "891faa005a3ffff",
+   "scores": {
+    "heat": 0.52,
+    "air": 0.48,
+    "bike": 0.59,
+    "green": 0.53,
+    "risk": 0.91,
+    "felt": null
+   },
+   "need": 0.58,
+   "facts": {
+    "tempAfternoonC": 30.67,
+    "distToGreenM": 631,
+    "sensitivePlaces": 3,
+    "trees": 28,
+    "busStops": 0,
+    "nearestStationId": "sb-bahnhof",
+    "nearestStationDistM": 608,
+    "pm25": 9.84,
+    "overtakeUnder150Pct": 35
+   }
+  },
+  {
+   "h3": "891faa005a7ffff",
+   "scores": {
+    "heat": 0.7,
+    "air": 0.45,
+    "bike": 0.48,
+    "green": 0.41,
+    "risk": 0.96,
+    "felt": null
+   },
+   "need": 0.6,
+   "facts": {
+    "tempAfternoonC": 31.92,
+    "distToGreenM": 495,
+    "sensitivePlaces": 3,
+    "trees": 12,
+    "busStops": 1,
+    "nearestStationId": "sb-bahnhof",
+    "nearestStationDistM": 278,
+    "pm25": 9.52,
+    "overtakeUnder150Pct": 29
+   }
+  },
+  {
+   "h3": "891faa005abffff",
+   "scores": {
+    "heat": 0.52,
+    "air": 0.4,
+    "bike": 0.72,
+    "green": 0.81,
+    "risk": 0.91,
+    "felt": null
+   },
+   "need": 0.64,
+   "facts": {
+    "tempAfternoonC": 30.66,
+    "distToGreenM": 973,
+    "sensitivePlaces": 3,
+    "trees": 24,
+    "busStops": 2,
+    "nearestStationId": "sb-bahnhof",
+    "nearestStationDistM": 804,
+    "pm25": 8.99,
+    "overtakeUnder150Pct": 43
+   }
+  },
+  {
+   "h3": "891faa005afffff",
+   "scores": {
+    "heat": 0.65,
+    "air": 0.62,
+    "bike": 0.74,
+    "green": 0.68,
+    "risk": 0.2,
+    "felt": null
+   },
+   "need": 0.6,
+   "facts": {
+    "tempAfternoonC": 31.55,
+    "distToGreenM": 812,
+    "sensitivePlaces": 0,
+    "trees": 16,
+    "busStops": 0,
+    "nearestStationId": "sb-bahnhof",
+    "nearestStationDistM": 470,
+    "pm25": 11.17,
+    "overtakeUnder150Pct": 44
+   }
+  },
+  {
+   "h3": "891faa005b3ffff",
+   "scores": {
+    "heat": 0.46,
+    "air": 0.46,
+    "bike": 0.18,
+    "green": 0.49,
+    "risk": 0.89,
+    "felt": null
+   },
+   "need": 0.49,
+   "facts": {
+    "tempAfternoonC": 30.24,
+    "distToGreenM": 587,
+    "sensitivePlaces": 3,
+    "trees": 33,
+    "busStops": 0,
+    "nearestStationId": "sb-bahnhof",
+    "nearestStationDistM": 853,
+    "pm25": 9.57,
+    "overtakeUnder150Pct": 11
+   }
+  },
+  {
+   "h3": "891faa005b7ffff",
+   "scores": {
+    "heat": 0.52,
+    "air": 0.51,
+    "bike": null,
+    "green": 0.24,
+    "risk": 0.41,
+    "felt": null
+   },
+   "need": 0.43,
+   "facts": {
+    "tempAfternoonC": 30.66,
+    "distToGreenM": 291,
+    "sensitivePlaces": 1,
+    "trees": 9,
+    "busStops": 1,
+    "nearestStationId": "sb-bahnhof",
+    "nearestStationDistM": 573,
+    "pm25": 10.06
+   }
+  },
+  {
+   "h3": "891faa005bbffff",
+   "scores": {
+    "heat": 0.32,
+    "air": 0.45,
+    "bike": 0.81,
+    "green": 0.74,
+    "risk": 0.1,
+    "felt": null
+   },
+   "need": 0.47,
+   "facts": {
+    "tempAfternoonC": 29.23,
+    "distToGreenM": 889,
+    "sensitivePlaces": 0,
+    "trees": 26,
+    "busStops": 0,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 831,
+    "pm25": 9.46,
+    "overtakeUnder150Pct": 49
+   }
+  },
+  {
+   "h3": "891faa005c3ffff",
+   "scores": {
+    "heat": 0,
+    "air": 0,
+    "bike": 0.17,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.23,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 2120,
+    "sensitivePlaces": 0,
+    "trees": 1,
+    "busStops": 1,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 527,
+    "pm25": 5,
+    "overtakeUnder150Pct": 10
+   }
+  },
+  {
+   "h3": "891faa005c7ffff",
+   "scores": {
+    "heat": 0.1,
+    "air": 0.18,
+    "bike": 0.73,
+    "green": 1,
+    "risk": 0.03,
+    "felt": null
+   },
+   "need": 0.38,
+   "facts": {
+    "tempAfternoonC": 27.71,
+    "distToGreenM": 1802,
+    "sensitivePlaces": 0,
+    "trees": 2,
+    "busStops": 1,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 209,
+    "pm25": 6.83,
+    "overtakeUnder150Pct": 44
+   }
+  },
+  {
+   "h3": "891faa005cbffff",
+   "scores": {
+    "heat": 0,
+    "air": 0,
+    "bike": 0.71,
+    "green": 1,
+    "risk": 0.25,
+    "felt": null
+   },
+   "need": 0.34,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 2410,
+    "sensitivePlaces": 1,
+    "trees": 28,
+    "busStops": 2,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 719,
+    "pm25": 5,
+    "overtakeUnder150Pct": 43
+   }
+  },
+  {
+   "h3": "891faa005cfffff",
+   "scores": {
+    "heat": 0,
+    "air": 0,
+    "bike": null,
+    "green": 1,
+    "risk": 0.75,
+    "felt": null
+   },
+   "need": 0.37,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 2104,
+    "sensitivePlaces": 3,
+    "trees": 9,
+    "busStops": 2,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 388,
+    "pm25": 5
+   }
+  },
+  {
+   "h3": "891faa005d3ffff",
+   "scores": {
+    "heat": 0,
+    "air": 0,
+    "bike": 0.72,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.31,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 2183,
+    "sensitivePlaces": 0,
+    "trees": 19,
+    "busStops": 0,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 783,
+    "pm25": 5,
+    "overtakeUnder150Pct": 43
+   }
+  },
+  {
+   "h3": "891faa005d7ffff",
+   "scores": {
+    "heat": 0,
+    "air": 0.01,
+    "bike": 0.47,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.27,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1847,
+    "sensitivePlaces": 0,
+    "trees": 31,
+    "busStops": 2,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 522,
+    "pm25": 5.07,
+    "overtakeUnder150Pct": 28
+   }
+  },
+  {
+   "h3": "891faa005dbffff",
+   "scores": {
+    "heat": 0,
+    "air": 0,
+    "bike": 0.67,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.3,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 2445,
+    "sensitivePlaces": 0,
+    "trees": 27,
+    "busStops": 0,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 867,
+    "pm25": 5,
+    "overtakeUnder150Pct": 40
+   }
+  },
+  {
+   "h3": "891faa00c13ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.63,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.37,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1877,
+    "sensitivePlaces": 0,
+    "trees": 33,
+    "busStops": 1,
+    "nearestStationId": "sb-wertwiesen",
+    "nearestStationDistM": 2262,
+    "overtakeUnder150Pct": 38
+   }
+  },
+  {
+   "h3": "891faa00c1bffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.89,
+    "green": 1,
+    "risk": 0.25,
+    "felt": null
+   },
+   "need": 0.46,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 2162,
+    "sensitivePlaces": 1,
+    "trees": 1,
+    "busStops": 1,
+    "nearestStationId": "sb-wertwiesen",
+    "nearestStationDistM": 2230,
+    "overtakeUnder150Pct": 53
+   }
+  },
+  {
+   "h3": "891faa00c53ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.4,
+    "green": 1,
+    "risk": 0.5,
+    "felt": null
+   },
+   "need": 0.42,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 2005,
+    "sensitivePlaces": 2,
+    "trees": 1,
+    "busStops": 1,
+    "nearestStationId": "sb-wertwiesen",
+    "nearestStationDistM": 2005,
+    "overtakeUnder150Pct": 24
+   }
+  },
+  {
+   "h3": "891faa00c57ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.6,
+    "green": 1,
+    "risk": 0.75,
+    "felt": null
+   },
+   "need": 0.5,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 2250,
+    "sensitivePlaces": 3,
+    "trees": 37,
+    "busStops": 1,
+    "nearestStationId": "sb-wertwiesen",
+    "nearestStationDistM": 2250,
+    "overtakeUnder150Pct": 36
+   }
+  },
+  {
+   "h3": "891faa00c83ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": null,
+    "green": 1,
+    "risk": 0.5,
+    "felt": null
+   },
+   "need": 0.42,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1314,
+    "sensitivePlaces": 2,
+    "trees": 11,
+    "busStops": 1,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 1932
+   }
+  },
+  {
+   "h3": "891faa00c87ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": null,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.31,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1388,
+    "sensitivePlaces": 0,
+    "trees": 4,
+    "busStops": 1,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 2204
+   }
+  },
+  {
+   "h3": "891faa00c8bffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.81,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.4,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1594,
+    "sensitivePlaces": 0,
+    "trees": 19,
+    "busStops": 2,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 2006,
+    "overtakeUnder150Pct": 49
+   }
+  },
+  {
+   "h3": "891faa00c8fffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.13,
+    "green": 1,
+    "risk": 0.5,
+    "felt": null
+   },
+   "need": 0.37,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1615,
+    "sensitivePlaces": 2,
+    "trees": 12,
+    "busStops": 1,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 2239,
+    "overtakeUnder150Pct": 8
+   }
+  },
+  {
+   "h3": "891faa00c93ffff",
+   "scores": {
+    "heat": 0.1,
+    "air": null,
+    "bike": 0.37,
+    "green": 0.85,
+    "risk": 0.03,
+    "felt": null
+   },
+   "need": 0.33,
+   "facts": {
+    "tempAfternoonC": 27.7,
+    "distToGreenM": 1026,
+    "sensitivePlaces": 0,
+    "trees": 23,
+    "busStops": 1,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 1632,
+    "overtakeUnder150Pct": 22
+   }
+  },
+  {
+   "h3": "891faa00c97ffff",
+   "scores": {
+    "heat": 0.07,
+    "air": null,
+    "bike": 0.41,
+    "green": 0.89,
+    "risk": 0.02,
+    "felt": null
+   },
+   "need": 0.33,
+   "facts": {
+    "tempAfternoonC": 27.52,
+    "distToGreenM": 1070,
+    "sensitivePlaces": 0,
+    "trees": 31,
+    "busStops": 1,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 1918,
+    "overtakeUnder150Pct": 25
+   }
+  },
+  {
+   "h3": "891faa00c9bffff",
+   "scores": {
+    "heat": 0.09,
+    "air": null,
+    "bike": null,
+    "green": 1,
+    "risk": 0.03,
+    "felt": null
+   },
+   "need": 0.36,
+   "facts": {
+    "tempAfternoonC": 27.61,
+    "distToGreenM": 1329,
+    "sensitivePlaces": 0,
+    "trees": 27,
+    "busStops": 0,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 1689
+   }
+  },
+  {
+   "h3": "891faa00cc3ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": null,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.31,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1656,
+    "sensitivePlaces": 0,
+    "trees": 20,
+    "busStops": 0,
+    "nearestStationId": "sb-wertwiesen",
+    "nearestStationDistM": 1656
+   }
+  },
+  {
+   "h3": "891faa00cc7ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": null,
+    "green": 1,
+    "risk": 0.25,
+    "felt": null
+   },
+   "need": 0.37,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1895,
+    "sensitivePlaces": 1,
+    "trees": 27,
+    "busStops": 0,
+    "nearestStationId": "sb-wertwiesen",
+    "nearestStationDistM": 1952
+   }
+  },
+  {
+   "h3": "891faa00ccbffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": null,
+    "green": 1,
+    "risk": 0.75,
+    "felt": null
+   },
+   "need": 0.48,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1692,
+    "sensitivePlaces": 3,
+    "trees": 22,
+    "busStops": 2,
+    "nearestStationId": "sb-wertwiesen",
+    "nearestStationDistM": 1692
+   }
+  },
+  {
+   "h3": "891faa00ccfffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.86,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.41,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1949,
+    "sensitivePlaces": 0,
+    "trees": 40,
+    "busStops": 1,
+    "nearestStationId": "sb-wertwiesen",
+    "nearestStationDistM": 1949,
+    "overtakeUnder150Pct": 52
+   }
+  },
+  {
+   "h3": "891faa00cd3ffff",
+   "scores": {
+    "heat": 0.13,
+    "air": 0.26,
+    "bike": 0.86,
+    "green": 1,
+    "risk": 0.04,
+    "felt": null
+   },
+   "need": 0.43,
+   "facts": {
+    "tempAfternoonC": 27.88,
+    "distToGreenM": 1376,
+    "sensitivePlaces": 0,
+    "trees": 38,
+    "busStops": 1,
+    "nearestStationId": "sb-wertwiesen",
+    "nearestStationDistM": 1376,
+    "pm25": 7.58,
+    "overtakeUnder150Pct": 52
+   }
+  },
+  {
+   "h3": "891faa00cd7ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.39,
+    "green": 1,
+    "risk": 0.25,
+    "felt": null
+   },
+   "need": 0.37,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1647,
+    "sensitivePlaces": 1,
+    "trees": 36,
+    "busStops": 0,
+    "nearestStationId": "sb-wertwiesen",
+    "nearestStationDistM": 1690,
+    "overtakeUnder150Pct": 23
+   }
+  },
+  {
+   "h3": "891faa00cdbffff",
+   "scores": {
+    "heat": 0.09,
+    "air": 0.17,
+    "bike": 0.4,
+    "green": 1,
+    "risk": 0.78,
+    "felt": null
+   },
+   "need": 0.44,
+   "facts": {
+    "tempAfternoonC": 27.62,
+    "distToGreenM": 1383,
+    "sensitivePlaces": 3,
+    "trees": 4,
+    "busStops": 2,
+    "nearestStationId": "sb-wertwiesen",
+    "nearestStationDistM": 1383,
+    "pm25": 6.67,
+    "overtakeUnder150Pct": 24
+   }
+  },
+  {
+   "h3": "891faa0216bffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": null,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.31,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 2006,
+    "sensitivePlaces": 0,
+    "trees": 15,
+    "busStops": 0,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 2598
+   }
+  },
+  {
+   "h3": "891faa0216fffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.83,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.41,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1869,
+    "sensitivePlaces": 0,
+    "trees": 16,
+    "busStops": 1,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 2383,
+    "overtakeUnder150Pct": 50
+   }
+  },
+  {
+   "h3": "891faa02323ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.66,
+    "green": 1,
+    "risk": 0.25,
+    "felt": null
+   },
+   "need": 0.42,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1501,
+    "sensitivePlaces": 1,
+    "trees": 12,
+    "busStops": 0,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 1550,
+    "overtakeUnder150Pct": 40
+   }
+  },
+  {
+   "h3": "891faa02327ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": null,
+    "green": 1.0,
+    "risk": 0.5,
+    "felt": null
+   },
+   "need": 0.42,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1197,
+    "sensitivePlaces": 2,
+    "trees": 28,
+    "busStops": 0,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 1611
+   }
+  },
+  {
+   "h3": "891faa0232bffff",
+   "scores": {
+    "heat": 0,
+    "air": 0.16,
+    "bike": 0.63,
+    "green": 1,
+    "risk": 0.5,
+    "felt": null
+   },
+   "need": 0.4,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1590,
+    "sensitivePlaces": 2,
+    "trees": 4,
+    "busStops": 2,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 1267,
+    "pm25": 6.56,
+    "overtakeUnder150Pct": 38
+   }
+  },
+  {
+   "h3": "891faa0232fffff",
+   "scores": {
+    "heat": 0.05,
+    "air": 0.22,
+    "bike": 0.67,
+    "green": 1,
+    "risk": 0.52,
+    "felt": null
+   },
+   "need": 0.44,
+   "facts": {
+    "tempAfternoonC": 27.38,
+    "distToGreenM": 1255,
+    "sensitivePlaces": 2,
+    "trees": 40,
+    "busStops": 0,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 1290,
+    "pm25": 7.17,
+    "overtakeUnder150Pct": 40
+   }
+  },
+  {
+   "h3": "891faa02333ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": null,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.31,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1772,
+    "sensitivePlaces": 0,
+    "trees": 8,
+    "busStops": 0,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 1831
+   }
+  },
+  {
+   "h3": "891faa02337ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.4,
+    "green": 1,
+    "risk": 0.75,
+    "felt": null
+   },
+   "need": 0.47,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1487,
+    "sensitivePlaces": 3,
+    "trees": 35,
+    "busStops": 0,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 1854,
+    "overtakeUnder150Pct": 24
+   }
+  },
+  {
+   "h3": "891faa0233bffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": null,
+    "green": 1,
+    "risk": 0.5,
+    "felt": null
+   },
+   "need": 0.42,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1821,
+    "sensitivePlaces": 2,
+    "trees": 30,
+    "busStops": 2,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 1566
+   }
+  },
+  {
+   "h3": "891faa02363ffff",
+   "scores": {
+    "heat": 0,
+    "air": 0,
+    "bike": 0.2,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.23,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 2090,
+    "sensitivePlaces": 0,
+    "trees": 4,
+    "busStops": 1,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 1164,
+    "pm25": 5,
+    "overtakeUnder150Pct": 12
+   }
+  },
+  {
+   "h3": "891faa02367ffff",
+   "scores": {
+    "heat": 0,
+    "air": 0.01,
+    "bike": null,
+    "green": 1,
+    "risk": 0.75,
+    "felt": null
+   },
+   "need": 0.37,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1744,
+    "sensitivePlaces": 3,
+    "trees": 35,
+    "busStops": 2,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 1020,
+    "pm25": 5.06
+   }
+  },
+  {
+   "h3": "891faa0236bffff",
+   "scores": {
+    "heat": 0,
+    "air": 0.02,
+    "bike": 0.83,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.33,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 2291,
+    "sensitivePlaces": 0,
+    "trees": 7,
+    "busStops": 2,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 1075,
+    "pm25": 5.15,
+    "overtakeUnder150Pct": 50
+   }
+  },
+  {
+   "h3": "891faa0236fffff",
+   "scores": {
+    "heat": 0,
+    "air": 0,
+    "bike": null,
+    "green": 1,
+    "risk": 0.5,
+    "felt": null
+   },
+   "need": 0.32,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1946,
+    "sensitivePlaces": 2,
+    "trees": 14,
+    "busStops": 1,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 842,
+    "pm25": 5
+   }
+  },
+  {
+   "h3": "891faa02377ffff",
+   "scores": {
+    "heat": 0,
+    "air": 0,
+    "bike": null,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.24,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1930,
+    "sensitivePlaces": 0,
+    "trees": 16,
+    "busStops": 0,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 1336,
+    "pm25": 5
+   }
+  },
+  {
+   "h3": "891faa023a7ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": null,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.31,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1869,
+    "sensitivePlaces": 0,
+    "trees": 39,
+    "busStops": 2,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 2420
+   }
+  },
+  {
+   "h3": "891faa023afffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.56,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.36,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1789,
+    "sensitivePlaces": 0,
+    "trees": 39,
+    "busStops": 2,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 2119,
+    "overtakeUnder150Pct": 34
+   }
+  },
+  {
+   "h3": "891faa02803ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": null,
+    "green": 1,
+    "risk": 0.75,
+    "felt": null
+   },
+   "need": 0.48,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1876,
+    "sensitivePlaces": 3,
+    "trees": 1,
+    "busStops": 0,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 2163
+   }
+  },
+  {
+   "h3": "891faa0280bffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.62,
+    "green": 1,
+    "risk": 0.75,
+    "felt": null
+   },
+   "need": 0.51,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1556,
+    "sensitivePlaces": 3,
+    "trees": 36,
+    "busStops": 1,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 1859,
+    "overtakeUnder150Pct": 37
+   }
+  },
+  {
+   "h3": "891faa0280fffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.54,
+    "green": 1,
+    "risk": 0.5,
+    "felt": null
+   },
+   "need": 0.44,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1659,
+    "sensitivePlaces": 2,
+    "trees": 19,
+    "busStops": 1,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 2176,
+    "overtakeUnder150Pct": 32
+   }
+  },
+  {
+   "h3": "891faa02813ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.46,
+    "green": 1,
+    "risk": 0.5,
+    "felt": null
+   },
+   "need": 0.43,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 2121,
+    "sensitivePlaces": 2,
+    "trees": 3,
+    "busStops": 0,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 2197,
+    "overtakeUnder150Pct": 28
+   }
+  },
+  {
+   "h3": "891faa0281bffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": null,
+    "green": 1,
+    "risk": 0.25,
+    "felt": null
+   },
+   "need": 0.37,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1816,
+    "sensitivePlaces": 1,
+    "trees": 9,
+    "busStops": 1,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 1872
+   }
+  },
+  {
+   "h3": "891faa02843ffff",
+   "scores": {
+    "heat": 0.25,
+    "air": 0.13,
+    "bike": 0.38,
+    "green": 1,
+    "risk": 0.33,
+    "felt": null
+   },
+   "need": 0.41,
+   "facts": {
+    "tempAfternoonC": 28.76,
+    "distToGreenM": 1264,
+    "sensitivePlaces": 1,
+    "trees": 8,
+    "busStops": 1,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 1251,
+    "pm25": 6.3,
+    "overtakeUnder150Pct": 23
+   }
+  },
+  {
+   "h3": "891faa02847ffff",
+   "scores": {
+    "heat": 0.06,
+    "air": null,
+    "bike": null,
+    "green": 1,
+    "risk": 0.02,
+    "felt": null
+   },
+   "need": 0.34,
+   "facts": {
+    "tempAfternoonC": 27.4,
+    "distToGreenM": 1248,
+    "sensitivePlaces": 0,
+    "trees": 17,
+    "busStops": 1,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 1571
+   }
+  },
+  {
+   "h3": "891faa0284bffff",
+   "scores": {
+    "heat": 0.28,
+    "air": 0.16,
+    "bike": null,
+    "green": 0.87,
+    "risk": 0.33,
+    "felt": null
+   },
+   "need": 0.4,
+   "facts": {
+    "tempAfternoonC": 28.94,
+    "distToGreenM": 1050,
+    "sensitivePlaces": 1,
+    "trees": 39,
+    "busStops": 1,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 972,
+    "pm25": 6.57
+   }
+  },
+  {
+   "h3": "891faa0284fffff",
+   "scores": {
+    "heat": 0.15,
+    "air": 0.3,
+    "bike": null,
+    "green": 0.8,
+    "risk": 0.04,
+    "felt": null
+   },
+   "need": 0.32,
+   "facts": {
+    "tempAfternoonC": 28.02,
+    "distToGreenM": 962,
+    "sensitivePlaces": 0,
+    "trees": 36,
+    "busStops": 1,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 1310,
+    "pm25": 8.04
+   }
+  },
+  {
+   "h3": "891faa02853ffff",
+   "scores": {
+    "heat": 0.08,
+    "air": 0.06,
+    "bike": 0.47,
+    "green": 1,
+    "risk": 0.02,
+    "felt": null
+   },
+   "need": 0.31,
+   "facts": {
+    "tempAfternoonC": 27.53,
+    "distToGreenM": 1575,
+    "sensitivePlaces": 0,
+    "trees": 31,
+    "busStops": 0,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 1273,
+    "pm25": 5.55,
+    "overtakeUnder150Pct": 28
+   }
+  },
+  {
+   "h3": "891faa02857ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.29,
+    "green": 1,
+    "risk": 0.25,
+    "felt": null
+   },
+   "need": 0.35,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1527,
+    "sensitivePlaces": 1,
+    "trees": 22,
+    "busStops": 0,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 1555,
+    "overtakeUnder150Pct": 17
+   }
+  },
+  {
+   "h3": "891faa0285bffff",
+   "scores": {
+    "heat": 0.2,
+    "air": 0.25,
+    "bike": 0.62,
+    "green": 1,
+    "risk": 0.31,
+    "felt": null
+   },
+   "need": 0.45,
+   "facts": {
+    "tempAfternoonC": 28.41,
+    "distToGreenM": 1371,
+    "sensitivePlaces": 1,
+    "trees": 18,
+    "busStops": 2,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 948,
+    "pm25": 7.53,
+    "overtakeUnder150Pct": 37
+   }
+  },
+  {
+   "h3": "891faa02863ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": null,
+    "green": 0.95,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.29,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1139,
+    "sensitivePlaces": 0,
+    "trees": 23,
+    "busStops": 1,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 1995
+   }
+  },
+  {
+   "h3": "891faa02867ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.26,
+    "green": 1,
+    "risk": 0.25,
+    "felt": null
+   },
+   "need": 0.35,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1357,
+    "sensitivePlaces": 1,
+    "trees": 18,
+    "busStops": 0,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 2339,
+    "overtakeUnder150Pct": 16
+   }
+  },
+  {
+   "h3": "891faa0286bffff",
+   "scores": {
+    "heat": 0.01,
+    "air": null,
+    "bike": 0.76,
+    "green": 0.66,
+    "risk": 0.25,
+    "felt": null
+   },
+   "need": 0.36,
+   "facts": {
+    "tempAfternoonC": 27.1,
+    "distToGreenM": 796,
+    "sensitivePlaces": 1,
+    "trees": 39,
+    "busStops": 0,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 1788,
+    "overtakeUnder150Pct": 46
+   }
+  },
+  {
+   "h3": "891faa0286fffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.89,
+    "green": 0.85,
+    "risk": 0.25,
+    "felt": null
+   },
+   "need": 0.43,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1023,
+    "sensitivePlaces": 1,
+    "trees": 23,
+    "busStops": 0,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 2134,
+    "overtakeUnder150Pct": 53
+   }
+  },
+  {
+   "h3": "891faa02873ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.14,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.28,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1325,
+    "sensitivePlaces": 0,
+    "trees": 21,
+    "busStops": 1,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 1901,
+    "overtakeUnder150Pct": 8
+   }
+  },
+  {
+   "h3": "891faa02877ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.21,
+    "green": 1,
+    "risk": 0.25,
+    "felt": null
+   },
+   "need": 0.34,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1481,
+    "sensitivePlaces": 1,
+    "trees": 20,
+    "busStops": 0,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 2236,
+    "overtakeUnder150Pct": 13
+   }
+  },
+  {
+   "h3": "891faa0287bffff",
+   "scores": {
+    "heat": 0.04,
+    "air": null,
+    "bike": 0.57,
+    "green": 0.83,
+    "risk": 0.26,
+    "felt": null
+   },
+   "need": 0.38,
+   "facts": {
+    "tempAfternoonC": 27.25,
+    "distToGreenM": 996,
+    "sensitivePlaces": 1,
+    "trees": 32,
+    "busStops": 2,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 1652,
+    "overtakeUnder150Pct": 34
+   }
+  },
+  {
+   "h3": "891faa0288bffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.11,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.27,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 2384,
+    "sensitivePlaces": 0,
+    "trees": 7,
+    "busStops": 1,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 2278,
+    "overtakeUnder150Pct": 7
+   }
+  },
+  {
+   "h3": "891faa0289bffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.65,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.37,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 2660,
+    "sensitivePlaces": 0,
+    "trees": 38,
+    "busStops": 1,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 2399,
+    "overtakeUnder150Pct": 39
+   }
+  },
+  {
+   "h3": "891faa028c3ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.56,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.36,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 2122,
+    "sensitivePlaces": 0,
+    "trees": 3,
+    "busStops": 2,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 1715,
+    "overtakeUnder150Pct": 34
+   }
+  },
+  {
+   "h3": "891faa028c7ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.72,
+    "green": 1,
+    "risk": 0.25,
+    "felt": null
+   },
+   "need": 0.43,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 2093,
+    "sensitivePlaces": 1,
+    "trees": 9,
+    "busStops": 0,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 1940,
+    "overtakeUnder150Pct": 43
+   }
+  },
+  {
+   "h3": "891faa028cbffff",
+   "scores": {
+    "heat": 0,
+    "air": 0.25,
+    "bike": null,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.29,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1854,
+    "sensitivePlaces": 0,
+    "trees": 28,
+    "busStops": 1,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 1373,
+    "pm25": 7.52
+   }
+  },
+  {
+   "h3": "891faa028cfffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": null,
+    "green": 1,
+    "risk": 0.25,
+    "felt": null
+   },
+   "need": 0.37,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1820,
+    "sensitivePlaces": 1,
+    "trees": 39,
+    "busStops": 1,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 1605
+   }
+  },
+  {
+   "h3": "891faa028d3ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": null,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.31,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 2220,
+    "sensitivePlaces": 0,
+    "trees": 33,
+    "busStops": 0,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 1874
+   }
+  },
+  {
+   "h3": "891faa028d7ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.4,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.33,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 2381,
+    "sensitivePlaces": 0,
+    "trees": 29,
+    "busStops": 2,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 2057,
+    "overtakeUnder150Pct": 24
+   }
+  },
+  {
+   "h3": "891faa028dbffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.68,
+    "green": 1,
+    "risk": 0.5,
+    "felt": null
+   },
+   "need": 0.47,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1889,
+    "sensitivePlaces": 2,
+    "trees": 16,
+    "busStops": 2,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 1535,
+    "overtakeUnder150Pct": 41
+   }
+  },
+  {
+   "h3": "891faa02a03ffff",
+   "scores": {
+    "heat": 0.63,
+    "air": 0.61,
+    "bike": null,
+    "green": 0.72,
+    "risk": 0.19,
+    "felt": null
+   },
+   "need": 0.57,
+   "facts": {
+    "tempAfternoonC": 31.43,
+    "distToGreenM": 866,
+    "sensitivePlaces": 0,
+    "trees": 14,
+    "busStops": 1,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 503,
+    "pm25": 11.09
+   }
+  },
+  {
+   "h3": "891faa02a07ffff",
+   "scores": {
+    "heat": 0.54,
+    "air": 0.44,
+    "bike": 0.49,
+    "green": 0.44,
+    "risk": 0.41,
+    "felt": null
+   },
+   "need": 0.47,
+   "facts": {
+    "tempAfternoonC": 30.77,
+    "distToGreenM": 531,
+    "sensitivePlaces": 1,
+    "trees": 22,
+    "busStops": 2,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 841,
+    "pm25": 9.37,
+    "overtakeUnder150Pct": 29
+   }
+  },
+  {
+   "h3": "891faa02a0bffff",
+   "scores": {
+    "heat": 0.73,
+    "air": 0.57,
+    "bike": null,
+    "green": 0.88,
+    "risk": 0.22,
+    "felt": null
+   },
+   "need": 0.64,
+   "facts": {
+    "tempAfternoonC": 32.13,
+    "distToGreenM": 1058,
+    "sensitivePlaces": 0,
+    "trees": 36,
+    "busStops": 2,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 520,
+    "pm25": 10.66
+   }
+  },
+  {
+   "h3": "891faa02a0fffff",
+   "scores": {
+    "heat": 0.5,
+    "air": 0.54,
+    "bike": 0.86,
+    "green": 0.69,
+    "risk": 0.9,
+    "felt": null
+   },
+   "need": 0.66,
+   "facts": {
+    "tempAfternoonC": 30.47,
+    "distToGreenM": 832,
+    "sensitivePlaces": 3,
+    "trees": 9,
+    "busStops": 1,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 768,
+    "pm25": 10.42,
+    "overtakeUnder150Pct": 52
+   }
+  },
+  {
+   "h3": "891faa02a13ffff",
+   "scores": {
+    "heat": 0.63,
+    "air": 0.66,
+    "bike": null,
+    "green": 0.84,
+    "risk": 0.44,
+    "felt": null
+   },
+   "need": 0.65,
+   "facts": {
+    "tempAfternoonC": 31.43,
+    "distToGreenM": 1009,
+    "sensitivePlaces": 1,
+    "trees": 16,
+    "busStops": 1,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 353,
+    "pm25": 11.63
+   }
+  },
+  {
+   "h3": "891faa02a17ffff",
+   "scores": {
+    "heat": 0.51,
+    "air": 0.53,
+    "bike": null,
+    "green": 0.55,
+    "risk": 0.4,
+    "felt": null
+   },
+   "need": 0.5,
+   "facts": {
+    "tempAfternoonC": 30.57,
+    "distToGreenM": 665,
+    "sensitivePlaces": 1,
+    "trees": 17,
+    "busStops": 0,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 686,
+    "pm25": 10.26
+   }
+  },
+  {
+   "h3": "891faa02a1bffff",
+   "scores": {
+    "heat": 0.7,
+    "air": 0.63,
+    "bike": null,
+    "green": 0.92,
+    "risk": 0.21,
+    "felt": null
+   },
+   "need": 0.65,
+   "facts": {
+    "tempAfternoonC": 31.92,
+    "distToGreenM": 1099,
+    "sensitivePlaces": 0,
+    "trees": 33,
+    "busStops": 0,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 200,
+    "pm25": 11.35
+   }
+  },
+  {
+   "h3": "891faa02a23ffff",
+   "scores": {
+    "heat": 0.26,
+    "air": 0.08,
+    "bike": 0.67,
+    "green": 0.38,
+    "risk": 0.08,
+    "felt": null
+   },
+   "need": 0.28,
+   "facts": {
+    "tempAfternoonC": 28.8,
+    "distToGreenM": 458,
+    "sensitivePlaces": 0,
+    "trees": 8,
+    "busStops": 0,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 1397,
+    "pm25": 5.82,
+    "overtakeUnder150Pct": 40
+   }
+  },
+  {
+   "h3": "891faa02a27ffff",
+   "scores": {
+    "heat": 0.17,
+    "air": null,
+    "bike": null,
+    "green": 0.48,
+    "risk": 0.55,
+    "felt": null
+   },
+   "need": 0.35,
+   "facts": {
+    "tempAfternoonC": 28.2,
+    "distToGreenM": 574,
+    "sensitivePlaces": 2,
+    "trees": 30,
+    "busStops": 1,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 1730
+   }
+  },
+  {
+   "h3": "891faa02a2bffff",
+   "scores": {
+    "heat": 0.29,
+    "air": 0.31,
+    "bike": null,
+    "green": 0.64,
+    "risk": 0.09,
+    "felt": null
+   },
+   "need": 0.34,
+   "facts": {
+    "tempAfternoonC": 29.01,
+    "distToGreenM": 766,
+    "sensitivePlaces": 0,
+    "trees": 3,
+    "busStops": 0,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 1343,
+    "pm25": 8.1
+   }
+  },
+  {
+   "h3": "891faa02a2fffff",
+   "scores": {
+    "heat": 0.15,
+    "air": null,
+    "bike": 0.78,
+    "green": 0.63,
+    "risk": 0.04,
+    "felt": null
+   },
+   "need": 0.37,
+   "facts": {
+    "tempAfternoonC": 28.04,
+    "distToGreenM": 757,
+    "sensitivePlaces": 0,
+    "trees": 11,
+    "busStops": 1,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 1647,
+    "overtakeUnder150Pct": 47
+   }
+  },
+  {
+   "h3": "891faa02a33ffff",
+   "scores": {
+    "heat": 0.11,
+    "air": 0.18,
+    "bike": 0.9,
+    "green": 0.19,
+    "risk": 0.28,
+    "felt": null
+   },
+   "need": 0.28,
+   "facts": {
+    "tempAfternoonC": 27.74,
+    "distToGreenM": 234,
+    "sensitivePlaces": 1,
+    "trees": 31,
+    "busStops": 0,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 1184,
+    "pm25": 6.81,
+    "overtakeUnder150Pct": 54
+   }
+  },
+  {
+   "h3": "891faa02a37ffff",
+   "scores": {
+    "heat": 0.26,
+    "air": null,
+    "bike": 0.8,
+    "green": 0.22,
+    "risk": 0.08,
+    "felt": null
+   },
+   "need": 0.32,
+   "facts": {
+    "tempAfternoonC": 28.83,
+    "distToGreenM": 259,
+    "sensitivePlaces": 0,
+    "trees": 19,
+    "busStops": 2,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 1528,
+    "overtakeUnder150Pct": 48
+   }
+  },
+  {
+   "h3": "891faa02a3bffff",
+   "scores": {
+    "heat": 0.4,
+    "air": 0.44,
+    "bike": null,
+    "green": 0.48,
+    "risk": 0.37,
+    "felt": null
+   },
+   "need": 0.42,
+   "facts": {
+    "tempAfternoonC": 29.79,
+    "distToGreenM": 575,
+    "sensitivePlaces": 1,
+    "trees": 34,
+    "busStops": 2,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 1073,
+    "pm25": 9.37
+   }
+  },
+  {
+   "h3": "891faa02a43ffff",
+   "scores": {
+    "heat": 0.63,
+    "air": 0.6,
+    "bike": 0.47,
+    "green": 0.37,
+    "risk": 0.19,
+    "felt": null
+   },
+   "need": 0.48,
+   "facts": {
+    "tempAfternoonC": 31.4,
+    "distToGreenM": 449,
+    "sensitivePlaces": 0,
+    "trees": 7,
+    "busStops": 1,
+    "nearestStationId": "sb-wertwiesen",
+    "nearestStationDistM": 449,
+    "pm25": 10.99,
+    "overtakeUnder150Pct": 28
+   }
+  },
+  {
+   "h3": "891faa02a47ffff",
+   "scores": {
+    "heat": 0.52,
+    "air": 0.43,
+    "bike": null,
+    "green": 0.65,
+    "risk": 0.16,
+    "felt": null
+   },
+   "need": 0.47,
+   "facts": {
+    "tempAfternoonC": 30.67,
+    "distToGreenM": 775,
+    "sensitivePlaces": 0,
+    "trees": 0,
+    "busStops": 1,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 722,
+    "pm25": 9.32
+   }
+  },
+  {
+   "h3": "891faa02a4bffff",
+   "scores": {
+    "heat": 0.25,
+    "air": 0.4,
+    "bike": 0.24,
+    "green": 0.19,
+    "risk": 0.83,
+    "felt": null
+   },
+   "need": 0.35,
+   "facts": {
+    "tempAfternoonC": 28.78,
+    "distToGreenM": 226,
+    "sensitivePlaces": 3,
+    "trees": 40,
+    "busStops": 1,
+    "nearestStationId": "sb-wertwiesen",
+    "nearestStationDistM": 226,
+    "pm25": 9.03,
+    "overtakeUnder150Pct": 14
+   }
+  },
+  {
+   "h3": "891faa02a4fffff",
+   "scores": {
+    "heat": 0.56,
+    "air": 0.39,
+    "bike": null,
+    "green": 0.47,
+    "risk": 0.67,
+    "felt": null
+   },
+   "need": 0.52,
+   "facts": {
+    "tempAfternoonC": 30.92,
+    "distToGreenM": 563,
+    "sensitivePlaces": 2,
+    "trees": 6,
+    "busStops": 0,
+    "nearestStationId": "sb-wertwiesen",
+    "nearestStationDistM": 563,
+    "pm25": 8.87
+   }
+  },
+  {
+   "h3": "891faa02a53ffff",
+   "scores": {
+    "heat": 0.85,
+    "air": 0.54,
+    "bike": 0.11,
+    "green": 0.45,
+    "risk": 0.5,
+    "felt": null
+   },
+   "need": 0.54,
+   "facts": {
+    "tempAfternoonC": 32.94,
+    "distToGreenM": 543,
+    "sensitivePlaces": 1,
+    "trees": 15,
+    "busStops": 1,
+    "nearestStationId": "sb-wertwiesen",
+    "nearestStationDistM": 543,
+    "pm25": 10.38,
+    "overtakeUnder150Pct": 7
+   }
+  },
+  {
+   "h3": "891faa02a57ffff",
+   "scores": {
+    "heat": 0.79,
+    "air": 0.67,
+    "bike": null,
+    "green": 0.64,
+    "risk": 0.74,
+    "felt": null
+   },
+   "need": 0.72,
+   "facts": {
+    "tempAfternoonC": 32.53,
+    "distToGreenM": 766,
+    "sensitivePlaces": 2,
+    "trees": 36,
+    "busStops": 0,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 436,
+    "pm25": 11.72
+   }
+  },
+  {
+   "h3": "891faa02a5bffff",
+   "scores": {
+    "heat": 0.26,
+    "air": 0.41,
+    "bike": null,
+    "green": 0.17,
+    "risk": 0.58,
+    "felt": null
+   },
+   "need": 0.33,
+   "facts": {
+    "tempAfternoonC": 28.79,
+    "distToGreenM": 207,
+    "sensitivePlaces": 2,
+    "trees": 7,
+    "busStops": 1,
+    "nearestStationId": "sb-wertwiesen",
+    "nearestStationDistM": 207,
+    "pm25": 9.08
+   }
+  },
+  {
+   "h3": "891faa02a63ffff",
+   "scores": {
+    "heat": 0.32,
+    "air": 0.27,
+    "bike": 0.82,
+    "green": 1,
+    "risk": 0.6,
+    "felt": null
+   },
+   "need": 0.56,
+   "facts": {
+    "tempAfternoonC": 29.26,
+    "distToGreenM": 1253,
+    "sensitivePlaces": 2,
+    "trees": 19,
+    "busStops": 0,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 1164,
+    "pm25": 7.7,
+    "overtakeUnder150Pct": 49
+   }
+  },
+  {
+   "h3": "891faa02a67ffff",
+   "scores": {
+    "heat": 0.28,
+    "air": 0.36,
+    "bike": 0.28,
+    "green": 0.91,
+    "risk": 0.08,
+    "felt": null
+   },
+   "need": 0.39,
+   "facts": {
+    "tempAfternoonC": 28.96,
+    "distToGreenM": 1095,
+    "sensitivePlaces": 0,
+    "trees": 30,
+    "busStops": 0,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 1375,
+    "pm25": 8.63,
+    "overtakeUnder150Pct": 17
+   }
+  },
+  {
+   "h3": "891faa02a6bffff",
+   "scores": {
+    "heat": 0.29,
+    "air": 0.41,
+    "bike": 0.66,
+    "green": 0.93,
+    "risk": 0.34,
+    "felt": null
+   },
+   "need": 0.51,
+   "facts": {
+    "tempAfternoonC": 29.03,
+    "distToGreenM": 1120,
+    "sensitivePlaces": 1,
+    "trees": 34,
+    "busStops": 0,
+    "nearestStationId": "sb-wertwiesen",
+    "nearestStationDistM": 1120,
+    "pm25": 9.06,
+    "overtakeUnder150Pct": 40
+   }
+  },
+  {
+   "h3": "891faa02a6fffff",
+   "scores": {
+    "heat": 0.27,
+    "air": 0.26,
+    "bike": 0.73,
+    "green": 1,
+    "risk": 0.33,
+    "felt": null
+   },
+   "need": 0.49,
+   "facts": {
+    "tempAfternoonC": 28.88,
+    "distToGreenM": 1430,
+    "sensitivePlaces": 1,
+    "trees": 28,
+    "busStops": 2,
+    "nearestStationId": "sb-wertwiesen",
+    "nearestStationDistM": 1452,
+    "pm25": 7.62,
+    "overtakeUnder150Pct": 44
+   }
+  },
+  {
+   "h3": "891faa02a73ffff",
+   "scores": {
+    "heat": 0.55,
+    "air": 0.26,
+    "bike": 0.15,
+    "green": 0.93,
+    "risk": 0.41,
+    "felt": null
+   },
+   "need": 0.49,
+   "facts": {
+    "tempAfternoonC": 30.82,
+    "distToGreenM": 1114,
+    "sensitivePlaces": 1,
+    "trees": 32,
+    "busStops": 0,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 842,
+    "pm25": 7.62,
+    "overtakeUnder150Pct": 9
+   }
+  },
+  {
+   "h3": "891faa02a77ffff",
+   "scores": {
+    "heat": 0.4,
+    "air": 0.21,
+    "bike": null,
+    "green": 0.76,
+    "risk": 0.37,
+    "felt": null
+   },
+   "need": 0.43,
+   "facts": {
+    "tempAfternoonC": 29.83,
+    "distToGreenM": 917,
+    "sensitivePlaces": 1,
+    "trees": 28,
+    "busStops": 0,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 1066,
+    "pm25": 7.11
+   }
+  },
+  {
+   "h3": "891faa02a7bffff",
+   "scores": {
+    "heat": 0.48,
+    "air": 0.42,
+    "bike": 0.82,
+    "green": 0.76,
+    "risk": 0.39,
+    "felt": null
+   },
+   "need": 0.56,
+   "facts": {
+    "tempAfternoonC": 30.37,
+    "distToGreenM": 907,
+    "sensitivePlaces": 1,
+    "trees": 3,
+    "busStops": 1,
+    "nearestStationId": "sb-wertwiesen",
+    "nearestStationDistM": 907,
+    "pm25": 9.17,
+    "overtakeUnder150Pct": 49
+   }
+  },
+  {
+   "h3": "891faa02a83ffff",
+   "scores": {
+    "heat": 0.53,
+    "air": 0.42,
+    "bike": 0.55,
+    "green": 0.98,
+    "risk": 0.66,
+    "felt": null
+   },
+   "need": 0.62,
+   "facts": {
+    "tempAfternoonC": 30.68,
+    "distToGreenM": 1178,
+    "sensitivePlaces": 2,
+    "trees": 19,
+    "busStops": 0,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 403,
+    "pm25": 9.22,
+    "overtakeUnder150Pct": 33
+   }
+  },
+  {
+   "h3": "891faa02a87ffff",
+   "scores": {
+    "heat": 0.45,
+    "air": 0.46,
+    "bike": 0.56,
+    "green": 0.76,
+    "risk": 0.14,
+    "felt": null
+   },
+   "need": 0.48,
+   "facts": {
+    "tempAfternoonC": 30.16,
+    "distToGreenM": 916,
+    "sensitivePlaces": 0,
+    "trees": 27,
+    "busStops": 1,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 749,
+    "pm25": 9.63,
+    "overtakeUnder150Pct": 34
+   }
+  },
+  {
+   "h3": "891faa02a8bffff",
+   "scores": {
+    "heat": 0.79,
+    "air": 0.55,
+    "bike": null,
+    "green": 0.92,
+    "risk": 0.24,
+    "felt": null
+   },
+   "need": 0.67,
+   "facts": {
+    "tempAfternoonC": 32.52,
+    "distToGreenM": 1108,
+    "sensitivePlaces": 0,
+    "trees": 30,
+    "busStops": 0,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 381,
+    "pm25": 10.54
+   }
+  },
+  {
+   "h3": "891faa02a8fffff",
+   "scores": {
+    "heat": 0.57,
+    "air": 0.36,
+    "bike": null,
+    "green": 0.75,
+    "risk": 0.67,
+    "felt": null
+   },
+   "need": 0.58,
+   "facts": {
+    "tempAfternoonC": 30.96,
+    "distToGreenM": 901,
+    "sensitivePlaces": 2,
+    "trees": 26,
+    "busStops": 1,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 641,
+    "pm25": 8.58
+   }
+  },
+  {
+   "h3": "891faa02a93ffff",
+   "scores": {
+    "heat": 0.64,
+    "air": 0.38,
+    "bike": 0.83,
+    "green": 0.86,
+    "risk": 0.44,
+    "felt": null
+   },
+   "need": 0.63,
+   "facts": {
+    "tempAfternoonC": 31.47,
+    "distToGreenM": 1033,
+    "sensitivePlaces": 1,
+    "trees": 5,
+    "busStops": 2,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 350,
+    "pm25": 8.75,
+    "overtakeUnder150Pct": 50
+   }
+  },
+  {
+   "h3": "891faa02a97ffff",
+   "scores": {
+    "heat": 0.37,
+    "air": 0.46,
+    "bike": null,
+    "green": 1,
+    "risk": 0.36,
+    "felt": null
+   },
+   "need": 0.54,
+   "facts": {
+    "tempAfternoonC": 29.61,
+    "distToGreenM": 1232,
+    "sensitivePlaces": 1,
+    "trees": 25,
+    "busStops": 2,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 643,
+    "pm25": 9.6
+   }
+  },
+  {
+   "h3": "891faa02a9bffff",
+   "scores": {
+    "heat": 0.62,
+    "air": 0.65,
+    "bike": 0.7,
+    "green": 0.72,
+    "risk": 0.19,
+    "felt": null
+   },
+   "need": 0.59,
+   "facts": {
+    "tempAfternoonC": 31.34,
+    "distToGreenM": 864,
+    "sensitivePlaces": 0,
+    "trees": 29,
+    "busStops": 2,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 65,
+    "pm25": 11.51,
+    "overtakeUnder150Pct": 42
+   }
+  },
+  {
+   "h3": "891faa02aa3ffff",
+   "scores": {
+    "heat": 0.29,
+    "air": 0.23,
+    "bike": null,
+    "green": 0.34,
+    "risk": 0.34,
+    "felt": null
+   },
+   "need": 0.3,
+   "facts": {
+    "tempAfternoonC": 29.04,
+    "distToGreenM": 409,
+    "sensitivePlaces": 1,
+    "trees": 22,
+    "busStops": 0,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 1282,
+    "pm25": 7.28
+   }
+  },
+  {
+   "h3": "891faa02aa7ffff",
+   "scores": {
+    "heat": 0.11,
+    "air": null,
+    "bike": 0.19,
+    "green": 0.38,
+    "risk": 0.78,
+    "felt": null
+   },
+   "need": 0.32,
+   "facts": {
+    "tempAfternoonC": 27.75,
+    "distToGreenM": 454,
+    "sensitivePlaces": 3,
+    "trees": 26,
+    "busStops": 2,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 1614,
+    "overtakeUnder150Pct": 11
+   }
+  },
+  {
+   "h3": "891faa02aabffff",
+   "scores": {
+    "heat": 0.46,
+    "air": 0.44,
+    "bike": null,
+    "green": 0.27,
+    "risk": 0.14,
+    "felt": null
+   },
+   "need": 0.35,
+   "facts": {
+    "tempAfternoonC": 30.24,
+    "distToGreenM": 328,
+    "sensitivePlaces": 0,
+    "trees": 4,
+    "busStops": 0,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 1029,
+    "pm25": 9.44
+   }
+  },
+  {
+   "h3": "891faa02aafffff",
+   "scores": {
+    "heat": 0,
+    "air": 0.21,
+    "bike": 0.8,
+    "green": 0.1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.18,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 115,
+    "sensitivePlaces": 0,
+    "trees": 2,
+    "busStops": 1,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 1373,
+    "pm25": 7.13,
+    "overtakeUnder150Pct": 48
+   }
+  },
+  {
+   "h3": "891faa02ab3ffff",
+   "scores": {
+    "heat": 0.32,
+    "air": 0.29,
+    "bike": 0.72,
+    "green": 0.61,
+    "risk": 0.1,
+    "felt": null
+   },
+   "need": 0.4,
+   "facts": {
+    "tempAfternoonC": 29.25,
+    "distToGreenM": 728,
+    "sensitivePlaces": 0,
+    "trees": 32,
+    "busStops": 1,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 1095,
+    "pm25": 7.93,
+    "overtakeUnder150Pct": 43
+   }
+  },
+  {
+   "h3": "891faa02ab7ffff",
+   "scores": {
+    "heat": 0.13,
+    "air": 0.31,
+    "bike": 0.56,
+    "green": 0.57,
+    "risk": 0.79,
+    "felt": null
+   },
+   "need": 0.42,
+   "facts": {
+    "tempAfternoonC": 27.94,
+    "distToGreenM": 680,
+    "sensitivePlaces": 3,
+    "trees": 20,
+    "busStops": 0,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 1441,
+    "pm25": 8.14,
+    "overtakeUnder150Pct": 34
+   }
+  },
+  {
+   "h3": "891faa02abbffff",
+   "scores": {
+    "heat": 0.42,
+    "air": 0.25,
+    "bike": 0.28,
+    "green": 0.51,
+    "risk": 0.13,
+    "felt": null
+   },
+   "need": 0.34,
+   "facts": {
+    "tempAfternoonC": 29.94,
+    "distToGreenM": 608,
+    "sensitivePlaces": 0,
+    "trees": 17,
+    "busStops": 0,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 957,
+    "pm25": 7.53,
+    "overtakeUnder150Pct": 17
+   }
+  },
+  {
+   "h3": "891faa02ac3ffff",
+   "scores": {
+    "heat": 0.97,
+    "air": 0.7,
+    "bike": 0.24,
+    "green": 0.75,
+    "risk": 0.79,
+    "felt": null
+   },
+   "need": 0.74,
+   "facts": {
+    "tempAfternoonC": 33.78,
+    "distToGreenM": 899,
+    "sensitivePlaces": 2,
+    "trees": 27,
+    "busStops": 2,
+    "nearestStationId": "sb-bahnhof",
+    "nearestStationDistM": 299,
+    "pm25": 12.01,
+    "overtakeUnder150Pct": 14
+   }
+  },
+  {
+   "h3": "891faa02ac7ffff",
+   "scores": {
+    "heat": 0.88,
+    "air": 0.77,
+    "bike": 0.64,
+    "green": 0.93,
+    "risk": 1,
+    "felt": null
+   },
+   "need": 0.85,
+   "facts": {
+    "tempAfternoonC": 33.16,
+    "distToGreenM": 1115,
+    "sensitivePlaces": 3,
+    "trees": 33,
+    "busStops": 1,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 136,
+    "pm25": 12.67,
+    "overtakeUnder150Pct": 38
+   }
+  },
+  {
+   "h3": "891faa02acbffff",
+   "scores": {
+    "heat": 0.87,
+    "air": 0.57,
+    "bike": null,
+    "green": 0.64,
+    "risk": 0.26,
+    "felt": null
+   },
+   "need": 0.64,
+   "facts": {
+    "tempAfternoonC": 33.09,
+    "distToGreenM": 772,
+    "sensitivePlaces": 0,
+    "trees": 34,
+    "busStops": 1,
+    "nearestStationId": "sb-bahnhof",
+    "nearestStationDistM": 448,
+    "pm25": 10.66
+   }
+  },
+  {
+   "h3": "891faa02acfffff",
+   "scores": {
+    "heat": 0.83,
+    "air": 0.54,
+    "bike": 0.22,
+    "green": 0.74,
+    "risk": 0.5,
+    "felt": null
+   },
+   "need": 0.61,
+   "facts": {
+    "tempAfternoonC": 32.82,
+    "distToGreenM": 884,
+    "sensitivePlaces": 1,
+    "trees": 3,
+    "busStops": 2,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 259,
+    "pm25": 10.44,
+    "overtakeUnder150Pct": 13
+   }
+  },
+  {
+   "h3": "891faa02ad3ffff",
+   "scores": {
+    "heat": 0.8,
+    "air": 0.56,
+    "bike": 0.41,
+    "green": 0.48,
+    "risk": 0.24,
+    "felt": null
+   },
+   "need": 0.55,
+   "facts": {
+    "tempAfternoonC": 32.6,
+    "distToGreenM": 577,
+    "sensitivePlaces": 0,
+    "trees": 13,
+    "busStops": 1,
+    "nearestStationId": "sb-bahnhof",
+    "nearestStationDistM": 157,
+    "pm25": 10.6,
+    "overtakeUnder150Pct": 25
+   }
+  },
+  {
+   "h3": "891faa02ad7ffff",
+   "scores": {
+    "heat": 0.88,
+    "air": 0.73,
+    "bike": 0.17,
+    "green": 0.68,
+    "risk": 0.76,
+    "felt": null
+   },
+   "need": 0.69,
+   "facts": {
+    "tempAfternoonC": 33.13,
+    "distToGreenM": 813,
+    "sensitivePlaces": 2,
+    "trees": 12,
+    "busStops": 0,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 347,
+    "pm25": 12.3,
+    "overtakeUnder150Pct": 10
+   }
+  },
+  {
+   "h3": "891faa02adbffff",
+   "scores": {
+    "heat": 0.76,
+    "air": 0.63,
+    "bike": 0.8,
+    "green": 0.65,
+    "risk": 0.23,
+    "felt": null
+   },
+   "need": 0.64,
+   "facts": {
+    "tempAfternoonC": 32.29,
+    "distToGreenM": 784,
+    "sensitivePlaces": 0,
+    "trees": 37,
+    "busStops": 2,
+    "nearestStationId": "sb-bahnhof",
+    "nearestStationDistM": 186,
+    "pm25": 11.28,
+    "overtakeUnder150Pct": 48
+   }
+  },
+  {
+   "h3": "891faa02b13ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.34,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.31,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1428,
+    "sensitivePlaces": 0,
+    "trees": 13,
+    "busStops": 0,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 2756,
+    "overtakeUnder150Pct": 20
+   }
+  },
+  {
+   "h3": "891faa02b1bffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.48,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.34,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1244,
+    "sensitivePlaces": 0,
+    "trees": 38,
+    "busStops": 0,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 2565,
+    "overtakeUnder150Pct": 29
+   }
+  },
+  {
+   "h3": "891faa02b43ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": null,
+    "green": 0.94,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.29,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1126,
+    "sensitivePlaces": 0,
+    "trees": 24,
+    "busStops": 1,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 2291
+   }
+  },
+  {
+   "h3": "891faa02b4bffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": null,
+    "green": 1,
+    "risk": 0.25,
+    "felt": null
+   },
+   "need": 0.37,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1216,
+    "sensitivePlaces": 1,
+    "trees": 31,
+    "busStops": 1,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 2222
+   }
+  },
+  {
+   "h3": "891faa02b53ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.77,
+    "green": 0.69,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.32,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 830,
+    "sensitivePlaces": 0,
+    "trees": 23,
+    "busStops": 1,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 2068,
+    "overtakeUnder150Pct": 46
+   }
+  },
+  {
+   "h3": "891faa02b57ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": null,
+    "green": 0.95,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.29,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1136,
+    "sensitivePlaces": 0,
+    "trees": 1,
+    "busStops": 1,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 2408
+   }
+  },
+  {
+   "h3": "891faa02b5bffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.34,
+    "green": 0.75,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.25,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 895,
+    "sensitivePlaces": 0,
+    "trees": 21,
+    "busStops": 0,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 1965,
+    "overtakeUnder150Pct": 20
+   }
+  },
+  {
+   "h3": "891faa02b8bffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.62,
+    "green": 1,
+    "risk": 0.5,
+    "felt": null
+   },
+   "need": 0.46,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1328,
+    "sensitivePlaces": 2,
+    "trees": 21,
+    "busStops": 1,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 2632,
+    "overtakeUnder150Pct": 37
+   }
+  },
+  {
+   "h3": "891faa02b9bffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.69,
+    "green": 1,
+    "risk": 0.25,
+    "felt": null
+   },
+   "need": 0.43,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1304,
+    "sensitivePlaces": 1,
+    "trees": 10,
+    "busStops": 1,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 2481,
+    "overtakeUnder150Pct": 41
+   }
+  },
+  {
+   "h3": "891faa02bc3ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.83,
+    "green": 0.62,
+    "risk": 0.25,
+    "felt": null
+   },
+   "need": 0.36,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 738,
+    "sensitivePlaces": 1,
+    "trees": 3,
+    "busStops": 2,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 2064,
+    "overtakeUnder150Pct": 50
+   }
+  },
+  {
+   "h3": "891faa02bc7ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.63,
+    "green": 0.9,
+    "risk": 0.75,
+    "felt": null
+   },
+   "need": 0.48,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1082,
+    "sensitivePlaces": 3,
+    "trees": 0,
+    "busStops": 1,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 2410,
+    "overtakeUnder150Pct": 38
+   }
+  },
+  {
+   "h3": "891faa02bcbffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": null,
+    "green": 0.47,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.14,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 566,
+    "sensitivePlaces": 0,
+    "trees": 0,
+    "busStops": 0,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 1873
+   }
+  },
+  {
+   "h3": "891faa02bcfffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.63,
+    "green": 0.75,
+    "risk": 0.25,
+    "felt": null
+   },
+   "need": 0.35,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 902,
+    "sensitivePlaces": 1,
+    "trees": 30,
+    "busStops": 1,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 2219,
+    "overtakeUnder150Pct": 38
+   }
+  },
+  {
+   "h3": "891faa02bd3ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.11,
+    "green": 0.58,
+    "risk": 0.5,
+    "felt": null
+   },
+   "need": 0.26,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 697,
+    "sensitivePlaces": 2,
+    "trees": 17,
+    "busStops": 2,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 1951,
+    "overtakeUnder150Pct": 7
+   }
+  },
+  {
+   "h3": "891faa02bd7ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.64,
+    "green": 0.84,
+    "risk": 0.75,
+    "felt": null
+   },
+   "need": 0.47,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1002,
+    "sensitivePlaces": 3,
+    "trees": 11,
+    "busStops": 0,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 2290,
+    "overtakeUnder150Pct": 38
+   }
+  },
+  {
+   "h3": "891faa02bdbffff",
+   "scores": {
+    "heat": 0.18,
+    "air": null,
+    "bike": null,
+    "green": 0.33,
+    "risk": 0.3,
+    "felt": null
+   },
+   "need": 0.25,
+   "facts": {
+    "tempAfternoonC": 28.24,
+    "distToGreenM": 399,
+    "sensitivePlaces": 1,
+    "trees": 33,
+    "busStops": 1,
+    "nearestStationId": "sb-markt",
+    "nearestStationDistM": 1718
+   }
+  },
+  {
+   "h3": "891faa02c6bffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.4,
+    "green": 1,
+    "risk": 0.25,
+    "felt": null
+   },
+   "need": 0.37,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 2317,
+    "sensitivePlaces": 1,
+    "trees": 29,
+    "busStops": 2,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 2073,
+    "overtakeUnder150Pct": 24
+   }
+  },
+  {
+   "h3": "891faa02c6fffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": null,
+    "green": 1,
+    "risk": 0.75,
+    "felt": null
+   },
+   "need": 0.48,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 2554,
+    "sensitivePlaces": 3,
+    "trees": 5,
+    "busStops": 0,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 2215
+   }
+  },
+  {
+   "h3": "891faa02e03ffff",
+   "scores": {
+    "heat": 0.12,
+    "air": 0.16,
+    "bike": 0.14,
+    "green": 0.79,
+    "risk": 0.03,
+    "felt": null
+   },
+   "need": 0.25,
+   "facts": {
+    "tempAfternoonC": 27.81,
+    "distToGreenM": 950,
+    "sensitivePlaces": 0,
+    "trees": 10,
+    "busStops": 0,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 1234,
+    "pm25": 6.59,
+    "overtakeUnder150Pct": 8
+   }
+  },
+  {
+   "h3": "891faa02e07ffff",
+   "scores": {
+    "heat": 0.21,
+    "air": 0.18,
+    "bike": 0.55,
+    "green": 0.9,
+    "risk": 0.81,
+    "felt": null
+   },
+   "need": 0.48,
+   "facts": {
+    "tempAfternoonC": 28.47,
+    "distToGreenM": 1085,
+    "sensitivePlaces": 3,
+    "trees": 6,
+    "busStops": 2,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 1119,
+    "pm25": 6.84,
+    "overtakeUnder150Pct": 33
+   }
+  },
+  {
+   "h3": "891faa02e0bffff",
+   "scores": {
+    "heat": 0.38,
+    "air": 0.18,
+    "bike": 0.65,
+    "green": 0.53,
+    "risk": 0.36,
+    "felt": null
+   },
+   "need": 0.41,
+   "facts": {
+    "tempAfternoonC": 29.68,
+    "distToGreenM": 642,
+    "sensitivePlaces": 1,
+    "trees": 30,
+    "busStops": 1,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 1111,
+    "pm25": 6.79,
+    "overtakeUnder150Pct": 39
+   }
+  },
+  {
+   "h3": "891faa02e0fffff",
+   "scores": {
+    "heat": 0.24,
+    "air": 0.15,
+    "bike": 0.82,
+    "green": 0.62,
+    "risk": 0.32,
+    "felt": null
+   },
+   "need": 0.4,
+   "facts": {
+    "tempAfternoonC": 28.71,
+    "distToGreenM": 743,
+    "sensitivePlaces": 1,
+    "trees": 2,
+    "busStops": 0,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 911,
+    "pm25": 6.54,
+    "overtakeUnder150Pct": 49
+   }
+  },
+  {
+   "h3": "891faa02e13ffff",
+   "scores": {
+    "heat": 0.14,
+    "air": null,
+    "bike": 0.57,
+    "green": 1,
+    "risk": 0.79,
+    "felt": null
+   },
+   "need": 0.56,
+   "facts": {
+    "tempAfternoonC": 28.0,
+    "distToGreenM": 1210,
+    "sensitivePlaces": 3,
+    "trees": 25,
+    "busStops": 0,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 1557,
+    "overtakeUnder150Pct": 34
+   }
+  },
+  {
+   "h3": "891faa02e17ffff",
+   "scores": {
+    "heat": 0.04,
+    "air": 0.14,
+    "bike": 0.78,
+    "green": 1,
+    "risk": 0.51,
+    "felt": null
+   },
+   "need": 0.43,
+   "facts": {
+    "tempAfternoonC": 27.28,
+    "distToGreenM": 1276,
+    "sensitivePlaces": 2,
+    "trees": 34,
+    "busStops": 1,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 1430,
+    "pm25": 6.41,
+    "overtakeUnder150Pct": 47
+   }
+  },
+  {
+   "h3": "891faa02e1bffff",
+   "scores": {
+    "heat": 0.13,
+    "air": 0.24,
+    "bike": 0.65,
+    "green": 0.78,
+    "risk": 0.04,
+    "felt": null
+   },
+   "need": 0.35,
+   "facts": {
+    "tempAfternoonC": 27.92,
+    "distToGreenM": 933,
+    "sensitivePlaces": 0,
+    "trees": 32,
+    "busStops": 1,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 1426,
+    "pm25": 7.4,
+    "overtakeUnder150Pct": 39
+   }
+  },
+  {
+   "h3": "891faa02e23ffff",
+   "scores": {
+    "heat": 0.21,
+    "air": 0.24,
+    "bike": 0.37,
+    "green": 1,
+    "risk": 0.81,
+    "felt": null
+   },
+   "need": 0.49,
+   "facts": {
+    "tempAfternoonC": 28.45,
+    "distToGreenM": 1246,
+    "sensitivePlaces": 3,
+    "trees": 39,
+    "busStops": 2,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 863,
+    "pm25": 7.39,
+    "overtakeUnder150Pct": 22
+   }
+  },
+  {
+   "h3": "891faa02e27ffff",
+   "scores": {
+    "heat": 0.21,
+    "air": 0.3,
+    "bike": null,
+    "green": 1,
+    "risk": 0.06,
+    "felt": null
+   },
+   "need": 0.39,
+   "facts": {
+    "tempAfternoonC": 28.46,
+    "distToGreenM": 1553,
+    "sensitivePlaces": 0,
+    "trees": 28,
+    "busStops": 1,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 1031,
+    "pm25": 7.97
+   }
+  },
+  {
+   "h3": "891faa02e2bffff",
+   "scores": {
+    "heat": 0.39,
+    "air": 0.37,
+    "bike": 0.25,
+    "green": 0.79,
+    "risk": 0.37,
+    "felt": null
+   },
+   "need": 0.44,
+   "facts": {
+    "tempAfternoonC": 29.75,
+    "distToGreenM": 946,
+    "sensitivePlaces": 1,
+    "trees": 24,
+    "busStops": 0,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 539,
+    "pm25": 8.68,
+    "overtakeUnder150Pct": 15
+   }
+  },
+  {
+   "h3": "891faa02e2fffff",
+   "scores": {
+    "heat": 0.44,
+    "air": 0.25,
+    "bike": null,
+    "green": 1,
+    "risk": 0.13,
+    "felt": null
+   },
+   "need": 0.47,
+   "facts": {
+    "tempAfternoonC": 30.07,
+    "distToGreenM": 1274,
+    "sensitivePlaces": 0,
+    "trees": 5,
+    "busStops": 1,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 689,
+    "pm25": 7.52
+   }
+  },
+  {
+   "h3": "891faa02e33ffff",
+   "scores": {
+    "heat": 0.12,
+    "air": 0.26,
+    "bike": 0.69,
+    "green": 1,
+    "risk": 0.04,
+    "felt": null
+   },
+   "need": 0.4,
+   "facts": {
+    "tempAfternoonC": 27.86,
+    "distToGreenM": 1300,
+    "sensitivePlaces": 0,
+    "trees": 23,
+    "busStops": 0,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 1106,
+    "pm25": 7.56,
+    "overtakeUnder150Pct": 41
+   }
+  },
+  {
+   "h3": "891faa02e37ffff",
+   "scores": {
+    "heat": 0.06,
+    "air": 0.3,
+    "bike": 0.71,
+    "green": 1,
+    "risk": 0.02,
+    "felt": null
+   },
+   "need": 0.39,
+   "facts": {
+    "tempAfternoonC": 27.45,
+    "distToGreenM": 1563,
+    "sensitivePlaces": 0,
+    "trees": 8,
+    "busStops": 0,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 1197,
+    "pm25": 7.96,
+    "overtakeUnder150Pct": 43
+   }
+  },
+  {
+   "h3": "891faa02e3bffff",
+   "scores": {
+    "heat": 0.27,
+    "air": 0.27,
+    "bike": 0.43,
+    "green": 0.8,
+    "risk": 0.08,
+    "felt": null
+   },
+   "need": 0.37,
+   "facts": {
+    "tempAfternoonC": 28.9,
+    "distToGreenM": 965,
+    "sensitivePlaces": 0,
+    "trees": 5,
+    "busStops": 1,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 817,
+    "pm25": 7.66,
+    "overtakeUnder150Pct": 26
+   }
+  },
+  {
+   "h3": "891faa02e43ffff",
+   "scores": {
+    "heat": 0.3,
+    "air": 0.28,
+    "bike": 0.79,
+    "green": 0.52,
+    "risk": 0.09,
+    "felt": null
+   },
+   "need": 0.38,
+   "facts": {
+    "tempAfternoonC": 29.07,
+    "distToGreenM": 623,
+    "sensitivePlaces": 0,
+    "trees": 18,
+    "busStops": 1,
+    "nearestStationId": "sb-bahnhof",
+    "nearestStationDistM": 1206,
+    "pm25": 7.8,
+    "overtakeUnder150Pct": 47
+   }
+  },
+  {
+   "h3": "891faa02e47ffff",
+   "scores": {
+    "heat": 0.36,
+    "air": 0.19,
+    "bike": 0.82,
+    "green": 0.33,
+    "risk": 0.11,
+    "felt": null
+   },
+   "need": 0.35,
+   "facts": {
+    "tempAfternoonC": 29.5,
+    "distToGreenM": 393,
+    "sensitivePlaces": 0,
+    "trees": 36,
+    "busStops": 2,
+    "nearestStationId": "sb-bahnhof",
+    "nearestStationDistM": 1040,
+    "pm25": 6.85,
+    "overtakeUnder150Pct": 49
+   }
+  },
+  {
+   "h3": "891faa02e4bffff",
+   "scores": {
+    "heat": 0.24,
+    "air": 0.23,
+    "bike": null,
+    "green": 0.59,
+    "risk": 0.07,
+    "felt": null
+   },
+   "need": 0.29,
+   "facts": {
+    "tempAfternoonC": 28.68,
+    "distToGreenM": 706,
+    "sensitivePlaces": 0,
+    "trees": 17,
+    "busStops": 1,
+    "nearestStationId": "sb-bahnhof",
+    "nearestStationDistM": 1137,
+    "pm25": 7.28
+   }
+  },
+  {
+   "h3": "891faa02e4fffff",
+   "scores": {
+    "heat": 0.36,
+    "air": 0.24,
+    "bike": null,
+    "green": 0.3,
+    "risk": 0.11,
+    "felt": null
+   },
+   "need": 0.27,
+   "facts": {
+    "tempAfternoonC": 29.49,
+    "distToGreenM": 363,
+    "sensitivePlaces": 0,
+    "trees": 30,
+    "busStops": 0,
+    "nearestStationId": "sb-bahnhof",
+    "nearestStationDistM": 887,
+    "pm25": 7.4
+   }
+  },
+  {
+   "h3": "891faa02e53ffff",
+   "scores": {
+    "heat": 0.11,
+    "air": null,
+    "bike": 0.5,
+    "green": 0.77,
+    "risk": 0.28,
+    "felt": null
+   },
+   "need": 0.38,
+   "facts": {
+    "tempAfternoonC": 27.8,
+    "distToGreenM": 923,
+    "sensitivePlaces": 1,
+    "trees": 12,
+    "busStops": 1,
+    "nearestStationId": "sb-bahnhof",
+    "nearestStationDistM": 1526,
+    "overtakeUnder150Pct": 30
+   }
+  },
+  {
+   "h3": "891faa02e57ffff",
+   "scores": {
+    "heat": 0.15,
+    "air": 0.16,
+    "bike": 0.37,
+    "green": 0.6,
+    "risk": 0.3,
+    "felt": null
+   },
+   "need": 0.3,
+   "facts": {
+    "tempAfternoonC": 28.08,
+    "distToGreenM": 715,
+    "sensitivePlaces": 1,
+    "trees": 24,
+    "busStops": 1,
+    "nearestStationId": "sb-bahnhof",
+    "nearestStationDistM": 1360,
+    "pm25": 6.59,
+    "overtakeUnder150Pct": 22
+   }
+  },
+  {
+   "h3": "891faa02e5bffff",
+   "scores": {
+    "heat": 0.16,
+    "air": 0.16,
+    "bike": 0.62,
+    "green": 0.77,
+    "risk": 0.3,
+    "felt": null
+   },
+   "need": 0.37,
+   "facts": {
+    "tempAfternoonC": 28.12,
+    "distToGreenM": 928,
+    "sensitivePlaces": 1,
+    "trees": 8,
+    "busStops": 1,
+    "nearestStationId": "sb-boeckingen",
+    "nearestStationDistM": 1401,
+    "pm25": 6.58,
+    "overtakeUnder150Pct": 37
+   }
+  },
+  {
+   "h3": "891faa02e63ffff",
+   "scores": {
+    "heat": 0.55,
+    "air": 0.57,
+    "bike": null,
+    "green": 0.29,
+    "risk": 0.17,
+    "felt": null
+   },
+   "need": 0.43,
+   "facts": {
+    "tempAfternoonC": 30.85,
+    "distToGreenM": 345,
+    "sensitivePlaces": 0,
+    "trees": 11,
+    "busStops": 1,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 511,
+    "pm25": 10.74
+   }
+  },
+  {
+   "h3": "891faa02e67ffff",
+   "scores": {
+    "heat": 0.69,
+    "air": 0.38,
+    "bike": 0.49,
+    "green": 0.57,
+    "risk": 0.46,
+    "felt": null
+   },
+   "need": 0.54,
+   "facts": {
+    "tempAfternoonC": 31.8,
+    "distToGreenM": 688,
+    "sensitivePlaces": 1,
+    "trees": 15,
+    "busStops": 1,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 267,
+    "pm25": 8.81,
+    "overtakeUnder150Pct": 29
+   }
+  },
+  {
+   "h3": "891faa02e6bffff",
+   "scores": {
+    "heat": 0.65,
+    "air": 0.59,
+    "bike": 0.19,
+    "green": 0.21,
+    "risk": 0.44,
+    "felt": null
+   },
+   "need": 0.45,
+   "facts": {
+    "tempAfternoonC": 31.53,
+    "distToGreenM": 255,
+    "sensitivePlaces": 1,
+    "trees": 12,
+    "busStops": 2,
+    "nearestStationId": "sb-bahnhof",
+    "nearestStationDistM": 410,
+    "pm25": 10.89,
+    "overtakeUnder150Pct": 11
+   }
+  },
+  {
+   "h3": "891faa02e6fffff",
+   "scores": {
+    "heat": 0.82,
+    "air": 0.43,
+    "bike": 0.12,
+    "green": 0.45,
+    "risk": 0.75,
+    "felt": null
+   },
+   "need": 0.55,
+   "facts": {
+    "tempAfternoonC": 32.77,
+    "distToGreenM": 534,
+    "sensitivePlaces": 2,
+    "trees": 29,
+    "busStops": 0,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 294,
+    "pm25": 9.31,
+    "overtakeUnder150Pct": 7
+   }
+  },
+  {
+   "h3": "891faa02e73ffff",
+   "scores": {
+    "heat": 0.43,
+    "air": 0.29,
+    "bike": 0.76,
+    "green": 0.33,
+    "risk": 0.88,
+    "felt": null
+   },
+   "need": 0.5,
+   "facts": {
+    "tempAfternoonC": 30.02,
+    "distToGreenM": 402,
+    "sensitivePlaces": 3,
+    "trees": 26,
+    "busStops": 1,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 802,
+    "pm25": 7.88,
+    "overtakeUnder150Pct": 46
+   }
+  },
+  {
+   "h3": "891faa02e77ffff",
+   "scores": {
+    "heat": 0.4,
+    "air": 0.31,
+    "bike": null,
+    "green": 0.53,
+    "risk": 0.12,
+    "felt": null
+   },
+   "need": 0.36,
+   "facts": {
+    "tempAfternoonC": 29.77,
+    "distToGreenM": 639,
+    "sensitivePlaces": 0,
+    "trees": 27,
+    "busStops": 1,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 589,
+    "pm25": 8.06
+   }
+  },
+  {
+   "h3": "891faa02e7bffff",
+   "scores": {
+    "heat": 0.14,
+    "air": 0.55,
+    "bike": 0.42,
+    "green": 0.06,
+    "risk": 0.29,
+    "felt": null
+   },
+   "need": 0.27,
+   "facts": {
+    "tempAfternoonC": 27.98,
+    "distToGreenM": 75,
+    "sensitivePlaces": 1,
+    "trees": 26,
+    "busStops": 2,
+    "nearestStationId": "sb-bahnhof",
+    "nearestStationDistM": 721,
+    "pm25": 10.49,
+    "overtakeUnder150Pct": 25
+   }
+  },
+  {
+   "h3": "891faa02e83ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.75,
+    "green": 1,
+    "risk": 0.25,
+    "felt": null
+   },
+   "need": 0.44,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1777,
+    "sensitivePlaces": 1,
+    "trees": 40,
+    "busStops": 0,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 2063,
+    "overtakeUnder150Pct": 45
+   }
+  },
+  {
+   "h3": "891faa02e87ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.23,
+    "green": 1,
+    "risk": 0.25,
+    "felt": null
+   },
+   "need": 0.34,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1831,
+    "sensitivePlaces": 1,
+    "trees": 2,
+    "busStops": 2,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 1977,
+    "overtakeUnder150Pct": 14
+   }
+  },
+  {
+   "h3": "891faa02e8bffff",
+   "scores": {
+    "heat": 0.01,
+    "air": null,
+    "bike": 0.7,
+    "green": 1,
+    "risk": 0.75,
+    "felt": null
+   },
+   "need": 0.53,
+   "facts": {
+    "tempAfternoonC": 27.08,
+    "distToGreenM": 1494,
+    "sensitivePlaces": 3,
+    "trees": 27,
+    "busStops": 0,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 1879,
+    "overtakeUnder150Pct": 42
+   }
+  },
+  {
+   "h3": "891faa02e8fffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.52,
+    "green": 1,
+    "risk": 0.25,
+    "felt": null
+   },
+   "need": 0.39,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1513,
+    "sensitivePlaces": 1,
+    "trees": 36,
+    "busStops": 0,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 1746,
+    "overtakeUnder150Pct": 31
+   }
+  },
+  {
+   "h3": "891faa02e9bffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.57,
+    "green": 1,
+    "risk": 0.25,
+    "felt": null
+   },
+   "need": 0.4,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1791,
+    "sensitivePlaces": 1,
+    "trees": 9,
+    "busStops": 1,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 2202,
+    "overtakeUnder150Pct": 34
+   }
+  },
+  {
+   "h3": "891faa02ea3ffff",
+   "scores": {
+    "heat": 0.04,
+    "air": null,
+    "bike": null,
+    "green": 1,
+    "risk": 0.01,
+    "felt": null
+   },
+   "need": 0.33,
+   "facts": {
+    "tempAfternoonC": 27.25,
+    "distToGreenM": 1769,
+    "sensitivePlaces": 0,
+    "trees": 7,
+    "busStops": 0,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 1673
+   }
+  },
+  {
+   "h3": "891faa02ea7ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.52,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.35,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1977,
+    "sensitivePlaces": 0,
+    "trees": 30,
+    "busStops": 0,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 1743,
+    "overtakeUnder150Pct": 31
+   }
+  },
+  {
+   "h3": "891faa02eabffff",
+   "scores": {
+    "heat": 0.06,
+    "air": 0.18,
+    "bike": null,
+    "green": 1,
+    "risk": 0.02,
+    "felt": null
+   },
+   "need": 0.3,
+   "facts": {
+    "tempAfternoonC": 27.45,
+    "distToGreenM": 1427,
+    "sensitivePlaces": 0,
+    "trees": 2,
+    "busStops": 0,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 1382,
+    "pm25": 6.78
+   }
+  },
+  {
+   "h3": "891faa02eafffff",
+   "scores": {
+    "heat": 0,
+    "air": 0.05,
+    "bike": null,
+    "green": 1,
+    "risk": 0.75,
+    "felt": null
+   },
+   "need": 0.38,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1638,
+    "sensitivePlaces": 3,
+    "trees": 10,
+    "busStops": 0,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 1419,
+    "pm25": 5.53
+   }
+  },
+  {
+   "h3": "891faa02eb3ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": null,
+    "green": 1,
+    "risk": 0.25,
+    "felt": null
+   },
+   "need": 0.37,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1945,
+    "sensitivePlaces": 1,
+    "trees": 29,
+    "busStops": 0,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 1948
+   }
+  },
+  {
+   "h3": "891faa02eb7ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": null,
+    "green": 1,
+    "risk": 0.5,
+    "felt": null
+   },
+   "need": 0.42,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 2111,
+    "sensitivePlaces": 2,
+    "trees": 27,
+    "busStops": 1,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 1981
+   }
+  },
+  {
+   "h3": "891faa02ebbffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": null,
+    "green": 1,
+    "risk": 0.25,
+    "felt": null
+   },
+   "need": 0.37,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1609,
+    "sensitivePlaces": 1,
+    "trees": 27,
+    "busStops": 1,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 1674
+   }
+  },
+  {
+   "h3": "891faa02ec3ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": null,
+    "green": 1,
+    "risk": 0.5,
+    "felt": null
+   },
+   "need": 0.42,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1360,
+    "sensitivePlaces": 2,
+    "trees": 4,
+    "busStops": 2,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 1974
+   }
+  },
+  {
+   "h3": "891faa02ec7ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": null,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.31,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1240,
+    "sensitivePlaces": 0,
+    "trees": 12,
+    "busStops": 1,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 1744
+   }
+  },
+  {
+   "h3": "891faa02ecbffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.87,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.41,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1235,
+    "sensitivePlaces": 0,
+    "trees": 38,
+    "busStops": 1,
+    "nearestStationId": "sb-bahnhof",
+    "nearestStationDistM": 1848,
+    "overtakeUnder150Pct": 52
+   }
+  },
+  {
+   "h3": "891faa02ecfffff",
+   "scores": {
+    "heat": 0.11,
+    "air": null,
+    "bike": null,
+    "green": 0.86,
+    "risk": 0.78,
+    "felt": null
+   },
+   "need": 0.5,
+   "facts": {
+    "tempAfternoonC": 27.76,
+    "distToGreenM": 1038,
+    "sensitivePlaces": 3,
+    "trees": 29,
+    "busStops": 2,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 1668
+   }
+  },
+  {
+   "h3": "891faa02ed3ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.83,
+    "green": 1,
+    "risk": 0.25,
+    "felt": null
+   },
+   "need": 0.45,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1683,
+    "sensitivePlaces": 1,
+    "trees": 5,
+    "busStops": 0,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 2285,
+    "overtakeUnder150Pct": 50
+   }
+  },
+  {
+   "h3": "891faa02ed7ffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": null,
+    "green": 1,
+    "risk": 0.0,
+    "felt": null
+   },
+   "need": 0.31,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1553,
+    "sensitivePlaces": 0,
+    "trees": 9,
+    "busStops": 2,
+    "nearestStationId": "sb-campus",
+    "nearestStationDistM": 2063
+   }
+  },
+  {
+   "h3": "891faa02edbffff",
+   "scores": {
+    "heat": 0,
+    "air": null,
+    "bike": 0.44,
+    "green": 1,
+    "risk": 0.25,
+    "felt": null
+   },
+   "need": 0.38,
+   "facts": {
+    "tempAfternoonC": 27,
+    "distToGreenM": 1551,
+    "sensitivePlaces": 1,
+    "trees": 40,
+    "busStops": 2,
+    "nearestStationId": "sb-bahnhof",
+    "nearestStationDistM": 2169,
+    "overtakeUnder150Pct": 26
+   }
+  }
+ ]
+}

@@ -1,0 +1,128 @@
+[
+  {
+    "id": "r-001",
+    "createdAt": "2026-10-27T11:18:00Z",
+    "transcript": "Am Hauptbahnhof an der Haltestelle ist es mittags unerträglich heiß, kein Schatten.",
+    "lat": 49.14323,
+    "lng": 9.20867,
+    "h3": "891faa02adbffff",
+    "category": "heat",
+    "summary": "Kein Schatten an der Haltestelle, mittags sehr heiß.",
+    "severity": 3,
+    "timeOfDay": "midday",
+    "placeHint": "Hauptbahnhof",
+    "suggestedMission": "shade_bus_stop",
+    "language": "de",
+    "sensorCheck": {
+      "status": "confirmed",
+      "stationId": "sb-bahnhof",
+      "value": 33.1,
+      "unit": "°C",
+      "distM": 140
+    },
+    "seeded": true
+  },
+  {
+    "id": "r-002",
+    "createdAt": "2026-10-27T11:55:00Z",
+    "transcript": "Do isch's heit arg stickig, die Luft am Marktplatz stinkt nach Abgas.",
+    "lat": 49.1426,
+    "lng": 9.21907,
+    "h3": "891faa02ac7ffff",
+    "category": "air",
+    "summary": "Stickige Luft und Abgasgeruch am Marktplatz.",
+    "severity": 2,
+    "timeOfDay": "afternoon",
+    "placeHint": "Marktplatz",
+    "suggestedMission": null,
+    "language": "de",
+    "sensorCheck": {
+      "status": "not_confirmed",
+      "stationId": "sb-markt",
+      "value": 8.4,
+      "unit": "µg/m³",
+      "distM": 60
+    },
+    "seeded": true
+  },
+  {
+    "id": "r-003",
+    "createdAt": "2026-10-27T12:32:00Z",
+    "transcript": "Autos überholen auf der Allee viel zu knapp, ich hab Angst mit dem Rad.",
+    "lat": 49.14399,
+    "lng": 9.22157,
+    "h3": "891faa02a13ffff",
+    "category": "mobility",
+    "summary": "Zu knappes Überholen von Radfahrenden auf der Allee.",
+    "severity": 3,
+    "timeOfDay": "morning",
+    "placeHint": "Allee",
+    "suggestedMission": "safer_bike_street",
+    "language": "de",
+    "sensorCheck": {
+      "status": "no_sensor"
+    },
+    "seeded": true
+  },
+  {
+    "id": "r-004",
+    "createdAt": "2026-10-27T13:09:00Z",
+    "transcript": "The trees in the park look really dry, leaves are already brown.",
+    "lat": 49.14378,
+    "lng": 9.23694,
+    "h3": "891faa02aafffff",
+    "category": "heat",
+    "summary": "Trees in the park look dry with brown leaves.",
+    "severity": 2,
+    "timeOfDay": "afternoon",
+    "placeHint": "Pfühlpark",
+    "suggestedMission": "water_trees",
+    "language": "en",
+    "sensorCheck": {
+      "status": "no_sensor"
+    },
+    "seeded": true
+  },
+  {
+    "id": "r-005",
+    "createdAt": "2026-10-27T13:46:00Z",
+    "transcript": "Am Neckarufer liegt überall Müll nach dem Wochenende.",
+    "lat": 49.14846,
+    "lng": 9.20583,
+    "h3": "891faa02e7bffff",
+    "category": "waste",
+    "summary": "Viel Müll am Neckarufer nach dem Wochenende.",
+    "severity": 1,
+    "timeOfDay": "morning",
+    "placeHint": "Neckarbogen",
+    "suggestedMission": null,
+    "language": "de",
+    "sensorCheck": {
+      "status": "no_sensor"
+    },
+    "seeded": true
+  },
+  {
+    "id": "r-006",
+    "createdAt": "2026-10-27T14:23:00Z",
+    "transcript": "Im Schulhof gibt's null Schatten, die Kinder sitzen in der Pause in der Sonne.",
+    "lat": 49.14791,
+    "lng": 9.21656,
+    "h3": "891faa02a9bffff",
+    "category": "heat",
+    "summary": "Kein Schatten im Schulhof während der Pause.",
+    "severity": 2,
+    "timeOfDay": "midday",
+    "placeHint": "Bildungscampus",
+    "suggestedMission": "green_schoolyard",
+    "language": "de",
+    "sensorCheck": {
+      "status": "confirmed",
+      "stationId": "sb-campus",
+      "value": 31.2,
+      "unit": "°C",
+      "distM": 90
+    },
+    "seeded": true
+  }
+]
