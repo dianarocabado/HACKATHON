@@ -227,8 +227,12 @@ def load_inputs():
 
 
 def main():
-    layers = build(load_inputs())
+    inputs = load_inputs()
+    layers = build(inputs)
     (PROCESSED_DIR / "layers.json").write_text(json.dumps(layers, separators=(",", ":")), encoding="utf-8")
+    # Shared with the API (impact baseline) so both use the same indoor-sensor rule.
+    outdoor = sorted(p["id"] for p in station_profiles(inputs["stations"], inputs["history"]))
+    (PROCESSED_DIR / "outdoor_stations.json").write_text(json.dumps(outdoor, indent=1), encoding="utf-8")
     cells = layers["cells"]
     coverage = {k: sum(c["scores"][k] is not None for c in cells) for k in WEIGHTS}
     print(f"wrote {len(cells)} cells; non-null scores: {coverage}")

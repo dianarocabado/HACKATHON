@@ -28,7 +28,7 @@ const HISTORY: Record<string, HourlyPoint[]> = {
 
 function setup(missions: Mission[] = [mission("m1"), mission("m2", { category: "mobility" })]): MissionDeps {
   return {
-    store: new MemoryStore(), missions, stations: STATIONS, now: NOW,
+    store: new MemoryStore(), missions, stations: STATIONS, outdoorIds: null, now: NOW,
     history: async (id) => HISTORY[id] ?? [],
   };
 }
@@ -76,6 +76,14 @@ test("baseline is skipped for categories without a sensor and far-away missions"
   assert.equal(await baselineImpact(mission("x", { lat: 49.3, lng: 9.5 }), d), undefined);
   const s = await doneMission("m2", d);
   assert.equal(s.impact, undefined);
+});
+
+test("baseline ignores stations that failed the outdoor check", async () => {
+  // innenstadt treated as indoor: nearest valid station is thw (~2.2 km) -> too far, no baseline
+  assert.equal(await baselineImpact(mission("x"), { ...setup(), outdoorIds: ["thw"] }), undefined);
+  // thw treated as indoor: city mean is innenstadt alone
+  const impact = await baselineImpact(mission("x"), { ...setup(), outdoorIds: ["innenstadt"] });
+  assert.deepEqual([impact?.before, impact?.cityBefore], [23, 23]);
 });
 
 test("baseline of a simulated mission is marked simulated", async () => {
