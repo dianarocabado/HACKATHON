@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
   // API routes read pipeline output with fs (e.g. lib/server/sensors.ts); ship it with the functions.
   outputFileTracingRoot: repoRoot,
   outputFileTracingIncludes: {
-    "/api/**": ["./public/data/**/*.json"],
+    "/api/**": ["./public/data/**/*.json", "../contracts/samples/missions.json"],
   },
   turbopack: {
     root: repoRoot,
