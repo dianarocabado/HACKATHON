@@ -4,4 +4,6 @@ requests==2.32.3
 h3==4.1.2
 # Geometry for OSM areas and distances (A3, A5)
 shapely==2.0.6
+# Read the Geofabrik OSM extract (A3; Overpass was unreachable)
+osmium==4.3.2
 pytest==8.3.4
