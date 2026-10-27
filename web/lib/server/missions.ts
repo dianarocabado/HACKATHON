@@ -17,6 +17,8 @@ export interface MissionDeps {
   store?: Store;
   missions?: Mission[];
   stations?: Station[];
+  /** Ids of stations that pass the pipeline's outdoor check; null = use all stations. */
+  outdoorIds?: string[] | null;
   history?: (stationId: string) => Promise<HourlyPoint[]>;
   now?: number;
 }
@@ -38,6 +40,15 @@ export function loadMissions(): Promise<Mission[]> {
       return [];
     });
   return missionsCache;
+}
+
+let outdoorCache: Promise<string[] | null> | null = null;
+
+/** Station ids that look like real outdoor sensors (pipeline/build_layers.py), or null if unknown. */
+export function loadOutdoorIds(): Promise<string[] | null> {
+  outdoorCache ??= readJson<string[]>(join(process.cwd(), "public", "data", "outdoor_stations.json"))
+    .catch(() => null);
+  return outdoorCache;
 }
 
 export async function loadHistory(stationId: string): Promise<HourlyPoint[]> {
@@ -105,7 +116,9 @@ export async function baselineImpact(mission: Mission, d: MissionDeps = {}): Pro
   const metric = mission.category === "air" ? "pm25"
     : ["heat", "biodiversity", "water"].includes(mission.category) ? "temperatureC" : null;
   if (!metric) return undefined;
-  const stations = d.stations ?? (await loadStations());
+  const outdoor = d.outdoorIds !== undefined ? d.outdoorIds : await loadOutdoorIds();
+  // Indoor sensors read ~20 °C at night all year and would skew both the station and the city mean.
+  const stations = (d.stations ?? (await loadStations())).filter((s) => !outdoor || outdoor.includes(s.id));
   const nearest = nearestStation(mission.lat, mission.lng, stations);
   if (!nearest || nearest.distM > MAX_DIST_M) return undefined;
 
