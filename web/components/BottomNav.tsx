@@ -1,18 +1,21 @@
 'use client';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import type { MessageKey } from '@/lib/client/i18n';
+import { useLang } from './LangProvider';
 
-const ITEMS = [
-  { href: '/', label: 'Karte', icon: '🗺️' },
-  { href: '/report', label: 'Melden', icon: '🎤', primary: true },
-  { href: '/missions', label: 'Missionen', icon: '✅' },
+const ITEMS: { href: string; label: MessageKey; icon: string; primary?: boolean }[] = [
+  { href: '/', label: 'nav.map', icon: '🗺️' },
+  { href: '/report', label: 'nav.report', icon: '🎤', primary: true },
+  { href: '/missions', label: 'nav.missions', icon: '✅' },
 ];
 
 /** Static nav; `path` null renders without an active item (Suspense fallback on dynamic routes). */
 export function NavShell({ path }: { path: string | null }) {
+  const { t } = useLang();
   return (
     <nav
-      aria-label="Hauptnavigation"
+      aria-label={t('nav.main')}
       className="flex shrink-0 items-stretch justify-around border-t"
       style={{ background: 'var(--surface)', borderColor: 'var(--border)', paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}
     >
@@ -37,7 +40,7 @@ export function NavShell({ path }: { path: string | null }) {
             ) : (
               <span aria-hidden className="text-lg">{it.icon}</span>
             )}
-            {it.label}
+            {t(it.label)}
           </Link>
         );
       })}
