@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
+import { latLngToCell } from "h3-js";
 import { DEMO_REPORTS, resetDemo, seedDemo } from "./demo.ts";
 import { listMissions } from "./missions.ts";
 import { MemoryStore } from "./store.ts";
@@ -26,6 +27,15 @@ test("the Allee cluster produces one simulated report mission", async () => {
   await seedDemo(d);
   const fromReports = (await listMissions({ ...d, missions: [], outdoorIds: null })).filter((m) => m.source === "report");
   assert.deepEqual(fromReports.map((m) => [m.category, m.simulated]), [["noise", true]]);
+});
+
+test("each demo place (demo-places.md) has one seeded report in its hexagon, so a live report stays below 3", async () => {
+  const reports = await seedDemo(deps());
+  const places = [[49.151351, 9.21565, "biodiversity"], [49.14229, 9.22227, "heat"], [49.14256, 9.22696, "heat"]] as const;
+  for (const [lat, lng, category] of places) {
+    const here = reports.filter((r) => r.h3 === latLngToCell(lat, lng, 9) && r.category === category);
+    assert.equal(here.length, 1, `${lat},${lng}`);
+  }
 });
 
 test("seeding twice does not duplicate; reset clears reports and mission states", async () => {
