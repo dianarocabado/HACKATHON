@@ -2,7 +2,7 @@
 // MapLibre map with the H3 hexagon layer. Colours by the selected layer; null scores get a hatch pattern.
 import { useEffect, useRef } from 'react';
 import {
-  Map as MapLibre, NavigationControl, setWorkerUrl, type GeoJSONSource, type ExpressionSpecification,
+  Map as MapLibre, Marker, NavigationControl, setWorkerUrl, type GeoJSONSource, type ExpressionSpecification,
 } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { cellToBoundary } from 'h3-js';
@@ -50,13 +50,19 @@ function hatchImage(): ImageData {
   return ctx.getImageData(0, 0, size, size);
 }
 
+/** Point marker drawn as a DOM dot; `fresh` ones pulse (new reports on the big screen). */
+export interface MapMarker { id: string; lat: number; lng: number; colour: string; fresh?: boolean; label?: string }
+
 export default function HexMap({
-  data, layer, selected, onSelect,
+  data, layer, selected, onSelect, markers, zoom = 13, controls = true,
 }: {
   data: LayersFile;
   layer: MapLayer;
   selected?: string | null;
   onSelect?: (h3: string | null) => void;
+  markers?: MapMarker[];
+  zoom?: number;
+  controls?: boolean;
 }) {
   const container = useRef<HTMLDivElement>(null);
   const map = useRef<MapLibre | null>(null);
@@ -67,7 +73,7 @@ export default function HexMap({
     const m = new MapLibre({
       container: container.current!,
       center: CENTER,
-      zoom: 13,
+      zoom,
       attributionControl: { compact: true },
       style: {
         version: 8,
@@ -82,7 +88,7 @@ export default function HexMap({
         layers: [{ id: 'base', type: 'raster', source: 'base' }],
       },
     });
-    m.addControl(new NavigationControl({ showCompass: false }), 'bottom-right');
+    if (controls) m.addControl(new NavigationControl({ showCompass: false }), 'bottom-right');
     m.on('error', (e) => console.error('map error', e.error));
     m.on('load', () => {
       m.addImage(HATCH, hatchImage());
@@ -129,6 +135,28 @@ export default function HexMap({
     m.setFeatureState({ source: 'hex', id: selected }, { selected: true });
     return () => { if (m.getSource('hex')) m.setFeatureState({ source: 'hex', id: selected }, { selected: false }); };
   }, [selected]);
+
+  const placed = useRef(new Map<string, Marker>());
+  useEffect(() => {
+    const m = map.current;
+    if (!m) return;
+    const want = new Map((markers ?? []).map((mk) => [mk.id, mk]));
+    for (const [id, marker] of placed.current) {
+      if (!want.has(id)) { marker.remove(); placed.current.delete(id); }
+    }
+    for (const mk of want.values()) {
+      let marker = placed.current.get(mk.id);
+      if (!marker) {
+        const el = document.createElement('div');
+        el.className = 'report-dot';
+        el.style.background = mk.colour;
+        if (mk.label) el.title = mk.label;
+        marker = new Marker({ element: el }).setLngLat([mk.lng, mk.lat]).addTo(m);
+        placed.current.set(mk.id, marker);
+      }
+      marker.getElement().classList.toggle('report-dot--fresh', !!mk.fresh);
+    }
+  }, [markers]);
 
   // MapLibre's CSS sets position: relative on the container, so the absolute positioning lives on a wrapper.
   return (
