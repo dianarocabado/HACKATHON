@@ -1,0 +1,139 @@
+'use client';
+// MapLibre map with the H3 hexagon layer. Colours by the selected layer; null scores get a hatch pattern.
+import { useEffect, useRef } from 'react';
+import {
+  Map as MapLibre, NavigationControl, setWorkerUrl, type GeoJSONSource, type ExpressionSpecification,
+} from 'maplibre-gl';
+import 'maplibre-gl/dist/maplibre-gl.css';
+import { cellToBoundary } from 'h3-js';
+import type { HexCell, LayersFile } from '@contracts/types';
+import { NEED_STEPS, type MapLayer } from '@/lib/client/scale';
+
+// MapLibre derives the worker URL from its own chunk URL, which breaks after bundling. Point it at the emitted asset.
+setWorkerUrl(new URL('maplibre-gl/dist/maplibre-gl-worker.mjs', import.meta.url).href);
+
+const CENTER: [number, number] = [9.215, 49.1425];
+const HATCH = 'hatch';
+
+function toGeoJSON(cells: HexCell[], layer: MapLayer): GeoJSON.FeatureCollection {
+  return {
+    type: 'FeatureCollection',
+    features: cells.map((c) => {
+      const ring = cellToBoundary(c.h3, true);
+      ring.push(ring[0]);
+      const value = layer === 'need' ? c.need : c.scores[layer] ?? null;
+      return {
+        type: 'Feature',
+        properties: { h3: c.h3, value: value ?? -1 },
+        geometry: { type: 'Polygon', coordinates: [ring] },
+      };
+    }),
+  };
+}
+
+const fillColor: ExpressionSpecification = [
+  'interpolate', ['linear'], ['get', 'value'],
+  ...NEED_STEPS.flatMap((colour, i) => [i / (NEED_STEPS.length - 1), colour]),
+] as unknown as ExpressionSpecification;
+
+function hatchImage(): ImageData {
+  const size = 8;
+  const canvas = document.createElement('canvas');
+  canvas.width = canvas.height = size;
+  const ctx = canvas.getContext('2d')!;
+  ctx.strokeStyle = 'rgba(95, 103, 95, 0.3)';
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.moveTo(0, size);
+  ctx.lineTo(size, 0);
+  ctx.stroke();
+  return ctx.getImageData(0, 0, size, size);
+}
+
+export default function HexMap({
+  data, layer, selected, onSelect,
+}: {
+  data: LayersFile;
+  layer: MapLayer;
+  selected?: string | null;
+  onSelect?: (h3: string | null) => void;
+}) {
+  const container = useRef<HTMLDivElement>(null);
+  const map = useRef<MapLibre | null>(null);
+  const onSelectRef = useRef(onSelect);
+  useEffect(() => { onSelectRef.current = onSelect; }, [onSelect]);
+
+  useEffect(() => {
+    const m = new MapLibre({
+      container: container.current!,
+      center: CENTER,
+      zoom: 13,
+      attributionControl: { compact: true },
+      style: {
+        version: 8,
+        sources: {
+          base: {
+            type: 'raster',
+            tiles: ['https://tile.openstreetmap.org/{z}/{x}/{y}.png'],
+            tileSize: 256,
+            attribution: '© OpenStreetMap contributors',
+          },
+        },
+        layers: [{ id: 'base', type: 'raster', source: 'base' }],
+      },
+    });
+    m.addControl(new NavigationControl({ showCompass: false }), 'bottom-right');
+    m.on('error', (e) => console.error('map error', e.error));
+    m.on('load', () => {
+      m.addImage(HATCH, hatchImage());
+      m.addSource('hex', { type: 'geojson', data: toGeoJSON(data.cells, layer), promoteId: 'h3' });
+      m.addLayer({
+        id: 'hex-fill', type: 'fill', source: 'hex',
+        filter: ['>=', ['get', 'value'], 0],
+        paint: { 'fill-color': fillColor, 'fill-opacity': 0.55 },
+      });
+      m.addLayer({
+        id: 'hex-nodata', type: 'fill', source: 'hex',
+        filter: ['<', ['get', 'value'], 0],
+        paint: { 'fill-pattern': HATCH },
+      });
+      m.addLayer({
+        id: 'hex-line', type: 'line', source: 'hex',
+        paint: {
+          'line-color': ['case', ['boolean', ['feature-state', 'selected'], false], '#1F7A4D', '#FFFFFF'],
+          'line-width': ['case', ['boolean', ['feature-state', 'selected'], false], 2.5, 0.5],
+        },
+      });
+      m.on('click', (e) => {
+        const hit = m.queryRenderedFeatures(e.point, { layers: ['hex-fill', 'hex-nodata'] })[0];
+        onSelectRef.current?.((hit?.properties?.h3 as string) ?? null);
+      });
+      m.on('mouseenter', 'hex-fill', () => { m.getCanvas().style.cursor = 'pointer'; });
+      m.on('mouseleave', 'hex-fill', () => { m.getCanvas().style.cursor = ''; });
+    });
+    map.current = m;
+    return () => { m.remove(); map.current = null; };
+    // Map is created once; data and layer changes are applied below.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    const m = map.current;
+    const src = m?.getSource('hex') as GeoJSONSource | undefined;
+    src?.setData(toGeoJSON(data.cells, layer));
+  }, [data, layer]);
+
+  useEffect(() => {
+    const m = map.current;
+    if (!m?.getSource('hex') || !selected) return;
+    m.setFeatureState({ source: 'hex', id: selected }, { selected: true });
+    return () => { if (m.getSource('hex')) m.setFeatureState({ source: 'hex', id: selected }, { selected: false }); };
+  }, [selected]);
+
+  // MapLibre's CSS sets position: relative on the container, so the absolute positioning lives on a wrapper.
+  return (
+    <div className="absolute inset-0">
+      <div ref={container} className="h-full w-full" aria-label="Karte von Heilbronn mit Bedarfs-Hexagonen" />
+    </div>
+  );
+}
