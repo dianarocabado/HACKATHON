@@ -1,0 +1,42 @@
+import h3
+
+from pipeline.fetch_bike import build_danger_zones, build_pm_hex, build_segments, segment_name
+
+
+def segment(counts="0, 4, 7, 0, 0", avg=108.45, name="['Saarlandstraße', 'Peter-Bruckmann-Brücke']"):
+    return {"geometry": {"type": "LineString", "coordinates": [[9.2021067, 49.1521243], [9.2022287, 49.1521142]]},
+            "properties": {"id": 18, "name": name, "Overtaking Distance Counts": counts,
+                           "Average Overtaking Distance cm": avg, "Number of Boxes": 1}}
+
+
+def test_segment_under_150_share_uses_first_three_bins():
+    [s] = build_segments([segment(counts="1, 2, 3, 4, 0")])
+    assert s["n"] == 10 and s["under150Pct"] == 60.0
+
+
+def test_segment_fields_rounded_and_named():
+    [s] = build_segments([segment()])
+    assert s["name"] == "Saarlandstraße / Peter-Bruckmann-Brücke"
+    assert s["avgCm"] == 108.5 and s["coords"][0] == [9.202107, 49.152124]
+
+
+def test_segment_without_overtakings_or_bad_histogram_skipped():
+    assert build_segments([segment(counts="0, 0, 0, 0, 0"), segment(counts="n/a")]) == []
+
+
+def test_segment_name_variants():
+    assert segment_name("Allee") == "Allee"
+    assert segment_name("['A', 'A', 'B']") == "A / B"
+    assert segment_name(None) is None
+
+
+def test_danger_zones():
+    zones = build_danger_zones([{"properties": {"lat": 49.12027581, "lng": 9.18030141, "Risk Index Overtaking": 0.84075}},
+                                {"properties": {"lat": 49.1, "lng": 9.2}}])
+    assert zones == [{"lat": 49.120276, "lng": 9.180301, "risk": 0.841}]
+
+
+def test_pm_hex_averages_per_cell():
+    pts = [{"properties": {"lat": 49.148798, "lng": 9.2172249, "Risk Index": r}} for r in (0.2, 0.4)]
+    cell = h3.latlng_to_cell(49.148798, 9.2172249, 9)
+    assert build_pm_hex(pts) == {cell: {"risk": 0.3, "n": 2}}
