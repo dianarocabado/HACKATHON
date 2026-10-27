@@ -6,7 +6,8 @@ stations.json + stations/*.json, bike_segments.json, danger_zones.json, danger_p
 Scores are 0..1 where higher = more need for action; null = no data.
   heat   land-cover proxy: building footprint share (OSM), built-up landuse share, minus green share,
          nudged by the nearest valid outdoor station's summer-afternoon anomaly. Farmland and parks
-         score ~0, the dense centre ~1. Heat-walk data (A4) replaces the proxy once available.
+         score ~0, the dense centre ~1. In cells covered by the Green City heat walk (A4), half of the
+         score comes from the measured anomaly (±1 °C ≙ 0..1).
   air    PM danger index from senseBox:bike rides in the cell (danger_zones_PM), else null.
   bike   mean of overtaking risk (danger zones) and share of overtakings under 150 cm (segments with n >= 5).
   green  lack of green: 1 - green share / 40 %, blended with distance to the nearest usable green area,
@@ -163,6 +164,10 @@ def build(data):
                 - 0.4 * green_share)
         if "tempAfternoonC" in facts and city_temp is not None:
             heat += 0.1 * (facts["tempAfternoonC"] - city_temp)  # +/- 0.1 per °C vs. city median
+        walk = data["heat_walk"].get(cell)
+        if walk:
+            facts["heatWalkAnomalyC"] = walk["anomalyC"]
+            heat = 0.5 * clamp(heat) + 0.5 * clamp(0.5 + walk["anomalyC"] / 2)
         scores["heat"] = round(clamp(heat), 3)
 
         pm = pm_hex.get(cell)
@@ -223,6 +228,7 @@ def load_inputs():
         "segments": load("bike_segments.json"),
         "danger_zones": load("danger_zones.json"),
         "danger_pm_hex": load("danger_pm_hex.json"),
+        "heat_walk": load("heat_walk_h3.json") if (PROCESSED_DIR / "heat_walk_h3.json").exists() else {},
     }
 
 
