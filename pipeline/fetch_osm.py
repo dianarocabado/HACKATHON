@@ -8,6 +8,9 @@ Outputs (data/processed/):
   osm_points.json      {trees, bus_stops, schools, kindergartens, care_homes, playgrounds}: [[lat, lng, name?], ...]
   green_areas.geojson  parks, woods, meadows, allotments, cemeteries, ... (kind property)
   residential.geojson  landuse=residential (for pollinator_gap)
+  built_up.geojson     built-up landuse: residential, commercial, industrial, retail, railway, ... (kind)
+  buildings_h3.json    {h3 res-9 cell: building footprint share 0..1} (heat proxy for A5; footprints
+                       themselves are too large to commit)
 All features are clipped to the city boundary; polygons are simplified (~3 m) and rounded to 5 decimals.
 
 Usage:
@@ -17,9 +20,12 @@ Usage:
 
 import argparse
 import json
+import math
 import sys
+from collections import defaultdict
 from pathlib import Path
 
+import h3
 import osmium
 import requests
 import shapely
@@ -35,7 +41,9 @@ PBF_FILE = RAW_DIR / "stuttgart-regbez-latest.osm.pbf"
 BBOX = (9.05, 49.05, 9.36, 49.25)  # min lng, min lat, max lng, max lat
 SIMPLIFY_DEG = 0.00003  # ~3 m
 PRECISION_DEG = 0.00001  # output grid, ~1 m
-KEYS = ("natural", "highway", "amenity", "leisure", "landuse", "boundary", "social_facility")
+KEYS = ("natural", "highway", "amenity", "leisure", "landuse", "boundary", "social_facility", "building")
+H3_RES = 9
+BUILT_UP = {"residential", "commercial", "industrial", "retail", "railway", "construction", "garages"}
 
 GREEN = {
     "leisure": {"park", "garden", "nature_reserve"},
@@ -90,12 +98,20 @@ def download(path):
                 f.write(chunk)
 
 
+def area_m2(geom):
+    """Approximate area of a lng/lat geometry in m²."""
+    lat = geom.centroid.y
+    return geom.area * 111_132 * 111_320 * math.cos(math.radians(lat))
+
+
 def read_pbf(path):
-    """One pass over the extract. Returns (boundary, raw points, green polygons, residential polygons)."""
+    """One pass over the extract.
+    Returns (boundary, raw points, green [(kind, geom)], built-up [(kind, geom)], building m² per H3 cell)."""
     factory = osmium.geom.WKBFactory()
     boundary = None
     points = {k: [] for k in ("trees", "bus_stops", "schools", "kindergartens", "care_homes", "playgrounds")}
-    green, residential = [], []
+    green, built = [], []
+    building_m2 = defaultdict(float)
 
     processor = (osmium.FileProcessor(str(path))
                  .with_locations()
@@ -113,8 +129,9 @@ def read_pbf(path):
                 boundary = wkb.loads(factory.create_multipolygon(obj), hex=True)
                 continue
             cat, kind = point_category(tags), green_kind(tags)
-            residential_area = tags.get("landuse") == "residential"
-            if not (cat or kind or residential_area):
+            built_kind = tags.get("landuse") if tags.get("landuse") in BUILT_UP else None
+            is_building = "building" in tags and tags.get("building") != "no"
+            if not (cat or kind or built_kind or is_building):
                 continue
             try:
                 geom = wkb.loads(factory.create_multipolygon(obj), hex=True)
@@ -123,13 +140,19 @@ def read_pbf(path):
             c = geom.representative_point()
             if not in_bbox(c.x, c.y):
                 continue
+            if is_building:
+                building_m2[h3.latlng_to_cell(c.y, c.x, H3_RES)] += area_m2(geom)
             if cat and cat != "trees":
                 points[cat].append((c.x, c.y, tags.get("name")))
             if kind:
                 green.append((kind, geom))
-            if residential_area:
-                residential.append(geom)
-    return boundary, points, green, residential
+            if built_kind:
+                built.append((built_kind, geom))
+    return boundary, points, green, built, building_m2
+
+
+def building_shares(building_m2):
+    return {cell: round(min(1.0, m2 / h3.cell_area(cell, "m^2")), 3) for cell, m2 in sorted(building_m2.items())}
 
 
 def clip_points(points, boundary):
@@ -192,7 +215,7 @@ def main(argv=None):
     path = Path(args.pbf) if args.pbf else PBF_FILE
     if not path.exists():
         download(path)
-    boundary, points, green, residential = read_pbf(path)
+    boundary, points, green, built, building_m2 = read_pbf(path)
     if boundary is None:
         sys.exit("Heilbronn boundary (admin_level 6) not found in the extract")
 
@@ -203,12 +226,18 @@ def main(argv=None):
     write("osm_points.json", clipped)
     greens = clip_polygons([({"kind": k}, g) for k, g in green], boundary)
     write("green_areas.geojson", greens)
-    res = clip_polygons([({}, g) for g in residential], boundary)
+    built_fc = clip_polygons([({"kind": k}, g) for k, g in built], boundary)
+    write("built_up.geojson", built_fc)
+    res = {"type": "FeatureCollection",
+           "features": [{**f, "properties": {}} for f in built_fc["features"] if f["properties"]["kind"] == "residential"]}
     write("residential.geojson", res)
+    shares = building_shares(building_m2)
+    write("buildings_h3.json", shares)
 
     counts = ", ".join(f"{k} {len(v)}" for k, v in clipped.items())
-    print(f"boundary {boundary.area * 111_000 * 73_000 / 1e6:.0f} km² | {counts} | "
-          f"green areas {len(greens['features'])} | residential {len(res['features'])}")
+    print(f"boundary {area_m2(boundary) / 1e6:.0f} km² | {counts} | green areas {len(greens['features'])} | "
+          f"built-up {len(built_fc['features'])} (residential {len(res['features'])}) | "
+          f"building cells {len(shares)}")
 
 
 if __name__ == "__main__":
