@@ -20,6 +20,7 @@ export interface HexCell {
     busStops?: number;
     nearestStationId?: string;
     nearestStationDistM?: number;
+    heatWalkAnomalyC?: number;                       // measured on the Green City heat walk (Sep 2026): °C vs. rest of the walk
   };
 }
 
