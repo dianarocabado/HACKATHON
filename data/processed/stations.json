@@ -1,0 +1,174 @@
+[
+ {
+  "id": "68db27a2ab896a0008a5109a",
+  "name": "THW Heilbronn",
+  "lat": 49.162321,
+  "lng": 9.219125,
+  "lastSeen": "2026-10-26T23:55:00Z",
+  "latest": {
+   "temperatureC": 9.58,
+   "humidityPct": 85.58
+  }
+ },
+ {
+  "id": "69b99dd4deee28000952cea8",
+  "name": "GreenCity OpenSpace",
+  "lat": 49.151748,
+  "lng": 9.215319,
+  "lastSeen": "2026-10-26T23:59:19Z",
+  "latest": {
+   "temperatureC": 12.94,
+   "humidityPct": 84.39,
+   "pm25": 6.39,
+   "pm10": 7.36
+  }
+ },
+ {
+  "id": "69bd6c0f867a8a00078beb93",
+  "name": "HCG Beilstein",
+  "lat": 49.04376,
+  "lng": 9.309658,
+  "lastSeen": "2026-10-26T23:59:57Z",
+  "latest": {
+   "temperatureC": 21.26,
+   "humidityPct": 43.55,
+   "pm25": 0.4,
+   "pm10": 0.41
+  }
+ },
+ {
+  "id": "69bd6c0f867a8a00078bebc4",
+  "name": "SenseBox Wolf-von-Gemmingen-Schule",
+  "lat": 49.15711,
+  "lng": 8.989321,
+  "lastSeen": "2026-10-26T23:59:53Z",
+  "latest": {
+   "temperatureC": 20.58,
+   "humidityPct": 47.93,
+   "pm25": 1.89,
+   "pm10": 1.94
+  }
+ },
+ {
+  "id": "69bd6c0f867a8a00078bec5b",
+  "name": "EVGO Umwelt 1",
+  "lat": 49.133321,
+  "lng": 9.366113,
+  "lastSeen": "2026-03-20T17:04:50Z",
+  "latest": {
+   "temperatureC": 24.92
+  }
+ },
+ {
+  "id": "69bd6c0f867a8a00078becd4",
+  "name": "SenseBox Eichbottschule Leingarten",
+  "lat": 49.143947,
+  "lng": 9.11055,
+  "lastSeen": "2026-10-14T06:49:05Z",
+  "latest": {
+   "temperatureC": 16.23,
+   "humidityPct": 92.9,
+   "pm25": 1.54,
+   "pm10": 1.55
+  }
+ },
+ {
+  "id": "69bd6c10867a8a00078bedbb",
+  "name": "Schulgarten",
+  "lat": 49.142243,
+  "lng": 9.22795,
+  "lastSeen": "2026-10-26T23:56:47Z",
+  "latest": {
+   "temperatureC": 11.86,
+   "humidityPct": 79.37,
+   "pm25": 5.79,
+   "pm10": 7.09
+  }
+ },
+ {
+  "id": "69bd6c10867a8a00078beea2",
+  "name": "PDG-NEO",
+  "lat": 49.133675,
+  "lng": 9.365879,
+  "lastSeen": "2026-10-05T14:12:36Z",
+  "latest": {
+   "temperatureC": 26.07,
+   "humidityPct": 51.51,
+   "pm25": 5.05,
+   "pm10": 5.05
+  }
+ },
+ {
+  "id": "69bd6c10867a8a00078beeaf",
+  "name": "Justinus-Kerner-Gymnasium Heilbronn",
+  "lat": 49.120298,
+  "lng": 9.212422,
+  "lastSeen": "2026-10-26T23:59:01Z",
+  "latest": {
+   "temperatureC": 22.62,
+   "humidityPct": 38.83,
+   "pm25": 3.02,
+   "pm10": 3.13
+  }
+ },
+ {
+  "id": "69bd6c11867a8a00078beee1",
+  "name": "Johannes-Brenz-GMS",
+  "lat": 49.099289,
+  "lng": 9.727517,
+  "lastSeen": "2026-07-08T13:33:36Z",
+  "latest": {
+   "humidityPct": 12.41,
+   "temperatureC": 28.53,
+   "pm25": 3.49,
+   "pm10": 3.67
+  }
+ },
+ {
+  "id": "69bd6ceb867a8a00078d3c3f",
+  "name": "Innenstadt",
+  "lat": 49.142487,
+  "lng": 9.221977,
+  "lastSeen": "2026-10-26T23:56:14Z",
+  "latest": {
+   "temperatureC": 13.29,
+   "humidityPct": 70.08,
+   "pm25": 13.07,
+   "pm10": 14.77
+  }
+ },
+ {
+  "id": "69bd6da9867a8a00078e5650",
+  "name": "Hohenlohe-Gymnasium \u00d6hringen",
+  "lat": 49.200576,
+  "lng": 9.506629,
+  "lastSeen": "2026-03-20T17:14:28Z",
+  "latest": {
+   "temperatureC": 24.67,
+   "humidityPct": 26.24,
+   "pm25": 5.01,
+   "pm10": 5.01
+  }
+ },
+ {
+  "id": "69bd6f04867a8a000790717b",
+  "name": "Elly-Heuss-Knapp Gymnasium Heilbronn",
+  "lat": 49.145848,
+  "lng": 9.178809,
+  "lastSeen": "2026-03-20T17:50:41Z",
+  "latest": {
+   "temperatureC": 24.66
+  }
+ },
+ {
+  "id": "6a8e94d9852a4900074fe57c",
+  "name": "experimenta Sternwarte",
+  "lat": 49.144539,
+  "lng": 9.214834,
+  "lastSeen": "2026-10-26T23:59:06Z",
+  "latest": {
+   "temperatureC": 9.85,
+   "humidityPct": 82.13
+  }
+ }
+]
