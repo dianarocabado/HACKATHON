@@ -10,7 +10,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "node --test \"lib/server/**/*.test.ts\""
+    "test": "node --test \"lib/**/*.test.ts\""
   },
   "dependencies": {
     "h3-js": "^4.5.0",
