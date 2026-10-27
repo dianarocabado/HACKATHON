@@ -1,0 +1,80 @@
+[
+  {
+    "id": "sb-markt",
+    "name": "senseBox Marktplatz",
+    "lat": 49.142,
+    "lng": 9.219,
+    "lastSeen": "2026-10-27T15:00:00Z",
+    "latest": {
+      "temperatureC": 17.04,
+      "humidityPct": 59.44,
+      "pm25": 10.36,
+      "pm10": 16.58
+    }
+  },
+  {
+    "id": "sb-bahnhof",
+    "name": "senseBox Bahnhofsvorstadt",
+    "lat": 49.1438,
+    "lng": 9.21,
+    "lastSeen": "2026-10-27T15:00:00Z",
+    "latest": {
+      "temperatureC": 17.23,
+      "humidityPct": 62.93,
+      "pm25": 6.46,
+      "pm10": 10.34
+    }
+  },
+  {
+    "id": "sb-campus",
+    "name": "senseBox Bildungscampus",
+    "lat": 49.1485,
+    "lng": 9.217,
+    "lastSeen": "2026-10-27T15:00:00Z",
+    "latest": {
+      "temperatureC": 16.83,
+      "humidityPct": 58.49,
+      "pm25": 8.13,
+      "pm10": 13.0
+    }
+  },
+  {
+    "id": "sb-wertwiesen",
+    "name": "senseBox Wertwiesen",
+    "lat": 49.133,
+    "lng": 9.212,
+    "lastSeen": "2026-10-27T15:00:00Z",
+    "latest": {
+      "temperatureC": 16.59,
+      "humidityPct": 59.47,
+      "pm25": 10.04,
+      "pm10": 16.07
+    }
+  },
+  {
+    "id": "sb-boeckingen",
+    "name": "senseBox Böckingen",
+    "lat": 49.139,
+    "lng": 9.188,
+    "lastSeen": "2026-10-27T15:00:00Z",
+    "latest": {
+      "temperatureC": 15.24,
+      "humidityPct": 59.79,
+      "pm25": 7.25,
+      "pm10": 11.6
+    }
+  },
+  {
+    "id": "sb-sontheim",
+    "name": "senseBox Sontheim",
+    "lat": 49.125,
+    "lng": 9.205,
+    "lastSeen": "2026-10-27T15:00:00Z",
+    "latest": {
+      "temperatureC": 15.17,
+      "humidityPct": 62.02,
+      "pm25": 10.52,
+      "pm10": 16.83
+    }
+  }
+]

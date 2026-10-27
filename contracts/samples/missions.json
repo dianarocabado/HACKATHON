@@ -1,0 +1,210 @@
+[
+  {
+    "id": "m-001",
+    "type": "water_trees",
+    "title": "Bäume an der Allee gießen",
+    "description": "Seit 6 Tagen kein Regen. Die Straßenbäume an der Allee brauchen je 50–100 Liter.",
+    "h3": "891faa02a13ffff",
+    "lat": 49.144,
+    "lng": 9.222,
+    "placeName": "Allee",
+    "category": "heat",
+    "urgency": 3,
+    "effort": "hour",
+    "suitedFor": [
+      "resident",
+      "club"
+    ],
+    "reason": {
+      "rule": "5+ dry days, street trees, heat ≥ 0.5",
+      "evidence": {
+        "dryDays": 6,
+        "trees": 24,
+        "heat": 0.78
+      }
+    },
+    "source": "pipeline",
+    "simulated": true,
+    "expiresAt": "2026-10-29T15:00:00Z"
+  },
+  {
+    "id": "m-002",
+    "type": "shade_bus_stop",
+    "title": "Schatten für die Haltestelle am Hauptbahnhof",
+    "description": "Nachmittags im Schnitt 33,4 °C. Ein Sonnensegel oder Baum würde Wartenden helfen.",
+    "h3": "891faa02adbffff",
+    "lat": 49.143,
+    "lng": 9.2085,
+    "placeName": "Hauptbahnhof",
+    "category": "heat",
+    "urgency": 2,
+    "effort": "project",
+    "suitedFor": [
+      "company",
+      "city"
+    ],
+    "reason": {
+      "rule": "heat ≥ 0.7 and bus stop",
+      "evidence": {
+        "heat": 0.86,
+        "tempAfternoonC": 33.4,
+        "busStops": 2
+      }
+    },
+    "source": "pipeline",
+    "simulated": true
+  },
+  {
+    "id": "m-003",
+    "type": "green_schoolyard",
+    "title": "Schulhof begrünen",
+    "description": "Versiegelter Hof, 32,1 °C am Nachmittag. Hochbeete und Kletterpflanzen kühlen.",
+    "h3": "891faa02a9bffff",
+    "lat": 49.1485,
+    "lng": 9.217,
+    "placeName": "Bildungscampus",
+    "category": "heat",
+    "urgency": 2,
+    "effort": "project",
+    "suitedFor": [
+      "school",
+      "club",
+      "company"
+    ],
+    "reason": {
+      "rule": "heat ≥ 0.6 and school",
+      "evidence": {
+        "heat": 0.69,
+        "sensitivePlaces": 2
+      }
+    },
+    "source": "pipeline",
+    "simulated": true
+  },
+  {
+    "id": "m-004",
+    "type": "pollinator_gap",
+    "title": "Blühstreifen in Böckingen",
+    "description": "Keine Grünfläche im Umkreis von 420 m. Ein Blühstreifen schließt die Lücke für Insekten.",
+    "h3": "891faa0051bffff",
+    "lat": 49.139,
+    "lng": 9.188,
+    "placeName": "Böckingen",
+    "category": "biodiversity",
+    "urgency": 1,
+    "effort": "afternoon",
+    "suitedFor": [
+      "resident",
+      "club"
+    ],
+    "reason": {
+      "rule": "no green within ~300 m",
+      "evidence": {
+        "distToGreenM": 420
+      }
+    },
+    "source": "pipeline",
+    "simulated": true
+  },
+  {
+    "id": "m-005",
+    "type": "unseal_10m2",
+    "title": "10 m² entsiegeln am Kiliansplatz",
+    "description": "Pflaster raus, Beet rein: 10 m² weniger Hitze und mehr Versickerung.",
+    "h3": "891faa02a1bffff",
+    "lat": 49.1413,
+    "lng": 9.2205,
+    "placeName": "Kiliansplatz",
+    "category": "heat",
+    "urgency": 2,
+    "effort": "afternoon",
+    "suitedFor": [
+      "company",
+      "city"
+    ],
+    "reason": {
+      "rule": "heat ≥ 0.6 and no green within 150 m",
+      "evidence": {
+        "heat": 0.81,
+        "distToGreenM": 640
+      }
+    },
+    "source": "pipeline",
+    "simulated": true
+  },
+  {
+    "id": "m-006",
+    "type": "safer_bike_street",
+    "title": "Sicherer Radweg an der Kaiserstraße",
+    "description": "41 % der Überholvorgänge unter 150 cm. Markierung oder Tempo 30 prüfen.",
+    "h3": "891faa02ac7ffff",
+    "lat": 49.142,
+    "lng": 9.219,
+    "placeName": "Marktplatz",
+    "category": "mobility",
+    "urgency": 3,
+    "effort": "project",
+    "suitedFor": [
+      "city"
+    ],
+    "reason": {
+      "rule": "≥ 30% overtakings under 150 cm",
+      "evidence": {
+        "overtakeUnder150Pct": 41,
+        "rides": 312
+      }
+    },
+    "source": "pipeline",
+    "simulated": true
+  },
+  {
+    "id": "m-007",
+    "type": "host_sensor",
+    "title": "Sensor in Sontheim aufhängen",
+    "description": "Kein Sensor im Umkreis von 500 m, aber 3 Kitas. Eine senseBox liefert Daten.",
+    "h3": "891faa001c7ffff",
+    "lat": 49.125,
+    "lng": 9.205,
+    "placeName": "Sontheim",
+    "category": "air",
+    "urgency": 1,
+    "effort": "hour",
+    "suitedFor": [
+      "resident",
+      "school"
+    ],
+    "reason": {
+      "rule": "no sensor within 500 m and sensitive places",
+      "evidence": {
+        "nearestStationDistM": 760,
+        "sensitivePlaces": 3
+      }
+    },
+    "source": "pipeline",
+    "simulated": true
+  },
+  {
+    "id": "m-008",
+    "type": "check_reports",
+    "title": "Meldungen am Pfühlpark prüfen",
+    "description": "4 Hitze-Meldungen, aber kein Sensor. Mit Thermometer nachmessen.",
+    "h3": "891faa02aafffff",
+    "lat": 49.144,
+    "lng": 9.237,
+    "placeName": "Pfühlpark",
+    "category": "heat",
+    "urgency": 1,
+    "effort": "hour",
+    "suitedFor": [
+      "resident"
+    ],
+    "reason": {
+      "rule": "3+ reports, no sensor",
+      "evidence": {
+        "reports": 4
+      }
+    },
+    "source": "report",
+    "simulated": true
+  }
+]
