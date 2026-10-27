@@ -1,0 +1,1276 @@
+[
+ {
+  "id": "shade_bus_stop-891faa02a13ffff",
+  "type": "shade_bus_stop",
+  "title": "Schatten für die Haltestelle Harmonie/Kunsthalle",
+  "description": "Die Umgebung ist stark versiegelt (Hitzewert 1,00), nachmittags im Sommer im Schnitt 31,9 °C. Ein Sonnensegel, ein Baum oder ein begrüntes Dach hilft Wartenden.",
+  "h3": "891faa02a13ffff",
+  "lat": 49.142824,
+  "lng": 9.222727,
+  "reason": {
+   "rule": "Hitzewert ≥ 0,7 und Bushaltestelle",
+   "evidence": {
+    "heat": 1.0,
+    "busStops": 6,
+    "tempAfternoonC": 31.9
+   }
+  },
+  "source": "pipeline",
+  "category": "heat",
+  "effort": "project",
+  "suitedFor": [
+   "company",
+   "city",
+   "club"
+  ],
+  "placeName": "Harmonie/Kunsthalle",
+  "urgency": 3
+ },
+ {
+  "id": "shade_bus_stop-891faa02a1bffff",
+  "type": "shade_bus_stop",
+  "title": "Schatten für die Haltestelle Wollhausplatz",
+  "description": "Die Umgebung ist stark versiegelt (Hitzewert 1,00), nachmittags im Sommer im Schnitt 31,9 °C. Ein Sonnensegel, ein Baum oder ein begrüntes Dach hilft Wartenden.",
+  "h3": "891faa02a1bffff",
+  "lat": 49.139403,
+  "lng": 9.220626,
+  "reason": {
+   "rule": "Hitzewert ≥ 0,7 und Bushaltestelle",
+   "evidence": {
+    "heat": 1.0,
+    "busStops": 11,
+    "tempAfternoonC": 31.9
+   }
+  },
+  "source": "pipeline",
+  "category": "heat",
+  "effort": "project",
+  "suitedFor": [
+   "company",
+   "city",
+   "club"
+  ],
+  "placeName": "Wollhausplatz",
+  "urgency": 3
+ },
+ {
+  "id": "shade_bus_stop-891faa02e67ffff",
+  "type": "shade_bus_stop",
+  "title": "Schatten für die Haltestelle Fügerstraße",
+  "description": "Die Umgebung ist stark versiegelt (Hitzewert 1,00), nachmittags im Sommer im Schnitt 31,6 °C. Ein Sonnensegel, ein Baum oder ein begrüntes Dach hilft Wartenden.",
+  "h3": "891faa02e67ffff",
+  "lat": 49.150395,
+  "lng": 9.212798,
+  "reason": {
+   "rule": "Hitzewert ≥ 0,7 und Bushaltestelle",
+   "evidence": {
+    "heat": 1.0,
+    "busStops": 4,
+    "tempAfternoonC": 31.6
+   }
+  },
+  "source": "pipeline",
+  "category": "heat",
+  "effort": "project",
+  "suitedFor": [
+   "company",
+   "city",
+   "club"
+  ],
+  "placeName": "Fügerstraße",
+  "urgency": 3
+ },
+ {
+  "id": "shade_bus_stop-891faa02a73ffff",
+  "type": "shade_bus_stop",
+  "title": "Schatten für die Haltestelle Silcherplatz Ost",
+  "description": "Die Umgebung ist stark versiegelt (Hitzewert 1,00). Ein Sonnensegel, ein Baum oder ein begrüntes Dach hilft Wartenden.",
+  "h3": "891faa02a73ffff",
+  "lat": 49.135721,
+  "lng": 9.228918,
+  "reason": {
+   "rule": "Hitzewert ≥ 0,7 und Bushaltestelle",
+   "evidence": {
+    "heat": 0.996,
+    "busStops": 1
+   }
+  },
+  "source": "pipeline",
+  "category": "heat",
+  "effort": "project",
+  "suitedFor": [
+   "company",
+   "city",
+   "club"
+  ],
+  "placeName": "Silcherplatz Ost",
+  "urgency": 2
+ },
+ {
+  "id": "shade_bus_stop-891faa02a8bffff",
+  "type": "shade_bus_stop",
+  "title": "Schatten für die Haltestelle Halllenbad/Bildungscampus Ost",
+  "description": "Die Umgebung ist stark versiegelt (Hitzewert 1,00), nachmittags im Sommer im Schnitt 31,9 °C. Ein Sonnensegel, ein Baum oder ein begrüntes Dach hilft Wartenden.",
+  "h3": "891faa02a8bffff",
+  "lat": 49.146268,
+  "lng": 9.220743,
+  "reason": {
+   "rule": "Hitzewert ≥ 0,7 und Bushaltestelle",
+   "evidence": {
+    "heat": 0.996,
+    "busStops": 2,
+    "tempAfternoonC": 31.9
+   }
+  },
+  "source": "pipeline",
+  "category": "heat",
+  "effort": "project",
+  "suitedFor": [
+   "company",
+   "city",
+   "club"
+  ],
+  "placeName": "Halllenbad/Bildungscampus Ost",
+  "urgency": 2
+ },
+ {
+  "id": "shade_bus_stop-891faa02193ffff",
+  "type": "shade_bus_stop",
+  "title": "Schatten für die Haltestelle Mühlrainstraße",
+  "description": "Die Umgebung ist stark versiegelt (Hitzewert 0,99). Ein Sonnensegel, ein Baum oder ein begrüntes Dach hilft Wartenden.",
+  "h3": "891faa02193ffff",
+  "lat": 49.184703,
+  "lng": 9.183493,
+  "reason": {
+   "rule": "Hitzewert ≥ 0,7 und Bushaltestelle",
+   "evidence": {
+    "heat": 0.993,
+    "busStops": 1
+   }
+  },
+  "source": "pipeline",
+  "category": "heat",
+  "effort": "project",
+  "suitedFor": [
+   "company",
+   "city",
+   "club"
+  ],
+  "placeName": "Mühlrainstraße",
+  "urgency": 2
+ },
+ {
+  "id": "shade_bus_stop-891faa02a0fffff",
+  "type": "shade_bus_stop",
+  "title": "Schatten für die Haltestelle Mönchseestraße/Landratsamt",
+  "description": "Die Umgebung ist stark versiegelt (Hitzewert 0,99). Ein Sonnensegel, ein Baum oder ein begrüntes Dach hilft Wartenden.",
+  "h3": "891faa02a0fffff",
+  "lat": 49.138752,
+  "lng": 9.228267,
+  "reason": {
+   "rule": "Hitzewert ≥ 0,7 und Bushaltestelle",
+   "evidence": {
+    "heat": 0.992,
+    "busStops": 2
+   }
+  },
+  "source": "pipeline",
+  "category": "heat",
+  "effort": "project",
+  "suitedFor": [
+   "company",
+   "city",
+   "club"
+  ],
+  "placeName": "Mönchseestraße/Landratsamt",
+  "urgency": 1
+ },
+ {
+  "id": "shade_bus_stop-891faa02e23ffff",
+  "type": "shade_bus_stop",
+  "title": "Schatten für eine Haltestelle",
+  "description": "Die Umgebung ist stark versiegelt (Hitzewert 0,99), nachmittags im Sommer im Schnitt 31,6 °C. Ein Sonnensegel, ein Baum oder ein begrüntes Dach hilft Wartenden.",
+  "h3": "891faa02e23ffff",
+  "lat": 49.155429,
+  "lng": 9.217806,
+  "reason": {
+   "rule": "Hitzewert ≥ 0,7 und Bushaltestelle",
+   "evidence": {
+    "heat": 0.99,
+    "busStops": 2,
+    "tempAfternoonC": 31.6
+   }
+  },
+  "source": "pipeline",
+  "category": "heat",
+  "effort": "project",
+  "suitedFor": [
+   "company",
+   "city",
+   "club"
+  ],
+  "urgency": 1,
+  "placeName": "Nähe Haltestelle Industrieplatz West"
+ },
+ {
+  "id": "green_schoolyard-891faa02a0bffff",
+  "type": "green_schoolyard",
+  "title": "Schulhof begrünen: Kita Uhlandstraße",
+  "description": "Schule oder Kita in einem heißen, versiegelten Bereich (Hitzewert 1,00). Bäume, Hochbeete und entsiegelte Flächen kühlen den Hof und laden zum Lernen draußen ein.",
+  "h3": "891faa02a0bffff",
+  "lat": 49.138895,
+  "lng": 9.222962,
+  "reason": {
+   "rule": "Hitzewert ≥ 0,6 und Schule oder Kita",
+   "evidence": {
+    "heat": 1.0,
+    "schools": 1,
+    "tempAfternoonC": 31.9
+   }
+  },
+  "source": "pipeline",
+  "category": "heat",
+  "effort": "project",
+  "suitedFor": [
+   "school",
+   "company",
+   "city"
+  ],
+  "placeName": "Kita Uhlandstraße",
+  "urgency": 3
+ },
+ {
+  "id": "green_schoolyard-891faa02a13ffff",
+  "type": "green_schoolyard",
+  "title": "Schulhof begrünen: Gebrüder-Grimm-Schule",
+  "description": "Schule oder Kita in einem heißen, versiegelten Bereich (Hitzewert 1,00). Bäume, Hochbeete und entsiegelte Flächen kühlen den Hof und laden zum Lernen draußen ein.",
+  "h3": "891faa02a13ffff",
+  "lat": 49.144688,
+  "lng": 9.224421,
+  "reason": {
+   "rule": "Hitzewert ≥ 0,6 und Schule oder Kita",
+   "evidence": {
+    "heat": 1.0,
+    "schools": 1,
+    "tempAfternoonC": 31.9
+   }
+  },
+  "source": "pipeline",
+  "category": "heat",
+  "effort": "project",
+  "suitedFor": [
+   "school",
+   "company",
+   "city"
+  ],
+  "placeName": "Gebrüder-Grimm-Schule",
+  "urgency": 3
+ },
+ {
+  "id": "green_schoolyard-891faa02a8bffff",
+  "type": "green_schoolyard",
+  "title": "Schulhof begrünen: Dammschule",
+  "description": "Schule oder Kita in einem heißen, versiegelten Bereich (Hitzewert 1,00). Bäume, Hochbeete und entsiegelte Flächen kühlen den Hof und laden zum Lernen draußen ein.",
+  "h3": "891faa02a8bffff",
+  "lat": 49.147062,
+  "lng": 9.219809,
+  "reason": {
+   "rule": "Hitzewert ≥ 0,6 und Schule oder Kita",
+   "evidence": {
+    "heat": 0.996,
+    "schools": 1,
+    "tempAfternoonC": 31.9
+   }
+  },
+  "source": "pipeline",
+  "category": "heat",
+  "effort": "project",
+  "suitedFor": [
+   "school",
+   "company",
+   "city"
+  ],
+  "placeName": "Dammschule",
+  "urgency": 3
+ },
+ {
+  "id": "green_schoolyard-891faa02a0fffff",
+  "type": "green_schoolyard",
+  "title": "Schulhof begrünen: Robert-Mayer-Gymnasium",
+  "description": "Schule oder Kita in einem heißen, versiegelten Bereich (Hitzewert 0,99). Bäume, Hochbeete und entsiegelte Flächen kühlen den Hof und laden zum Lernen draußen ein.",
+  "h3": "891faa02a0fffff",
+  "lat": 49.139464,
+  "lng": 9.22676,
+  "reason": {
+   "rule": "Hitzewert ≥ 0,6 und Schule oder Kita",
+   "evidence": {
+    "heat": 0.992,
+    "schools": 2
+   }
+  },
+  "source": "pipeline",
+  "category": "heat",
+  "effort": "project",
+  "suitedFor": [
+   "school",
+   "company",
+   "city"
+  ],
+  "placeName": "Robert-Mayer-Gymnasium",
+  "urgency": 2
+ },
+ {
+  "id": "green_schoolyard-891faa02e23ffff",
+  "type": "green_schoolyard",
+  "title": "Schulhof begrünen: Aukindergarten",
+  "description": "Schule oder Kita in einem heißen, versiegelten Bereich (Hitzewert 0,99). Bäume, Hochbeete und entsiegelte Flächen kühlen den Hof und laden zum Lernen draußen ein.",
+  "h3": "891faa02e23ffff",
+  "lat": 49.155044,
+  "lng": 9.218798,
+  "reason": {
+   "rule": "Hitzewert ≥ 0,6 und Schule oder Kita",
+   "evidence": {
+    "heat": 0.99,
+    "schools": 2,
+    "tempAfternoonC": 31.6
+   }
+  },
+  "source": "pipeline",
+  "category": "heat",
+  "effort": "project",
+  "suitedFor": [
+   "school",
+   "company",
+   "city"
+  ],
+  "placeName": "Aukindergarten",
+  "urgency": 2
+ },
+ {
+  "id": "green_schoolyard-891faa02a7bffff",
+  "type": "green_schoolyard",
+  "title": "Schulhof begrünen: Südkindergarten",
+  "description": "Schule oder Kita in einem heißen, versiegelten Bereich (Hitzewert 0,98). Bäume, Hochbeete und entsiegelte Flächen kühlen den Hof und laden zum Lernen draußen ein.",
+  "h3": "891faa02a7bffff",
+  "lat": 49.133861,
+  "lng": 9.223692,
+  "reason": {
+   "rule": "Hitzewert ≥ 0,6 und Schule oder Kita",
+   "evidence": {
+    "heat": 0.98,
+    "schools": 1
+   }
+  },
+  "source": "pipeline",
+  "category": "heat",
+  "effort": "project",
+  "suitedFor": [
+   "school",
+   "company",
+   "city"
+  ],
+  "placeName": "Südkindergarten",
+  "urgency": 2
+ },
+ {
+  "id": "green_schoolyard-891faa02a43ffff",
+  "type": "green_schoolyard",
+  "title": "Schulhof begrünen: Rosenauschule",
+  "description": "Schule oder Kita in einem heißen, versiegelten Bereich (Hitzewert 0,97). Bäume, Hochbeete und entsiegelte Flächen kühlen den Hof und laden zum Lernen draußen ein.",
+  "h3": "891faa02a43ffff",
+  "lat": 49.136132,
+  "lng": 9.215714,
+  "reason": {
+   "rule": "Hitzewert ≥ 0,6 und Schule oder Kita",
+   "evidence": {
+    "heat": 0.972,
+    "schools": 4,
+    "tempAfternoonC": 31.9
+   }
+  },
+  "source": "pipeline",
+  "category": "heat",
+  "effort": "project",
+  "suitedFor": [
+   "school",
+   "company",
+   "city"
+  ],
+  "placeName": "Rosenauschule",
+  "urgency": 1
+ },
+ {
+  "id": "green_schoolyard-891faa02a8fffff",
+  "type": "green_schoolyard",
+  "title": "Schulhof begrünen: Christliche KITA Fidelis",
+  "description": "Schule oder Kita in einem heißen, versiegelten Bereich (Hitzewert 0,96). Bäume, Hochbeete und entsiegelte Flächen kühlen den Hof und laden zum Lernen draußen ein.",
+  "h3": "891faa02a8fffff",
+  "lat": 49.147301,
+  "lng": 9.224596,
+  "reason": {
+   "rule": "Hitzewert ≥ 0,6 und Schule oder Kita",
+   "evidence": {
+    "heat": 0.965,
+    "schools": 1,
+    "tempAfternoonC": 31.9
+   }
+  },
+  "source": "pipeline",
+  "category": "heat",
+  "effort": "project",
+  "suitedFor": [
+   "school",
+   "company",
+   "city"
+  ],
+  "placeName": "Christliche KITA Fidelis",
+  "urgency": 1
+ },
+ {
+  "id": "pollinator_gap-891faa001b7ffff",
+  "type": "pollinator_gap",
+  "title": "Blühinsel für Bienen anlegen",
+  "description": "Wohngebiet ohne nutzbare Grünfläche in 428 m Umkreis. Schon ein Balkonkasten oder ein Baumscheiben-Beet mit heimischen Blühpflanzen schließt die Lücke für Insekten.",
+  "h3": "891faa001b7ffff",
+  "lat": 49.130684,
+  "lng": 9.222406,
+  "reason": {
+   "rule": "Wohngebiet, keine Grünfläche im Umkreis von 300 m",
+   "evidence": {
+    "distToGreenM": 428,
+    "residentialPct": 91
+   }
+  },
+  "source": "pipeline",
+  "category": "biodiversity",
+  "effort": "afternoon",
+  "suitedFor": [
+   "resident",
+   "school",
+   "club"
+  ],
+  "urgency": 3,
+  "placeName": "Nähe Haltestelle Schmidbergstraße West"
+ },
+ {
+  "id": "pollinator_gap-891faa001bbffff",
+  "type": "pollinator_gap",
+  "title": "Blühinsel für Bienen anlegen",
+  "description": "Wohngebiet ohne nutzbare Grünfläche in 360 m Umkreis. Schon ein Balkonkasten oder ein Baumscheiben-Beet mit heimischen Blühpflanzen schließt die Lücke für Insekten.",
+  "h3": "891faa001bbffff",
+  "lat": 49.127448,
+  "lng": 9.215666,
+  "reason": {
+   "rule": "Wohngebiet, keine Grünfläche im Umkreis von 300 m",
+   "evidence": {
+    "distToGreenM": 360,
+    "residentialPct": 100
+   }
+  },
+  "source": "pipeline",
+  "category": "biodiversity",
+  "effort": "afternoon",
+  "suitedFor": [
+   "resident",
+   "school",
+   "club"
+  ],
+  "urgency": 3,
+  "placeName": "Nähe Haltestelle Beethovenstraße"
+ },
+ {
+  "id": "pollinator_gap-891faa02a7bffff",
+  "type": "pollinator_gap",
+  "title": "Blühinsel für Bienen anlegen",
+  "description": "Wohngebiet ohne nutzbare Grünfläche in 364 m Umkreis. Schon ein Balkonkasten oder ein Baumscheiben-Beet mit heimischen Blühpflanzen schließt die Lücke für Insekten.",
+  "h3": "891faa02a7bffff",
+  "lat": 49.133458,
+  "lng": 9.224439,
+  "reason": {
+   "rule": "Wohngebiet, keine Grünfläche im Umkreis von 300 m",
+   "evidence": {
+    "distToGreenM": 364,
+    "residentialPct": 100
+   }
+  },
+  "source": "pipeline",
+  "category": "biodiversity",
+  "effort": "afternoon",
+  "suitedFor": [
+   "resident",
+   "school",
+   "club"
+  ],
+  "urgency": 3,
+  "placeName": "Nähe Haltestelle Silcherplatz West"
+ },
+ {
+  "id": "pollinator_gap-891faa02e2fffff",
+  "type": "pollinator_gap",
+  "title": "Blühinsel für Bienen anlegen",
+  "description": "Wohngebiet ohne nutzbare Grünfläche in 350 m Umkreis. Schon ein Balkonkasten oder ein Baumscheiben-Beet mit heimischen Blühpflanzen schließt die Lücke für Insekten.",
+  "h3": "891faa02e2fffff",
+  "lat": 49.153805,
+  "lng": 9.221879,
+  "reason": {
+   "rule": "Wohngebiet, keine Grünfläche im Umkreis von 300 m",
+   "evidence": {
+    "distToGreenM": 350,
+    "residentialPct": 67
+   }
+  },
+  "source": "pipeline",
+  "category": "biodiversity",
+  "effort": "afternoon",
+  "suitedFor": [
+   "resident",
+   "school",
+   "club"
+  ],
+  "urgency": 2,
+  "placeName": "Nähe Haltestelle Neckarsulmer Straße"
+ },
+ {
+  "id": "pollinator_gap-891faa001cfffff",
+  "type": "pollinator_gap",
+  "title": "Blühinsel für Bienen anlegen",
+  "description": "Wohngebiet ohne nutzbare Grünfläche in 397 m Umkreis. Schon ein Balkonkasten oder ein Baumscheiben-Beet mit heimischen Blühpflanzen schließt die Lücke für Insekten.",
+  "h3": "891faa001cfffff",
+  "lat": 49.120974,
+  "lng": 9.20219,
+  "reason": {
+   "rule": "Wohngebiet, keine Grünfläche im Umkreis von 300 m",
+   "evidence": {
+    "distToGreenM": 397,
+    "residentialPct": 82
+   }
+  },
+  "source": "pipeline",
+  "category": "biodiversity",
+  "effort": "afternoon",
+  "suitedFor": [
+   "resident",
+   "school",
+   "club"
+  ],
+  "urgency": 2,
+  "placeName": "Nähe Haltestelle Raidweg"
+ },
+ {
+  "id": "pollinator_gap-891faa001a3ffff",
+  "type": "pollinator_gap",
+  "title": "Blühinsel für Bienen anlegen",
+  "description": "Wohngebiet ohne nutzbare Grünfläche in 487 m Umkreis. Schon ein Balkonkasten oder ein Baumscheiben-Beet mit heimischen Blühpflanzen schließt die Lücke für Insekten.",
+  "h3": "891faa001a3ffff",
+  "lat": 49.127909,
+  "lng": 9.220372,
+  "reason": {
+   "rule": "Wohngebiet, keine Grünfläche im Umkreis von 300 m",
+   "evidence": {
+    "distToGreenM": 487,
+    "residentialPct": 100
+   }
+  },
+  "source": "pipeline",
+  "category": "biodiversity",
+  "effort": "afternoon",
+  "suitedFor": [
+   "resident",
+   "school",
+   "club"
+  ],
+  "urgency": 2,
+  "placeName": "Nähe Haltestelle Hohenstaufenstraße West"
+ },
+ {
+  "id": "pollinator_gap-891faa0232bffff",
+  "type": "pollinator_gap",
+  "title": "Blühinsel für Bienen anlegen",
+  "description": "Wohngebiet ohne nutzbare Grünfläche in 333 m Umkreis. Schon ein Balkonkasten oder ein Baumscheiben-Beet mit heimischen Blühpflanzen schließt die Lücke für Insekten.",
+  "h3": "891faa0232bffff",
+  "lat": 49.150107,
+  "lng": 9.184222,
+  "reason": {
+   "rule": "Wohngebiet, keine Grünfläche im Umkreis von 300 m",
+   "evidence": {
+    "distToGreenM": 333,
+    "residentialPct": 100
+   }
+  },
+  "source": "pipeline",
+  "category": "biodiversity",
+  "effort": "afternoon",
+  "suitedFor": [
+   "resident",
+   "school",
+   "club"
+  ],
+  "urgency": 1,
+  "placeName": "Nähe Haltestelle Kreuzgrund"
+ },
+ {
+  "id": "pollinator_gap-891faa02a43ffff",
+  "type": "pollinator_gap",
+  "title": "Blühinsel für Bienen anlegen",
+  "description": "Wohngebiet ohne nutzbare Grünfläche in 377 m Umkreis. Schon ein Balkonkasten oder ein Baumscheiben-Beet mit heimischen Blühpflanzen schließt die Lücke für Insekten.",
+  "h3": "891faa02a43ffff",
+  "lat": 49.13531,
+  "lng": 9.217059,
+  "reason": {
+   "rule": "Wohngebiet, keine Grünfläche im Umkreis von 300 m",
+   "evidence": {
+    "distToGreenM": 377,
+    "residentialPct": 64
+   }
+  },
+  "source": "pipeline",
+  "category": "biodiversity",
+  "effort": "afternoon",
+  "suitedFor": [
+   "resident",
+   "school",
+   "club"
+  ],
+  "urgency": 1,
+  "placeName": "Nähe Haltestelle Südstraße West"
+ },
+ {
+  "id": "unseal_10m2-891faa02563ffff",
+  "type": "unseal_10m2",
+  "title": "10 m² entsiegeln",
+  "description": "Stark versiegelt (Hitzewert 1,00), nächste nutzbare Grünfläche 285 m entfernt. Pflaster raus, Beet rein: 10 m² auf einem Hof oder Parkplatz kühlen und lassen Regen versickern.",
+  "h3": "891faa02563ffff",
+  "lat": 49.182461,
+  "lng": 9.172981,
+  "reason": {
+   "rule": "Hitzewert ≥ 0,6 und keine Grünfläche im Umkreis von 150 m",
+   "evidence": {
+    "heat": 1.0,
+    "distToGreenM": 285
+   }
+  },
+  "source": "pipeline",
+  "category": "heat",
+  "effort": "afternoon",
+  "suitedFor": [
+   "resident",
+   "company",
+   "club"
+  ],
+  "urgency": 3,
+  "placeName": "Nähe Haltestelle Wannenäckerstraße"
+ },
+ {
+  "id": "unseal_10m2-891faa02567ffff",
+  "type": "unseal_10m2",
+  "title": "10 m² entsiegeln",
+  "description": "Stark versiegelt (Hitzewert 1,00), nächste nutzbare Grünfläche 282 m entfernt. Pflaster raus, Beet rein: 10 m² auf einem Hof oder Parkplatz kühlen und lassen Regen versickern.",
+  "h3": "891faa02567ffff",
+  "lat": 49.182924,
+  "lng": 9.17769,
+  "reason": {
+   "rule": "Hitzewert ≥ 0,6 und keine Grünfläche im Umkreis von 150 m",
+   "evidence": {
+    "heat": 1.0,
+    "distToGreenM": 282
+   }
+  },
+  "source": "pipeline",
+  "category": "heat",
+  "effort": "afternoon",
+  "suitedFor": [
+   "resident",
+   "company",
+   "club"
+  ],
+  "urgency": 3,
+  "placeName": "Nähe Haltestelle Riedgrund"
+ },
+ {
+  "id": "unseal_10m2-891faa0257bffff",
+  "type": "unseal_10m2",
+  "title": "10 m² entsiegeln",
+  "description": "Stark versiegelt (Hitzewert 1,00), nächste nutzbare Grünfläche 230 m entfernt. Pflaster raus, Beet rein: 10 m² auf einem Hof oder Parkplatz kühlen und lassen Regen versickern.",
+  "h3": "891faa0257bffff",
+  "lat": 49.181997,
+  "lng": 9.168273,
+  "reason": {
+   "rule": "Hitzewert ≥ 0,6 und keine Grünfläche im Umkreis von 150 m",
+   "evidence": {
+    "heat": 1.0,
+    "distToGreenM": 230
+   }
+  },
+  "source": "pipeline",
+  "category": "heat",
+  "effort": "afternoon",
+  "suitedFor": [
+   "resident",
+   "company",
+   "club"
+  ],
+  "urgency": 3,
+  "placeName": "Nähe Haltestelle Wannenäcker"
+ },
+ {
+  "id": "unseal_10m2-891faa02ac7ffff",
+  "type": "unseal_10m2",
+  "title": "10 m² entsiegeln",
+  "description": "Stark versiegelt (Hitzewert 1,00), nächste nutzbare Grünfläche 190 m entfernt. Pflaster raus, Beet rein: 10 m² auf einem Hof oder Parkplatz kühlen und lassen Regen versickern.",
+  "h3": "891faa02ac7ffff",
+  "lat": 49.143171,
+  "lng": 9.218452,
+  "reason": {
+   "rule": "Hitzewert ≥ 0,6 und keine Grünfläche im Umkreis von 150 m",
+   "evidence": {
+    "heat": 1.0,
+    "distToGreenM": 190
+   }
+  },
+  "source": "pipeline",
+  "category": "heat",
+  "effort": "afternoon",
+  "suitedFor": [
+   "resident",
+   "company",
+   "club"
+  ],
+  "urgency": 2,
+  "placeName": "Nähe Haltestelle Harmonie/Hafenmarktpassage"
+ },
+ {
+  "id": "unseal_10m2-891faa02ccfffff",
+  "type": "unseal_10m2",
+  "title": "10 m² entsiegeln",
+  "description": "Stark versiegelt (Hitzewert 1,00), nächste nutzbare Grünfläche 410 m entfernt. Pflaster raus, Beet rein: 10 m² auf einem Hof oder Parkplatz kühlen und lassen Regen versickern.",
+  "h3": "891faa02ccfffff",
+  "lat": 49.175996,
+  "lng": 9.211935,
+  "reason": {
+   "rule": "Hitzewert ≥ 0,6 und keine Grünfläche im Umkreis von 150 m",
+   "evidence": {
+    "heat": 1.0,
+    "distToGreenM": 410
+   }
+  },
+  "source": "pipeline",
+  "category": "heat",
+  "effort": "afternoon",
+  "suitedFor": [
+   "resident",
+   "company",
+   "club"
+  ],
+  "urgency": 2
+ },
+ {
+  "id": "unseal_10m2-891faa02e67ffff",
+  "type": "unseal_10m2",
+  "title": "10 m² entsiegeln",
+  "description": "Stark versiegelt (Hitzewert 1,00), nächste nutzbare Grünfläche 284 m entfernt. Pflaster raus, Beet rein: 10 m² auf einem Hof oder Parkplatz kühlen und lassen Regen versickern.",
+  "h3": "891faa02e67ffff",
+  "lat": 49.15057,
+  "lng": 9.215138,
+  "reason": {
+   "rule": "Hitzewert ≥ 0,6 und keine Grünfläche im Umkreis von 150 m",
+   "evidence": {
+    "heat": 1.0,
+    "distToGreenM": 284
+   }
+  },
+  "source": "pipeline",
+  "category": "heat",
+  "effort": "afternoon",
+  "suitedFor": [
+   "resident",
+   "company",
+   "club"
+  ],
+  "urgency": 2,
+  "placeName": "Nähe Haltestelle Etzelstraße"
+ },
+ {
+  "id": "unseal_10m2-891faa0254fffff",
+  "type": "unseal_10m2",
+  "title": "10 m² entsiegeln",
+  "description": "Stark versiegelt (Hitzewert 1,00), nächste nutzbare Grünfläche 173 m entfernt. Pflaster raus, Beet rein: 10 m² auf einem Hof oder Parkplatz kühlen und lassen Regen versickern.",
+  "h3": "891faa0254fffff",
+  "lat": 49.181533,
+  "lng": 9.163565,
+  "reason": {
+   "rule": "Hitzewert ≥ 0,6 und keine Grünfläche im Umkreis von 150 m",
+   "evidence": {
+    "heat": 0.998,
+    "distToGreenM": 173
+   }
+  },
+  "source": "pipeline",
+  "category": "heat",
+  "effort": "afternoon",
+  "suitedFor": [
+   "resident",
+   "company",
+   "club"
+  ],
+  "urgency": 1,
+  "placeName": "Nähe Haltestelle Fa. Böpple"
+ },
+ {
+  "id": "unseal_10m2-891faa02a73ffff",
+  "type": "unseal_10m2",
+  "title": "10 m² entsiegeln",
+  "description": "Stark versiegelt (Hitzewert 1,00), nächste nutzbare Grünfläche 271 m entfernt. Pflaster raus, Beet rein: 10 m² auf einem Hof oder Parkplatz kühlen und lassen Regen versickern.",
+  "h3": "891faa02a73ffff",
+  "lat": 49.136233,
+  "lng": 9.226473,
+  "reason": {
+   "rule": "Hitzewert ≥ 0,6 und keine Grünfläche im Umkreis von 150 m",
+   "evidence": {
+    "heat": 0.996,
+    "distToGreenM": 271
+   }
+  },
+  "source": "pipeline",
+  "category": "heat",
+  "effort": "afternoon",
+  "suitedFor": [
+   "resident",
+   "company",
+   "club"
+  ],
+  "urgency": 1,
+  "placeName": "Nähe Haltestelle Silcherplatz Ost"
+ },
+ {
+  "id": "safer_bike_street-seg28813",
+  "type": "safer_bike_street",
+  "title": "Sicherer Radfahren: Theodor-Fischer-Straße",
+  "description": "100 % von 107 gemessenen Überholvorgängen waren enger als die erlaubten 150 cm (Schnitt 94 cm). Markierung, Tempo 30 oder ein Hinweisschild können hier helfen.",
+  "h3": "891faa02e6bffff",
+  "lat": 49.146721,
+  "lng": 9.209265,
+  "reason": {
+   "rule": "≥ 10 gemessene Überholvorgänge, ≥ 60 % unter 150 cm",
+   "evidence": {
+    "under150Pct": 100.0,
+    "overtakings": 107,
+    "avgCm": 94.3
+   }
+  },
+  "source": "pipeline",
+  "category": "mobility",
+  "effort": "project",
+  "suitedFor": [
+   "city",
+   "resident",
+   "club"
+  ],
+  "placeName": "Theodor-Fischer-Straße",
+  "urgency": 3
+ },
+ {
+  "id": "safer_bike_street-seg11992",
+  "type": "safer_bike_street",
+  "title": "Sicherer Radfahren: Haigernstraße",
+  "description": "100 % von 46 gemessenen Überholvorgängen waren enger als die erlaubten 150 cm (Schnitt 40 cm). Markierung, Tempo 30 oder ein Hinweisschild können hier helfen.",
+  "h3": "891faa02173ffff",
+  "lat": 49.168404,
+  "lng": 9.190686,
+  "reason": {
+   "rule": "≥ 10 gemessene Überholvorgänge, ≥ 60 % unter 150 cm",
+   "evidence": {
+    "under150Pct": 100.0,
+    "overtakings": 46,
+    "avgCm": 40.1
+   }
+  },
+  "source": "pipeline",
+  "category": "mobility",
+  "effort": "project",
+  "suitedFor": [
+   "city",
+   "resident",
+   "club"
+  ],
+  "placeName": "Haigernstraße",
+  "urgency": 3
+ },
+ {
+  "id": "safer_bike_street-seg14395",
+  "type": "safer_bike_street",
+  "title": "Sicherer Radfahren: Austraße",
+  "description": "100 % von 33 gemessenen Überholvorgängen waren enger als die erlaubten 150 cm (Schnitt 46 cm). Markierung, Tempo 30 oder ein Hinweisschild können hier helfen.",
+  "h3": "891faa02c7bffff",
+  "lat": 49.168775,
+  "lng": 9.219037,
+  "reason": {
+   "rule": "≥ 10 gemessene Überholvorgänge, ≥ 60 % unter 150 cm",
+   "evidence": {
+    "under150Pct": 100.0,
+    "overtakings": 33,
+    "avgCm": 45.6
+   }
+  },
+  "source": "pipeline",
+  "category": "mobility",
+  "effort": "project",
+  "suitedFor": [
+   "city",
+   "resident",
+   "club"
+  ],
+  "placeName": "Austraße",
+  "urgency": 3
+ },
+ {
+  "id": "safer_bike_street-seg21301",
+  "type": "safer_bike_street",
+  "title": "Sicherer Radfahren auf diesem Abschnitt",
+  "description": "100 % von 28 gemessenen Überholvorgängen waren enger als die erlaubten 150 cm (Schnitt 49 cm). Markierung, Tempo 30 oder ein Hinweisschild können hier helfen.",
+  "h3": "891faa02a8fffff",
+  "lat": 49.145774,
+  "lng": 9.225734,
+  "reason": {
+   "rule": "≥ 10 gemessene Überholvorgänge, ≥ 60 % unter 150 cm",
+   "evidence": {
+    "under150Pct": 100.0,
+    "overtakings": 28,
+    "avgCm": 49.4
+   }
+  },
+  "source": "pipeline",
+  "category": "mobility",
+  "effort": "project",
+  "suitedFor": [
+   "city",
+   "resident",
+   "club"
+  ],
+  "urgency": 2,
+  "placeName": "Nähe Haltestelle Berliner Platz Ost"
+ },
+ {
+  "id": "safer_bike_street-seg6240",
+  "type": "safer_bike_street",
+  "title": "Sicherer Radfahren: Kaiserstraße",
+  "description": "100 % von 26 gemessenen Überholvorgängen waren enger als die erlaubten 150 cm (Schnitt 87 cm). Markierung, Tempo 30 oder ein Hinweisschild können hier helfen.",
+  "h3": "891faa02a1bffff",
+  "lat": 49.141662,
+  "lng": 9.221439,
+  "reason": {
+   "rule": "≥ 10 gemessene Überholvorgänge, ≥ 60 % unter 150 cm",
+   "evidence": {
+    "under150Pct": 100.0,
+    "overtakings": 26,
+    "avgCm": 86.8
+   }
+  },
+  "source": "pipeline",
+  "category": "mobility",
+  "effort": "project",
+  "suitedFor": [
+   "city",
+   "resident",
+   "club"
+  ],
+  "placeName": "Kaiserstraße",
+  "urgency": 2
+ },
+ {
+  "id": "safer_bike_street-seg21303",
+  "type": "safer_bike_street",
+  "title": "Sicherer Radfahren auf diesem Abschnitt",
+  "description": "100 % von 25 gemessenen Überholvorgängen waren enger als die erlaubten 150 cm (Schnitt 50 cm). Markierung, Tempo 30 oder ein Hinweisschild können hier helfen.",
+  "h3": "891faa02a8fffff",
+  "lat": 49.145774,
+  "lng": 9.225734,
+  "reason": {
+   "rule": "≥ 10 gemessene Überholvorgänge, ≥ 60 % unter 150 cm",
+   "evidence": {
+    "under150Pct": 100.0,
+    "overtakings": 25,
+    "avgCm": 49.9
+   }
+  },
+  "source": "pipeline",
+  "category": "mobility",
+  "effort": "project",
+  "suitedFor": [
+   "city",
+   "resident",
+   "club"
+  ],
+  "urgency": 2,
+  "placeName": "Nähe Haltestelle Berliner Platz Ost"
+ },
+ {
+  "id": "safer_bike_street-seg19391",
+  "type": "safer_bike_street",
+  "title": "Sicherer Radfahren auf diesem Abschnitt",
+  "description": "100 % von 22 gemessenen Überholvorgängen waren enger als die erlaubten 150 cm (Schnitt 92 cm). Markierung, Tempo 30 oder ein Hinweisschild können hier helfen.",
+  "h3": "891faa02e97ffff",
+  "lat": 49.168051,
+  "lng": 9.204875,
+  "reason": {
+   "rule": "≥ 10 gemessene Überholvorgänge, ≥ 60 % unter 150 cm",
+   "evidence": {
+    "under150Pct": 100.0,
+    "overtakings": 22,
+    "avgCm": 91.8
+   }
+  },
+  "source": "pipeline",
+  "category": "mobility",
+  "effort": "project",
+  "suitedFor": [
+   "city",
+   "resident",
+   "club"
+  ],
+  "urgency": 1,
+  "placeName": "Nähe Haltestelle Leinbachstraße Süd"
+ },
+ {
+  "id": "safer_bike_street-seg32467",
+  "type": "safer_bike_street",
+  "title": "Sicherer Radfahren auf diesem Abschnitt",
+  "description": "100 % von 19 gemessenen Überholvorgängen waren enger als die erlaubten 150 cm (Schnitt 76 cm). Markierung, Tempo 30 oder ein Hinweisschild können hier helfen.",
+  "h3": "891faa0257bffff",
+  "lat": 49.182412,
+  "lng": 9.170134,
+  "reason": {
+   "rule": "≥ 10 gemessene Überholvorgänge, ≥ 60 % unter 150 cm",
+   "evidence": {
+    "under150Pct": 100.0,
+    "overtakings": 19,
+    "avgCm": 76
+   }
+  },
+  "source": "pipeline",
+  "category": "mobility",
+  "effort": "project",
+  "suitedFor": [
+   "city",
+   "resident",
+   "club"
+  ],
+  "urgency": 1,
+  "placeName": "Nähe Haltestelle Wannenäcker"
+ },
+ {
+  "id": "host_sensor-891faa02e23ffff",
+  "type": "host_sensor",
+  "title": "senseBox aufhängen",
+  "description": "Hier gibt es 4 empfindliche Orte (Schulen, Kitas, Pflegeheime, Spielplätze), aber die nächste Messstation ist 0,6 km entfernt. Eine senseBox am Fenster liefert echte Werte für die Nachbarschaft.",
+  "h3": "891faa02e23ffff",
+  "lat": 49.156118,
+  "lng": 9.219205,
+  "reason": {
+   "rule": "keine Messstation im Umkreis von 500 m, mindestens 2 empfindliche Orte",
+   "evidence": {
+    "sensitivePlaces": 4,
+    "stationDistM": 562,
+    "need": 0.886
+   }
+  },
+  "source": "pipeline",
+  "category": "other",
+  "effort": "hour",
+  "suitedFor": [
+   "resident",
+   "school",
+   "company"
+  ],
+  "urgency": 3,
+  "placeName": "Nähe Haltestelle Industrieplatz West"
+ },
+ {
+  "id": "host_sensor-891faa024bbffff",
+  "type": "host_sensor",
+  "title": "senseBox aufhängen",
+  "description": "Hier gibt es 2 empfindliche Orte (Schulen, Kitas, Pflegeheime, Spielplätze), aber die nächste Messstation ist 5,8 km entfernt. Eine senseBox am Fenster liefert echte Werte für die Nachbarschaft.",
+  "h3": "891faa024bbffff",
+  "lat": 49.192149,
+  "lng": 9.140767,
+  "reason": {
+   "rule": "keine Messstation im Umkreis von 500 m, mindestens 2 empfindliche Orte",
+   "evidence": {
+    "sensitivePlaces": 2,
+    "stationDistM": 5791,
+    "need": 0.868
+   }
+  },
+  "source": "pipeline",
+  "category": "other",
+  "effort": "hour",
+  "suitedFor": [
+   "resident",
+   "school",
+   "company"
+  ],
+  "urgency": 3,
+  "placeName": "Nähe Haltestelle Biberach Weirachstraße"
+ },
+ {
+  "id": "host_sensor-891faa001b7ffff",
+  "type": "host_sensor",
+  "title": "senseBox aufhängen",
+  "description": "Hier gibt es 2 empfindliche Orte (Schulen, Kitas, Pflegeheime, Spielplätze), aber die nächste Messstation ist 1,3 km entfernt. Eine senseBox am Fenster liefert echte Werte für die Nachbarschaft.",
+  "h3": "891faa001b7ffff",
+  "lat": 49.130684,
+  "lng": 9.222406,
+  "reason": {
+   "rule": "keine Messstation im Umkreis von 500 m, mindestens 2 empfindliche Orte",
+   "evidence": {
+    "sensitivePlaces": 2,
+    "stationDistM": 1312,
+    "need": 0.862
+   }
+  },
+  "source": "pipeline",
+  "category": "other",
+  "effort": "hour",
+  "suitedFor": [
+   "resident",
+   "school",
+   "company"
+  ],
+  "urgency": 3,
+  "placeName": "Nähe Haltestelle Schmidbergstraße West"
+ },
+ {
+  "id": "host_sensor-891faa02a43ffff",
+  "type": "host_sensor",
+  "title": "senseBox aufhängen",
+  "description": "Hier gibt es 4 empfindliche Orte (Schulen, Kitas, Pflegeheime, Spielplätze), aber die nächste Messstation ist 0,9 km entfernt. Eine senseBox am Fenster liefert echte Werte für die Nachbarschaft.",
+  "h3": "891faa02a43ffff",
+  "lat": 49.13531,
+  "lng": 9.217059,
+  "reason": {
+   "rule": "keine Messstation im Umkreis von 500 m, mindestens 2 empfindliche Orte",
+   "evidence": {
+    "sensitivePlaces": 4,
+    "stationDistM": 874,
+    "need": 0.851
+   }
+  },
+  "source": "pipeline",
+  "category": "other",
+  "effort": "hour",
+  "suitedFor": [
+   "resident",
+   "school",
+   "company"
+  ],
+  "urgency": 2,
+  "placeName": "Nähe Haltestelle Südstraße West"
+ },
+ {
+  "id": "host_sensor-891faa001cfffff",
+  "type": "host_sensor",
+  "title": "senseBox aufhängen",
+  "description": "Hier gibt es 2 empfindliche Orte (Schulen, Kitas, Pflegeheime, Spielplätze), aber die nächste Messstation ist 0,7 km entfernt. Eine senseBox am Fenster liefert echte Werte für die Nachbarschaft.",
+  "h3": "891faa001cfffff",
+  "lat": 49.120974,
+  "lng": 9.20219,
+  "reason": {
+   "rule": "keine Messstation im Umkreis von 500 m, mindestens 2 empfindliche Orte",
+   "evidence": {
+    "sensitivePlaces": 2,
+    "stationDistM": 749,
+    "need": 0.847
+   }
+  },
+  "source": "pipeline",
+  "category": "other",
+  "effort": "hour",
+  "suitedFor": [
+   "resident",
+   "school",
+   "company"
+  ],
+  "urgency": 2,
+  "placeName": "Nähe Haltestelle Raidweg"
+ },
+ {
+  "id": "host_sensor-891faa02a7bffff",
+  "type": "host_sensor",
+  "title": "senseBox aufhängen",
+  "description": "Hier gibt es 3 empfindliche Orte (Schulen, Kitas, Pflegeheime, Spielplätze), aber die nächste Messstation ist 1,0 km entfernt. Eine senseBox am Fenster liefert echte Werte für die Nachbarschaft.",
+  "h3": "891faa02a7bffff",
+  "lat": 49.133458,
+  "lng": 9.224439,
+  "reason": {
+   "rule": "keine Messstation im Umkreis von 500 m, mindestens 2 empfindliche Orte",
+   "evidence": {
+    "sensitivePlaces": 3,
+    "stationDistM": 1009,
+    "need": 0.836
+   }
+  },
+  "source": "pipeline",
+  "category": "other",
+  "effort": "hour",
+  "suitedFor": [
+   "resident",
+   "school",
+   "company"
+  ],
+  "urgency": 2,
+  "placeName": "Nähe Haltestelle Silcherplatz West"
+ },
+ {
+  "id": "host_sensor-891faa024b7ffff",
+  "type": "host_sensor",
+  "title": "senseBox aufhängen",
+  "description": "Hier gibt es 2 empfindliche Orte (Schulen, Kitas, Pflegeheime, Spielplätze), aber die nächste Messstation ist 6,3 km entfernt. Eine senseBox am Fenster liefert echte Werte für die Nachbarschaft.",
+  "h3": "891faa024b7ffff",
+  "lat": 49.195387,
+  "lng": 9.147507,
+  "reason": {
+   "rule": "keine Messstation im Umkreis von 500 m, mindestens 2 empfindliche Orte",
+   "evidence": {
+    "sensitivePlaces": 2,
+    "stationDistM": 6319,
+    "need": 0.801
+   }
+  },
+  "source": "pipeline",
+  "category": "other",
+  "effort": "hour",
+  "suitedFor": [
+   "resident",
+   "school",
+   "company"
+  ],
+  "urgency": 1,
+  "placeName": "Nähe Haltestelle Biberach Hahnenäckerstraße"
+ },
+ {
+  "id": "host_sensor-891faa02a33ffff",
+  "type": "host_sensor",
+  "title": "senseBox aufhängen",
+  "description": "Hier gibt es 3 empfindliche Orte (Schulen, Kitas, Pflegeheime, Spielplätze), aber die nächste Messstation ist 0,5 km entfernt. Eine senseBox am Fenster liefert echte Werte für die Nachbarschaft.",
+  "h3": "891faa02a33ffff",
+  "lat": 49.142242,
+  "lng": 9.235248,
+  "reason": {
+   "rule": "keine Messstation im Umkreis von 500 m, mindestens 2 empfindliche Orte",
+   "evidence": {
+    "sensitivePlaces": 3,
+    "stationDistM": 531,
+    "need": 0.801
+   }
+  },
+  "source": "pipeline",
+  "category": "other",
+  "effort": "hour",
+  "suitedFor": [
+   "resident",
+   "school",
+   "company"
+  ],
+  "urgency": 1,
+  "placeName": "Nähe Haltestelle Finanzamt"
+ }
+]
