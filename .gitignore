@@ -6,6 +6,8 @@
 # Raw downloads are cached locally only; commit data/processed
 data/raw/*
 !data/raw/.gitkeep
+# Copied from data/processed by `npm run sync-data` (A7)
+web/public/data/
 
 # Python
 .venv/
