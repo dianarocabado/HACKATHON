@@ -17,12 +17,13 @@ No Vercel or Supabase: the app runs on one laptop with the in-memory store.
    ```
 3. In a second terminal, load the demo reports:
    ```
-   npm run demo:seed    # resets, then adds 20 seeded reports (~2 s)
+   npm run demo:seed    # resets, then adds 22 seeded reports (~2 s)
    ```
 4. Between rehearsals: `npm run demo:seed` again (it resets first), or `npm run demo:reset` for an empty start.
 
 ## What the seed contains
-- 20 voice reports at real Heilbronn places, in German, Swabian and English, spread over the last ~2 days. All carry `seeded: true`.
+- 22 voice reports at real Heilbronn places, in German, Swabian and English, spread over the last ~2 days. All carry `seeded: true`.
+- Each of the three demo places in `demo-places.md` (Etzelstraße, Harmonie, Theodor-Heuss-Gymnasium) has exactly one earlier report at its exact coordinates. The live report on stage is the second in that hexagon, so it does not trigger a report mission by surprise. Real senseBoxes are within 80 m of all three places (OpenSpace, Innenstadt, Schulgarten), so the sensor check can answer live.
 - They go through the normal pipeline: keyword/LLM structuring, a **live** sensor check against openSenseMap, and H3. Sensor results reflect today's real values.
 - Three noise reports at the Allee form a cluster, so the "Meldungen prüfen: Lärm" mission (A12) appears. It is `simulated: true` because it depends on seeded reports.
 

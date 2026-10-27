@@ -13,8 +13,11 @@ export const DEMO_REPORTS: DemoReport[] = [
   { transcript: "Nachts ist der Lärm an der Allee so laut, dass ich nicht schlafen kann.", lat: 49.1440, lng: 9.2220, placeName: "Allee", minutesAgo: 2600 },
   { transcript: "Hier ist es abends extrem laut, ständig Krach und Hupen.", lat: 49.1441, lng: 9.2221, placeName: "Allee", minutesAgo: 1500 },
   { transcript: "Do isch's jede Nacht so laut, mr ka net schlofa.", lat: 49.1439, lng: 9.2219, placeName: "Allee", minutesAgo: 90 },
+  // Demo places (demo-places.md): one earlier report each, so the live report on stage is the second, not a duplicate
+  { transcript: "An der Haltestelle Harmonie gibt es keinen Schatten, mittags ist es unerträglich heiß.", lat: 49.14229, lng: 9.22227, placeName: "Harmonie/Hafenmarktpassage", minutesAgo: 2400 },
+  { transcript: "Auf dem Pausenhof vom Theodor-Heuss-Gymnasium wird es im Sommer brutal heiß, es gibt kaum Schatten.", lat: 49.14256, lng: 9.22696, placeName: "Theodor-Heuss-Gymnasium", minutesAgo: 1400 },
+  { transcript: "Rund um die Haltestelle Etzelstraße wächst nichts, für Bienen und Schmetterlinge gibt es hier keine Blüten.", lat: 49.151351, lng: 9.21565, placeName: "Etzelstraße", minutesAgo: 800 },
   // Heat around the centre
-  { transcript: "An der Haltestelle Harmonie gibt es keinen Schatten, mittags ist es unerträglich heiß.", lat: 49.1453, lng: 9.2216, placeName: "Harmonie", minutesAgo: 2400 },
   { transcript: "Bei dr Haltestell an dr Kilianskirch gibt's koin Schadde, des isch saumäßig hoiß.", lat: 49.1424, lng: 9.2196, placeName: "Kilianskirche", minutesAgo: 1900 },
   { transcript: "Auf dem Marktplatz staut sich nachmittags die Hitze, kein einziger Baum spendet Schatten.", lat: 49.1427, lng: 9.2186, placeName: "Marktplatz", minutesAgo: 1300 },
   { transcript: "Im Schulhof am Bildungscampus schwitzen die Kinder in der Pause, alles ist asphaltiert.", lat: 49.1481, lng: 9.2122, placeName: "Bildungscampus", minutesAgo: 1100 },
