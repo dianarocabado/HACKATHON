@@ -41,6 +41,7 @@ def data(**overrides):
         "segments": [{"coords": [[LNG - 0.001, LAT], [LNG + 0.001, LAT]], "n": 10, "under150Pct": 60.0}],
         "danger_zones": [{"lat": LAT, "lng": LNG, "risk": 0.8}],
         "danger_pm_hex": {CELL: {"risk": 0.4, "n": 5}},
+        "heat_walk": {},
     }
     d.update(overrides)
     return d
@@ -82,6 +83,14 @@ def test_indoor_stations_are_ignored():
     stations = [{"id": "in", "lat": LAT, "lng": LNG}, {"id": "out", "lat": LAT, "lng": LNG}]
     profiles = station_profiles(stations, {"in": history(1) * 20, "out": history(10) * 20})
     assert [p["id"] for p in profiles] == ["out"]
+
+
+def test_heat_walk_measurement_blends_into_heat():
+    cells = cells_by_id(build(data(heat_walk={NEIGHBOUR: {"anomalyC": 1.0, "n": 50, "recordings": 2}})))
+    park = cells[NEIGHBOUR]
+    assert park["facts"]["heatWalkAnomalyC"] == 1.0
+    assert park["scores"]["heat"] == 0.5  # 0.5 * proxy 0.0 + 0.5 * (0.5 + 1.0 / 2)
+    assert "heatWalkAnomalyC" not in cells[CELL]["facts"]
 
 
 def test_open_farmland_does_not_lack_green():
