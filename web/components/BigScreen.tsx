@@ -6,6 +6,7 @@ import type { LayersFile, MissionWithState, Report } from '@contracts/types';
 import { api } from '@/lib/client/api';
 import { CATEGORY } from '@/lib/client/missions';
 import type { MapMarker } from './HexMap';
+import { useLang } from './LangProvider';
 import Legend from './Legend';
 import QrCode from './QrCode';
 
@@ -16,6 +17,7 @@ const POLL_MISSIONS_MS = 15000;
 const FRESH_MS = 60_000;
 
 export default function BigScreen() {
+  const { t } = useLang();
   const [layers, setLayers] = useState<LayersFile | null>(null);
   const [reports, setReports] = useState<Report[]>([]);
   const [missions, setMissions] = useState<MissionWithState[]>([]);
@@ -67,8 +69,8 @@ export default function BigScreen() {
   return (
     <div className="flex h-dvh w-full overflow-hidden" style={{ background: 'var(--bg)' }}>
       <div className="relative min-w-0 flex-1">
-        {layers && <HexMap data={layers} layer="need" markers={markers} zoom={13.5} controls={false} />}
-        <div className="absolute bottom-0 left-0 p-6 pb-10"><Legend title="Bedarf" /></div>
+        {layers && <HexMap data={layers} layer="need" markers={markers} zoom={13.5} controls={false} label={t('map.aria')} />}
+        <div className="absolute bottom-0 left-0 p-6 pb-10"><Legend title={t('layer.need')} /></div>
       </div>
 
       <aside className="flex w-[22rem] shrink-0 flex-col gap-6 border-l p-6" style={{ background: 'var(--surface)', borderColor: 'var(--border)' }}>
@@ -76,8 +78,8 @@ export default function BigScreen() {
 
         <dl className="grid grid-cols-2 gap-4">
           {[
-            ['Meldungen', reports.length],
-            ['Missionen aktiv', active],
+            [t('screen.reports'), reports.length],
+            [t('screen.activeMissions'), active],
           ].map(([label, value]) => (
             <div key={label} className="rounded-2xl border p-4" style={{ borderColor: 'var(--border)' }}>
               <dd className="text-[2.5rem] font-bold leading-none tabular-nums">{value}</dd>
@@ -87,7 +89,7 @@ export default function BigScreen() {
         </dl>
 
         <section aria-live="polite" className="min-h-0 flex-1 overflow-hidden">
-          <h2 className="mb-2 font-semibold">Neueste Meldungen</h2>
+          <h2 className="mb-2 font-semibold">{t('screen.latest')}</h2>
           <ul className="space-y-3">
             {latest.map((r) => (
               <li key={r.id} className="flex gap-2">
@@ -100,8 +102,8 @@ export default function BigScreen() {
 
         {origin && (
           <div className="flex flex-col items-center gap-2 text-center">
-            <QrCode value={reportUrl} size={200} label="QR-Code: jetzt melden" />
-            <p className="text-lg font-semibold">Scannen und mitmachen!</p>
+            <QrCode value={reportUrl} size={200} label={t('screen.qr')} />
+            <p className="text-lg font-semibold">{t('screen.scan')}</p>
             <p className="text-[0.8125rem]" style={{ color: 'var(--muted)' }}>{reportUrl.replace(/^https?:\/\//, '')}</p>
           </div>
         )}

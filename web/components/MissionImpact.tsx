@@ -1,28 +1,31 @@
+'use client';
 import type { ImpactResult } from '@contracts/types';
 import { effectSentence, fmt, metricUnit, signedFmt } from '@/lib/client/impact';
 import { SimBadge } from './Badges';
+import { useLang } from './LangProvider';
 
 /** Before/after for one finished mission: the place vs. the whole city, as a small table. */
 export default function MissionImpact({ impact }: { impact: ImpactResult }) {
+  const { t } = useLang();
   const unit = metricUnit(impact.metric);
   const rows = [
-    { label: 'Hier', before: impact.before, after: impact.after },
-    { label: 'Ganze Stadt', before: impact.cityBefore, after: impact.cityAfter },
+    { label: t('missionImpact.here'), before: impact.before, after: impact.after },
+    { label: t('missionImpact.city'), before: impact.cityBefore, after: impact.cityAfter },
   ];
   const cell = (v?: number) => (v == null ? '–' : `${fmt(v)}\u00a0${unit}`);
   return (
     <section className="rounded-2xl border p-4" style={{ background: 'var(--surface)', borderColor: 'var(--border)' }}>
       <div className="mb-2 flex items-center gap-2">
-        <h2 className="font-semibold">Hat es etwas gebracht?</h2>
+        <h2 className="font-semibold">{t('missionImpact.title')}</h2>
         {impact.simulated && <SimBadge />}
       </div>
       <table className="w-full text-[0.9375rem] tabular-nums">
         <thead>
           <tr className="text-left text-[0.8125rem]" style={{ color: 'var(--muted)' }}>
-            <th className="font-normal" scope="col"><span className="sr-only">Ort</span></th>
-            <th className="font-normal" scope="col">Vorher</th>
-            <th className="font-normal" scope="col">Nachher</th>
-            <th className="font-normal" scope="col">Änderung</th>
+            <th className="font-normal" scope="col"><span className="sr-only">{t('missionImpact.place')}</span></th>
+            <th className="font-normal" scope="col">{t('missionImpact.before')}</th>
+            <th className="font-normal" scope="col">{t('missionImpact.after')}</th>
+            <th className="font-normal" scope="col">{t('missionImpact.change')}</th>
           </tr>
         </thead>
         <tbody>
@@ -38,7 +41,7 @@ export default function MissionImpact({ impact }: { impact: ImpactResult }) {
       </table>
       <p className="mt-3">{effectSentence(impact)}</p>
       <p className="mt-1 text-[0.8125rem]" style={{ color: 'var(--muted)' }}>
-        Gemessen am Sensor „{impact.stationId}“, verglichen mit allen Sensoren der Stadt.
+        {t('missionImpact.measured', { id: impact.stationId })}
       </p>
     </section>
   );

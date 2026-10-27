@@ -8,10 +8,12 @@ import { findDemoPlace } from '@/lib/client/places';
 import { placeFromGps, placeFromParams, type Place } from '@/lib/client/report';
 import { useSpeech } from '@/lib/client/speech';
 import ReportResult from './ReportResult';
+import { useLang } from './LangProvider';
 
 const MAX_CHARS = 1000; // matches the API limit
 
 export default function ReportFlow() {
+  const { t } = useLang();
   const params = useSearchParams();
   const speech = useSpeech('de-DE');
   const [place, setPlace] = useState<Place | null>(() => placeFromParams(params));
@@ -53,7 +55,7 @@ export default function ReportFlow() {
 
   return (
     <div className="mx-auto flex w-full max-w-xl flex-col gap-4 px-4 py-4">
-      <h1 className="text-2xl font-semibold">Was fällt dir auf?</h1>
+      <h1 className="text-2xl font-semibold">{t('report.title')}</h1>
 
       <div className="flex flex-col items-center gap-2 py-2">
         <button
@@ -61,38 +63,36 @@ export default function ReportFlow() {
           onClick={speech.listening ? speech.stop : speech.start}
           disabled={!speech.supported}
           aria-pressed={speech.listening}
-          aria-label={speech.listening ? 'Aufnahme stoppen' : 'Aufnahme starten'}
+          aria-label={t(speech.listening ? 'report.stop' : 'report.start')}
           className={`flex h-[72px] w-[72px] items-center justify-center rounded-full text-3xl shadow-md disabled:opacity-40 ${speech.listening ? 'animate-pulse' : ''}`}
           style={{ background: speech.listening ? 'var(--warn)' : 'var(--brand)', color: 'var(--brand-ink)' }}
         >
           <span aria-hidden>{speech.listening ? '■' : '🎤'}</span>
         </button>
         <p className="text-[0.8125rem]" style={{ color: 'var(--muted)' }} aria-live="polite">
-          {speech.listening ? 'Ich höre zu … tippe zum Beenden.'
-            : micBroken ? 'Spracheingabe geht hier gerade nicht. Schreib es einfach auf.'
-            : 'Tippe aufs Mikro und erzähl, was dir auffällt.'}
+          {t(speech.listening ? 'report.listening' : micBroken ? 'report.noMic' : 'report.tapMic')}
         </p>
       </div>
 
       <label className="flex flex-col gap-1">
-        <span className="text-[0.8125rem]" style={{ color: 'var(--muted)' }}>Deine Meldung</span>
+        <span className="text-[0.8125rem]" style={{ color: 'var(--muted)' }}>{t('report.yours')}</span>
         <textarea
           value={text}
           readOnly={speech.listening}
           onChange={(e) => speech.setFinalText(e.target.value.slice(0, MAX_CHARS))}
           rows={4}
-          placeholder={`z. B. „${demo?.example ?? 'An der Haltestelle ist es mittags total heiß, kein Schatten.'}“`}
+          placeholder={t('report.example', { text: demo?.example ?? t('report.defaultExample') })}
           className="rounded-xl border p-3"
           style={{ background: 'var(--surface)', borderColor: 'var(--border)' }}
         />
       </label>
 
-      <section aria-label="Ort" className="flex flex-col gap-2">
-        <span className="text-[0.8125rem]" style={{ color: 'var(--muted)' }}>Wo?</span>
+      <section aria-label={t('report.place')} className="flex flex-col gap-2">
+        <span className="text-[0.8125rem]" style={{ color: 'var(--muted)' }}>{t('report.where')}</span>
         {place ? (
           <div className="flex items-center justify-between rounded-xl border px-3 py-2" style={{ borderColor: 'var(--border)' }}>
             <span>📍 {place.label}</span>
-            <button type="button" onClick={() => setPlace(null)} className="min-h-11 px-2 underline" style={{ color: 'var(--brand)' }}>ändern</button>
+            <button type="button" onClick={() => setPlace(null)} className="min-h-11 px-2 underline" style={{ color: 'var(--brand)' }}>{t('report.change')}</button>
           </div>
         ) : (
           <>
@@ -103,14 +103,14 @@ export default function ReportFlow() {
               className="min-h-11 rounded-xl border px-3 font-medium disabled:opacity-50"
               style={{ borderColor: 'var(--brand)', color: 'var(--brand)' }}
             >
-              {gpsState === 'busy' ? 'Suche Standort …' : '📍 Meinen Standort verwenden'}
+              {t(gpsState === 'busy' ? 'report.locating' : 'report.useGps')}
             </button>
-            {gpsState === 'failed' && <p className="text-[0.8125rem]">Standort nicht verfügbar. Beschreib den Ort einfach:</p>}
+            {gpsState === 'failed' && <p className="text-[0.8125rem]">{t('report.gpsFailed')}</p>}
             <input
               value={placeName}
               onChange={(e) => setPlaceName(e.target.value.slice(0, 100))}
-              placeholder="oder Ort beschreiben, z. B. „Kiliansplatz“"
-              aria-label="Ort beschreiben"
+              placeholder={t('report.placeHint')}
+              aria-label={t('report.describePlace')}
               className="min-h-11 rounded-xl border px-3"
               style={{ background: 'var(--surface)', borderColor: 'var(--border)' }}
             />
@@ -125,9 +125,9 @@ export default function ReportFlow() {
         className="min-h-12 rounded-xl font-semibold disabled:opacity-50"
         style={{ background: 'var(--brand)', color: 'var(--brand-ink)' }}
       >
-        {sending ? 'Wird gesendet …' : 'Meldung senden'}
+        {t(sending ? 'report.sending' : 'report.send')}
       </button>
-      {sendError && <p role="alert">Senden hat nicht geklappt. Deine Meldung ist noch da – bitte nochmal versuchen.</p>}
+      {sendError && <p role="alert">{t('report.sendError')}</p>}
     </div>
   );
 }

@@ -10,10 +10,12 @@ import HexPanel from './HexPanel';
 import LayerToggle from './LayerToggle';
 import Legend from './Legend';
 import Welcome, { WELCOME_KEY } from './Welcome';
+import { useLang } from './LangProvider';
 
 const HexMap = dynamic(() => import('./HexMap'), { ssr: false });
 
 export default function MapView() {
+  const { t } = useLang();
   const [data, setData] = useState<LayersFile | null>(null);
   const [error, setError] = useState(false);
   const [layer, setLayer] = useState<MapLayer>('need');
@@ -34,7 +36,7 @@ export default function MapView() {
   const medians = useMemo(() => cityMedians(data?.cells ?? []), [data]);
   const cell = useMemo(() => data?.cells.find((c) => c.h3 === selected) ?? null, [data, selected]);
 
-  const label = MAP_LAYERS.find((l) => l.id === layer)!.label;
+  const label = t(MAP_LAYERS.find((l) => l.id === layer)!.label);
 
   // Intro shows once per browser; storage can be blocked (private mode), then it simply shows again next time.
   const [welcome, setWelcome] = useState(false);
@@ -52,20 +54,20 @@ export default function MapView() {
 
   return (
     <div className="relative min-h-0 flex-1">
-      {data && <HexMap data={data} layer={layer} selected={selected} onSelect={setSelected} />}
+      {data && <HexMap data={data} layer={layer} selected={selected} onSelect={setSelected} label={t('map.aria')} />}
 
       {!data && !error && (
         <div className="absolute inset-0 animate-pulse" style={{ background: 'var(--border)' }} aria-busy />
       )}
       {error && (
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-4 text-center">
-          <p>Die Karte lädt gerade nicht.</p>
+          <p>{t('map.loadError')}</p>
           <button
             onClick={retry}
             className="min-h-11 rounded-xl px-4"
             style={{ background: 'var(--brand)', color: 'var(--brand-ink)' }}
           >
-            Nochmal versuchen
+            {t('common.retry')}
           </button>
         </div>
       )}
@@ -81,7 +83,7 @@ export default function MapView() {
         <div className="pointer-events-auto flex flex-col items-start gap-2">
           <button
             onClick={() => setWelcome(true)}
-            aria-label="Wie funktioniert's?"
+            aria-label={t('map.help')}
             className="flex h-11 w-11 items-center justify-center rounded-full border text-lg font-semibold shadow-sm"
             style={{ background: 'var(--surface)', borderColor: 'var(--border)' }}
           >

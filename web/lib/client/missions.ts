@@ -1,37 +1,38 @@
-// Labels, filters and "why this mission" sentences for the missions UI.
+// Label keys (see i18n.ts), filters and "why this mission" phrases for the missions UI.
 import type { Category, Mission, MissionStatus, MissionWithState } from '@contracts/types';
+import type { MessageKey } from './i18n';
 
-export const CATEGORY: Record<Category, { label: string; icon: string; colour: string }> = {
-  heat: { label: 'Hitze', icon: '☀️', colour: '#E8702A' },
-  air: { label: 'Luft', icon: '💨', colour: '#6172F3' },
-  noise: { label: 'Lärm', icon: '🔊', colour: '#9E77ED' },
-  water: { label: 'Wasser', icon: '💧', colour: '#2E90FA' },
-  biodiversity: { label: 'Natur', icon: '🐝', colour: '#1F7A4D' },
-  waste: { label: 'Müll', icon: '🗑️', colour: '#7A5C3E' },
-  mobility: { label: 'Verkehr', icon: '🚲', colour: '#DD2590' },
-  other: { label: 'Sonstiges', icon: '📍', colour: '#5F675F' },
+export const CATEGORY: Record<Category, { label: MessageKey; icon: string; colour: string }> = {
+  heat: { label: 'cat.heat', icon: '☀️', colour: '#E8702A' },
+  air: { label: 'cat.air', icon: '💨', colour: '#6172F3' },
+  noise: { label: 'cat.noise', icon: '🔊', colour: '#9E77ED' },
+  water: { label: 'cat.water', icon: '💧', colour: '#2E90FA' },
+  biodiversity: { label: 'cat.biodiversity', icon: '🐝', colour: '#1F7A4D' },
+  waste: { label: 'cat.waste', icon: '🗑️', colour: '#7A5C3E' },
+  mobility: { label: 'cat.mobility', icon: '🚲', colour: '#DD2590' },
+  other: { label: 'cat.other', icon: '📍', colour: '#5F675F' },
 };
 
-export const EFFORT: Record<Mission['effort'], string> = {
-  hour: '1 Stunde',
-  afternoon: 'Ein Nachmittag',
-  project: 'Projekt',
+export const EFFORT: Record<Mission['effort'], MessageKey> = {
+  hour: 'effort.hour',
+  afternoon: 'effort.afternoon',
+  project: 'effort.project',
 };
 
 export type Who = Mission['suitedFor'][number];
-export const WHO: Record<Who, string> = {
-  resident: 'Anwohnende',
-  school: 'Schulen',
-  company: 'Firmen',
-  club: 'Vereine',
-  city: 'Stadt',
+export const WHO: Record<Who, MessageKey> = {
+  resident: 'who.resident',
+  school: 'who.school',
+  company: 'who.company',
+  club: 'who.club',
+  city: 'who.city',
 };
 
-export const STATUS: Record<MissionStatus, string> = {
-  open: 'Offen',
-  claimed: 'Übernommen',
-  done: 'Erledigt',
-  verified: 'Bestätigt',
+export const STATUS: Record<MissionStatus, MessageKey> = {
+  open: 'status.open',
+  claimed: 'status.claimed',
+  done: 'status.done',
+  verified: 'status.verified',
 };
 
 export interface MissionFilter { category?: Category; who?: Who; effort?: Mission['effort'] }

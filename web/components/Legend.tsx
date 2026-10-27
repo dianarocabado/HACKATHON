@@ -1,6 +1,9 @@
-import { NEED_STEPS, NO_DATA_LABEL } from '@/lib/client/scale';
+'use client';
+import { NEED_STEPS } from '@/lib/client/scale';
+import { useLang } from './LangProvider';
 
 export default function Legend({ title }: { title: string }) {
+  const { t } = useLang();
   return (
     <div
       className="rounded-2xl border px-3 py-2 text-[0.8125rem] shadow-sm"
@@ -8,11 +11,11 @@ export default function Legend({ title }: { title: string }) {
     >
       <div className="mb-1 font-medium" style={{ color: 'var(--text)' }}>{title}</div>
       <div className="flex items-center gap-2">
-        <span>niedrig</span>
+        <span>{t('legend.low')}</span>
         <div className="flex" aria-hidden>
           {NEED_STEPS.map((c) => <span key={c} className="h-3 w-5" style={{ background: c }} />)}
         </div>
-        <span>hoch</span>
+        <span>{t('legend.high')}</span>
         <span
           aria-hidden
           className="ml-2 h-3 w-5 border"
@@ -21,7 +24,7 @@ export default function Legend({ title }: { title: string }) {
             backgroundImage: 'repeating-linear-gradient(135deg, rgba(95,103,95,.3) 0 1.5px, transparent 1.5px 6px)',
           }}
         />
-        <span>{NO_DATA_LABEL}</span>
+        <span>{t('legend.noData')}</span>
       </div>
     </div>
   );

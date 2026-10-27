@@ -54,7 +54,7 @@ function hatchImage(): ImageData {
 export interface MapMarker { id: string; lat: number; lng: number; colour: string; fresh?: boolean; label?: string }
 
 export default function HexMap({
-  data, layer, selected, onSelect, markers, zoom = 13, controls = true,
+  data, layer, selected, onSelect, markers, zoom = 13, controls = true, label,
 }: {
   data: LayersFile;
   layer: MapLayer;
@@ -63,6 +63,7 @@ export default function HexMap({
   markers?: MapMarker[];
   zoom?: number;
   controls?: boolean;
+  label?: string;
 }) {
   const container = useRef<HTMLDivElement>(null);
   const map = useRef<MapLibre | null>(null);
@@ -161,7 +162,7 @@ export default function HexMap({
   // MapLibre's CSS sets position: relative on the container, so the absolute positioning lives on a wrapper.
   return (
     <div className="absolute inset-0">
-      <div ref={container} className="h-full w-full" aria-label="Karte von Heilbronn mit Bedarfs-Hexagonen" />
+      <div ref={container} className="h-full w-full" aria-label={label} />
     </div>
   );
 }

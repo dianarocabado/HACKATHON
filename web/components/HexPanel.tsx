@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import type { HexCell, MissionWithState, Station } from '@contracts/types';
 import { describeCell, type cityMedians } from '@/lib/client/facts';
+import { useLang } from './LangProvider';
 
 const MAX_FACTS = 4;
 
@@ -15,20 +16,21 @@ export default function HexPanel({
   missions: MissionWithState[];
   onClose: () => void;
 }) {
+  const { t } = useLang();
   const facts = describeCell(cell, medians, stations).slice(0, MAX_FACTS);
   const here = missions.filter((m) => m.h3 === cell.h3);
 
   return (
     <section
-      aria-label="Details zu diesem Ort"
+      aria-label={t('panel.aria')}
       className="absolute inset-x-0 bottom-0 z-10 max-h-[60%] overflow-y-auto rounded-t-2xl border px-4 pt-4 shadow-lg md:inset-x-auto md:right-4 md:top-20 md:bottom-auto md:max-h-[calc(100%-7rem)] md:w-96 md:rounded-2xl"
       style={{ background: 'var(--surface)', borderColor: 'var(--border)' }}
     >
       <div className="mb-3 flex items-start justify-between gap-2">
-        <h2 className="text-lg font-semibold">Dieser Ort</h2>
+        <h2 className="text-lg font-semibold">{t('panel.title')}</h2>
         <button
           onClick={onClose}
-          aria-label="Schließen"
+          aria-label={t('common.close')}
           className="-mr-2 -mt-2 flex h-11 w-11 items-center justify-center rounded-xl text-xl"
           style={{ color: 'var(--muted)' }}
         >
@@ -41,17 +43,17 @@ export default function HexPanel({
           {facts.map((f) => (
             <li key={f.key}>
               <p>{f.text}</p>
-              <p className="text-[0.8125rem]" style={{ color: 'var(--muted)' }}>Quelle: {f.source}</p>
+              <p className="text-[0.8125rem]" style={{ color: 'var(--muted)' }}>{t('common.source')}: {f.source}</p>
             </li>
           ))}
         </ul>
       ) : (
-        <p style={{ color: 'var(--muted)' }}>Für diesen Ort haben wir noch keine Daten.</p>
+        <p style={{ color: 'var(--muted)' }}>{t('panel.noData')}</p>
       )}
 
       {here.length > 0 && (
         <div className="mt-4">
-          <h3 className="mb-2 font-medium">Missionen hier</h3>
+          <h3 className="mb-2 font-medium">{t('panel.missions')}</h3>
           <ul className="space-y-2">
             {here.map((m) => (
               <li key={m.id}>
@@ -75,7 +77,7 @@ export default function HexPanel({
           className="flex min-h-11 items-center justify-center rounded-xl font-medium"
           style={{ background: 'var(--brand)', color: 'var(--brand-ink)' }}
         >
-          Hier etwas melden
+          {t('panel.report')}
         </Link>
       </div>
     </section>

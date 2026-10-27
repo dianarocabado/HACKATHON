@@ -1,9 +1,11 @@
 'use client';
 import { MAP_LAYERS, type MapLayer } from '@/lib/client/scale';
+import { useLang } from './LangProvider';
 
 export default function LayerToggle({ value, onChange }: { value: MapLayer; onChange: (l: MapLayer) => void }) {
+  const { t } = useLang();
   return (
-    <div role="radiogroup" aria-label="Kartenebene" className="flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none]">
+    <div role="radiogroup" aria-label={t('map.layers')} className="flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none]">
       {MAP_LAYERS.map((l) => {
         const active = l.id === value;
         return (
@@ -19,7 +21,7 @@ export default function LayerToggle({ value, onChange }: { value: MapLayer; onCh
               borderColor: active ? 'var(--brand)' : 'var(--border)',
             }}
           >
-            {l.label}
+            {t(l.label)}
           </button>
         );
       })}
