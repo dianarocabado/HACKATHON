@@ -11,6 +11,21 @@ export function placeFromH3(h3: string | null, label?: string | null): Place | n
   return { lat, lng, label: label || 'Gewählter Ort', source: 'qr' };
 }
 
+/**
+ * Location from the page URL: `?lat=&lng=&place=` (QR posters, demo-places.md) or `?h3=&place=` (map panel).
+ * Out-of-range or non-numeric coordinates are ignored.
+ */
+export function placeFromParams(params: { get(key: string): string | null }): Place | null {
+  const label = params.get('place');
+  const lat = Number(params.get('lat'));
+  const lng = Number(params.get('lng'));
+  if (params.get('lat') && params.get('lng') && Number.isFinite(lat) && Number.isFinite(lng)
+    && Math.abs(lat) <= 90 && Math.abs(lng) <= 180) {
+    return { lat, lng, label: label || 'Gewählter Ort', source: 'qr' };
+  }
+  return placeFromH3(params.get('h3'), label);
+}
+
 /** Browser GPS with the project-wide 8 s limit. */
 export function placeFromGps(timeoutMs = 8000): Promise<Place> {
   return new Promise((resolve, reject) => {

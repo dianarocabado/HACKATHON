@@ -1,10 +1,11 @@
 'use client';
-// Voice report: mic → live transcript (editable) → location (QR/map ?h3=, GPS or typed) → send → result.
+// Voice report: mic → live transcript (editable) → location (QR ?lat=&lng=, map ?h3=, GPS or typed) → send → result.
 import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import type { Report } from '@contracts/types';
 import { api } from '@/lib/client/api';
-import { placeFromGps, placeFromH3, type Place } from '@/lib/client/report';
+import { findDemoPlace } from '@/lib/client/places';
+import { placeFromGps, placeFromParams, type Place } from '@/lib/client/report';
 import { useSpeech } from '@/lib/client/speech';
 import ReportResult from './ReportResult';
 
@@ -13,7 +14,9 @@ const MAX_CHARS = 1000; // matches the API limit
 export default function ReportFlow() {
   const params = useSearchParams();
   const speech = useSpeech('de-DE');
-  const [place, setPlace] = useState<Place | null>(() => placeFromH3(params.get('h3'), params.get('place')));
+  const [place, setPlace] = useState<Place | null>(() => placeFromParams(params));
+  // At a demo place (QR poster) the hint shows that place's example sentence.
+  const demo = findDemoPlace(place?.label);
   const [placeName, setPlaceName] = useState('');
   const [gpsState, setGpsState] = useState<'idle' | 'busy' | 'failed'>('idle');
   const [sending, setSending] = useState(false);
@@ -78,7 +81,7 @@ export default function ReportFlow() {
           readOnly={speech.listening}
           onChange={(e) => speech.setFinalText(e.target.value.slice(0, MAX_CHARS))}
           rows={4}
-          placeholder="z. B. „An der Haltestelle ist es mittags total heiß, kein Schatten.“"
+          placeholder={`z. B. „${demo?.example ?? 'An der Haltestelle ist es mittags total heiß, kein Schatten.'}“`}
           className="rounded-xl border p-3"
           style={{ background: 'var(--surface)', borderColor: 'var(--border)' }}
         />

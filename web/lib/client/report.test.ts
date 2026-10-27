@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { placeFromH3, sensorSentence } from './report.ts';
+import { placeFromH3, placeFromParams, sensorSentence } from './report.ts';
 
 test('placeFromH3 accepts valid cells and rejects junk', () => {
   const p = placeFromH3('891faa02ac7ffff', 'Marktplatz');
@@ -8,6 +8,15 @@ test('placeFromH3 accepts valid cells and rejects junk', () => {
   assert.equal(p?.label, 'Marktplatz');
   assert.equal(placeFromH3('nope'), null);
   assert.equal(placeFromH3(null), null);
+});
+
+test('placeFromParams reads QR poster URLs, falls back to h3, rejects junk', () => {
+  const qr = new URLSearchParams('lat=49.14229&lng=9.22227&place=Harmonie%2FHafenmarktpassage');
+  assert.deepEqual(placeFromParams(qr), { lat: 49.14229, lng: 9.22227, label: 'Harmonie/Hafenmarktpassage', source: 'qr' });
+  assert.equal(placeFromParams(new URLSearchParams('h3=891faa02ac7ffff'))?.label, 'Gewählter Ort');
+  assert.equal(placeFromParams(new URLSearchParams('lat=abc&lng=9')), null);
+  assert.equal(placeFromParams(new URLSearchParams('lat=120&lng=9')), null);
+  assert.equal(placeFromParams(new URLSearchParams('')), null);
 });
 
 test('sensor sentences for each status', () => {
