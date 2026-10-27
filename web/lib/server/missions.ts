@@ -1,12 +1,13 @@
 // A11: missions with their stored state, plus claim / support / done.
-// Missions come from public/data/missions.json (A6). Until that exists, the sample missions from
-// contracts/samples are served instead, all marked `simulated: true`.
+// Missions come from public/data/missions.json (A6) plus missions derived from voice reports (A12).
+// If missions.json is missing, the sample missions from contracts/samples are served, marked `simulated`.
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import type {
   HourlyPoint, ImpactResult, Mission, MissionState, MissionWithState, Station,
 } from "@contracts/types";
 import { ApiError } from "./http.ts";
+import { missionsFromReports, REPORT_WINDOW_MS } from "./reportMissions.ts";
 import { loadStations, MAX_DIST_M, nearestStation } from "./sensors.ts";
 import { getStore, type Store } from "./store.ts";
 
@@ -60,11 +61,20 @@ export async function loadHistory(stationId: string): Promise<HourlyPoint[]> {
   }
 }
 
-const deps = (d: MissionDeps) => ({
-  store: d.store ?? getStore(),
-  missions: d.missions ? Promise.resolve(d.missions) : loadMissions(),
-  now: d.now ?? Date.now(),
-});
+/** Pipeline missions plus missions created from voice reports (A12). */
+async function allMissions(store: Store, pipeline: Promise<Mission[]>, now: number): Promise<Mission[]> {
+  const [base, reports] = await Promise.all([
+    pipeline,
+    store.listReports(new Date(now - REPORT_WINDOW_MS).toISOString()),
+  ]);
+  return [...base, ...missionsFromReports(reports, base, now)];
+}
+
+const deps = (d: MissionDeps) => {
+  const store = d.store ?? getStore();
+  const now = d.now ?? Date.now();
+  return { store, now, missions: allMissions(store, d.missions ? Promise.resolve(d.missions) : loadMissions(), now) };
+};
 
 /** All current (not expired) missions with their state. */
 export async function listMissions(d: MissionDeps = {}): Promise<MissionWithState[]> {
@@ -99,7 +109,7 @@ export async function supportMission(id: string, d: MissionDeps = {}): Promise<M
 export async function doneMission(id: string, d: MissionDeps = {}): Promise<MissionState> {
   const { mission, state, store } = await findMission(id, d);
   if (state.status === "done" || state.status === "verified") throw new ApiError(409, `mission is already ${state.status}`);
-  const next: MissionState = { ...state, status: "done", doneAt: new Date(deps(d).now).toISOString() };
+  const next: MissionState = { ...state, status: "done", doneAt: new Date(d.now ?? Date.now()).toISOString() };
   const impact = await baselineImpact(mission, d);
   if (impact) next.impact = impact;
   return store.saveMissionState(next);
