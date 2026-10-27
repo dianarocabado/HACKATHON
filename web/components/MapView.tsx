@@ -1,5 +1,5 @@
 'use client';
-// Map page body: loads layers, shows toggles + legend + hexagon panel, handles loading, timeout and retry.
+// Map page body: loads layers, shows toggles + legend + hexagon panel + first-visit intro, handles loading and retry.
 import dynamic from 'next/dynamic';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import type { LayersFile, MissionWithState, Station } from '@contracts/types';
@@ -9,6 +9,7 @@ import { MAP_LAYERS, type MapLayer } from '@/lib/client/scale';
 import HexPanel from './HexPanel';
 import LayerToggle from './LayerToggle';
 import Legend from './Legend';
+import Welcome, { WELCOME_KEY } from './Welcome';
 
 const HexMap = dynamic(() => import('./HexMap'), { ssr: false });
 
@@ -34,6 +35,20 @@ export default function MapView() {
   const cell = useMemo(() => data?.cells.find((c) => c.h3 === selected) ?? null, [data, selected]);
 
   const label = MAP_LAYERS.find((l) => l.id === layer)!.label;
+
+  // Intro shows once per browser; storage can be blocked (private mode), then it simply shows again next time.
+  const [welcome, setWelcome] = useState(false);
+  useEffect(() => {
+    let seen = false;
+    try { seen = localStorage.getItem(WELCOME_KEY) === '1'; } catch {}
+    // localStorage is only readable after hydration.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    if (!seen) setWelcome(true);
+  }, []);
+  const closeWelcome = () => {
+    setWelcome(false);
+    try { localStorage.setItem(WELCOME_KEY, '1'); } catch {}
+  };
 
   return (
     <div className="relative min-h-0 flex-1">
@@ -62,7 +77,16 @@ export default function MapView() {
       </div>
       {/* pb-10 keeps the legend above the OSM attribution line */}
       <div className="pointer-events-none absolute bottom-0 left-0 p-4 pb-10">
-        <div className="pointer-events-auto">
+        {/* Stacked: side by side would run under the zoom buttons on 400 px phones */}
+        <div className="pointer-events-auto flex flex-col items-start gap-2">
+          <button
+            onClick={() => setWelcome(true)}
+            aria-label="Wie funktioniert's?"
+            className="flex h-11 w-11 items-center justify-center rounded-full border text-lg font-semibold shadow-sm"
+            style={{ background: 'var(--surface)', borderColor: 'var(--border)' }}
+          >
+            ?
+          </button>
           <Legend title={label} />
         </div>
       </div>
@@ -70,6 +94,7 @@ export default function MapView() {
       {cell && (
         <HexPanel cell={cell} medians={medians} stations={stations} missions={missions} onClose={() => setSelected(null)} />
       )}
+      {welcome && <Welcome onClose={closeWelcome} />}
     </div>
   );
 }
