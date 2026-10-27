@@ -1,10 +1,12 @@
 'use client';
-// Map page body: loads layers, shows toggles + legend, handles loading, timeout and retry.
+// Map page body: loads layers, shows toggles + legend + hexagon panel, handles loading, timeout and retry.
 import dynamic from 'next/dynamic';
-import { useCallback, useEffect, useState } from 'react';
-import type { LayersFile } from '@contracts/types';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import type { LayersFile, MissionWithState, Station } from '@contracts/types';
 import { api } from '@/lib/client/api';
+import { cityMedians } from '@/lib/client/facts';
 import { MAP_LAYERS, type MapLayer } from '@/lib/client/scale';
+import HexPanel from './HexPanel';
 import LayerToggle from './LayerToggle';
 import Legend from './Legend';
 
@@ -19,6 +21,17 @@ export default function MapView() {
   const fetchLayers = useCallback(() => api.layers().then(setData).catch(() => setError(true)), []);
   useEffect(() => { fetchLayers(); }, [fetchLayers]);
   const retry = () => { setError(false); fetchLayers(); };
+
+  // Secondary data for the panel; the map works without it.
+  const [stations, setStations] = useState<Station[]>([]);
+  const [missions, setMissions] = useState<MissionWithState[]>([]);
+  useEffect(() => {
+    api.stations().then(setStations).catch(() => {});
+    api.missions().then(setMissions).catch(() => {});
+  }, []);
+
+  const medians = useMemo(() => cityMedians(data?.cells ?? []), [data]);
+  const cell = useMemo(() => data?.cells.find((c) => c.h3 === selected) ?? null, [data, selected]);
 
   const label = MAP_LAYERS.find((l) => l.id === layer)!.label;
 
@@ -53,6 +66,10 @@ export default function MapView() {
           <Legend title={label} />
         </div>
       </div>
+
+      {cell && (
+        <HexPanel cell={cell} medians={medians} stations={stations} missions={missions} onClose={() => setSelected(null)} />
+      )}
     </div>
   );
 }
