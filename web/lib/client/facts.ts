@@ -41,6 +41,17 @@ export function describeCell(
       : `${num(Math.abs(diff))} °C ${diff > 0 ? 'über' : 'unter'} dem Stadtmedian`;
     facts.push({ key: 'temp', text: `Nachmittags hier im Schnitt ${num(f.tempAfternoonC)} °C, ${cmp}.`, source: sensorSource });
   }
+  // Measured on foot right here, so it comes before the station-based facts that follow.
+  if (f.heatWalkAnomalyC != null) {
+    const a = f.heatWalkAnomalyC;
+    const cmp = Math.abs(a) < 0.1 ? 'etwa so warm wie der Rest der Route'
+      : `${num(Math.abs(a))} °C ${a > 0 ? 'wärmer' : 'kühler'} als der Rest der Route`;
+    facts.push({
+      key: 'heatwalk',
+      text: `Auf dem Hitzespaziergang im September gemessen: ${cmp}.`,
+      source: 'Hitzespaziergang Green City Summerschool, 1.–3. September 2026',
+    });
+  }
   if (f.pm25 != null) {
     const who = f.pm25 > WHO_PM25_DAILY ? `über dem WHO-Tagesrichtwert von ${WHO_PM25_DAILY} µg/m³` : `unter dem WHO-Tagesrichtwert von ${WHO_PM25_DAILY} µg/m³`;
     facts.push({ key: 'pm25', text: `Feinstaub (PM2,5) im Schnitt ${num(f.pm25)} µg/m³, ${who}.`, source: sensorSource });

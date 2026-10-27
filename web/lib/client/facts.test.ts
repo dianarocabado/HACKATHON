@@ -19,6 +19,14 @@ test('temperature is compared with the city median in German format', () => {
   assert.equal(facts[0].source, 'Sensor „Marktplatz“, 140 m entfernt');
 });
 
+test('heat-walk anomaly follows the temperature fact, warmer and cooler', () => {
+  const warm = describeCell(cell({ tempAfternoonC: 31, heatWalkAnomalyC: 1.4 }), cityMedians([]), []);
+  assert.deepEqual(warm.map((f) => f.key), ['temp', 'heatwalk']);
+  assert.equal(warm[1].text, 'Auf dem Hitzespaziergang im September gemessen: 1,4 °C wärmer als der Rest der Route.');
+  const cool = describeCell(cell({ heatWalkAnomalyC: -0.86 }), cityMedians([]), []);
+  assert.match(cool[0].text, /0,9 °C kühler als der Rest der Route/);
+});
+
 test('missing facts produce no sentences, far sensors are called out', () => {
   assert.deepEqual(describeCell(cell({}), cityMedians([]), []), []);
   const facts = describeCell(cell({ nearestStationDistM: 2300 }), cityMedians([]), []);
