@@ -40,6 +40,7 @@ const de = {
   'panel.noData': 'Für diesen Ort haben wir noch keine Daten.',
   'panel.missions': 'Missionen hier',
   'panel.report': 'Hier etwas melden',
+  'reportPopup.aria': 'Meldung',
 
   'welcome.lead': 'Wir machen aus Heilbronns Sensordaten kleine Aufgaben für deine Nachbarschaft – und zeigen, ob Hilfe etwas bewirkt.',
   'welcome.step1': 'Schauen',
@@ -202,6 +203,7 @@ const en: Record<MessageKey, string> = {
   'panel.noData': 'We have no data for this place yet.',
   'panel.missions': 'Missions here',
   'panel.report': 'Report something here',
+  'reportPopup.aria': 'Report',
 
   'welcome.lead': "We turn Heilbronn's sensor data into small tasks for your neighbourhood – and show whether helping made a difference.",
   'welcome.step1': 'Look',

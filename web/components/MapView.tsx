@@ -2,11 +2,14 @@
 // Map page body: loads layers, shows toggles + legend + hexagon panel + first-visit intro, handles loading and retry.
 import dynamic from 'next/dynamic';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import type { LayersFile, MissionWithState, Station } from '@contracts/types';
+import type { LayersFile, MissionWithState, Report, Station } from '@contracts/types';
 import { api } from '@/lib/client/api';
 import { cityMedians } from '@/lib/client/facts';
+import { CATEGORY } from '@/lib/client/missions';
 import { MAP_LAYERS, type MapLayer } from '@/lib/client/scale';
+import type { MapMarker, MapPick } from './HexMap';
 import HexPanel from './HexPanel';
+import ReportPopup from './ReportPopup';
 import LayerToggle from './LayerToggle';
 import Legend from './Legend';
 import Welcome, { WELCOME_KEY } from './Welcome';
@@ -19,7 +22,8 @@ export default function MapView() {
   const [data, setData] = useState<LayersFile | null>(null);
   const [error, setError] = useState(false);
   const [layer, setLayer] = useState<MapLayer>('need');
-  const [selected, setSelected] = useState<string | null>(null);
+  const [selected, setSelected] = useState<MapPick | null>(null);
+  const [openReport, setOpenReport] = useState<string | null>(null);
 
   const fetchLayers = useCallback(() => api.layers().then(setData).catch(() => setError(true)), []);
   useEffect(() => { fetchLayers(); }, [fetchLayers]);
@@ -33,8 +37,24 @@ export default function MapView() {
     api.missions().then(setMissions).catch(() => {});
   }, []);
 
+  // Reports at their exact coordinates; refreshed so a report sent from this phone shows on return.
+  const [reports, setReports] = useState<Report[]>([]);
+  useEffect(() => {
+    const load = () => api.reports().then(setReports).catch(() => {});
+    load();
+    const id = setInterval(load, 20_000);
+    return () => clearInterval(id);
+  }, []);
+  const markers = useMemo<MapMarker[]>(() => [
+    ...reports.map((r) => ({ id: r.id, lat: r.lat, lng: r.lng, colour: CATEGORY[r.category].colour, label: r.summary })),
+    ...(selected ? [{ id: 'tap', lat: selected.lat, lng: selected.lng, colour: '', kind: 'tap' as const }] : []),
+  ], [reports, selected]);
+  const report = reports.find((r) => r.id === openReport) ?? null;
+  const pick = (p: MapPick | null) => { setOpenReport(null); setSelected(p); };
+  const showReport = (id: string) => { setSelected(null); setOpenReport(id); };
+
   const medians = useMemo(() => cityMedians(data?.cells ?? []), [data]);
-  const cell = useMemo(() => data?.cells.find((c) => c.h3 === selected) ?? null, [data, selected]);
+  const cell = useMemo(() => data?.cells.find((c) => c.h3 === selected?.h3) ?? null, [data, selected]);
 
   const label = t(MAP_LAYERS.find((l) => l.id === layer)!.label);
 
@@ -55,7 +75,12 @@ export default function MapView() {
   return (
     <div className="relative min-h-0 flex-1">
       <h1 className="sr-only">{t('map.title')}</h1>
-      {data && <HexMap data={data} layer={layer} selected={selected} onSelect={setSelected} label={t('map.aria')} />}
+      {data && (
+        <HexMap
+          data={data} layer={layer} selected={selected?.h3 ?? null} onSelect={pick}
+          markers={markers} onMarkerClick={showReport} label={t('map.aria')}
+        />
+      )}
 
       {!data && !error && (
         <div className="absolute inset-0 animate-pulse" style={{ background: 'var(--border)' }} aria-busy />
@@ -94,9 +119,13 @@ export default function MapView() {
         </div>
       </div>
 
-      {cell && (
-        <HexPanel cell={cell} medians={medians} stations={stations} missions={missions} onClose={() => setSelected(null)} />
+      {cell && selected && (
+        <HexPanel
+          cell={cell} point={selected} medians={medians} stations={stations} missions={missions}
+          onClose={() => setSelected(null)}
+        />
       )}
+      {report && <ReportPopup report={report} onClose={() => setOpenReport(null)} />}
       {welcome && <Welcome onClose={closeWelcome} />}
     </div>
   );

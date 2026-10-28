@@ -1,5 +1,5 @@
 'use client';
-// Voice report: mic → live transcript (editable) → location (QR ?lat=&lng=, map ?h3=, GPS or typed) → send → result.
+// Voice report: mic → live transcript (editable) → location (QR or map tap ?lat=&lng=, GPS or typed) → send → result.
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import type { Report } from '@contracts/types';

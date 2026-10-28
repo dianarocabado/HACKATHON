@@ -9,9 +9,11 @@ import { useLang } from './LangProvider';
 const MAX_FACTS = 4;
 
 export default function HexPanel({
-  cell, medians, stations, missions, onClose,
+  cell, point, medians, stations, missions, onClose,
 }: {
   cell: HexCell;
+  /** Exact tapped coordinates; the report is placed here, not at the hexagon centre. */
+  point: { lat: number; lng: number };
   medians: ReturnType<typeof cityMedians>;
   stations: Station[];
   missions: MissionWithState[];
@@ -79,7 +81,9 @@ export default function HexPanel({
       {/* Sticky so the main action stays visible when the facts scroll */}
       <div className="sticky bottom-0 -mx-4 mt-4 px-4 pb-4 pt-2" style={{ background: 'var(--surface)' }}>
         <Link
-          href={`/report?h3=${cell.h3}`}
+          href={`/report?lat=${point.lat.toFixed(6)}&lng=${point.lng.toFixed(6)}&h3=${cell.h3}`}
+          // Next keeps the map page alive while reporting; close the panel so the new marker is visible on return.
+          onClick={onClose}
           className="flex min-h-11 items-center justify-center rounded-xl font-medium"
           style={{ background: 'var(--brand)', color: 'var(--brand-ink)' }}
         >

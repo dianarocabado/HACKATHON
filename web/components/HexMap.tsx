@@ -50,17 +50,26 @@ function hatchImage(): ImageData {
   return ctx.getImageData(0, 0, size, size);
 }
 
-/** Point marker drawn as a DOM dot; `fresh` ones pulse (new reports on the big screen). */
-export interface MapMarker { id: string; lat: number; lng: number; colour: string; fresh?: boolean; label?: string }
+/**
+ * DOM marker at an exact position. `report` = coloured dot (`fresh` ones pulse on the big screen),
+ * `tap` = 📍 pin on the spot the user tapped. Clickable when `onMarkerClick` is given.
+ */
+export interface MapMarker {
+  id: string; lat: number; lng: number; colour: string; fresh?: boolean; label?: string; kind?: 'report' | 'tap';
+}
+
+/** A map tap on a hexagon: the cell plus the exact tapped coordinates. */
+export interface MapPick { h3: string; lat: number; lng: number }
 
 export default function HexMap({
-  data, layer, selected, onSelect, markers, zoom = 13, controls = true, label,
+  data, layer, selected, onSelect, markers, onMarkerClick, zoom = 13, controls = true, label,
 }: {
   data: LayersFile;
   layer: MapLayer;
   selected?: string | null;
-  onSelect?: (h3: string | null) => void;
+  onSelect?: (pick: MapPick | null) => void;
   markers?: MapMarker[];
+  onMarkerClick?: (id: string) => void;
   zoom?: number;
   controls?: boolean;
   label?: string;
@@ -69,6 +78,8 @@ export default function HexMap({
   const map = useRef<MapLibre | null>(null);
   const onSelectRef = useRef(onSelect);
   useEffect(() => { onSelectRef.current = onSelect; }, [onSelect]);
+  const onMarkerClickRef = useRef(onMarkerClick);
+  useEffect(() => { onMarkerClickRef.current = onMarkerClick; }, [onMarkerClick]);
 
   useEffect(() => {
     const m = new MapLibre({
@@ -113,7 +124,8 @@ export default function HexMap({
       });
       m.on('click', (e) => {
         const hit = m.queryRenderedFeatures(e.point, { layers: ['hex-fill', 'hex-nodata'] })[0];
-        onSelectRef.current?.((hit?.properties?.h3 as string) ?? null);
+        const h3 = hit?.properties?.h3 as string | undefined;
+        onSelectRef.current?.(h3 ? { h3, lat: e.lngLat.lat, lng: e.lngLat.lng } : null);
       });
       m.on('mouseenter', 'hex-fill', () => { m.getCanvas().style.cursor = 'pointer'; });
       m.on('mouseleave', 'hex-fill', () => { m.getCanvas().style.cursor = ''; });
@@ -149,12 +161,22 @@ export default function HexMap({
       let marker = placed.current.get(mk.id);
       if (!marker) {
         const el = document.createElement('div');
-        el.className = 'report-dot';
-        el.style.background = mk.colour;
-        if (mk.label) el.title = mk.label;
-        marker = new Marker({ element: el }).setLngLat([mk.lng, mk.lat]).addTo(m);
+        const tap = mk.kind === 'tap';
+        el.className = tap ? 'tap-pin' : 'report-dot';
+        if (tap) el.textContent = '📍'; else el.style.background = mk.colour;
+        if (mk.label) { el.title = mk.label; el.setAttribute('aria-label', mk.label); }
+        if (!tap && onMarkerClickRef.current) {
+          el.setAttribute('role', 'button');
+          el.tabIndex = 0;
+          const open = (ev: Event) => { ev.stopPropagation(); onMarkerClickRef.current?.(mk.id); };
+          el.addEventListener('click', open);
+          el.addEventListener('keydown', (ev) => { if ((ev as KeyboardEvent).key === 'Enter') open(ev); });
+        }
+        // The pin's tip marks the spot; dots are centred on it.
+        marker = new Marker({ element: el, anchor: tap ? 'bottom' : 'center' }).setLngLat([mk.lng, mk.lat]).addTo(m);
         placed.current.set(mk.id, marker);
       }
+      marker.setLngLat([mk.lng, mk.lat]);
       marker.getElement().classList.toggle('report-dot--fresh', !!mk.fresh);
     }
   }, [markers]);
