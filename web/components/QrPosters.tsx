@@ -37,7 +37,7 @@ export default function QrPosters() {
         const url = origin + reportPath(p);
         return (
           <section key={p.id} className="qr-poster mx-auto mb-6 flex max-w-[210mm] flex-col items-center gap-6 border bg-white p-12 text-center text-black">
-            <p className="text-xl font-semibold" style={{ color: '#1F7A4D' }}>Heilbronn wirkt</p>
+            <p className="text-xl font-semibold" style={{ color: '#1F7A4D' }}>HN Reacts</p>
             <h1 className="text-5xl font-bold leading-tight">Was fällt dir hier auf?</h1>
             <p className="text-3xl">📍 {p.name}</p>
             <QrCode value={url} size={340} label={`QR-Code zum Melden an ${p.name}`} />
