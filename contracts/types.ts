@@ -156,6 +156,29 @@ export interface Report extends StructuredReport {
   seeded?: boolean;                                  // demo seed data
 }
 
+// ---------- optional accounts ----------
+
+export type ActivityKind = 'report' | 'claim' | 'support' | 'done';
+
+export interface UserProfile {
+  id: string;
+  email: string;
+  name: string;                                      // shown when claiming a mission
+}
+
+export interface ProfileMission {
+  mission: MissionWithState;
+  actions: ActivityKind[];                           // what this user did: claim / support / done
+  lastAt: string;
+}
+
+export interface Profile {                           // GET /api/me
+  user: UserProfile;
+  reports: Report[];                                 // newest first; never exposes the user on public endpoints
+  missions: ProfileMission[];                        // newest activity first
+  counts: { reports: number; claimed: number; supported: number; done: number };
+}
+
 // ---------- API (owned by Agent A, called by Agent B) ----------
 // POST /api/reports                 body: { transcript: string; lat?: number; lng?: number; placeName?: string } -> Report
 // GET  /api/reports?since=<ISO>     -> Report[]
@@ -164,3 +187,10 @@ export interface Report extends StructuredReport {
 // POST /api/missions/:id/support    -> MissionState
 // POST /api/missions/:id/done       -> MissionState (with baseline impact)
 // GET  /api/sensor-check?lat=&lng=  -> SensorCheck
+// Accounts are optional; with a session cookie, reports and mission actions are also logged to the profile.
+// POST   /api/auth/signup { email, password, name } -> UserProfile (sets session cookies)
+// POST   /api/auth/login  { email, password }       -> UserProfile (sets session cookies)
+// POST   /api/auth/logout                           -> { ok: true }
+// GET    /api/auth/session                          -> { user: UserProfile | null }
+// GET    /api/me                                    -> Profile (401 without session)
+// DELETE /api/me                                    -> { ok: true } (account + activity deleted; reports stay, anonymous)
