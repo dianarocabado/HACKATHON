@@ -17,7 +17,7 @@ import json
 import math
 import sys
 from collections import Counter, defaultdict
-from datetime import datetime, timedelta, timezone
+from datetime import date, datetime, timedelta, timezone
 
 import h3
 import requests
@@ -136,6 +136,30 @@ def fmt_en(x, digits=1):
     return f"{x:.{digits}f}"
 
 
+MONTHS_EN = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+
+
+def period(start, end):
+    """('17.07.–31.08.2026', '17 Jul–31 Aug 2026') for two YYYY-MM-DD dates."""
+    a, b = date.fromisoformat(start), date.fromisoformat(end)
+    de_a = f"{a:%d.%m.}" if a.year == b.year else f"{a:%d.%m.%Y}"
+    en_a = f"{a.day} {MONTHS_EN[a.month - 1]}" + ("" if a.year == b.year else f" {a.year}")
+    return f"{de_a}–{b:%d.%m.%Y}", f"{en_a}–{b.day} {MONTHS_EN[b.month - 1]} {b.year}"
+
+
+def temp_note(f, station_names):
+    """Summer-afternoon temperature with its sensor, distance and period, or ('', '') without one."""
+    if "tempAfternoonC" not in f:
+        return "", ""
+    name = station_names.get(f.get("nearestStationId"))
+    dist = round(f["nearestStationDistM"] / 10) * 10
+    when_de, when_en = period(f["tempFrom"], f["tempTo"])
+    sensor_de = f"Sensor „{name}“, {dist} m entfernt" if name else f"Sensor {dist} m entfernt"
+    sensor_en = f"sensor “{name}”, {dist} m away" if name else f"sensor {dist} m away"
+    return (f", nachmittags im Sommer im Schnitt {fmt(f['tempAfternoonC'])} °C ({sensor_de}, {when_de})",
+            f", summer afternoons average {fmt_en(f['tempAfternoonC'])} °C ({sensor_en}, {when_en})")
+
+
 # ---------- rules ----------
 
 def build(data, today, weather_days):
@@ -151,7 +175,9 @@ def build(data, today, weather_days):
         lat, lng = h3.cell_to_latlng(cell)
         heat = s.get("heat") or 0
         here = pts.get(cell, {})
-        temp = {"tempAfternoonC": f["tempAfternoonC"]} if "tempAfternoonC" in f else {}
+        temp = ({"tempAfternoonC": f["tempAfternoonC"], "nearestStationDistM": f["nearestStationDistM"]}
+                if "tempAfternoonC" in f else {})
+        temp_de, temp_en = temp_note(f, data.get("station_names", {}))
 
         r = RULES["water_trees"]
         if dry is not None and dry >= r["dryDays"] and f.get("trees", 0) >= r["trees"] and heat >= r["heat"]:
@@ -176,14 +202,12 @@ def build(data, today, weather_days):
                 "shade_bus_stop", cell, stop[0], stop[1], heat,
                 f"Schatten für die Haltestelle {name}" if name else "Schatten für eine Haltestelle",
                 f"Die Umgebung ist stark versiegelt (Hitzewert {fmt(heat, 2)})"
-                + (f", nachmittags im Sommer im Schnitt {fmt(f['tempAfternoonC'])} °C" if temp else "")
-                + ". Ein Sonnensegel, ein Baum oder ein begrüntes Dach hilft Wartenden.",
+                + temp_de + ". Ein Sonnensegel, ein Baum oder ein begrüntes Dach hilft Wartenden.",
                 {"heat": heat, "busStops": len(here["bus_stops"]), **temp},
                 rule="Hitzewert ≥ 0,7 und Bushaltestelle",
                 en=(f"Shade for the {name} bus stop" if name else "Shade for a bus stop",
                     f"The area is heavily sealed (heat score {fmt_en(heat, 2)})"
-                    + (f", summer afternoons average {fmt_en(f['tempAfternoonC'])} °C" if temp else "")
-                    + ". A sun sail, a tree or a green roof helps people waiting.",
+                    + temp_en + ". A sun sail, a tree or a green roof helps people waiting.",
                     "Heat score ≥ 0.7 and a bus stop"),
                 category="heat", effort="project", suitedFor=["company", "city", "club"],
                 **({"placeName": name} if name else {})))
@@ -195,12 +219,12 @@ def build(data, today, weather_days):
             candidates["green_schoolyard"].append(mission(
                 "green_schoolyard", cell, place[0], place[1], heat,
                 f"Schulhof begrünen: {name}" if name else "Schulhof begrünen",
-                f"Schule oder Kita in einem heißen, versiegelten Bereich (Hitzewert {fmt(heat, 2)}). "
+                f"Schule oder Kita in einem heißen, versiegelten Bereich (Hitzewert {fmt(heat, 2)}){temp_de}. "
                 "Bäume, Hochbeete und entsiegelte Flächen kühlen den Hof und laden zum Lernen draußen ein.",
                 {"heat": heat, "schools": len(schools), **temp},
                 rule="Hitzewert ≥ 0,6 und Schule oder Kita",
                 en=(f"Green the schoolyard: {name}" if name else "Green the schoolyard",
-                    f"A school or nursery in a hot, sealed area (heat score {fmt_en(heat, 2)}). "
+                    f"A school or nursery in a hot, sealed area (heat score {fmt_en(heat, 2)}){temp_en}. "
                     "Trees, raised beds and unsealed ground cool the yard and invite learning outdoors.",
                     "Heat score ≥ 0.6 and a school or nursery"),
                 category="heat", effort="project", suitedFor=["school", "company", "city"],
@@ -315,12 +339,14 @@ def station_distance_fn(stations):
 def main():
     today = datetime.now(timezone.utc).astimezone().date()
     weather = fetch_weather(today)
+    stations = load("stations.json")
     data = {
         "layers": load("layers.json"),
         "points": load("osm_points.json"),
         "residential": load("residential.geojson"),
         "segments": load("bike_segments.json"),
-        "station_dist": station_distance_fn(load("stations.json")),
+        "station_dist": station_distance_fn(stations),
+        "station_names": {s["id"]: s["name"] for s in stations},
     }
     missions, info = build(data, today, daily_precipitation(weather) if weather is not None else None)
     (PROCESSED_DIR / "missions.json").write_text(json.dumps(missions, ensure_ascii=False, indent=1), encoding="utf-8")

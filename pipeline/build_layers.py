@@ -5,7 +5,8 @@ stations.json + stations/*.json, bike_segments.json, danger_zones.json, danger_p
 
 Scores are 0..1 where higher = more need for action; null = no data.
   heat   land-cover proxy: building footprint share (OSM), built-up landuse share, minus green share,
-         nudged by the nearest valid outdoor station's summer-afternoon anomaly. Farmland and parks
+         nudged by the summer-afternoon anomaly of the nearest valid outdoor station within 500 m (vs. the
+         median of all valid stations, written as cityTempAfternoonC). Farmland and parks
          score ~0, the dense centre ~1. In cells covered by the Green City heat walk (A4), half of the
          score comes from the measured anomaly (±1 °C ≙ 0..1).
   air    PM danger index from senseBox:bike rides in the cell (danger_zones_PM), else null.
@@ -43,6 +44,7 @@ GREEN_FULL_SHARE = 0.4      # cells with >= 40 % green get green score 0
 DENSE_BUILDING_SHARE = 0.35 # building footprint share of the inner city (Marktplatz cell)
 GREEN_FAR_M = 300           # >= 300 m to usable green counts as fully lacking (WHO-style access)
 STATION_MAX_DIST_M = 1000
+TEMP_MAX_DIST_M = 500       # city temperatures differ over a few hundred metres; farther cells get no °C value
 MIN_DAILY_RANGE_C = 5.0     # indoor sensors barely swing between day and night
 MIN_SEGMENT_N = 5
 ROUGH_LOW, ROUGH_HIGH = 5, 30  # normalized roughness -> risk 0..1 (cell median ~12, 90th percentile ~20)
@@ -83,18 +85,22 @@ def station_profiles(stations, history):
             t = p["t"]
             if "temperatureC" in p:
                 days[t[:10]].append(p["temperatureC"])
-                # Jun–Aug, 12–15 UTC = 14–17 local summer time
+                # Jun–Aug, hours 12–15 UTC = 14:00–17:59 local summer time
                 if t[5:7] in ("06", "07", "08") and 12 <= int(t[11:13]) <= 15:
-                    afternoon.append(p["temperatureC"])
+                    afternoon.append((t[:10], p["temperatureC"]))
             if "pm25" in p:
                 pm.append(p["pm25"])
         ranges = [max(v) - min(v) for v in days.values() if len(v) >= 18]
         outdoor = bool(ranges) and statistics.median(ranges) >= MIN_DAILY_RANGE_C
         if not outdoor:
             continue
+        enough = len(afternoon) >= 50
         out.append({
             "id": s["id"], "point": project(Point(s["lng"], s["lat"])),
-            "tempAfternoonC": round(statistics.mean(afternoon), 1) if len(afternoon) >= 50 else None,
+            "tempAfternoonC": round(statistics.mean(v for _, v in afternoon), 1) if enough else None,
+            # Stations started at different times, so the mean always travels with its period.
+            "tempFrom": min(d for d, _ in afternoon) if enough else None,
+            "tempTo": max(d for d, _ in afternoon) if enough else None,
             "pm25": round(statistics.median(pm), 1) if len(pm) >= 50 else None,
         })
     return out
@@ -177,8 +183,9 @@ def build(data):
         if station and station_dist <= STATION_MAX_DIST_M:
             facts["nearestStationId"] = station["id"]
             facts["nearestStationDistM"] = round(station_dist)
-            if station["tempAfternoonC"] is not None:
+            if station["tempAfternoonC"] is not None and station_dist <= TEMP_MAX_DIST_M:
                 facts["tempAfternoonC"] = station["tempAfternoonC"]
+                facts["tempFrom"], facts["tempTo"] = station["tempFrom"], station["tempTo"]
             if station["pm25"] is not None:
                 facts["pm25"] = station["pm25"]
 
@@ -233,12 +240,17 @@ def build(data):
         need = sum(WEIGHTS[k] * v for k, v in used.items()) / total_w if total_w else 0
         out.append({"h3": cell, "scores": scores, "need": round(need, 3), "facts": facts})
 
-    return {
+    result = {
         "generatedAt": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "resolution": RES,
         "weights": WEIGHTS,
         "cells": out,
     }
+    # The one city average both the heat score and the app compare against.
+    if city_temp is not None:
+        result["cityTempAfternoonC"] = round(city_temp, 1)
+        result["cityTempStations"] = len(temps)
+    return result
 
 
 def load_inputs():

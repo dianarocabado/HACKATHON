@@ -68,6 +68,20 @@ def test_scores_and_facts_from_all_sources():
     assert f["overtakeUnder150Pct"] == 60.0 and f["tempAfternoonC"] == 32.0 and f["pm25"] == 5.0
     assert f["trees"] == 1 and f["busStops"] == 1 and f["sensitivePlaces"] == 1
     assert f["nearestStationId"] == "s1" and f["nearestStationDistM"] < 100  # measured to the cell centre
+    assert (f["tempFrom"], f["tempTo"]) == ("2026-07-01", "2026-07-03")
+
+
+def test_one_city_temperature_for_score_and_app():
+    layers = build(data())
+    assert layers["cityTempAfternoonC"] == 32.0 and layers["cityTempStations"] == 1
+
+
+def test_temperature_only_from_a_station_within_500_m():
+    far = LAT + 0.0055  # ~610 m north of the cell centre, still within the 1 km station radius
+    c = cells_by_id(build(data(stations=[{"id": "s1", "lat": far, "lng": LNG}])))[CELL]
+    assert c["facts"]["nearestStationId"] == "s1" and 500 < c["facts"]["nearestStationDistM"] <= 1000
+    assert "tempAfternoonC" not in c["facts"] and "tempFrom" not in c["facts"]
+    assert c["facts"]["pm25"] == 5.0
 
 
 def test_bumpy_paths_fill_risk_weighted_by_boxes():
