@@ -24,6 +24,23 @@ const TITLE: Record<MissionType, string> = {
   check_reports: "Meldungen prüfen",
 };
 
+// English texts for `Mission.en`; the German above stays in the main fields.
+const LABEL_EN: Record<Category, string> = {
+  heat: "heat", air: "bad air", noise: "noise", water: "water/flooding",
+  biodiversity: "missing green", waste: "litter", mobility: "traffic danger", other: "a problem",
+};
+
+const TITLE_EN: Record<MissionType, string> = {
+  water_trees: "Water the street trees",
+  shade_bus_stop: "Shade for the bus stop",
+  green_schoolyard: "Green the schoolyard",
+  pollinator_gap: "Plant a flower patch for bees",
+  unseal_10m2: "Unseal 10 m²",
+  safer_bike_street: "Safer cycling",
+  host_sensor: "Put up a senseBox",
+  check_reports: "Check reports",
+};
+
 const EFFORT: Record<MissionType, Mission["effort"]> = {
   water_trees: "hour", shade_bus_stop: "project", green_schoolyard: "project", pollinator_gap: "afternoon",
   unseal_10m2: "afternoon", safer_bike_street: "project", host_sensor: "hour", check_reports: "hour",
@@ -73,6 +90,13 @@ export function missionsFromReports(reports: Report[], existing: Mission[], now:
       : confirmed
         ? `${confirmed} Meldung${confirmed > 1 ? "en wurden" : " wurde"} vom nächsten Sensor bestätigt.`
         : "Packt es gemeinsam an.";
+    // The quoted report stays in the language it was spoken in.
+    const whatEn = `${group.length} people reported ${LABEL_EN[category]} here, most recently: “${quote}”`;
+    const nextEn = type === "check_reports"
+      ? "No nearby sensor can confirm this. Measure it, take photos or put up a senseBox."
+      : confirmed
+        ? `${confirmed} report${confirmed > 1 ? "s were" : " was"} confirmed by the nearest sensor.`
+        : "Tackle it together.";
 
     const mission: Mission = {
       id: `report-${category}-${h3}`,
@@ -91,6 +115,11 @@ export function missionsFromReports(reports: Report[], existing: Mission[], now:
         evidence: { reports: group.length, avgSeverity: Math.round(severity * 10) / 10, confirmedBySensor: confirmed },
       },
       source: "report",
+      en: {
+        title: type === "check_reports" ? `${TITLE_EN[type]}: ${LABEL_EN[category]}` : TITLE_EN[type],
+        description: `${whatEn}. ${nextEn}`,
+        rule: "3+ reports of the same category in an area without a matching mission",
+      },
     };
     if (placeName) mission.placeName = placeName;
     // Demo seed reports are invented; a mission that needs them to reach the threshold is too.

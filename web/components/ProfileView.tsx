@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import type { ActivityKind, Profile } from '@contracts/types';
 import { AccountError, api } from '@/lib/client/api';
 import { locale, type MessageKey } from '@/lib/client/i18n';
-import { CATEGORY } from '@/lib/client/missions';
+import { CATEGORY, missionText } from '@/lib/client/missions';
 import { sensorSentence } from '@/lib/client/report';
 import { setSessionUser, useSession } from '@/lib/client/session';
 import { StatusChip } from './Badges';
@@ -157,7 +157,7 @@ function SignedIn() {
                 <Link href={`/missions/${m.id}`} className="flex items-start gap-3 rounded-2xl border p-3" style={fieldStyle}>
                   <CategoryTile category={m.category} />
                   <div className="min-w-0 flex-1">
-                    <p className="font-semibold leading-tight">{m.title}</p>
+                    <p className="font-semibold leading-tight">{missionText(m, lang).title}</p>
                     <div className="mt-1 flex flex-wrap items-center gap-2 text-[0.8125rem]">
                       <StatusChip status={m.state.status} />
                       <span style={{ color: 'var(--muted)' }}>

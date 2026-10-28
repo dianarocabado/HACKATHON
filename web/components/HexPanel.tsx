@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useEffect } from 'react';
 import type { HexCell, MissionWithState, Station } from '@contracts/types';
 import { describeCell, type cityMedians } from '@/lib/client/facts';
+import { missionText } from '@/lib/client/missions';
 import { useLang } from './LangProvider';
 
 const MAX_FACTS = 4;
@@ -70,7 +71,7 @@ export default function HexPanel({
                   className="block rounded-xl border px-3 py-2"
                   style={{ borderColor: 'var(--border)' }}
                 >
-                  {m.title}
+                  {missionText(m, lang).title}
                 </Link>
               </li>
             ))}

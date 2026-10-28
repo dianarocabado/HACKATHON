@@ -82,13 +82,16 @@ def fetch_weather(today):
 # ---------- helpers ----------
 
 def mission(mtype, cell, lat, lng, score, title, description, evidence, **extra):
-    """(Mission without urgency, ranking score). Urgency is set by rank within the type in build()."""
+    """(Mission without urgency, ranking score). Urgency is set by rank within the type in build().
+    `en` = (title, description, rule) in English; the main fields are German."""
+    title_en, description_en, rule_en = extra.pop("en")
     m = {
         "id": f"{mtype}-{extra.pop('key', cell)}",
         "type": mtype, "title": title, "description": description,
         "h3": cell, "lat": round(lat, 6), "lng": round(lng, 6),
         "reason": {"rule": extra.pop("rule"), "evidence": evidence},
         "source": "pipeline",
+        "en": {"title": title_en, "description": description_en, "rule": rule_en},
     }
     m.update(extra)
     return m, score
@@ -129,6 +132,10 @@ def fmt(x, digits=1):
     return f"{x:.{digits}f}".replace(".", ",")
 
 
+def fmt_en(x, digits=1):
+    return f"{x:.{digits}f}"
+
+
 # ---------- rules ----------
 
 def build(data, today, weather_days):
@@ -156,6 +163,10 @@ def build(data, today, weather_days):
                 "jeder Baum braucht jetzt 50–100 Liter Wasser.",
                 {"dryDays": dry, "trees": f["trees"], "heat": heat},
                 rule="5+ Tage ohne Regen, Straßenbäume, Hitzewert ≥ 0,5",
+                en=("Water the street trees",
+                    f"No real rain for {dry} days. {f['trees']} mapped trees stand here; "
+                    "each tree now needs 50–100 litres of water.",
+                    "5+ days without rain, street trees, heat score ≥ 0.5"),
                 category="biodiversity", effort="hour", suitedFor=["resident", "club", "school"], **extra))
 
         if heat >= RULES["shade_bus_stop"]["heat"] and here.get("bus_stops"):
@@ -169,6 +180,11 @@ def build(data, today, weather_days):
                 + ". Ein Sonnensegel, ein Baum oder ein begrüntes Dach hilft Wartenden.",
                 {"heat": heat, "busStops": len(here["bus_stops"]), **temp},
                 rule="Hitzewert ≥ 0,7 und Bushaltestelle",
+                en=(f"Shade for the {name} bus stop" if name else "Shade for a bus stop",
+                    f"The area is heavily sealed (heat score {fmt_en(heat, 2)})"
+                    + (f", summer afternoons average {fmt_en(f['tempAfternoonC'])} °C" if temp else "")
+                    + ". A sun sail, a tree or a green roof helps people waiting.",
+                    "Heat score ≥ 0.7 and a bus stop"),
                 category="heat", effort="project", suitedFor=["company", "city", "club"],
                 **({"placeName": name} if name else {})))
 
@@ -183,6 +199,10 @@ def build(data, today, weather_days):
                 "Bäume, Hochbeete und entsiegelte Flächen kühlen den Hof und laden zum Lernen draußen ein.",
                 {"heat": heat, "schools": len(schools), **temp},
                 rule="Hitzewert ≥ 0,6 und Schule oder Kita",
+                en=(f"Green the schoolyard: {name}" if name else "Green the schoolyard",
+                    f"A school or nursery in a hot, sealed area (heat score {fmt_en(heat, 2)}). "
+                    "Trees, raised beds and unsealed ground cool the yard and invite learning outdoors.",
+                    "Heat score ≥ 0.6 and a school or nursery"),
                 category="heat", effort="project", suitedFor=["school", "company", "city"],
                 **({"placeName": name} if name else {})))
 
@@ -196,6 +216,10 @@ def build(data, today, weather_days):
                 "ein Baumscheiben-Beet mit heimischen Blühpflanzen schließt die Lücke für Insekten.",
                 {"distToGreenM": dist, "residentialPct": round(100 * res_share[cell])},
                 rule="Wohngebiet, keine Grünfläche im Umkreis von 300 m",
+                en=("Plant a flower patch for bees",
+                    f"Residential area without a usable green space within {dist} m. Even a balcony box or a bed "
+                    "around a street tree with native flowering plants closes the gap for insects.",
+                    "Residential area, no green space within 300 m"),
                 category="biodiversity", effort="afternoon", suitedFor=["resident", "school", "club"]))
 
         r = RULES["unseal_10m2"]
@@ -207,6 +231,10 @@ def build(data, today, weather_days):
                 "Pflaster raus, Beet rein: 10 m² auf einem Hof oder Parkplatz kühlen und lassen Regen versickern.",
                 {"heat": heat, "distToGreenM": dist},
                 rule="Hitzewert ≥ 0,6 und keine Grünfläche im Umkreis von 150 m",
+                en=("Unseal 10 m²",
+                    f"Heavily sealed (heat score {fmt_en(heat, 2)}), nearest usable green space {dist} m away. "
+                    "Paving out, plants in: 10 m² in a yard or car park cools the area and lets rain soak away.",
+                    "Heat score ≥ 0.6 and no green space within 150 m"),
                 category="heat", effort="afternoon", suitedFor=["resident", "company", "club"]))
 
         r = RULES["host_sensor"]
@@ -220,6 +248,11 @@ def build(data, today, weather_days):
                 "Eine senseBox am Fenster liefert echte Werte für die Nachbarschaft.",
                 {"sensitivePlaces": f["sensitivePlaces"], "stationDistM": round(station_dist), "need": c["need"]},
                 rule="keine Messstation im Umkreis von 500 m, mindestens 2 empfindliche Orte",
+                en=("Put up a senseBox",
+                    f"There are {f['sensitivePlaces']} sensitive places here (schools, nurseries, care homes, "
+                    f"playgrounds), but the nearest measuring station is {fmt_en(station_dist / 1000)} km away. "
+                    "A senseBox at a window delivers real values for the neighbourhood.",
+                    "No measuring station within 500 m, at least 2 sensitive places"),
                 category="other", effort="hour", suitedFor=["resident", "school", "company"]))
 
     r = RULES["safer_bike_street"]
@@ -243,6 +276,11 @@ def build(data, today, weather_days):
             "können hier helfen.",
             {"under150Pct": seg["under150Pct"], "overtakings": seg["n"], "avgCm": seg["avgCm"]},
             rule="≥ 10 gemessene Überholvorgänge, ≥ 60 % unter 150 cm",
+            en=(f"Safer cycling: {name}" if name else "Safer cycling on this stretch",
+                f"{fmt_en(seg['under150Pct'], 0)}% of {seg['n']} measured overtakings were closer than the legal "
+                f"150 cm (average {fmt_en(seg['avgCm'], 0)} cm). Road markings, a 30 km/h limit or a sign "
+                "could help here.",
+                "≥ 10 measured overtakings, ≥ 60% closer than 150 cm"),
             key=f"seg{seg['id']}", category="mobility", effort="project", suitedFor=["city", "resident", "club"],
             **({"placeName": name} if name else {})))
 
@@ -255,6 +293,7 @@ def build(data, today, weather_days):
             m["urgency"] = 3 - min(2, 3 * i // max(len(ranked), 1))
             if "placeName" not in m and (stop := nearest_stop(m["lat"], m["lng"])):
                 m["placeName"] = f"Nähe Haltestelle {stop}"
+                m["en"]["placeName"] = f"Near bus stop {stop}"
         missions += ranked
     return missions, {"dryDays": dry, "nextRain": rain_day,
                       "candidates": {k: len(v) for k, v in candidates.items()}}

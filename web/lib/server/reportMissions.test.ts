@@ -35,6 +35,9 @@ test("three reports of one category create one report mission", () => {
   assert.equal(m.simulated, undefined);
   assert.deepEqual(m.reason.evidence, { reports: 3, avgSeverity: 2.3, confirmedBySensor: 3 });
   assert.match(m.description, /^3 Menschen haben hier Hitze gemeldet, zuletzt: „Meldung \d+“\. 3 Meldungen wurden/);
+  assert.equal(m.en?.title, "Shade for the bus stop");
+  assert.match(m.en?.description ?? "", /^3 people reported heat here, most recently: “Meldung \d+”\. 3 reports were confirmed/);
+  assert.equal(m.en?.rule, "3+ reports of the same category in an area without a matching mission");
 });
 
 test("two reports, other categories or old reports are not enough", () => {
@@ -55,6 +58,8 @@ test("reports no sensor could check become check_reports", () => {
   const [m] = missionsFromReports([report(unchecked), report(unchecked), report(unchecked)], [], NOW);
   assert.equal(m.type, "check_reports");
   assert.equal(m.title, "Meldungen prüfen: Lärm");
+  assert.equal(m.en?.title, "Check reports: noise");
+  assert.match(m.en?.description ?? "", /No nearby sensor can confirm this\./);
   assert.equal(m.effort, "hour");
 });
 
