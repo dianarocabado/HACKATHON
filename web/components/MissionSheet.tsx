@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useEffect } from 'react';
 import type { MissionState, MissionWithState } from '@contracts/types';
-import { CATEGORY, EFFORT, evidenceText } from '@/lib/client/missions';
+import { CATEGORY, EFFORT, evidenceText, missionText } from '@/lib/client/missions';
 import { SimBadge, StatusChip, UrgencyDots } from './Badges';
 import { CategoryIcon } from './Icons';
 import MissionActions from './MissionActions';
@@ -21,6 +21,7 @@ export default function MissionSheet({ mission, onState, onClose }: {
     return () => window.removeEventListener('keydown', onKey);
   }, [onClose]);
   const cat = CATEGORY[mission.category];
+  const text = missionText(mission, lang);
 
   return (
     <section
@@ -47,10 +48,10 @@ export default function MissionSheet({ mission, onState, onClose }: {
 
       <div>
         <div className="flex flex-wrap items-center gap-2">
-          <h2 className="text-xl font-semibold">{mission.title}</h2>
+          <h2 className="text-xl font-semibold">{text.title}</h2>
           {mission.simulated && <SimBadge />}
         </div>
-        {mission.placeName && <p className="text-[0.8125rem]" style={{ color: 'var(--muted)' }}>{mission.placeName}</p>}
+        {text.placeName && <p className="text-[0.8125rem]" style={{ color: 'var(--muted)' }}>{text.placeName}</p>}
         <div className="mt-2 flex flex-wrap items-center gap-3 text-[0.8125rem]">
           <StatusChip status={mission.state.status} />
           <UrgencyDots urgency={mission.urgency} />

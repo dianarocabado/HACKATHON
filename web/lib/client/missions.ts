@@ -100,6 +100,15 @@ const EVIDENCE: Record<Lang, Record<string, Phrase>> = {
   },
 };
 
+/**
+ * A mission's texts in the given language. English comes from `mission.en` (pipeline and report missions);
+ * missions without it, and fields it doesn't carry (e.g. a real place name), fall back to German.
+ */
+export function missionText(m: Mission, lang: Lang) {
+  const de = { title: m.title, description: m.description, rule: m.reason.rule, placeName: m.placeName };
+  return lang === 'en' && m.en ? { ...de, ...m.en, placeName: m.en.placeName ?? m.placeName } : de;
+}
+
 /** Evidence as short phrases; unknown keys fall back to "key: value". */
 export function evidenceText(evidence: Record<string, number | string>, lang: Lang = 'de'): string[] {
   const n = (x: number, digits = 0) => new Intl.NumberFormat(locale(lang), { maximumFractionDigits: digits }).format(x);

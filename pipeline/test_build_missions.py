@@ -57,6 +57,12 @@ def test_hot_dense_cell_triggers_all_cell_rules():
     assert m["unseal_10m2"]["placeName"] == "Nähe Haltestelle Rathaus"
     assert all(x["source"] == "pipeline" and "simulated" not in x and x["urgency"] == 3 for x in missions)
     assert info["dryDays"] == 10
+    # English texts for every mission; German stays in the main fields
+    assert all({"title", "description", "rule"} <= set(x["en"]) for x in missions)
+    assert m["shade_bus_stop"]["en"]["title"] == "Shade for the Rathaus bus stop"
+    assert m["water_trees"]["en"]["description"].startswith("No real rain for 10 days.")
+    assert m["unseal_10m2"]["en"]["placeName"] == "Near bus stop Rathaus"
+    assert "placeName" not in m["shade_bus_stop"]["en"]  # a real name needs no translation
 
 
 def test_cool_cell_without_weather_triggers_nothing_hot():
@@ -75,3 +81,5 @@ def test_bike_rule_and_ranking():
     assert [m["id"] for m in bike] == ["safer_bike_street-seg2", "safer_bike_street-seg5"]  # one per street
     assert [m["urgency"] for m in bike] == [3, 2]
     assert bike[0]["reason"]["evidence"]["overtakings"] == 40
+    assert bike[0]["en"]["title"] == "Safer cycling: A-Str"
+    assert bike[0]["en"]["description"].startswith("100% of 40 measured overtakings")

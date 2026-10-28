@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import type { MissionWithState } from '@contracts/types';
 import { api } from '@/lib/client/api';
-import { CATEGORY, EFFORT, WHO, evidenceText } from '@/lib/client/missions';
+import { CATEGORY, EFFORT, WHO, evidenceText, missionText } from '@/lib/client/missions';
 import { SimBadge, StatusChip, UrgencyDots } from './Badges';
 import { CategoryIcon } from './Icons';
 import MissionActions from './MissionActions';
@@ -29,6 +29,7 @@ export default function MissionDetail({ id }: { id: string }) {
   }
 
   const cat = CATEGORY[mission.category];
+  const text = missionText(mission, lang);
   const { state } = mission;
 
   return (
@@ -37,10 +38,10 @@ export default function MissionDetail({ id }: { id: string }) {
       <header>
         <p className="text-[0.8125rem]" style={{ color: 'var(--muted)' }}>
           <CategoryIcon category={mission.category} className="mr-1 inline-block align-[-3px]" style={{ color: cat.colour }} />
-          {t(cat.label)}{mission.placeName ? ` · ${mission.placeName}` : ''}
+          {t(cat.label)}{text.placeName ? ` · ${text.placeName}` : ''}
         </p>
         <div className="mt-1 flex flex-wrap items-center gap-2">
-          <h1 className="text-2xl font-semibold">{mission.title}</h1>
+          <h1 className="text-2xl font-semibold">{text.title}</h1>
           {mission.simulated && <SimBadge />}
         </div>
         <div className="mt-2 flex flex-wrap items-center gap-3 text-[0.8125rem]">
@@ -51,7 +52,7 @@ export default function MissionDetail({ id }: { id: string }) {
         </div>
       </header>
 
-      <p>{mission.description}</p>
+      <p>{text.description}</p>
 
       <section className="rounded-2xl border p-4" style={{ background: 'var(--surface)', borderColor: 'var(--border)' }}>
         <h2 className="mb-2 font-semibold">{t('mission.why')}</h2>
@@ -59,7 +60,7 @@ export default function MissionDetail({ id }: { id: string }) {
           {evidenceText(mission.reason.evidence, lang).map((e) => <li key={e}>{e}</li>)}
         </ul>
         <p className="mt-2 text-[0.8125rem]" style={{ color: 'var(--muted)' }}>
-          {t('mission.rule')}: {mission.reason.rule} · {t(mission.source === 'report' ? 'mission.fromReports' : 'mission.fromSensors')}
+          {t('mission.rule')}: {text.rule} · {t(mission.source === 'report' ? 'mission.fromReports' : 'mission.fromSensors')}
         </p>
       </section>
 
