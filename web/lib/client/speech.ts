@@ -5,7 +5,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { api } from './api';
 import {
-  chooseMode, mediaProblem, recognitionProblem, recorderMime, type SpeechMode, type SpeechProblem,
+  chooseMode, isIOS, mediaProblem, recognitionProblem, recorderMime, type SpeechMode, type SpeechProblem,
 } from './speechSupport';
 
 // Minimal types; the Web Speech API is not in TypeScript's DOM lib.
@@ -46,6 +46,7 @@ export function useSpeech(lang: 'de' | 'en' = 'de') {
       const r = chooseMode({
         secure: window.isSecureContext, hasRecognition: recognitionCtor() !== null,
         hasRecorder: canRecord(), sttAvailable: sttRef.current,
+        preferRecord: isIOS(navigator.userAgent, navigator.maxTouchPoints),
       });
       setMode(r.mode);
       setProblem(r.problem === 'unsupported' ? null : r.problem); // only say "unsupported" once the user tries
@@ -63,6 +64,8 @@ export function useSpeech(lang: 'de' | 'en' = 'de') {
     r.lang = lang === 'de' ? 'de-DE' : 'en-GB';
     r.continuous = true;
     r.interimResults = true;
+    // Some engines end without marking the last words final; keep them instead of dropping them on end.
+    let pending = '';
     r.onresult = (e) => {
       let fin = '';
       let tmp = '';
@@ -71,6 +74,7 @@ export function useSpeech(lang: 'de' | 'en' = 'de') {
         if (res.isFinal) fin += res[0].transcript; else tmp += res[0].transcript;
       }
       append(fin);
+      pending = tmp;
       setInterim(tmp);
     };
     r.onerror = (e) => {
@@ -78,7 +82,7 @@ export function useSpeech(lang: 'de' | 'en' = 'de') {
       if (fallback && canRecord() && sttRef.current) { setMode('record'); setProblem('live-unavailable'); }
       else setProblem(p === 'live-unavailable' ? 'network' : p);
     };
-    r.onend = () => { setPhase('idle'); setInterim(''); };
+    r.onend = () => { append(pending); pending = ''; setPhase('idle'); setInterim(''); };
     try {
       r.start();
       rec.current = r;

@@ -19,13 +19,25 @@ export interface SpeechEnv {
   hasRecognition: boolean;
   hasRecorder: boolean;
   sttAvailable: boolean;
+  /** Recording is more reliable than live recognition here (iOS), use it when the server can transcribe. */
+  preferRecord?: boolean;
 }
 
 export function chooseMode(env: SpeechEnv): { mode: SpeechMode; problem: SpeechProblem | null } {
   if (!env.secure) return { mode: 'none', problem: 'insecure' };
+  if (env.preferRecord && env.hasRecorder && env.sttAvailable) return { mode: 'record', problem: null };
   if (env.hasRecognition) return { mode: 'live', problem: null };
   if (env.hasRecorder && env.sttAvailable) return { mode: 'record', problem: null };
   return { mode: 'none', problem: 'unsupported' };
+}
+
+/**
+ * iPhone/iPad, any browser (all use WebKit). iOS exposes webkitSpeechRecognition, but on web pages it often
+ * never marks results final, fails when Siri/Dictation is off, and stops after short pauses.
+ * iPadOS reports itself as a Mac, so touch support tells them apart.
+ */
+export function isIOS(userAgent: string, maxTouchPoints = 0): boolean {
+  return /iPhone|iPad|iPod/.test(userAgent) || (/Macintosh/.test(userAgent) && maxTouchPoints > 1);
 }
 
 /**
