@@ -1,13 +1,15 @@
 'use client';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import type { LucideIcon } from 'lucide-react';
 import type { MessageKey } from '@/lib/client/i18n';
+import { AppIcon, Icon } from './Icons';
 import { useLang } from './LangProvider';
 
-const ITEMS: { href: string; label: MessageKey; icon: string; primary?: boolean }[] = [
-  { href: '/', label: 'nav.map', icon: '🗺️' },
-  { href: '/report', label: 'nav.report', icon: '🎤', primary: true },
-  { href: '/missions', label: 'nav.missions', icon: '✅' },
+const ITEMS: { href: string; label: MessageKey; icon: LucideIcon; primary?: boolean }[] = [
+  { href: '/', label: 'nav.map', icon: AppIcon.map },
+  { href: '/report', label: 'nav.report', icon: AppIcon.report, primary: true },
+  { href: '/missions', label: 'nav.missions', icon: AppIcon.missions },
 ];
 
 /** Static nav; `path` null renders without an active item (Suspense fallback on dynamic routes). */
@@ -33,13 +35,13 @@ export function NavShell({ path }: { path: string | null }) {
             {it.primary ? (
               <span
                 aria-hidden
-                className="-mt-6 flex h-14 w-14 items-center justify-center rounded-full text-2xl shadow-md"
-                style={{ background: 'var(--brand)' }}
+                className="-mt-6 flex h-14 w-14 items-center justify-center rounded-full shadow-md"
+                style={{ background: 'var(--brand)', color: 'var(--brand-ink)' }}
               >
-                {it.icon}
+                <Icon icon={it.icon} size={26} />
               </span>
             ) : (
-              <span aria-hidden className="text-lg">{it.icon}</span>
+              <Icon icon={it.icon} size={22} className="mb-0.5" />
             )}
             {t(it.label)}
           </Link>

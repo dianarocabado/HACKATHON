@@ -3,6 +3,7 @@ import Link from 'next/link';
 import type { Report } from '@contracts/types';
 import { CATEGORY } from '@/lib/client/missions';
 import { sensorSentence } from '@/lib/client/report';
+import { CategoryIcon } from './Icons';
 import { useLang } from './LangProvider';
 
 export default function ReportResult({ report, onAnother }: { report: Report; onAnother: () => void }) {
@@ -20,7 +21,7 @@ export default function ReportResult({ report, onAnother }: { report: Report; on
           className="inline-flex items-center gap-1 rounded-full px-3 py-1 text-[0.8125rem] font-medium"
           style={{ background: cat.colour, color: cat.ink }}
         >
-          <span aria-hidden>{cat.icon}</span> {t(cat.label)}
+          <CategoryIcon category={report.category} /> {t(cat.label)}
         </span>
         <p className="mt-3 text-[1.125rem]">{report.summary}</p>
         <p className="mt-3 border-l-4 pl-3" style={{ borderColor: tone }}>{sensorSentence(check, lang)}</p>

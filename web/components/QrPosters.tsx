@@ -1,5 +1,6 @@
 'use client';
 // /qr: one printable A4 poster per demo place. The QR points at the live app, never at localhost.
+import { MapPin } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { DEMO_PLACES, reportPath } from '@/lib/client/places';
 import QrCode from './QrCode';
@@ -39,7 +40,10 @@ export default function QrPosters() {
           <section key={p.id} className="qr-poster mx-auto mb-6 flex max-w-[210mm] flex-col items-center gap-6 border bg-white p-12 text-center text-black">
             <p className="text-xl font-semibold" style={{ color: '#1F7A4D' }}>HN Reacts</p>
             <h1 className="text-5xl font-bold leading-tight">Was fällt dir hier auf?</h1>
-            <p className="text-3xl">📍 {p.name}</p>
+            <p className="flex items-center gap-2 text-3xl">
+              <MapPin size={34} strokeWidth={1.75} aria-hidden style={{ color: '#1F7A4D' }} />
+              {p.name}
+            </p>
             <QrCode value={url} size={340} label={`QR-Code zum Melden an ${p.name}`} />
             <ol className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-xl">
               {STEPS.map((s, i) => <li key={s}><strong>{i + 1}.</strong> {s}</li>)}

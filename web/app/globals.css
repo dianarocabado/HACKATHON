@@ -3,7 +3,7 @@
 @theme inline {
   --color-background: var(--bg);
   --color-foreground: var(--text);
-  --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-sans: var(--font-raleway), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
 body {
@@ -34,8 +34,7 @@ body {
 
 /* The spot the user tapped on the map (HexMap marker kind 'tap'); anchored at its tip. */
 .tap-pin {
-  font-size: 28px;
-  line-height: 1;
+  line-height: 0;
   filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.35));
   pointer-events: none;
 }

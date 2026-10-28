@@ -8,6 +8,10 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import { cellToBoundary } from 'h3-js';
 import type { HexCell, LayersFile } from '@contracts/types';
 import { NEED_STEPS, type MapLayer } from '@/lib/client/scale';
+import { pinSvg } from './Icons';
+
+// The tapped spot: dark, so it stands apart from the category-coloured mission pins.
+const TAP_PIN = '#1D2420';
 
 // MapLibre derives the worker URL from its own chunk URL, which breaks after bundling. Point it at the emitted asset.
 setWorkerUrl(new URL('maplibre-gl/dist/maplibre-gl-worker.mjs', import.meta.url).href);
@@ -94,7 +98,7 @@ const MISSION_LAYERS = ['mission-clusters', 'mission-pins'];
 
 /**
  * DOM marker at an exact position. `report` = coloured dot (`fresh` ones pulse on the big screen),
- * `tap` = 📍 pin on the spot the user tapped. Clickable when `onMarkerClick` is given.
+ * `tap` = dark pin (same shape as the mission pins) on the spot the user tapped. Clickable when `onMarkerClick` is given.
  */
 export interface MapMarker {
   id: string; lat: number; lng: number; colour: string; fresh?: boolean; label?: string; kind?: 'report' | 'tap';
@@ -267,7 +271,7 @@ export default function HexMap({
         const el = document.createElement('div');
         const tap = mk.kind === 'tap';
         el.className = tap ? 'tap-pin' : 'report-dot';
-        if (tap) el.textContent = '📍'; else el.style.background = mk.colour;
+        if (tap) el.innerHTML = pinSvg(TAP_PIN, 28); else el.style.background = mk.colour;
         if (mk.label) { el.title = mk.label; el.setAttribute('aria-label', mk.label); }
         if (!tap && onMarkerClickRef.current) {
           el.setAttribute('role', 'button');

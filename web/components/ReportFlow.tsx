@@ -8,6 +8,7 @@ import { findDemoPlace } from '@/lib/client/places';
 import { placeFromGps, placeFromParams, type Place } from '@/lib/client/report';
 import { useSpeech } from '@/lib/client/speech';
 import { TYPE_INSTEAD } from '@/lib/client/speechSupport';
+import { AppIcon, Icon } from './Icons';
 import ReportResult from './ReportResult';
 import { useLang } from './LangProvider';
 
@@ -78,10 +79,12 @@ export default function ReportFlow() {
           disabled={speech.phase === 'transcribing'}
           aria-pressed={capturing}
           aria-label={t(capturing ? 'report.stop' : 'report.start')}
-          className={`flex h-[72px] w-[72px] items-center justify-center rounded-full text-3xl shadow-md disabled:opacity-40 ${capturing ? 'animate-pulse' : ''}`}
+          className={`flex h-[72px] w-[72px] items-center justify-center rounded-full shadow-md disabled:opacity-40 ${capturing ? 'animate-pulse' : ''}`}
           style={{ background: capturing ? 'var(--warn)' : 'var(--brand)', color: 'var(--brand-ink)' }}
         >
-          <span aria-hidden>{capturing ? '■' : speech.phase === 'transcribing' ? '…' : '🎤'}</span>
+          {capturing ? <Icon icon={AppIcon.stop} size={26} fill="currentColor" />
+            : speech.phase === 'transcribing' ? <Icon icon={AppIcon.busy} size={30} className="animate-spin" />
+              : <Icon icon={AppIcon.report} size={32} />}
         </button>
         <p className="text-[0.8125rem]" style={{ color: 'var(--muted)' }} aria-live="polite">
           {status}
@@ -106,7 +109,10 @@ export default function ReportFlow() {
         <span className="text-[0.8125rem]" style={{ color: 'var(--muted)' }}>{t('report.where')}</span>
         {place ? (
           <div className="flex items-center justify-between rounded-xl border px-3 py-2" style={{ borderColor: 'var(--border)' }}>
-            <span>📍 {place.label ?? t(place.source === 'gps' ? 'report.yourLocation' : 'report.selectedPlace')}</span>
+            <span className="flex items-center gap-2">
+              <Icon icon={AppIcon.place} size={18} style={{ color: 'var(--brand)' }} />
+              {place.label ?? t(place.source === 'gps' ? 'report.yourLocation' : 'report.selectedPlace')}
+            </span>
             <button type="button" onClick={() => setPlace(null)} className="min-h-11 px-2 underline" style={{ color: 'var(--brand)' }}>{t('report.change')}</button>
           </div>
         ) : (
@@ -115,9 +121,11 @@ export default function ReportFlow() {
               type="button"
               onClick={locate}
               disabled={gpsState === 'busy'}
-              className="min-h-11 rounded-xl border px-3 font-medium disabled:opacity-50"
+              className="flex min-h-11 items-center justify-center gap-2 rounded-xl border px-3 font-medium disabled:opacity-50"
               style={{ borderColor: 'var(--brand)', color: 'var(--brand)' }}
             >
+              <Icon icon={gpsState === 'busy' ? AppIcon.busy : AppIcon.locate} size={18}
+                className={gpsState === 'busy' ? 'animate-spin' : undefined} />
               {t(gpsState === 'busy' ? 'report.locating' : 'report.useGps')}
             </button>
             {gpsState === 'failed' && <p className="text-[0.8125rem]">{t('report.gpsFailed')}</p>}
