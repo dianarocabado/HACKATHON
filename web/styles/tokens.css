@@ -1,4 +1,6 @@
-/* Design tokens from web/DESIGN.md. Light is the default, dark redefines the same names. */
+/* Design tokens from web/DESIGN.md. Light is the default, dark redefines the same names.
+   Theme: follows the system until the user picks one with the header toggle; the choice is set as
+   <html data-theme="light|dark"> (before first paint, see app/layout.tsx) and wins over the system. */
 :root {
   --bg: #f7f8f5;
   --surface: #ffffff;
@@ -16,7 +18,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg: #121512;
     --surface: #1c201c;
     --text: #ecefea;
@@ -29,4 +31,19 @@
     --sim: #a48afb;
     color-scheme: dark;
   }
+}
+
+/* Same values as above: chosen explicitly in the app */
+:root[data-theme="dark"] {
+  --bg: #121512;
+  --surface: #1c201c;
+  --text: #ecefea;
+  --muted: #a3aba2;
+  --brand: #4cc38a;
+  --brand-ink: #0b1a12;
+  --border: #2e342d;
+  --warn: #f79009;
+  --ok: #47cd89;
+  --sim: #a48afb;
+  color-scheme: dark;
 }

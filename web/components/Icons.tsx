@@ -2,7 +2,7 @@
 // Categories always use the same icon and colour, so a heat report looks the same on the map, in lists and cards.
 import {
   AudioLines, Bike, Droplets, Flower2, ListChecks, LoaderCircle, LocateFixed, LogOut, Map as MapIcon, MapPin, Mic,
-  Square, Sun, Trash2, UserRound, Wind, type LucideIcon, type LucideProps,
+  Moon, Square, Sun, SunMedium, Trash2, UserRound, Wind, type LucideIcon, type LucideProps,
 } from 'lucide-react';
 import type { Category } from '@contracts/types';
 import { CATEGORY } from '@/lib/client/missions';
@@ -31,6 +31,8 @@ export const AppIcon = {
   profile: UserRound,
   logout: LogOut,
   remove: Trash2,
+  dark: Moon,
+  light: SunMedium, // not Sun: that one means "heat" in the categories
 } satisfies Record<string, LucideIcon>;
 
 type IconProps = Omit<LucideProps, 'ref'>;

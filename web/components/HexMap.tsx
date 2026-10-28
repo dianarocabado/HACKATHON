@@ -8,10 +8,17 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import { cellToBoundary } from 'h3-js';
 import type { HexCell, LayersFile } from '@contracts/types';
 import { NEED_STEPS, type MapLayer } from '@/lib/client/scale';
+import { useTheme, type Theme } from '@/lib/client/theme';
 import { pinSvg } from './Icons';
 
 // The tapped spot: dark, so it stands apart from the category-coloured mission pins.
 const TAP_PIN = '#1D2420';
+
+// OSM tiles are bright; in dark mode they are dimmed and desaturated so the map doesn't glare.
+const BASE_PAINT: Record<Theme, { 'raster-brightness-max': number; 'raster-saturation': number }> = {
+  light: { 'raster-brightness-max': 1, 'raster-saturation': 0 },
+  dark: { 'raster-brightness-max': 0.62, 'raster-saturation': -0.45 },
+};
 
 // MapLibre derives the worker URL from its own chunk URL, which breaks after bundling. Point it at the emitted asset.
 setWorkerUrl(new URL('maplibre-gl/dist/maplibre-gl-worker.mjs', import.meta.url).href);
@@ -132,6 +139,8 @@ export default function HexMap({
   useEffect(() => { onMissionClickRef.current = onMissionClick; }, [onMissionClick]);
   // Read on 'load', which can fire after the missions arrived.
   const missionsRef = useRef<MissionPin[]>([]);
+  const theme = useTheme();
+  const themeRef = useRef(theme);
   const placed = useRef(new Map<string, Marker>());
 
   useEffect(() => {
@@ -152,7 +161,7 @@ export default function HexMap({
             attribution: '© OpenStreetMap contributors',
           },
         },
-        layers: [{ id: 'base', type: 'raster', source: 'base' }],
+        layers: [{ id: 'base', type: 'raster', source: 'base', paint: BASE_PAINT[themeRef.current] }],
       },
     });
     if (controls) m.addControl(new NavigationControl({ showCompass: false }), 'bottom-right');
@@ -245,6 +254,14 @@ export default function HexMap({
     const src = m?.getSource('hex') as GeoJSONSource | undefined;
     src?.setData(toGeoJSON(data.cells, layer));
   }, [data, layer]);
+
+  useEffect(() => {
+    themeRef.current = theme;
+    const m = map.current;
+    if (!m?.getLayer('base')) return;
+    m.setPaintProperty('base', 'raster-brightness-max', BASE_PAINT[theme]['raster-brightness-max']);
+    m.setPaintProperty('base', 'raster-saturation', BASE_PAINT[theme]['raster-saturation']);
+  }, [theme]);
 
   useEffect(() => {
     missionsRef.current = missions ?? [];
