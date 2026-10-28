@@ -113,6 +113,15 @@ export interface Mission {                           // missions.json (array) + 
   expiresAt?: string;
   source: 'pipeline' | 'report';
   simulated?: boolean;
+  en?: MissionText;                                  // English texts; title/description/rule/placeName above are German
+}
+
+/** The translatable texts of a Mission. */
+export interface MissionText {
+  title: string;
+  description: string;
+  rule: string;
+  placeName?: string;
 }
 
 export interface ImpactResult {
