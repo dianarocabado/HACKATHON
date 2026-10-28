@@ -10,6 +10,7 @@ import { CATEGORY } from '@/lib/client/missions';
 import { MAP_LAYERS, type MapLayer } from '@/lib/client/scale';
 import type { MapMarker, MapPick, MissionPin } from './HexMap';
 import HexPanel from './HexPanel';
+import { AppIcon, Icon } from './Icons';
 import MissionSheet from './MissionSheet';
 import ReportPopup from './ReportPopup';
 import LayerToggle from './LayerToggle';
@@ -141,7 +142,7 @@ export default function MapView() {
             borderColor: showMissions ? 'var(--brand)' : 'var(--border)',
           }}
         >
-          <span aria-hidden>📍</span> {t('map.missions')}
+          <Icon icon={AppIcon.place} size={18} /> {t('map.missions')}
         </button>
       </div>
       {/* pb-10 keeps the legend above the OSM attribution line */}

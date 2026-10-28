@@ -2,15 +2,17 @@
 // First-visit intro over the map: the idea in one sentence and three steps.
 import Link from 'next/link';
 import { useEffect } from 'react';
+import type { LucideIcon } from 'lucide-react';
 import type { MessageKey } from '@/lib/client/i18n';
+import { AppIcon, BrandTile } from './Icons';
 import { useLang } from './LangProvider';
 
 export const WELCOME_KEY = 'hw-welcome-seen';
 
-const STEPS: { icon: string; title: MessageKey; text: MessageKey }[] = [
-  { icon: '🗺️', title: 'welcome.step1', text: 'welcome.step1Text' },
-  { icon: '🎤', title: 'welcome.step2', text: 'welcome.step2Text' },
-  { icon: '✅', title: 'welcome.step3', text: 'welcome.step3Text' },
+const STEPS: { icon: LucideIcon; title: MessageKey; text: MessageKey }[] = [
+  { icon: AppIcon.map, title: 'welcome.step1', text: 'welcome.step1Text' },
+  { icon: AppIcon.report, title: 'welcome.step2', text: 'welcome.step2Text' },
+  { icon: AppIcon.missions, title: 'welcome.step3', text: 'welcome.step3Text' },
 ];
 
 export default function Welcome({ onClose }: { onClose: () => void }) {
@@ -34,13 +36,7 @@ export default function Welcome({ onClose }: { onClose: () => void }) {
         <ol className="mt-5 space-y-4">
           {STEPS.map((s, i) => (
             <li key={s.title} className="flex gap-3">
-              <span
-                aria-hidden
-                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-lg"
-                style={{ background: 'var(--bg)' }}
-              >
-                {s.icon}
-              </span>
+              <BrandTile icon={s.icon} />
               <div>
                 <h3 className="font-semibold">{i + 1}. {t(s.title)}</h3>
                 <p className="text-[0.9375rem]" style={{ color: 'var(--muted)' }}>{t(s.text)}</p>

@@ -6,6 +6,7 @@ import type { LayersFile, MissionWithState, Report } from '@contracts/types';
 import { api } from '@/lib/client/api';
 import { CATEGORY } from '@/lib/client/missions';
 import type { MapMarker } from './HexMap';
+import { CategoryTile } from './Icons';
 import { useLang } from './LangProvider';
 import Legend from './Legend';
 import QrCode from './QrCode';
@@ -92,8 +93,8 @@ export default function BigScreen() {
           <h2 className="mb-2 font-semibold">{t('screen.latest')}</h2>
           <ul className="space-y-3">
             {latest.map((r) => (
-              <li key={r.id} className="flex gap-2">
-                <span aria-hidden>{CATEGORY[r.category].icon}</span>
+              <li key={r.id} className="flex items-start gap-3">
+                <CategoryTile category={r.category} size={32} />
                 <span>„{r.summary}“</span>
               </li>
             ))}

@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import type { MissionState, MissionWithState } from '@contracts/types';
 import { CATEGORY, EFFORT, evidenceText } from '@/lib/client/missions';
 import { SimBadge, StatusChip, UrgencyDots } from './Badges';
+import { CategoryIcon } from './Icons';
 import MissionActions from './MissionActions';
 import { useLang } from './LangProvider';
 
@@ -32,7 +33,7 @@ export default function MissionSheet({ mission, onState, onClose }: {
           className="inline-flex items-center gap-1 rounded-full px-3 py-1 text-[0.8125rem] font-medium"
           style={{ background: cat.colour, color: cat.ink }}
         >
-          <span aria-hidden>{cat.icon}</span> {t(cat.label)}
+          <CategoryIcon category={mission.category} /> {t(cat.label)}
         </span>
         <button
           onClick={onClose}

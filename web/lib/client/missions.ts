@@ -3,15 +3,16 @@ import type { Category, Mission, MissionStatus, MissionWithState } from '@contra
 import { locale, type Lang, type MessageKey } from './i18n.ts';
 
 // `ink` is the text colour on `colour` with the higher WCAG contrast (all >= 4.5:1).
-export const CATEGORY: Record<Category, { label: MessageKey; icon: string; colour: string; ink: string }> = {
-  heat: { label: 'cat.heat', icon: '☀️', colour: '#E8702A', ink: '#000' },
-  air: { label: 'cat.air', icon: '💨', colour: '#6172F3', ink: '#000' },
-  noise: { label: 'cat.noise', icon: '🔊', colour: '#9E77ED', ink: '#000' },
-  water: { label: 'cat.water', icon: '💧', colour: '#2E90FA', ink: '#000' },
-  biodiversity: { label: 'cat.biodiversity', icon: '🐝', colour: '#1F7A4D', ink: '#fff' },
-  waste: { label: 'cat.waste', icon: '🗑️', colour: '#7A5C3E', ink: '#fff' },
-  mobility: { label: 'cat.mobility', icon: '🚲', colour: '#DD2590', ink: '#000' },
-  other: { label: 'cat.other', icon: '📍', colour: '#5F675F', ink: '#fff' },
+// Icons per category live in components/Icons.tsx.
+export const CATEGORY: Record<Category, { label: MessageKey; colour: string; ink: string }> = {
+  heat: { label: 'cat.heat', colour: '#E8702A', ink: '#000' },
+  air: { label: 'cat.air', colour: '#6172F3', ink: '#000' },
+  noise: { label: 'cat.noise', colour: '#9E77ED', ink: '#000' },
+  water: { label: 'cat.water', colour: '#2E90FA', ink: '#000' },
+  biodiversity: { label: 'cat.biodiversity', colour: '#1F7A4D', ink: '#fff' },
+  waste: { label: 'cat.waste', colour: '#7A5C3E', ink: '#fff' },
+  mobility: { label: 'cat.mobility', colour: '#DD2590', ink: '#000' },
+  other: { label: 'cat.other', colour: '#5F675F', ink: '#fff' },
 };
 
 export const EFFORT: Record<Mission['effort'], MessageKey> = {

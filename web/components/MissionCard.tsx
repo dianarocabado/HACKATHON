@@ -3,6 +3,7 @@ import Link from 'next/link';
 import type { MissionWithState } from '@contracts/types';
 import { CATEGORY, EFFORT } from '@/lib/client/missions';
 import { SimBadge, StatusChip, UrgencyDots } from './Badges';
+import { CategoryTile } from './Icons';
 import { useLang } from './LangProvider';
 
 export default function MissionCard({ mission: m }: { mission: MissionWithState }) {
@@ -15,7 +16,7 @@ export default function MissionCard({ mission: m }: { mission: MissionWithState 
       style={{ background: 'var(--surface)', borderColor: 'var(--border)' }}
     >
       <div className="flex items-start gap-3">
-        <span aria-hidden className="mt-0.5 text-xl">{cat.icon}</span>
+        <CategoryTile category={m.category} />
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
             <h2 className="text-[1.125rem] font-semibold leading-tight">{m.title}</h2>

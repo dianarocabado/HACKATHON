@@ -6,6 +6,7 @@ import type { MissionWithState } from '@contracts/types';
 import { api } from '@/lib/client/api';
 import { CATEGORY, EFFORT, WHO, evidenceText } from '@/lib/client/missions';
 import { SimBadge, StatusChip, UrgencyDots } from './Badges';
+import { CategoryIcon } from './Icons';
 import MissionActions from './MissionActions';
 import { useLang } from './LangProvider';
 
@@ -35,7 +36,8 @@ export default function MissionDetail({ id }: { id: string }) {
       <Link href="/missions" className="inline-flex min-h-11 items-center text-[0.8125rem]" style={{ color: 'var(--brand)' }}>{t('mission.back')}</Link>
       <header>
         <p className="text-[0.8125rem]" style={{ color: 'var(--muted)' }}>
-          <span aria-hidden>{cat.icon}</span> {t(cat.label)}{mission.placeName ? ` · ${mission.placeName}` : ''}
+          <CategoryIcon category={mission.category} className="mr-1 inline-block align-[-3px]" style={{ color: cat.colour }} />
+          {t(cat.label)}{mission.placeName ? ` · ${mission.placeName}` : ''}
         </p>
         <div className="mt-1 flex flex-wrap items-center gap-2">
           <h1 className="text-2xl font-semibold">{mission.title}</h1>
