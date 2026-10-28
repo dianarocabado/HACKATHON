@@ -1,0 +1,20 @@
+# Files not uploaded by `vercel deploy` from the repo root (#16). The build only needs
+# web/, contracts/ and data/processed/ (copied to web/public/data by `npm run sync-data`).
+
+# Secrets: set as Vercel environment variables instead
+.env
+.env.*
+!.env.example
+web/.env*
+!web/.env.example
+
+# Large or local-only
+data/raw
+.venv
+pipeline
+**/node_modules
+**/.next
+web/public/data
+**/__pycache__
+.pytest_cache
+.vscode
