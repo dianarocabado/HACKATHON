@@ -5,6 +5,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import type { LayersFile, MissionState, MissionWithState, Report, Station } from '@contracts/types';
 import { api } from '@/lib/client/api';
 import { cityMedians } from '@/lib/client/facts';
+import { locale } from '@/lib/client/i18n';
 import { CATEGORY } from '@/lib/client/missions';
 import { MAP_LAYERS, type MapLayer } from '@/lib/client/scale';
 import type { MapMarker, MapPick, MissionPin } from './HexMap';
@@ -19,7 +20,7 @@ import { useLang } from './LangProvider';
 const HexMap = dynamic(() => import('./HexMap'), { ssr: false });
 
 export default function MapView() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const [data, setData] = useState<LayersFile | null>(null);
   const [error, setError] = useState(false);
   const [layer, setLayer] = useState<MapLayer>('need');
@@ -72,7 +73,19 @@ export default function MapView() {
   const medians = useMemo(() => cityMedians(data?.cells ?? []), [data]);
   const cell = useMemo(() => data?.cells.find((c) => c.h3 === selected?.h3) ?? null, [data, selected]);
 
-  const label = t(MAP_LAYERS.find((l) => l.id === layer)!.label);
+  const current = MAP_LAYERS.find((l) => l.id === layer)!;
+  const label = t(current.label);
+  // "Bedarf" lists its ingredients with the weights the pipeline used.
+  const info = useMemo(() => {
+    if (layer !== 'need') return t(current.info);
+    const pct = new Intl.NumberFormat(locale(lang), { style: 'percent' });
+    const list = Object.entries(data?.weights ?? {})
+      .filter(([, w]) => w > 0)
+      .sort((a, b) => b[1] - a[1])
+      .map(([id, w]) => `${t(MAP_LAYERS.find((l) => l.id === id)?.label ?? 'layer.need')} ${pct.format(w)}`)
+      .join(', ');
+    return t(current.info, { list });
+  }, [layer, current, data, lang, t]);
 
   // Intro shows once per browser; storage can be blocked (private mode), then it simply shows again next time.
   const [welcome, setWelcome] = useState(false);
@@ -143,7 +156,7 @@ export default function MapView() {
           >
             ?
           </button>
-          <Legend title={label} missions={showMissions} />
+          <Legend title={label} info={info} missions={showMissions} />
         </div>
       </div>
 

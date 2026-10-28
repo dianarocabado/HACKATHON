@@ -1081,6 +1081,33 @@
   "placeName": "Nähe Haltestelle Biberach Weirachstraße"
  },
  {
+  "id": "host_sensor-891faa001cfffff",
+  "type": "host_sensor",
+  "title": "senseBox aufhängen",
+  "description": "Hier gibt es 2 empfindliche Orte (Schulen, Kitas, Pflegeheime, Spielplätze), aber die nächste Messstation ist 0,7 km entfernt. Eine senseBox am Fenster liefert echte Werte für die Nachbarschaft.",
+  "h3": "891faa001cfffff",
+  "lat": 49.120974,
+  "lng": 9.20219,
+  "reason": {
+   "rule": "keine Messstation im Umkreis von 500 m, mindestens 2 empfindliche Orte",
+   "evidence": {
+    "sensitivePlaces": 2,
+    "stationDistM": 749,
+    "need": 0.857
+   }
+  },
+  "source": "pipeline",
+  "category": "other",
+  "effort": "hour",
+  "suitedFor": [
+   "resident",
+   "school",
+   "company"
+  ],
+  "urgency": 3,
+  "placeName": "Nähe Haltestelle Raidweg"
+ },
+ {
   "id": "host_sensor-891faa001b7ffff",
   "type": "host_sensor",
   "title": "senseBox aufhängen",
@@ -1093,7 +1120,7 @@
    "evidence": {
     "sensitivePlaces": 2,
     "stationDistM": 1312,
-    "need": 0.862
+    "need": 0.809
    }
   },
   "source": "pipeline",
@@ -1120,7 +1147,7 @@
    "evidence": {
     "sensitivePlaces": 4,
     "stationDistM": 874,
-    "need": 0.851
+    "need": 0.802
    }
   },
   "source": "pipeline",
@@ -1131,62 +1158,8 @@
    "school",
    "company"
   ],
-  "urgency": 3,
+  "urgency": 2,
   "placeName": "Nähe Haltestelle Südstraße West"
- },
- {
-  "id": "host_sensor-891faa001cfffff",
-  "type": "host_sensor",
-  "title": "senseBox aufhängen",
-  "description": "Hier gibt es 2 empfindliche Orte (Schulen, Kitas, Pflegeheime, Spielplätze), aber die nächste Messstation ist 0,7 km entfernt. Eine senseBox am Fenster liefert echte Werte für die Nachbarschaft.",
-  "h3": "891faa001cfffff",
-  "lat": 49.120974,
-  "lng": 9.20219,
-  "reason": {
-   "rule": "keine Messstation im Umkreis von 500 m, mindestens 2 empfindliche Orte",
-   "evidence": {
-    "sensitivePlaces": 2,
-    "stationDistM": 749,
-    "need": 0.847
-   }
-  },
-  "source": "pipeline",
-  "category": "other",
-  "effort": "hour",
-  "suitedFor": [
-   "resident",
-   "school",
-   "company"
-  ],
-  "urgency": 2,
-  "placeName": "Nähe Haltestelle Raidweg"
- },
- {
-  "id": "host_sensor-891faa02a7bffff",
-  "type": "host_sensor",
-  "title": "senseBox aufhängen",
-  "description": "Hier gibt es 3 empfindliche Orte (Schulen, Kitas, Pflegeheime, Spielplätze), aber die nächste Messstation ist 1,0 km entfernt. Eine senseBox am Fenster liefert echte Werte für die Nachbarschaft.",
-  "h3": "891faa02a7bffff",
-  "lat": 49.133458,
-  "lng": 9.224439,
-  "reason": {
-   "rule": "keine Messstation im Umkreis von 500 m, mindestens 2 empfindliche Orte",
-   "evidence": {
-    "sensitivePlaces": 3,
-    "stationDistM": 1009,
-    "need": 0.836
-   }
-  },
-  "source": "pipeline",
-  "category": "other",
-  "effort": "hour",
-  "suitedFor": [
-   "resident",
-   "school",
-   "company"
-  ],
-  "urgency": 2,
-  "placeName": "Nähe Haltestelle Silcherplatz West"
  },
  {
   "id": "host_sensor-891faa024b7ffff",
@@ -1216,19 +1189,46 @@
   "placeName": "Nähe Haltestelle Biberach Hahnenäckerstraße"
  },
  {
-  "id": "host_sensor-891faa02a33ffff",
+  "id": "host_sensor-891faa02a7bffff",
   "type": "host_sensor",
   "title": "senseBox aufhängen",
-  "description": "Hier gibt es 3 empfindliche Orte (Schulen, Kitas, Pflegeheime, Spielplätze), aber die nächste Messstation ist 0,5 km entfernt. Eine senseBox am Fenster liefert echte Werte für die Nachbarschaft.",
-  "h3": "891faa02a33ffff",
-  "lat": 49.142242,
-  "lng": 9.235248,
+  "description": "Hier gibt es 3 empfindliche Orte (Schulen, Kitas, Pflegeheime, Spielplätze), aber die nächste Messstation ist 1,0 km entfernt. Eine senseBox am Fenster liefert echte Werte für die Nachbarschaft.",
+  "h3": "891faa02a7bffff",
+  "lat": 49.133458,
+  "lng": 9.224439,
   "reason": {
    "rule": "keine Messstation im Umkreis von 500 m, mindestens 2 empfindliche Orte",
    "evidence": {
     "sensitivePlaces": 3,
-    "stationDistM": 531,
-    "need": 0.801
+    "stationDistM": 1009,
+    "need": 0.79
+   }
+  },
+  "source": "pipeline",
+  "category": "other",
+  "effort": "hour",
+  "suitedFor": [
+   "resident",
+   "school",
+   "company"
+  ],
+  "urgency": 2,
+  "placeName": "Nähe Haltestelle Silcherplatz West"
+ },
+ {
+  "id": "host_sensor-891faa02ec7ffff",
+  "type": "host_sensor",
+  "title": "senseBox aufhängen",
+  "description": "Hier gibt es 3 empfindliche Orte (Schulen, Kitas, Pflegeheime, Spielplätze), aber die nächste Messstation ist 1,4 km entfernt. Eine senseBox am Fenster liefert echte Werte für die Nachbarschaft.",
+  "h3": "891faa02ec7ffff",
+  "lat": 49.159355,
+  "lng": 9.199734,
+  "reason": {
+   "rule": "keine Messstation im Umkreis von 500 m, mindestens 2 empfindliche Orte",
+   "evidence": {
+    "sensitivePlaces": 3,
+    "stationDistM": 1415,
+    "need": 0.782
    }
   },
   "source": "pipeline",
@@ -1240,7 +1240,7 @@
    "company"
   ],
   "urgency": 1,
-  "placeName": "Nähe Haltestelle Finanzamt"
+  "placeName": "Nähe Haltestelle Sachsenäcker"
  },
  {
   "id": "host_sensor-891faa001afffff",
@@ -1255,7 +1255,7 @@
    "evidence": {
     "sensitivePlaces": 3,
     "stationDistM": 972,
-    "need": 0.796
+    "need": 0.762
    }
   },
   "source": "pipeline",

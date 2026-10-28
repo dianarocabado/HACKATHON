@@ -16,7 +16,11 @@ export function median(values: number[]): number | null {
 export function cityMedians(cells: HexCell[]) {
   const pick = (f: (c: HexCell) => number | undefined) =>
     median(cells.map(f).filter((v): v is number => typeof v === 'number'));
-  return { tempAfternoonC: pick((c) => c.facts.tempAfternoonC), pm25: pick((c) => c.facts.pm25) };
+  return {
+    tempAfternoonC: pick((c) => c.facts.tempAfternoonC),
+    pm25: pick((c) => c.facts.pm25),
+    surfaceRoughness: pick((c) => c.facts.surfaceRoughness),
+  };
 }
 
 const WHO_PM25_DAILY = 15; // µg/m³, WHO 2021 24-hour guideline
@@ -85,6 +89,20 @@ export function describeCell(
       source: de ? 'senseBox:bike, Messfahrten 2025–2026' : 'senseBox:bike, test rides 2025–2026',
     });
   }
+  if (f.surfaceRoughness != null) {
+    const r = f.surfaceRoughness;
+    const m = medians.surfaceRoughness;
+    const ratio = m ? r / m : 1;
+    const cmp = ratio >= 1.25 ? (de ? 'holpriger als im Stadtschnitt' : 'bumpier than the city average')
+      : ratio <= 0.8 ? (de ? 'glatter als im Stadtschnitt' : 'smoother than the city average')
+        : (de ? 'etwa wie im Stadtschnitt' : 'about the city average');
+    facts.push({
+      key: 'rough',
+      text: de ? `Die Wege sind hier ${cmp} (Rauheit ${r} von 100${m != null ? `, Stadtmedian ${Math.round(m)}` : ''}).`
+        : `Paths here are ${cmp} (roughness ${r} of 100${m != null ? `, city median ${Math.round(m)}` : ''}).`,
+      source: de ? 'senseBox:bike, Erschütterungen bei Messfahrten' : 'senseBox:bike, vibration on test rides',
+    });
+  }
   if (f.distToGreenM != null) {
     const near = f.distToGreenM < 150;
     facts.push({
@@ -106,8 +124,11 @@ export function describeCell(
   if (f.trees != null) {
     facts.push({
       key: 'trees',
-      text: de ? (f.trees ? `${f.trees} Straßenbäume stehen in diesem Feld.` : 'Hier steht kein erfasster Straßenbaum.')
-        : (f.trees ? `${f.trees} street trees stand in this area.` : 'No recorded street tree here.'),
+      text: de
+        ? (f.trees === 1 ? '1 Straßenbaum steht in diesem Feld.'
+          : f.trees ? `${f.trees} Straßenbäume stehen in diesem Feld.` : 'Hier steht kein erfasster Straßenbaum.')
+        : (f.trees === 1 ? '1 street tree stands in this area.'
+          : f.trees ? `${f.trees} street trees stand in this area.` : 'No recorded street tree here.'),
       source: 'OpenStreetMap',
     });
   }
