@@ -80,6 +80,7 @@ export default function HexMap({
   useEffect(() => { onSelectRef.current = onSelect; }, [onSelect]);
   const onMarkerClickRef = useRef(onMarkerClick);
   useEffect(() => { onMarkerClickRef.current = onMarkerClick; }, [onMarkerClick]);
+  const placed = useRef(new Map<string, Marker>());
 
   useEffect(() => {
     const m = new MapLibre({
@@ -131,7 +132,10 @@ export default function HexMap({
       m.on('mouseleave', 'hex-fill', () => { m.getCanvas().style.cursor = ''; });
     });
     map.current = m;
-    return () => { m.remove(); map.current = null; };
+    // Next hides the page on navigation and re-runs this effect on return with a new map, while refs survive.
+    // Forget the old markers too, so the marker effect places all of them on the new map, not just new ones.
+    const markersOnMap = placed.current;
+    return () => { m.remove(); map.current = null; markersOnMap.clear(); };
     // Map is created once; data and layer changes are applied below.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -149,7 +153,6 @@ export default function HexMap({
     return () => { if (m.getSource('hex')) m.setFeatureState({ source: 'hex', id: selected }, { selected: false }); };
   }, [selected]);
 
-  const placed = useRef(new Map<string, Marker>());
   useEffect(() => {
     const m = map.current;
     if (!m) return;
