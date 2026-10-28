@@ -1,7 +1,7 @@
 """A5: H3 res-9 grid over Heilbronn with layer scores, need score and facts → layers.json.
 
 Inputs (data/processed/, from A1–A3): boundary.geojson, green_areas.geojson, osm_points.json,
-stations.json + stations/*.json, bike_segments.json, danger_zones.json, danger_pm_hex.json.
+stations.json + stations/*.json, bike_segments.json, danger_zones.json, danger_pm_hex.json, bumpy_roads.json.
 
 Scores are 0..1 where higher = more need for action; null = no data.
   heat   land-cover proxy: building footprint share (OSM), built-up landuse share, minus green share,
@@ -12,8 +12,11 @@ Scores are 0..1 where higher = more need for action; null = no data.
   bike   mean of overtaking risk (danger zones) and share of overtakings under 150 cm (segments with n >= 5).
   green  lack of green: 1 - green share / 40 %, blended with distance to the nearest usable green area,
          scaled by how built-up the cell is.
-  risk   null: no heavy-rain hazard map yet.
-  felt   null: comes live from voice reports in the app.
+  risk   bumpy paths: road-surface roughness measured by senseBox:bike (bumpy_roads.json, 0..100), mean per
+         cell weighted by how many boxes rode each segment; 5 -> 0, 30 -> 1. Rough surfaces mean fall and
+         accident risk on bikes, wheelchairs and strollers. Null where fewer than 10 box-samples. (No open
+         heavy-rain hazard data exists for Heilbronn; the slot was planned for that.)
+  felt   null: planned from voice reports; not shown in the app yet.
 need = weighted mean of the non-null scores (weights renormalised per cell).
 """
 
@@ -42,6 +45,8 @@ GREEN_FAR_M = 300           # >= 300 m to usable green counts as fully lacking (
 STATION_MAX_DIST_M = 1000
 MIN_DAILY_RANGE_C = 5.0     # indoor sensors barely swing between day and night
 MIN_SEGMENT_N = 5
+ROUGH_LOW, ROUGH_HIGH = 5, 30  # normalized roughness -> risk 0..1 (cell median ~12, 90th percentile ~20)
+MIN_ROUGH_SAMPLES = 10         # box-samples (every 20 m, x boxes) needed for a risk score
 
 # Local metric projection (good to <0.5 % over the city).
 LAT0, LNG0 = 49.14, 9.22
@@ -110,6 +115,22 @@ def segment_cells(segments):
     return by_cell
 
 
+def roughness_cells(roads):
+    """cell -> mean normalized roughness, sampling each segment every 20 m, weighted by boxes."""
+    sums = defaultdict(lambda: [0.0, 0])
+    for road in roads:
+        if len(road["coords"]) < 2:
+            continue
+        line = LineString(road["coords"])
+        steps = max(1, int(project(line).length / 20))
+        for i in range(steps + 1):
+            p = line.interpolate(i / steps, normalized=True)
+            s = sums[h3.latlng_to_cell(p.y, p.x, RES)]
+            s[0] += road["roughness"] * road["boxes"]
+            s[1] += road["boxes"]
+    return {cell: total / n for cell, (total, n) in sums.items() if n >= MIN_ROUGH_SAMPLES}
+
+
 def build(data):
     boundary = shape(data["boundary"]["features"][0]["geometry"])
     cells = sorted(h3.geo_to_cells(boundary.__geo_interface__, RES))
@@ -135,6 +156,7 @@ def build(data):
         zones[h3.latlng_to_cell(z["lat"], z["lng"], RES)].append(z["risk"])
     seg_cells = segment_cells(data["segments"])
     pm_hex = data["danger_pm_hex"]
+    rough = roughness_cells(data.get("bumpy_roads", []))
 
     out = []
     for cell in cells:
@@ -188,7 +210,11 @@ def build(data):
         # Missing parks only matter where people live and work; open farmland is not "lacking green".
         urban = clamp(max(built_share, building_share / DENSE_BUILDING_SHARE))
         scores["green"] = round(clamp(0.6 * clamp(lack) + 0.4 * clamp(far)) * urban, 3)
-        scores["risk"] = None
+        if cell in rough:
+            facts["surfaceRoughness"] = round(rough[cell])
+            scores["risk"] = round(clamp((rough[cell] - ROUGH_LOW) / (ROUGH_HIGH - ROUGH_LOW)), 3)
+        else:
+            scores["risk"] = None
         scores["felt"] = None
 
         if dist_green is not None:
@@ -228,6 +254,7 @@ def load_inputs():
         "segments": load("bike_segments.json"),
         "danger_zones": load("danger_zones.json"),
         "danger_pm_hex": load("danger_pm_hex.json"),
+        "bumpy_roads": load("bumpy_roads.json"),
         "heat_walk": load("heat_walk_h3.json") if (PROCESSED_DIR / "heat_walk_h3.json").exists() else {},
     }
 

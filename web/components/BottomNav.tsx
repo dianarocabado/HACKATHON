@@ -16,7 +16,8 @@ export function NavShell({ path }: { path: string | null }) {
   return (
     <nav
       aria-label={t('nav.main')}
-      className="flex shrink-0 items-stretch justify-around border-t"
+      // Stacked above the page: the raised report button reaches 24 px into it, where the map's positioned layers sit.
+      className="relative z-20 flex shrink-0 items-stretch justify-around border-t"
       style={{ background: 'var(--surface)', borderColor: 'var(--border)', paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}
     >
       {ITEMS.map((it) => {

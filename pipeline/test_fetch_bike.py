@@ -1,6 +1,7 @@
 import h3
 
-from pipeline.fetch_bike import build_danger_zones, build_pm_hex, build_segments, segment_name
+from pipeline.fetch_bike import (build_bumpy_roads, build_danger_zones, build_pm_hex, build_segments,
+                                 fix_mojibake, segment_name)
 
 
 def segment(counts="0, 4, 7, 0, 0", avg=108.45, name="['Saarlandstraße', 'Peter-Bruckmann-Brücke']"):
@@ -34,6 +35,23 @@ def test_danger_zones():
     zones = build_danger_zones([{"properties": {"lat": 49.12027581, "lng": 9.18030141, "Risk Index Overtaking": 0.84075}},
                                 {"properties": {"lat": 49.1, "lng": 9.2}}])
     assert zones == [{"lat": 49.120276, "lng": 9.180301, "risk": 0.841}]
+
+
+def test_bumpy_roads_keep_roughness_and_repair_names():
+    feats = [
+        {"geometry": {"type": "LineString", "coordinates": [[9.2213487, 49.1495941], [9.2212358, 49.1495259]]},
+         "properties": {"id": 6, "name": "SchaeuffelenstraÃŸe", "Normalized Roughness": 22.142857,
+                        "Number of Boxes": 2}},
+        {"geometry": {"type": "LineString", "coordinates": [[9.2, 49.1], [9.21, 49.1]]},
+         "properties": {"id": 7, "name": "['NeckartalstraÃŸe', 'Neue StraÃŸe']",
+                        "Normalized Roughness": 5, "Number of Boxes": None}},
+        {"geometry": {"type": "Point", "coordinates": [9.2, 49.1]}, "properties": {"Normalized Roughness": 1}},
+    ]
+    a, b = build_bumpy_roads(feats)
+    assert a == {"id": 6, "name": "Schaeuffelenstraße", "coords": [[9.221349, 49.149594], [9.221236, 49.149526]],
+                 "roughness": 22.1, "boxes": 2}
+    assert b["name"] == "Neckartalstraße / Neue Straße" and b["boxes"] == 1
+    assert fix_mojibake("Allee") == "Allee" and fix_mojibake("Straße") == "Straße"
 
 
 def test_pm_hex_averages_per_cell():

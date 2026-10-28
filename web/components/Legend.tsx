@@ -2,7 +2,7 @@
 import { NEED_STEPS } from '@/lib/client/scale';
 import { useLang } from './LangProvider';
 
-export default function Legend({ title, missions = false }: { title: string; missions?: boolean }) {
+export default function Legend({ title, info, missions = false }: { title: string; info?: string; missions?: boolean }) {
   const { t } = useLang();
   return (
     <div
@@ -10,6 +10,8 @@ export default function Legend({ title, missions = false }: { title: string; mis
       style={{ background: 'var(--surface)', borderColor: 'var(--border)', color: 'var(--muted)' }}
     >
       <div className="mb-1 font-medium" style={{ color: 'var(--text)' }}>{title}</div>
+      {/* What the layer shows and where the data comes from; narrow so it wraps beside the zoom buttons */}
+      {info && <p className="mb-1 max-w-[17rem] text-[0.75rem] leading-snug">{info}</p>}
       <div className="flex items-center gap-2">
         <span>{t('legend.low')}</span>
         <div className="flex" aria-hidden>

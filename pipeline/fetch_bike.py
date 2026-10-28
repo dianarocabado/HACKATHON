@@ -6,11 +6,16 @@ Collections (all returned at once with limit=0, checked 27 Oct 2026):
                                  the reported average), so the first three bins are below the 150 cm limit.
   danger_zones_heilbronn         ~7,100 points, "Risk Index Overtaking" 0..1
   danger_zones_PM_heilbronn      ~183,000 points, "Risk Index" 0..1 → aggregated per H3 res-9 cell
+  bumpy_roads_heilbronn          ~9,600 LineStrings (checked 28 Oct 2026), "Normalized Roughness" 0..100
+                                 (= 10 x "Roughness" 0..10) from the boxes' surface sensors, matched to OSM
+                                 streets; "Number of Boxes" that rode it. Names arrive double-encoded (UTF-8
+                                 read as Windows-1252) and are repaired.
 
 Outputs (data/processed/):
   bike_segments.json   [{id, name, coords, avgCm, under150Pct, n, boxes}]
   danger_zones.json    [{lat, lng, risk}]
   danger_pm_hex.json   {h3: {risk, n}}
+  bumpy_roads.json     [{id, name, coords, roughness, boxes}]
 Raw responses are cached in data/raw/ (git-ignored); `--from-cache` skips the download.
 """
 
@@ -25,7 +30,8 @@ import requests
 
 from pipeline.common import ATRAI_BASE, HTTP_TIMEOUT_S, PROCESSED_DIR, RAW_DIR
 
-COLLECTIONS = ("overtaking_distance_heilbronn", "danger_zones_heilbronn", "danger_zones_PM_heilbronn")
+COLLECTIONS = ("overtaking_distance_heilbronn", "danger_zones_heilbronn", "danger_zones_PM_heilbronn",
+               "bumpy_roads_heilbronn")
 # The PM collection is ~37 MB; allow a longer read than the 8 s connect timeout (offline batch job).
 TIMEOUT = (HTTP_TIMEOUT_S, 120)
 H3_RES = 9
@@ -47,6 +53,16 @@ def parse_listish(value):
         except (ValueError, SyntaxError):
             return value
     return value
+
+
+def fix_mojibake(text):
+    """'StraÃŸe' -> 'Straße' (UTF-8 bytes read as Windows-1252); text that is already fine is unchanged."""
+    for codec in ("cp1252", "latin-1"):
+        try:
+            return text.encode(codec).decode("utf-8")
+        except (UnicodeEncodeError, UnicodeDecodeError):
+            continue
+    return text
 
 
 def segment_name(raw):
@@ -106,6 +122,24 @@ def build_pm_hex(features):
     return {cell: {"risk": round(total / n, 3), "n": n} for cell, (total, n) in sorted(sums.items())}
 
 
+def build_bumpy_roads(features):
+    out = []
+    for f in features:
+        p = f.get("properties") or {}
+        geom = f.get("geometry") or {}
+        if geom.get("type") != "LineString" or p.get("Normalized Roughness") is None:
+            continue
+        name = segment_name(p.get("name"))
+        out.append({
+            "id": p.get("id"),
+            "name": fix_mojibake(name) if name else None,
+            "coords": [[round(x, 6), round(y, 6)] for x, y in geom["coordinates"]],
+            "roughness": round(p["Normalized Roughness"], 1),
+            "boxes": p.get("Number of Boxes") or 1,
+        })
+    return out
+
+
 def load(collection, from_cache):
     cache = RAW_DIR / f"{collection}.json"
     if from_cache:
@@ -128,14 +162,17 @@ def main(argv=None):
     ap.add_argument("--from-cache", action="store_true", help="use data/raw instead of downloading")
     args = ap.parse_args(argv)
 
-    overtaking, danger, danger_pm = (load(c, args.from_cache) for c in COLLECTIONS)
+    overtaking, danger, danger_pm, bumpy = (load(c, args.from_cache) for c in COLLECTIONS)
     segments = build_segments(overtaking)
     zones = build_danger_zones(danger)
     pm_hex = build_pm_hex(danger_pm)
+    roads = build_bumpy_roads(bumpy)
     write("bike_segments.json", segments)
     write("danger_zones.json", zones)
     write("danger_pm_hex.json", pm_hex)
-    print(f"wrote {len(segments)} segments, {len(zones)} danger zones, {len(pm_hex)} PM-risk hexagons")
+    write("bumpy_roads.json", roads)
+    print(f"wrote {len(segments)} segments, {len(zones)} danger zones, {len(pm_hex)} PM-risk hexagons, "
+          f"{len(roads)} bumpy-road segments")
 
 
 if __name__ == "__main__":

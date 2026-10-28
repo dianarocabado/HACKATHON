@@ -27,6 +27,16 @@ test('heat-walk anomaly follows the temperature fact, warmer and cooler', () => 
   assert.match(cool[0].text, /0,9 °C kühler als der Rest der Route/);
 });
 
+test('surface roughness is compared with the city median; one tree is singular', () => {
+  const cells = [cell({ surfaceRoughness: 10 }), cell({ surfaceRoughness: 12 }), cell({ surfaceRoughness: 30 })];
+  const [rough, tree] = describeCell(cell({ surfaceRoughness: 18, trees: 1 }), cityMedians(cells), []);
+  assert.equal(rough.text, 'Die Wege sind hier holpriger als im Stadtschnitt (Rauheit 18 von 100, Stadtmedian 12).');
+  assert.equal(rough.source, 'senseBox:bike, Erschütterungen bei Messfahrten');
+  assert.equal(tree.text, '1 Straßenbaum steht in diesem Feld.');
+  const [smooth] = describeCell(cell({ surfaceRoughness: 8 }), cityMedians(cells), [], 'en');
+  assert.equal(smooth.text, 'Paths here are smoother than the city average (roughness 8 of 100, city median 12).');
+});
+
 test('missing facts produce no sentences, far sensors are called out', () => {
   assert.deepEqual(describeCell(cell({}), cityMedians([]), []), []);
   const facts = describeCell(cell({ nearestStationDistM: 2300 }), cityMedians([]), []);

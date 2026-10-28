@@ -70,6 +70,16 @@ def test_scores_and_facts_from_all_sources():
     assert f["nearestStationId"] == "s1" and f["nearestStationDistM"] < 100  # measured to the cell centre
 
 
+def test_bumpy_paths_fill_risk_weighted_by_boxes():
+    road = lambda r, boxes: {"coords": [[LNG - 0.0005, LAT], [LNG + 0.0005, LAT]], "roughness": r, "boxes": boxes}
+    c = cells_by_id(build(data(bumpy_roads=[road(10.0, 1), road(20.0, 3)])))[CELL]
+    assert c["facts"]["surfaceRoughness"] == 18          # (10 x 1 + 20 x 3) / 4 = 17.5 -> 18
+    assert c["scores"]["risk"] == 0.5                    # (17.5 - 5) / 25
+    # one box on a short stretch is too little data
+    thin = cells_by_id(build(data(bumpy_roads=[{**road(30.0, 1), "coords": [[LNG, LAT], [LNG + 0.0001, LAT]]}])))
+    assert thin[CELL]["scores"]["risk"] is None and "surfaceRoughness" not in thin[CELL]["facts"]
+
+
 def test_need_ignores_null_scores():
     c = cells_by_id(build(data(danger_pm_hex={}, danger_zones=[], segments=[])))[CELL]
     assert c["scores"]["air"] is None and c["scores"]["bike"] is None
