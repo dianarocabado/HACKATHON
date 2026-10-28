@@ -27,6 +27,19 @@ No Vercel or Supabase: the app runs on one laptop with the in-memory store.
 - They go through the normal pipeline: keyword/LLM structuring, a **live** sensor check against openSenseMap, and H3. Sensor results reflect today's real values.
 - Three noise reports at the Allee form a cluster, so the "Meldungen prüfen: Lärm" mission (A12) appears. It is `simulated: true` because it depends on seeded reports.
 
+## QR posters (`/qr`)
+The posters encode `<address>/report?lat=…&lng=…&place=…`. The address is `NEXT_PUBLIC_SITE_URL` if set, otherwise whatever address `/qr` was opened with. Never print from `http://localhost:3000`, because phones can't reach it.
+- **Local demo (no deployment):** open `/qr` via the laptop's Wi-Fi address, e.g. `http://192.168.0.186:3000/qr` (`npm start` prints it as "Network"), then print. Phones on the same Wi-Fi open the report page; the microphone needs `https`, so they use the typed fallback. The IP can change after a restart or on another network (e.g. the venue's), so print on the network you present on.
+- **Deployed (A14):** set `NEXT_PUBLIC_SITE_URL=https://<project>.vercel.app` in Vercel, redeploy (it's read at build time), open `/qr` on the live site and print.
+
+## Deploying to Vercel (A14, optional)
+1. Vercel → Add New → Project → import `dianarocabado/HACKATHON`. Root Directory: `web` (leave "include files outside the root directory" on; the app reads `contracts/` and `data/processed/`).
+2. Environment variables: `NEXT_PUBLIC_USE_MOCK=false`, `STORE=memory` (or `supabase` with the three Supabase keys), optional `LLM_*`, `DEMO_KEY`.
+3. Deploy, then set `NEXT_PUBLIC_SITE_URL` to the live URL and redeploy.
+4. Seed: `npm run demo:seed -- https://<project>.vercel.app` (with `DEMO_KEY` set in the terminal if it's set on Vercel).
+
+With `STORE=memory` on Vercel, each serverless instance has its own memory: reports can vanish between requests or after a cold start. That's fine for a quick look; for the live demo use Supabase (`web/lib/server/supabase.sql`) or the local laptop setup above.
+
 ## Notes
 - Memory data is lost when the server stops. Run `npm run demo:seed` after every restart.
 - Phones on the same Wi-Fi can open `http://<laptop-ip>:3000`. Browsers only allow the microphone on `https` or `localhost`, so test voice on the laptop itself or use the typed fallback.
