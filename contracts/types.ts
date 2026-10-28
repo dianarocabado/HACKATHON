@@ -11,7 +11,9 @@ export interface HexCell {
   scores: Partial<Record<LayerId, number | null>>;   // 0..1, null = no data
   need: number;                                      // weighted total 0..1
   facts: {                                           // human-readable evidence
-    tempAfternoonC?: number;
+    tempAfternoonC?: number;                         // only from a station within 500 m
+    tempFrom?: string;                               // first and last day (YYYY-MM-DD) the tempAfternoonC mean covers
+    tempTo?: string;
     pm25?: number;
     overtakeUnder150Pct?: number;
     distToGreenM?: number;
@@ -30,6 +32,8 @@ export interface LayersFile {                        // layers.json
   resolution: 9;
   weights: Record<LayerId, number>;
   cells: HexCell[];
+  cityTempAfternoonC?: number;                       // median summer-afternoon °C of the valid outdoor stations
+  cityTempStations?: number;                         // how many stations that median is based on
 }
 
 export interface Station {                           // stations.json (array)
