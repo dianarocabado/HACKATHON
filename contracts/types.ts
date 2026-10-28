@@ -21,6 +21,7 @@ export interface HexCell {
     nearestStationId?: string;
     nearestStationDistM?: number;
     heatWalkAnomalyC?: number;                       // measured on the Green City heat walk (Sep 2026): °C vs. rest of the walk
+    surfaceRoughness?: number;                       // road-surface roughness from senseBox:bike rides, 0..100 (risk layer)
   };
 }
 
