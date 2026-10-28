@@ -1,6 +1,7 @@
 'use client';
 // First-visit intro over the map: the idea in one sentence and three steps.
 import Link from 'next/link';
+import { useEffect } from 'react';
 import type { MessageKey } from '@/lib/client/i18n';
 import { useLang } from './LangProvider';
 
@@ -14,6 +15,11 @@ const STEPS: { icon: string; title: MessageKey; text: MessageKey }[] = [
 
 export default function Welcome({ onClose }: { onClose: () => void }) {
   const { t } = useLang();
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [onClose]);
   return (
     <div className="absolute inset-0 z-20 flex items-end justify-center p-4 md:items-center" style={{ background: 'rgba(0,0,0,0.35)' }}>
       <section

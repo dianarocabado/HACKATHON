@@ -13,7 +13,8 @@ test('placeFromH3 accepts valid cells and rejects junk', () => {
 test('placeFromParams reads QR poster URLs, falls back to h3, rejects junk', () => {
   const qr = new URLSearchParams('lat=49.14229&lng=9.22227&place=Harmonie%2FHafenmarktpassage');
   assert.deepEqual(placeFromParams(qr), { lat: 49.14229, lng: 9.22227, label: 'Harmonie/Hafenmarktpassage', source: 'qr' });
-  assert.equal(placeFromParams(new URLSearchParams('h3=891faa02ac7ffff'))?.label, 'Gewählter Ort');
+  assert.equal(placeFromParams(new URLSearchParams('lat=49.1&lng=9.2'))?.label, undefined);
+  assert.equal(placeFromParams(new URLSearchParams('h3=891faa02ac7ffff'))?.source, 'qr');
   assert.equal(placeFromParams(new URLSearchParams('lat=abc&lng=9')), null);
   assert.equal(placeFromParams(new URLSearchParams('lat=120&lng=9')), null);
   assert.equal(placeFromParams(new URLSearchParams('')), null);
@@ -26,4 +27,6 @@ test('sensor sentences for each status', () => {
   );
   assert.match(sensorSentence({ status: 'not_confirmed', value: 8.4, unit: 'µg/m³', distM: 60 }), /misst gerade 8,4\u00a0µg\/m³, 60\u00a0m entfernt\. Deine Meldung zählt trotzdem/);
   assert.equal(sensorSentence({ status: 'no_sensor' }), 'Kein Sensor in der Nähe. Magst du einen aufhängen?');
+  assert.equal(sensorSentence({ status: 'confirmed', value: 33.1, unit: '°C', distM: 140 }, 'en'),
+    `The sensor confirms it: 33.1${String.fromCharCode(160)}°C, 140${String.fromCharCode(160)}m away.`);
 });

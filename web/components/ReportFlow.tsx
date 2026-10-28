@@ -91,7 +91,7 @@ export default function ReportFlow() {
         <span className="text-[0.8125rem]" style={{ color: 'var(--muted)' }}>{t('report.where')}</span>
         {place ? (
           <div className="flex items-center justify-between rounded-xl border px-3 py-2" style={{ borderColor: 'var(--border)' }}>
-            <span>📍 {place.label}</span>
+            <span>📍 {place.label ?? t(place.source === 'gps' ? 'report.yourLocation' : 'report.selectedPlace')}</span>
             <button type="button" onClick={() => setPlace(null)} className="min-h-11 px-2 underline" style={{ color: 'var(--brand)' }}>{t('report.change')}</button>
           </div>
         ) : (

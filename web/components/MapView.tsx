@@ -54,6 +54,7 @@ export default function MapView() {
 
   return (
     <div className="relative min-h-0 flex-1">
+      <h1 className="sr-only">{t('map.title')}</h1>
       {data && <HexMap data={data} layer={layer} selected={selected} onSelect={setSelected} label={t('map.aria')} />}
 
       {!data && !error && (
