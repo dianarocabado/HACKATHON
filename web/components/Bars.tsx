@@ -1,7 +1,10 @@
+'use client';
 import { barWidths, fmt } from '@/lib/client/impact';
+import { useLang } from './LangProvider';
 
 /** Simple labelled horizontal bars (one series), value printed at the end of each bar. */
 export default function Bars({ items, unit, label }: { items: { label: string; value: number }[]; unit: string; label: string }) {
+  const { lang } = useLang();
   const widths = barWidths(items.map((i) => i.value));
   return (
     <figure aria-label={label} className="space-y-2">
@@ -13,7 +16,7 @@ export default function Bars({ items, unit, label }: { items: { label: string; v
               className="h-4 rounded-r"
               style={{ width: `${widths[k]}%`, minWidth: 2, background: k === 0 ? 'var(--brand)' : 'var(--muted)' }}
             />
-            <span className="whitespace-nowrap tabular-nums">{fmt(it.value)}&nbsp;{unit}</span>
+            <span className="whitespace-nowrap tabular-nums">{fmt(it.value, 1, lang)}&nbsp;{unit}</span>
           </span>
         </div>
       ))}

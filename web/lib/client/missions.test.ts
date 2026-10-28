@@ -33,3 +33,8 @@ test('evidence becomes German phrases, unknown keys pass through', () => {
   assert.deepEqual(evidenceText({ dryDays: 6, tempAfternoonC: 33.4, foo: 'bar' }),
     ['6 Tage ohne Regen', 'nachmittags im Schnitt 33,4 °C', 'foo: bar']);
 });
+
+test('English evidence phrases', () => {
+  assert.deepEqual(evidenceText({ dryDays: 6, tempAfternoonC: 33.4, busStops: 1 }, 'en'),
+    ['6 days without rain', 'afternoons average 33.4 °C', '1 bus stop']);
+});

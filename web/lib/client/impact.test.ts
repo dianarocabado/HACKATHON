@@ -14,3 +14,9 @@ test('effect sentence: baseline only, no effect, improvement', () => {
   assert.equal(effectSentence({ ...base, after: 30.2, cityAfter: 29.6, effect: -1 }),
     'Hier um 1,2\u00a0°C gesunken, in der ganzen Stadt um 0,2\u00a0°C gesunken. Unterschied: −1\u00a0°C.');
 });
+
+test('English effect sentence', () => {
+  const nb = String.fromCharCode(160);
+  const i = { metric: 'temperatureC' as const, stationId: 's', before: 31.4, cityBefore: 29.8, after: 30.2, cityAfter: 29.6, effect: -1 };
+  assert.equal(effectSentence(i, 'en'), `Here down 1.2${nb}°C, across the city down 0.2${nb}°C. Difference: −1${nb}°C.`);
+});

@@ -1,6 +1,7 @@
 'use client';
 // Bottom sheet (phone) / side card (desktop) for one hexagon: plain-language facts, missions here, report button.
 import Link from 'next/link';
+import { useEffect } from 'react';
 import type { HexCell, MissionWithState, Station } from '@contracts/types';
 import { describeCell, type cityMedians } from '@/lib/client/facts';
 import { useLang } from './LangProvider';
@@ -16,8 +17,13 @@ export default function HexPanel({
   missions: MissionWithState[];
   onClose: () => void;
 }) {
-  const { t } = useLang();
-  const facts = describeCell(cell, medians, stations).slice(0, MAX_FACTS);
+  const { t, lang } = useLang();
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [onClose]);
+  const facts = describeCell(cell, medians, stations, lang).slice(0, MAX_FACTS);
   const here = missions.filter((m) => m.h3 === cell.h3);
 
   return (

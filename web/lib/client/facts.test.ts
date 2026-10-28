@@ -33,3 +33,12 @@ test('missing facts produce no sentences, far sensors are called out', () => {
   assert.equal(facts[0].key, 'nosensor');
   assert.match(facts[0].text, /2,3 km/);
 });
+
+test('English facts use English wording and number format', () => {
+  const cells = [cell({ tempAfternoonC: 31 }), cell({ tempAfternoonC: 33.1 }), cell({ tempAfternoonC: 30 })];
+  const facts = describeCell(cell({ tempAfternoonC: 33.1, heatWalkAnomalyC: -0.86, nearestStationId: 'sb-1', nearestStationDistM: 140 }),
+    cityMedians(cells), [station], 'en');
+  assert.equal(facts[0].text, 'Afternoons here average 33.1 °C, 2.1 °C above the city median.');
+  assert.equal(facts[0].source, 'Sensor “Marktplatz”, 140 m away');
+  assert.equal(facts[1].text, 'Measured on the heat walk in September: 0.9 °C cooler than the rest of the route.');
+});

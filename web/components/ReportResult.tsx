@@ -6,7 +6,7 @@ import { sensorSentence } from '@/lib/client/report';
 import { useLang } from './LangProvider';
 
 export default function ReportResult({ report, onAnother }: { report: Report; onAnother: () => void }) {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const cat = CATEGORY[report.category];
   const check = report.sensorCheck;
   const tone = check.status === 'confirmed' ? 'var(--ok)' : check.status === 'not_confirmed' ? 'var(--warn)' : 'var(--muted)';
@@ -18,12 +18,12 @@ export default function ReportResult({ report, onAnother }: { report: Report; on
       <div className="rounded-2xl border p-4" style={{ background: 'var(--surface)', borderColor: 'var(--border)' }}>
         <span
           className="inline-flex items-center gap-1 rounded-full px-3 py-1 text-[0.8125rem] font-medium"
-          style={{ background: cat.colour, color: '#fff' }}
+          style={{ background: cat.colour, color: cat.ink }}
         >
           <span aria-hidden>{cat.icon}</span> {t(cat.label)}
         </span>
         <p className="mt-3 text-[1.125rem]">{report.summary}</p>
-        <p className="mt-3 border-l-4 pl-3" style={{ borderColor: tone }}>{sensorSentence(check)}</p>
+        <p className="mt-3 border-l-4 pl-3" style={{ borderColor: tone }}>{sensorSentence(check, lang)}</p>
       </div>
 
       <div className="flex flex-col gap-2 sm:flex-row">

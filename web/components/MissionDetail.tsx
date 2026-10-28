@@ -10,7 +10,7 @@ import MissionImpact from './MissionImpact';
 import { useLang } from './LangProvider';
 
 export default function MissionDetail({ id }: { id: string }) {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const [mission, setMission] = useState<MissionWithState | null | undefined>(undefined);
   const [name, setName] = useState('');
   const [busy, setBusy] = useState(false);
@@ -49,7 +49,7 @@ export default function MissionDetail({ id }: { id: string }) {
 
   return (
     <article className="mx-auto w-full max-w-2xl space-y-4 px-4 py-4">
-      <Link href="/missions" className="text-[0.8125rem]" style={{ color: 'var(--brand)' }}>{t('mission.back')}</Link>
+      <Link href="/missions" className="inline-flex min-h-11 items-center text-[0.8125rem]" style={{ color: 'var(--brand)' }}>{t('mission.back')}</Link>
       <header>
         <p className="text-[0.8125rem]" style={{ color: 'var(--muted)' }}>
           <span aria-hidden>{cat.icon}</span> {t(cat.label)}{mission.placeName ? ` · ${mission.placeName}` : ''}
@@ -71,7 +71,7 @@ export default function MissionDetail({ id }: { id: string }) {
       <section className="rounded-2xl border p-4" style={{ background: 'var(--surface)', borderColor: 'var(--border)' }}>
         <h2 className="mb-2 font-semibold">{t('mission.why')}</h2>
         <ul className="list-disc space-y-1 pl-5">
-          {evidenceText(mission.reason.evidence).map((t) => <li key={t}>{t}</li>)}
+          {evidenceText(mission.reason.evidence, lang).map((e) => <li key={e}>{e}</li>)}
         </ul>
         <p className="mt-2 text-[0.8125rem]" style={{ color: 'var(--muted)' }}>
           {t('mission.rule')}: {mission.reason.rule} · {t(mission.source === 'report' ? 'mission.fromReports' : 'mission.fromSensors')}
