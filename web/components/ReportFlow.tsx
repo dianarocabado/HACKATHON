@@ -1,21 +1,23 @@
 'use client';
 // Voice report: mic → live transcript (editable) → location (QR ?lat=&lng=, map ?h3=, GPS or typed) → send → result.
 import { useSearchParams } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { Report } from '@contracts/types';
 import { api } from '@/lib/client/api';
 import { findDemoPlace } from '@/lib/client/places';
 import { placeFromGps, placeFromParams, type Place } from '@/lib/client/report';
 import { useSpeech } from '@/lib/client/speech';
+import { TYPE_INSTEAD } from '@/lib/client/speechSupport';
 import ReportResult from './ReportResult';
 import { useLang } from './LangProvider';
 
 const MAX_CHARS = 1000; // matches the API limit
 
 export default function ReportFlow() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const params = useSearchParams();
-  const speech = useSpeech('de-DE');
+  const speech = useSpeech(lang);
+  const textField = useRef<HTMLTextAreaElement>(null);
   const [place, setPlace] = useState<Place | null>(() => placeFromParams(params));
   // At a demo place (QR poster) the hint shows that place's example sentence.
   const demo = findDemoPlace(place?.label);
@@ -25,8 +27,20 @@ export default function ReportFlow() {
   const [sendError, setSendError] = useState(false);
   const [result, setResult] = useState<Report | null>(null);
 
-  const text = speech.listening ? speech.text : speech.finalText;
-  const micBroken = !speech.supported || speech.error != null;
+  const text = speech.phase === 'listening' ? speech.text : speech.finalText;
+  const capturing = speech.phase === 'listening' || speech.phase === 'recording';
+  // When speech can't work here, put the cursor where typing works.
+  useEffect(() => { if (speech.problem && TYPE_INSTEAD.has(speech.problem)) textField.current?.focus(); }, [speech.problem]);
+  const onMic = () => {
+    if (capturing) { speech.stop(); return; }
+    speech.start();
+    if (speech.mode === 'none') textField.current?.focus();
+  };
+  const status = speech.phase === 'listening' ? t('report.listening')
+    : speech.phase === 'recording' ? t('report.recording')
+    : speech.phase === 'transcribing' ? t('report.transcribing')
+    : speech.problem ? t(`speech.${speech.problem}`)
+    : t('report.tapMic');
 
   const locate = async () => {
     setGpsState('busy');
@@ -34,7 +48,7 @@ export default function ReportFlow() {
   };
 
   const send = async () => {
-    if (speech.listening) speech.stop();
+    if (speech.busy) speech.stop();
     setSending(true);
     setSendError(false);
     try {
@@ -60,25 +74,26 @@ export default function ReportFlow() {
       <div className="flex flex-col items-center gap-2 py-2">
         <button
           type="button"
-          onClick={speech.listening ? speech.stop : speech.start}
-          disabled={!speech.supported}
-          aria-pressed={speech.listening}
-          aria-label={t(speech.listening ? 'report.stop' : 'report.start')}
-          className={`flex h-[72px] w-[72px] items-center justify-center rounded-full text-3xl shadow-md disabled:opacity-40 ${speech.listening ? 'animate-pulse' : ''}`}
-          style={{ background: speech.listening ? 'var(--warn)' : 'var(--brand)', color: 'var(--brand-ink)' }}
+          onClick={onMic}
+          disabled={speech.phase === 'transcribing'}
+          aria-pressed={capturing}
+          aria-label={t(capturing ? 'report.stop' : 'report.start')}
+          className={`flex h-[72px] w-[72px] items-center justify-center rounded-full text-3xl shadow-md disabled:opacity-40 ${capturing ? 'animate-pulse' : ''}`}
+          style={{ background: capturing ? 'var(--warn)' : 'var(--brand)', color: 'var(--brand-ink)' }}
         >
-          <span aria-hidden>{speech.listening ? '■' : '🎤'}</span>
+          <span aria-hidden>{capturing ? '■' : speech.phase === 'transcribing' ? '…' : '🎤'}</span>
         </button>
         <p className="text-[0.8125rem]" style={{ color: 'var(--muted)' }} aria-live="polite">
-          {t(speech.listening ? 'report.listening' : micBroken ? 'report.noMic' : 'report.tapMic')}
+          {status}
         </p>
       </div>
 
       <label className="flex flex-col gap-1">
         <span className="text-[0.8125rem]" style={{ color: 'var(--muted)' }}>{t('report.yours')}</span>
         <textarea
+          ref={textField}
           value={text}
-          readOnly={speech.listening}
+          readOnly={speech.phase === 'listening'}
           onChange={(e) => speech.setFinalText(e.target.value.slice(0, MAX_CHARS))}
           rows={4}
           placeholder={t('report.example', { text: demo?.example ?? t('report.defaultExample') })}
