@@ -6,15 +6,12 @@ import type { MissionWithState } from '@contracts/types';
 import { api } from '@/lib/client/api';
 import { CATEGORY, EFFORT, WHO, evidenceText } from '@/lib/client/missions';
 import { SimBadge, StatusChip, UrgencyDots } from './Badges';
-import MissionImpact from './MissionImpact';
+import MissionActions from './MissionActions';
 import { useLang } from './LangProvider';
 
 export default function MissionDetail({ id }: { id: string }) {
   const { t, lang } = useLang();
   const [mission, setMission] = useState<MissionWithState | null | undefined>(undefined);
-  const [name, setName] = useState('');
-  const [busy, setBusy] = useState(false);
-  const [message, setMessage] = useState<string | null>(null);
 
   useEffect(() => {
     api.missions().then((all) => setMission(all.find((m) => m.id === id) ?? null)).catch(() => setMission(null));
@@ -29,20 +26,6 @@ export default function MissionDetail({ id }: { id: string }) {
       </div>
     );
   }
-
-  const act = async (fn: () => ReturnType<typeof api.supportMission>, done: string) => {
-    setBusy(true);
-    setMessage(null);
-    try {
-      const state = await fn();
-      setMission({ ...mission, state });
-      setMessage(done);
-    } catch {
-      setMessage(t('mission.failed'));
-    } finally {
-      setBusy(false);
-    }
-  };
 
   const cat = CATEGORY[mission.category];
   const { state } = mission;
@@ -78,55 +61,7 @@ export default function MissionDetail({ id }: { id: string }) {
         </p>
       </section>
 
-      {state.claimedBy && <p>{t('mission.claimedBy')} <strong>{state.claimedBy}</strong>.</p>}
-
-      {state.status === 'open' && (
-        <form
-          className="flex flex-col gap-2 sm:flex-row"
-          onSubmit={(e) => { e.preventDefault(); if (name.trim()) act(() => api.claimMission(mission.id, name.trim()), t('mission.claimed')); }}
-        >
-          <label className="sr-only" htmlFor="claim-name">{t('mission.name')}</label>
-          <input
-            id="claim-name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder={t('mission.name')}
-            className="min-h-11 flex-1 rounded-xl border px-3"
-            style={{ background: 'var(--surface)', borderColor: 'var(--border)' }}
-          />
-          <button
-            disabled={busy || !name.trim()}
-            className="min-h-11 rounded-xl px-4 font-medium disabled:opacity-50"
-            style={{ background: 'var(--brand)', color: 'var(--brand-ink)' }}
-          >
-            {t('mission.claim')}
-          </button>
-        </form>
-      )}
-
-      {state.status === 'claimed' && (
-        <button
-          onClick={() => act(() => api.doneMission(mission.id), t('mission.doneMsg'))}
-          disabled={busy}
-          className="min-h-11 w-full rounded-xl px-4 font-medium disabled:opacity-50"
-          style={{ background: 'var(--ok)', color: 'var(--surface)' }}
-        >
-          {t('mission.markDone')}
-        </button>
-      )}
-
-      {state.impact && <MissionImpact impact={state.impact} />}
-
-      <button
-        onClick={() => act(() => api.supportMission(mission.id), t('mission.supported'))}
-        disabled={busy}
-        className="min-h-11 w-full rounded-xl border px-4 font-medium disabled:opacity-50"
-        style={{ borderColor: 'var(--brand)', color: 'var(--brand)' }}
-      >
-        {t('mission.support', { n: state.supporters })}
-      </button>
-
-      {message && <p role="status">{message}</p>}
+      <MissionActions mission={mission} onState={(s) => setMission({ ...mission, state: s })} />
     </article>
   );
 }

@@ -1,5 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import type { MissionWithState } from '@contracts/types';
 import { evidenceText, filterMissions } from './missions.ts';
 
@@ -32,6 +33,15 @@ test('open missions first, then by urgency', () => {
 test('evidence becomes German phrases, unknown keys pass through', () => {
   assert.deepEqual(evidenceText({ dryDays: 6, tempAfternoonC: 33.4, foo: 'bar' }),
     ['6 Tage ohne Regen', 'nachmittags im Schnitt 33,4 °C', 'foo: bar']);
+});
+
+test('every evidence key from the pipeline and report missions has a phrase in both languages', () => {
+  const keys = new Set(['avgSeverity', 'confirmedBySensor', 'reports']); // lib/server/reportMissions.ts
+  const missions = JSON.parse(readFileSync(new URL('../../../data/processed/missions.json', import.meta.url), 'utf8'));
+  for (const m of missions) Object.keys(m.reason.evidence).forEach((k) => keys.add(k));
+  for (const lang of ['de', 'en'] as const) {
+    for (const k of keys) assert.ok(!evidenceText({ [k]: 1 }, lang)[0].startsWith(`${k}:`), `${lang}: ${k}`);
+  }
 });
 
 test('English evidence phrases', () => {
