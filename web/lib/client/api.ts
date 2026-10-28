@@ -128,4 +128,19 @@ export const api = {
     USE_MOCK
       ? delay({ status: 'confirmed', stationId: 'sb-markt', value: 31.4, unit: '°C', distM: 220 })
       : http(`/api/sensor-check?lat=${lat}&lng=${lng}`),
+
+  /** Whether the server can transcribe recordings (STT_API_KEY set). Mock mode has no server STT. */
+  sttAvailable: async (): Promise<boolean> =>
+    USE_MOCK ? false : (await http<{ available: boolean }>('/api/transcribe')).available,
+
+  /** Recorded audio → text. Errors carry the HTTP `status` (503 = no speech-to-text configured). */
+  transcribe: async (audio: Blob, lang: 'de' | 'en'): Promise<string> => {
+    const form = new FormData();
+    form.append('audio', audio);
+    form.append('lang', lang);
+    // Upload + the server's own 8 s provider timeout.
+    const res = await fetch('/api/transcribe', { method: 'POST', body: form, signal: AbortSignal.timeout(15_000) });
+    if (!res.ok) throw Object.assign(new Error(`transcribe failed: ${res.status}`), { status: res.status });
+    return ((await res.json()) as { text: string }).text;
+  },
 };

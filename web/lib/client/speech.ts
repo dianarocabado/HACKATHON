@@ -1,6 +1,12 @@
 'use client';
-// Live speech-to-text via the Web Speech API (Chrome, Edge, Safari). Callers must offer a typed fallback.
+// Speech input for the report flow. Live Web Speech API where it works (Chrome, Edge, Safari); otherwise
+// record with MediaRecorder and transcribe on the server (/api/transcribe). The microphone is only
+// requested when the user taps. Problems are reported as a SpeechProblem for a plain-language message.
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { api } from './api';
+import {
+  chooseMode, mediaProblem, recognitionProblem, recorderMime, type SpeechMode, type SpeechProblem,
+} from './speechSupport';
 
 // Minimal types; the Web Speech API is not in TypeScript's DOM lib.
 interface RecognitionResult { isFinal: boolean; 0: { transcript: string } }
@@ -14,29 +20,47 @@ interface Recognition {
 }
 type RecognitionCtor = new () => Recognition;
 
+const MAX_RECORDING_MS = 60_000;
+
 function recognitionCtor(): RecognitionCtor | null {
-  if (typeof window === 'undefined') return null;
   const w = window as unknown as { SpeechRecognition?: RecognitionCtor; webkitSpeechRecognition?: RecognitionCtor };
   return w.SpeechRecognition ?? w.webkitSpeechRecognition ?? null;
 }
+const canRecord = () => typeof MediaRecorder !== 'undefined' && !!navigator.mediaDevices?.getUserMedia;
 
-export function useSpeech(lang = 'de-DE') {
-  const [supported, setSupported] = useState(false);
-  const [listening, setListening] = useState(false);
+export type SpeechPhase = 'idle' | 'listening' | 'recording' | 'transcribing';
+
+export function useSpeech(lang: 'de' | 'en' = 'de') {
+  const [mode, setMode] = useState<SpeechMode>('none');
+  const [phase, setPhase] = useState<SpeechPhase>('idle');
+  const [problem, setProblem] = useState<SpeechProblem | null>(null);
   const [finalText, setFinalText] = useState('');
   const [interim, setInterim] = useState('');
-  const [error, setError] = useState<string | null>(null);
+  const sttRef = useRef(false);
   const rec = useRef<Recognition | null>(null);
+  const recorder = useRef<MediaRecorder | null>(null);
 
-  // Feature detection must run on the client after hydration.
-  // eslint-disable-next-line react-hooks/set-state-in-effect
-  useEffect(() => setSupported(recognitionCtor() !== null), []);
+  // Feature detection runs on the client after hydration; the server speech-to-text check is a cheap GET.
+  useEffect(() => {
+    const detect = () => {
+      const r = chooseMode({
+        secure: window.isSecureContext, hasRecognition: recognitionCtor() !== null,
+        hasRecorder: canRecord(), sttAvailable: sttRef.current,
+      });
+      setMode(r.mode);
+      setProblem(r.problem === 'unsupported' ? null : r.problem); // only say "unsupported" once the user tries
+    };
+    detect();
+    api.sttAvailable().then((ok) => { sttRef.current = ok; detect(); }).catch(() => {});
+  }, []);
 
-  const start = useCallback(() => {
+  const append = useCallback((t: string) => { if (t.trim()) setFinalText((prev) => `${prev} ${t.trim()}`.trim()); }, []);
+
+  const startLive = useCallback(() => {
     const Ctor = recognitionCtor();
-    if (!Ctor) { setError('not-supported'); return; }
+    if (!Ctor) return;
     const r = new Ctor();
-    r.lang = lang;
+    r.lang = lang === 'de' ? 'de-DE' : 'en-GB';
     r.continuous = true;
     r.interimResults = true;
     r.onresult = (e) => {
@@ -46,23 +70,78 @@ export function useSpeech(lang = 'de-DE') {
         const res = e.results[i];
         if (res.isFinal) fin += res[0].transcript; else tmp += res[0].transcript;
       }
-      if (fin) setFinalText((t) => `${t} ${fin}`.trim());
+      append(fin);
       setInterim(tmp);
     };
-    r.onerror = (e) => { setError(e.error); setListening(false); };
-    r.onend = () => { setListening(false); setInterim(''); };
-    setError(null);
+    r.onerror = (e) => {
+      const { problem: p, fallback } = recognitionProblem(e.error);
+      if (fallback && canRecord() && sttRef.current) { setMode('record'); setProblem('live-unavailable'); }
+      else setProblem(p === 'live-unavailable' ? 'network' : p);
+    };
+    r.onend = () => { setPhase('idle'); setInterim(''); };
     try {
       r.start();
       rec.current = r;
-      setListening(true);
+      setPhase('listening');
     } catch {
-      setError('start-failed');
+      setProblem('failed');
     }
-  }, [lang]);
+  }, [lang, append]);
 
-  const stop = useCallback(() => { rec.current?.stop(); }, []);
-  useEffect(() => () => rec.current?.stop(), []);
+  const startRecording = useCallback(async () => {
+    let stream: MediaStream;
+    try {
+      stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    } catch (err) {
+      setProblem(mediaProblem((err as DOMException).name));
+      return;
+    }
+    const mimeType = recorderMime((t) => MediaRecorder.isTypeSupported(t));
+    const r = new MediaRecorder(stream, mimeType ? { mimeType } : undefined);
+    const chunks: Blob[] = [];
+    r.ondataavailable = (e) => { if (e.data.size) chunks.push(e.data); };
+    r.onstop = async () => {
+      stream.getTracks().forEach((t) => t.stop());
+      recorder.current = null;
+      const blob = new Blob(chunks, { type: r.mimeType || mimeType || 'audio/webm' });
+      if (!blob.size) { setPhase('idle'); setProblem('no-speech'); return; }
+      setPhase('transcribing');
+      try {
+        const text = await api.transcribe(blob, lang);
+        if (text) append(text); else setProblem('no-speech');
+      } catch (err) {
+        const status = (err as { status?: number }).status;
+        if (status === 503) { setMode('none'); setProblem('unsupported'); }
+        else setProblem(navigator.onLine ? 'network' : 'offline');
+      } finally {
+        setPhase('idle');
+      }
+    };
+    r.start();
+    recorder.current = r;
+    setPhase('recording');
+    setTimeout(() => { if (r.state === 'recording') r.stop(); }, MAX_RECORDING_MS);
+  }, [lang, append]);
 
-  return { supported, listening, text: `${finalText} ${interim}`.trim(), finalText, setFinalText, error, start, stop };
+  const start = useCallback(() => {
+    setProblem(null);
+    if (!navigator.onLine) { setProblem('offline'); return; }
+    if (mode === 'live') startLive();
+    else if (mode === 'record') void startRecording();
+    else setProblem(window.isSecureContext ? 'unsupported' : 'insecure');
+  }, [mode, startLive, startRecording]);
+
+  const stop = useCallback(() => {
+    rec.current?.stop();
+    if (recorder.current?.state === 'recording') recorder.current.stop();
+  }, []);
+  useEffect(() => () => {
+    rec.current?.stop();
+    if (recorder.current?.state === 'recording') recorder.current.stop();
+  }, []);
+
+  return {
+    mode, phase, problem, busy: phase !== 'idle',
+    text: `${finalText} ${interim}`.trim(), finalText, setFinalText, start, stop,
+  };
 }
