@@ -29,7 +29,7 @@ export default function Welcome({ onClose }: { onClose: () => void }) {
         className="max-h-full w-full max-w-md overflow-y-auto rounded-2xl p-6 shadow-xl"
         style={{ background: 'var(--surface)' }}
       >
-        <h2 id="welcome-title" className="text-2xl font-bold">Heilbronn wirkt</h2>
+        <h2 id="welcome-title" className="text-2xl font-bold">HN Reacts</h2>
         <p className="mt-2 text-[1.0625rem]">{t('welcome.lead')}</p>
         <ol className="mt-5 space-y-4">
           {STEPS.map((s, i) => (

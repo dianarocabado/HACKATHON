@@ -74,7 +74,7 @@ export default function BigScreen() {
       </div>
 
       <aside className="flex w-[22rem] shrink-0 flex-col gap-6 border-l p-6" style={{ background: 'var(--surface)', borderColor: 'var(--border)' }}>
-        <h1 className="text-3xl font-bold leading-tight">Heilbronn wirkt</h1>
+        <h1 className="text-3xl font-bold leading-tight">HN Reacts</h1>
 
         <dl className="grid grid-cols-2 gap-4">
           {[

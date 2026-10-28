@@ -10,7 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Heilbronn wirkt",
+  title: "HN Reacts",
   description: "Sensordaten, Missionen und Meldungen für ein kühleres, gesünderes Heilbronn.",
 };
 
