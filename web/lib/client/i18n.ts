@@ -12,6 +12,8 @@ const de = {
   'lang.other': 'EN',
   'lang.switch': 'Switch to English',
   'header.profile': 'Profil',
+  'theme.toDark': 'Dunkles Design',
+  'theme.toLight': 'Helles Design',
 
   'account.title': 'Dein Profil',
   'account.optional': 'Ein Konto ist freiwillig – die App funktioniert auch ohne. Mit Konto siehst du hier, was du gemeldet und angepackt hast.',
@@ -222,6 +224,8 @@ const en: Record<MessageKey, string> = {
   'lang.other': 'DE',
   'lang.switch': 'Auf Deutsch wechseln',
   'header.profile': 'Profile',
+  'theme.toDark': 'Dark mode',
+  'theme.toLight': 'Light mode',
 
   'account.title': 'Your profile',
   'account.optional': 'An account is optional – the app works without one. With an account you can see here what you reported and took on.',

@@ -1,9 +1,9 @@
 'use client';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useSession } from '@/lib/client/session';
 import { AppIcon, Icon } from './Icons';
 import { LangToggle, useLang } from './LangProvider';
+import ThemeToggle from './ThemeToggle';
 
 export default function AppHeader() {
   const { t } = useLang();
@@ -13,11 +13,8 @@ export default function AppHeader() {
       className="flex h-14 shrink-0 items-center justify-between gap-2 border-b px-4"
       style={{ background: 'var(--surface)', borderColor: 'var(--border)' }}
     >
-      <Link href="/" className="flex min-h-11 items-center gap-2 text-lg font-bold tracking-tight">
-        <Image src="/logo.png" alt="" width={30} height={30} className="rounded-md" priority />
-        HN Reacts
-      </Link>
-      <div className="flex items-center gap-1">
+      <Link href="/" className="flex min-h-11 items-center text-lg font-bold tracking-tight">HN Reacts</Link>
+      <div className="flex items-center gap-0.5">
         <Link href="/wirkung" className="flex min-h-11 items-center px-2 font-medium" style={{ color: 'var(--brand)' }}>
           {t('header.impact')}
         </Link>
@@ -39,6 +36,7 @@ export default function AppHeader() {
             <Icon icon={AppIcon.profile} size={24} />
           )}
         </Link>
+        <ThemeToggle />
         <LangToggle />
       </div>
     </header>
