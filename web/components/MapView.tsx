@@ -71,7 +71,7 @@ export default function MapView() {
   const showReport = (id: string) => { setSelected(null); setOpenMission(null); setOpenReport(id); };
   const showMission = (id: string) => { setSelected(null); setOpenReport(null); setOpenMission(id); };
 
-  const medians = useMemo(() => cityMedians(data?.cells ?? []), [data]);
+  const medians = useMemo(() => cityMedians(data?.cells ?? [], data ?? {}), [data]);
   const cell = useMemo(() => data?.cells.find((c) => c.h3 === selected?.h3) ?? null, [data, selected]);
 
   const current = MAP_LAYERS.find((l) => l.id === layer)!;
