@@ -1,8 +1,8 @@
 // One icon language for the whole app: Lucide line icons (MIT), 1.75 stroke, round caps. No emoji in the UI.
 // Categories always use the same icon and colour, so a heat report looks the same on the map, in lists and cards.
 import {
-  AudioLines, Bike, Droplets, Flower2, ListChecks, LoaderCircle, LocateFixed, Map as MapIcon, MapPin, Mic,
-  Square, Sun, Trash2, Wind, type LucideIcon, type LucideProps,
+  AudioLines, Bike, Droplets, Flower2, ListChecks, LoaderCircle, LocateFixed, LogOut, Map as MapIcon, MapPin, Mic,
+  Square, Sun, Trash2, UserRound, Wind, type LucideIcon, type LucideProps,
 } from 'lucide-react';
 import type { Category } from '@contracts/types';
 import { CATEGORY } from '@/lib/client/missions';
@@ -28,6 +28,9 @@ export const AppIcon = {
   busy: LoaderCircle,
   locate: LocateFixed,
   place: MapPin,
+  profile: UserRound,
+  logout: LogOut,
+  remove: Trash2,
 } satisfies Record<string, LucideIcon>;
 
 type IconProps = Omit<LucideProps, 'ref'>;

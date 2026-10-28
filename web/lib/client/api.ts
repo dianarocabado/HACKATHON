@@ -1,7 +1,8 @@
 // Client API for the UI. Same signatures for mock and real backend, switched by NEXT_PUBLIC_USE_MOCK.
 // Mock mode serves contracts/samples so Agent B can build before Agent A's API is merged.
 import type {
-  EvidenceFile, LayersFile, Station, HourlyPoint, MissionWithState, MissionState, Report, SensorCheck,
+  EvidenceFile, LayersFile, Station, HourlyPoint, MissionWithState, MissionState, Profile, Report, SensorCheck,
+  UserProfile,
 } from '@contracts/types';
 import sampleLayers from '@contracts/samples/layers.json';
 import sampleStations from '@contracts/samples/stations.json';
@@ -24,6 +25,31 @@ const post = <T>(path: string, body?: unknown) =>
     headers: { 'Content-Type': 'application/json' },
     body: body === undefined ? undefined : JSON.stringify(body),
   });
+
+/** Account calls: errors carry the HTTP `status` and the server's `code` (e.g. invalid_login, email_taken). */
+export class AccountError extends Error {
+  status: number;
+  code: string;
+
+  constructor(status: number, code: string) {
+    super(code);
+    this.status = status;
+    this.code = code;
+  }
+}
+
+async function account<T>(path: string, method: 'GET' | 'POST' | 'DELETE', body?: unknown): Promise<T> {
+  if (USE_MOCK) throw new AccountError(503, 'accounts_unavailable_in_mock_mode');
+  const res = await fetch(path, {
+    method,
+    headers: body === undefined ? undefined : { 'Content-Type': 'application/json' },
+    body: body === undefined ? undefined : JSON.stringify(body),
+    signal: AbortSignal.timeout(TIMEOUT_MS * 2), // sign-up = create + sign in
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new AccountError(res.status, (data as { error?: string }).error ?? 'failed');
+  return data as T;
+}
 
 // ---------- mock state (in memory, resets on reload) ----------
 
@@ -77,6 +103,16 @@ function mockReport(body: NewReport): Report {
 export interface NewReport { transcript: string; lat?: number; lng?: number; placeName?: string }
 
 export const api = {
+  // Optional accounts (session in HttpOnly cookies; the page never sees the tokens).
+  session: async (): Promise<UserProfile | null> =>
+    USE_MOCK ? null : (await account<{ user: UserProfile | null }>('/api/auth/session', 'GET')).user,
+  signup: (email: string, password: string, name: string) =>
+    account<UserProfile>('/api/auth/signup', 'POST', { email, password, name }),
+  login: (email: string, password: string) => account<UserProfile>('/api/auth/login', 'POST', { email, password }),
+  logout: () => account<{ ok: true }>('/api/auth/logout', 'POST'),
+  me: () => account<Profile>('/api/me', 'GET'),
+  deleteAccount: () => account<{ ok: true }>('/api/me', 'DELETE'),
+
   layers: (): Promise<LayersFile> =>
     USE_MOCK ? delay(sampleLayers as unknown as LayersFile) : http('/data/layers.json'),
 

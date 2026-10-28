@@ -42,10 +42,10 @@ export const DEMO_REPORTS: DemoReport[] = [
   { transcript: "Die Sitzbank an der Haltestelle ist kaputt, ältere Leute können sich nicht hinsetzen.", lat: 49.1470, lng: 9.2250, placeName: "Haltestelle Ost", minutesAgo: 60 },
 ];
 
-/** Clear all reports and mission states. */
+/** Clear all reports, mission states and profile activity (accounts themselves stay). */
 export async function resetDemo(d: ReportDeps = {}): Promise<void> {
   const store = d.store ?? getStore();
-  await Promise.all([store.clearReports(), store.clearMissionStates()]);
+  await Promise.all([store.clearReports(), store.clearMissionStates(), store.clearActivity()]);
 }
 
 /** Reset, then add the demo reports oldest first. */

@@ -3,7 +3,10 @@
 // The Supabase store falls back to memory on any error or timeout so the demo never hangs.
 // Tables: see supabase.sql. Rows hold the full contract object as jsonb, so additive contract
 // fields need no migration.
-import type { MissionState, Report } from "@contracts/types";
+import type { ActivityKind, MissionState, Report } from "@contracts/types";
+
+/** One thing a signed-in user did; `ref` is the report or mission id. Never exposed on public endpoints. */
+export interface Activity { userId: string; kind: ActivityKind; ref: string; at: string }
 
 export interface Store {
   readonly kind: "memory" | "supabase";
@@ -18,6 +21,11 @@ export interface Store {
   clearReports(): Promise<void>;
   /** Reset every mission to open (demo reset, A15). */
   clearMissionStates(): Promise<void>;
+  addActivity(activity: Activity): Promise<void>;
+  /** A user's activity, oldest first. */
+  listActivity(userId: string): Promise<Activity[]>;
+  /** Delete one user's activity (account deletion), or everyone's (demo reset). */
+  clearActivity(userId?: string): Promise<void>;
 }
 
 const TIMEOUT_MS = 8000;
@@ -30,6 +38,19 @@ export class MemoryStore implements Store {
   readonly kind = "memory" as const;
   private reports: Report[] = [];
   private states = new Map<string, MissionState>();
+  private activity: Activity[] = [];
+
+  async addActivity(activity: Activity) {
+    this.activity.push(activity);
+  }
+
+  async listActivity(userId: string) {
+    return this.activity.filter((a) => a.userId === userId).sort((a, b) => a.at.localeCompare(b.at));
+  }
+
+  async clearActivity(userId?: string) {
+    this.activity = userId ? this.activity.filter((a) => a.userId !== userId) : [];
+  }
 
   async addReport(report: Report) {
     this.reports.push(report);
@@ -184,6 +205,40 @@ export class SupabaseStore implements Store {
       "clearMissionStates",
       () => this.rest<void>("mission_states?mission_id=not.is.null", { method: "DELETE" }),
       () => this.fallback.clearMissionStates(),
+    );
+  }
+
+  addActivity(a: Activity) {
+    return this.safe(
+      "addActivity",
+      () => this.rest<void>("activity", {
+        method: "POST",
+        headers: { Prefer: "return=minimal" },
+        body: JSON.stringify({ user_id: a.userId, kind: a.kind, ref: a.ref, created_at: a.at }),
+      }),
+      () => this.fallback.addActivity(a),
+    );
+  }
+
+  listActivity(userId: string) {
+    return this.safe(
+      "listActivity",
+      async () => {
+        const rows = await this.rest<{ kind: Activity["kind"]; ref: string; created_at: string }[]>(
+          `activity?select=kind,ref,created_at&user_id=eq.${encodeURIComponent(userId)}&order=created_at.asc`,
+        );
+        return rows.map((r) => ({ userId, kind: r.kind, ref: r.ref, at: r.created_at }));
+      },
+      () => this.fallback.listActivity(userId),
+    );
+  }
+
+  clearActivity(userId?: string) {
+    const filter = userId ? `user_id=eq.${encodeURIComponent(userId)}` : "id=not.is.null";
+    return this.safe(
+      "clearActivity",
+      () => this.rest<void>(`activity?${filter}`, { method: "DELETE" }),
+      () => this.fallback.clearActivity(userId),
     );
   }
 }

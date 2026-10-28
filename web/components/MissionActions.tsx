@@ -3,6 +3,7 @@
 import { useId, useState } from 'react';
 import type { MissionState, MissionWithState } from '@contracts/types';
 import { api } from '@/lib/client/api';
+import { useSession } from '@/lib/client/session';
 import MissionImpact from './MissionImpact';
 import { useLang } from './LangProvider';
 
@@ -13,7 +14,11 @@ export default function MissionActions({ mission, onState }: {
   const { t } = useLang();
   // Next keeps hidden pages mounted, so the mission page and the map sheet can both be in the DOM.
   const inputId = useId();
-  const [name, setName] = useState('');
+  const user = useSession();
+  const [typed, setTyped] = useState<string | null>(null);
+  // Signed in: the profile name is the default; typing overrides it (e.g. to claim for a club).
+  const name = typed ?? user?.name ?? '';
+  const setName = setTyped;
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
 

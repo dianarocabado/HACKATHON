@@ -3,11 +3,13 @@ import Link from 'next/link';
 import type { Report } from '@contracts/types';
 import { CATEGORY } from '@/lib/client/missions';
 import { sensorSentence } from '@/lib/client/report';
+import { useSession } from '@/lib/client/session';
 import { CategoryIcon } from './Icons';
 import { useLang } from './LangProvider';
 
 export default function ReportResult({ report, onAnother }: { report: Report; onAnother: () => void }) {
   const { t, lang } = useLang();
+  const user = useSession();
   const cat = CATEGORY[report.category];
   const check = report.sensorCheck;
   const tone = check.status === 'confirmed' ? 'var(--ok)' : check.status === 'not_confirmed' ? 'var(--warn)' : 'var(--muted)';
@@ -26,6 +28,14 @@ export default function ReportResult({ report, onAnother }: { report: Report; on
         <p className="mt-3 text-[1.125rem]">{report.summary}</p>
         <p className="mt-3 border-l-4 pl-3" style={{ borderColor: tone }}>{sensorSentence(check, lang)}</p>
       </div>
+
+      {user ? (
+        <p className="text-[0.9375rem]" style={{ color: 'var(--muted)' }}>{t('account.saved')}</p>
+      ) : user === null ? (
+        <p className="text-[0.9375rem]" style={{ color: 'var(--muted)' }}>
+          <Link href="/profil" className="underline" style={{ color: 'var(--brand)' }}>{t('account.tip')}</Link>
+        </p>
+      ) : null}
 
       <div className="flex flex-col gap-2 sm:flex-row">
         <Link

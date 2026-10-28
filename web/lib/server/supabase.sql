@@ -22,3 +22,16 @@ drop policy if exists "public read reports" on reports;
 create policy "public read reports" on reports for select using (true);
 drop policy if exists "public read mission states" on mission_states;
 create policy "public read mission states" on mission_states for select using (true);
+
+-- Optional accounts: what a signed-in user did (report / claim / support / done). Users themselves live in
+-- Supabase Auth. Deleting the account deletes this history; the reports stay, without any link to the person.
+-- RLS on and no policies: only the server (secret key) can read or write it.
+create table if not exists activity (
+  id bigint generated always as identity primary key,
+  user_id uuid not null references auth.users (id) on delete cascade,
+  kind text not null check (kind in ('report', 'claim', 'support', 'done')),
+  ref text not null,                          -- report id or mission id
+  created_at timestamptz not null default now()
+);
+create index if not exists activity_user_idx on activity (user_id, created_at);
+alter table activity enable row level security;
