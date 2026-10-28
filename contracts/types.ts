@@ -63,6 +63,18 @@ export interface EvidenceItem {                      // evidence.json items (A13
   source: string;
   method: string;
   caveat?: string;
+  en?: EvidenceText;                                 // English texts; the fields above are German
+}
+
+/** The translatable texts of an EvidenceItem. */
+export interface EvidenceText {
+  title: string;
+  finding: string;
+  unit: string;
+  nLabel: string;
+  source: string;
+  method: string;
+  caveat?: string;
 }
 
 export interface EvidenceFile {                      // evidence.json
