@@ -1,6 +1,6 @@
 // Turns a hexagon's raw facts into short sentences with a source line (see DESIGN.md "Plain German"),
 // in German (default) or English.
-import type { HexCell, Station } from '@contracts/types';
+import type { HexCell, LayersFile, Station } from '@contracts/types';
 import { locale, type Lang } from './i18n.ts';
 
 export interface Fact { key: string; text: string; source: string }
@@ -12,15 +12,32 @@ export function median(values: number[]): number | null {
   return s.length % 2 ? s[mid] : (s[mid - 1] + s[mid]) / 2;
 }
 
-/** City-wide medians the facts compare against. Compute once per layers file. */
-export function cityMedians(cells: HexCell[]) {
+/**
+ * City-wide medians the facts compare against. Compute once per layers file. The temperature is the
+ * pipeline's median over the outdoor stations (the same one the heat score uses), not over cells.
+ */
+export function cityMedians(cells: HexCell[], city: Pick<LayersFile, 'cityTempAfternoonC' | 'cityTempStations'> = {}) {
   const pick = (f: (c: HexCell) => number | undefined) =>
     median(cells.map(f).filter((v): v is number => typeof v === 'number'));
   return {
-    tempAfternoonC: pick((c) => c.facts.tempAfternoonC),
+    tempAfternoonC: city.cityTempAfternoonC ?? pick((c) => c.facts.tempAfternoonC),
+    tempStations: city.cityTempAfternoonC != null ? city.cityTempStations : undefined,
     pm25: pick((c) => c.facts.pm25),
     surfaceRoughness: pick((c) => c.facts.surfaceRoughness),
   };
+}
+
+/** '17.07.–31.08.2026' / '17 Jul–31 Aug 2026' for two YYYY-MM-DD dates. */
+export function period(from: string, to: string, lang: Lang = 'de'): string {
+  const a = new Date(`${from}T00:00:00Z`), b = new Date(`${to}T00:00:00Z`);
+  const sameYear = a.getUTCFullYear() === b.getUTCFullYear();
+  const day = new Intl.DateTimeFormat(lang === 'de' ? 'de-DE' : 'en-GB', {
+    timeZone: 'UTC', day: lang === 'de' ? '2-digit' : 'numeric', month: lang === 'de' ? '2-digit' : 'short',
+  });
+  const full = new Intl.DateTimeFormat(lang === 'de' ? 'de-DE' : 'en-GB', {
+    timeZone: 'UTC', day: lang === 'de' ? '2-digit' : 'numeric', month: lang === 'de' ? '2-digit' : 'short', year: 'numeric',
+  });
+  return `${(sameYear ? day : full).format(a)}–${full.format(b)}`;
 }
 
 const WHO_PM25_DAILY = 15; // µg/m³, WHO 2021 24-hour guideline
@@ -45,15 +62,21 @@ export function describeCell(
 
   if (f.tempAfternoonC != null) {
     const diff = medians.tempAfternoonC != null ? f.tempAfternoonC - medians.tempAfternoonC : 0;
+    const n = medians.tempStations;
+    const city = n ? (de ? `dem Median der ${n} Stadtsensoren` : `the median of the city's ${n} sensors`)
+      : de ? 'dem Stadtmedian' : 'the city median';
     const cmp = Math.abs(diff) < 0.3
-      ? (de ? 'etwa so warm wie im Stadtschnitt' : 'about as warm as the city average')
-      : de ? `${num(Math.abs(diff))} °C ${diff > 0 ? 'über' : 'unter'} dem Stadtmedian`
-        : `${num(Math.abs(diff))} °C ${diff > 0 ? 'above' : 'below'} the city median`;
+      ? de ? (n ? `etwa so warm wie der Median der ${n} Stadtsensoren` : 'etwa so warm wie im Stadtschnitt')
+        : n ? `about as warm as ${city}` : 'about as warm as the city average'
+      : de ? `${num(Math.abs(diff))} °C ${diff > 0 ? 'über' : 'unter'} ${city}`
+        : `${num(Math.abs(diff))} °C ${diff > 0 ? 'above' : 'below'} ${city}`;
+    // Stations started at different times, so the mean is only meaningful with its period.
+    const when = f.tempFrom && f.tempTo ? ` · ${period(f.tempFrom, f.tempTo, lang)}` : '';
     facts.push({
       key: 'temp',
-      text: de ? `Nachmittags hier im Schnitt ${num(f.tempAfternoonC)} °C, ${cmp}.`
-        : `Afternoons here average ${num(f.tempAfternoonC)} °C, ${cmp}.`,
-      source: sensorSource,
+      text: de ? `Sommernachmittags hier im Schnitt ${num(f.tempAfternoonC)} °C, ${cmp}.`
+        : `Summer afternoons here average ${num(f.tempAfternoonC)} °C, ${cmp}.`,
+      source: sensorSource + when,
     });
   }
   // Measured on foot right here, so it comes before the station-based facts that follow.
