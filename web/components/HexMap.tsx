@@ -50,6 +50,48 @@ function hatchImage(): ImageData {
   return ctx.getImageData(0, 0, size, size);
 }
 
+/** Map pin in `colour` with a white rim and dot, drawn at 2x for sharp edges; tip at the bottom centre. */
+function pinImage(colour: string): ImageData {
+  const canvas = document.createElement('canvas');
+  canvas.width = 48;
+  canvas.height = 64;
+  const ctx = canvas.getContext('2d')!;
+  ctx.beginPath();
+  ctx.moveTo(24, 62);
+  ctx.bezierCurveTo(14, 46, 4, 36, 4, 22);
+  ctx.arc(24, 22, 20, Math.PI, 0);
+  ctx.bezierCurveTo(44, 36, 34, 46, 24, 62);
+  ctx.closePath();
+  ctx.fillStyle = colour;
+  ctx.fill();
+  ctx.lineWidth = 3;
+  ctx.strokeStyle = '#FFFFFF';
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.arc(24, 22, 7, 0, 2 * Math.PI);
+  ctx.fillStyle = '#FFFFFF';
+  ctx.fill();
+  return ctx.getImageData(0, 0, 48, 64);
+}
+
+const PIN_PREFIX = 'pin-';
+
+/** A mission on the map; pins are clustered, a click opens the mission. */
+export interface MissionPin { id: string; lat: number; lng: number; colour: string }
+
+function pinsToGeoJSON(pins: MissionPin[]): GeoJSON.FeatureCollection {
+  return {
+    type: 'FeatureCollection',
+    features: pins.map((p) => ({
+      type: 'Feature',
+      properties: { id: p.id, icon: PIN_PREFIX + p.colour },
+      geometry: { type: 'Point', coordinates: [p.lng, p.lat] },
+    })),
+  };
+}
+
+const MISSION_LAYERS = ['mission-clusters', 'mission-pins'];
+
 /**
  * DOM marker at an exact position. `report` = coloured dot (`fresh` ones pulse on the big screen),
  * `tap` = 📍 pin on the spot the user tapped. Clickable when `onMarkerClick` is given.
@@ -62,7 +104,7 @@ export interface MapMarker {
 export interface MapPick { h3: string; lat: number; lng: number }
 
 export default function HexMap({
-  data, layer, selected, onSelect, markers, onMarkerClick, zoom = 13, controls = true, label,
+  data, layer, selected, onSelect, markers, onMarkerClick, missions, onMissionClick, zoom = 13, controls = true, label,
 }: {
   data: LayersFile;
   layer: MapLayer;
@@ -70,6 +112,8 @@ export default function HexMap({
   onSelect?: (pick: MapPick | null) => void;
   markers?: MapMarker[];
   onMarkerClick?: (id: string) => void;
+  missions?: MissionPin[];
+  onMissionClick?: (id: string) => void;
   zoom?: number;
   controls?: boolean;
   label?: string;
@@ -80,6 +124,10 @@ export default function HexMap({
   useEffect(() => { onSelectRef.current = onSelect; }, [onSelect]);
   const onMarkerClickRef = useRef(onMarkerClick);
   useEffect(() => { onMarkerClickRef.current = onMarkerClick; }, [onMarkerClick]);
+  const onMissionClickRef = useRef(onMissionClick);
+  useEffect(() => { onMissionClickRef.current = onMissionClick; }, [onMissionClick]);
+  // Read on 'load', which can fire after the missions arrived.
+  const missionsRef = useRef<MissionPin[]>([]);
   const placed = useRef(new Map<string, Marker>());
 
   useEffect(() => {
@@ -90,6 +138,8 @@ export default function HexMap({
       attributionControl: { compact: true },
       style: {
         version: 8,
+        // Font for the mission cluster counts.
+        glyphs: 'https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf',
         sources: {
           base: {
             type: 'raster',
@@ -103,6 +153,10 @@ export default function HexMap({
     });
     if (controls) m.addControl(new NavigationControl({ showCompass: false }), 'bottom-right');
     m.on('error', (e) => console.error('map error', e.error));
+    // One pin image per category colour, created when a pin first needs it (v6: resolver, not the event).
+    m.setMissingStyleImageResolver((id) => {
+      if (id.startsWith(PIN_PREFIX) && !m.hasImage(id)) m.addImage(id, pinImage(id.slice(PIN_PREFIX.length)), { pixelRatio: 2 });
+    });
     m.on('load', () => {
       m.addImage(HATCH, hatchImage());
       m.addSource('hex', { type: 'geojson', data: toGeoJSON(data.cells, layer), promoteId: 'h3' });
@@ -123,7 +177,49 @@ export default function HexMap({
           'line-width': ['case', ['boolean', ['feature-state', 'selected'], false], 2.5, 0.5],
         },
       });
-      m.on('click', (e) => {
+      m.addSource('missions', {
+        type: 'geojson', data: pinsToGeoJSON(missionsRef.current), cluster: true, clusterRadius: 40, clusterMaxZoom: 14,
+      });
+      m.addLayer({
+        id: 'mission-clusters', type: 'circle', source: 'missions', filter: ['has', 'point_count'],
+        paint: {
+          'circle-color': '#1F7A4D',
+          'circle-radius': ['step', ['get', 'point_count'], 15, 10, 19],
+          'circle-stroke-width': 2,
+          'circle-stroke-color': '#FFFFFF',
+        },
+      });
+      m.addLayer({
+        id: 'mission-count', type: 'symbol', source: 'missions', filter: ['has', 'point_count'],
+        layout: {
+          'text-field': ['get', 'point_count_abbreviated'], 'text-font': ['Open Sans Semibold'], 'text-size': 14,
+          'text-allow-overlap': true,
+        },
+        paint: { 'text-color': '#FFFFFF' },
+      });
+      m.addLayer({
+        id: 'mission-pins', type: 'symbol', source: 'missions', filter: ['!', ['has', 'point_count']],
+        layout: { 'icon-image': ['get', 'icon'], 'icon-anchor': 'bottom', 'icon-allow-overlap': true },
+      });
+      for (const id of MISSION_LAYERS) {
+        m.on('mouseenter', id, () => { m.getCanvas().style.cursor = 'pointer'; });
+        m.on('mouseleave', id, () => { m.getCanvas().style.cursor = ''; });
+      }
+
+      m.on('click', async (e) => {
+        // Missions first, with some slack for fingers; a pin tap must not also select the hexagon below.
+        const { x, y } = e.point;
+        const mission = m.queryRenderedFeatures([[x - 8, y - 8], [x + 8, y + 8]], { layers: MISSION_LAYERS })[0];
+        if (mission) {
+          const clusterId = mission.properties?.cluster_id as number | undefined;
+          if (clusterId != null) {
+            const zoom = await (m.getSource('missions') as GeoJSONSource).getClusterExpansionZoom(clusterId);
+            m.easeTo({ center: (mission.geometry as GeoJSON.Point).coordinates as [number, number], zoom });
+          } else {
+            onMissionClickRef.current?.(mission.properties?.id as string);
+          }
+          return;
+        }
         const hit = m.queryRenderedFeatures(e.point, { layers: ['hex-fill', 'hex-nodata'] })[0];
         const h3 = hit?.properties?.h3 as string | undefined;
         onSelectRef.current?.(h3 ? { h3, lat: e.lngLat.lat, lng: e.lngLat.lng } : null);
@@ -145,6 +241,11 @@ export default function HexMap({
     const src = m?.getSource('hex') as GeoJSONSource | undefined;
     src?.setData(toGeoJSON(data.cells, layer));
   }, [data, layer]);
+
+  useEffect(() => {
+    missionsRef.current = missions ?? [];
+    (map.current?.getSource('missions') as GeoJSONSource | undefined)?.setData(pinsToGeoJSON(missionsRef.current));
+  }, [missions]);
 
   useEffect(() => {
     const m = map.current;

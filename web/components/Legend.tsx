@@ -2,7 +2,7 @@
 import { NEED_STEPS } from '@/lib/client/scale';
 import { useLang } from './LangProvider';
 
-export default function Legend({ title }: { title: string }) {
+export default function Legend({ title, missions = false }: { title: string; missions?: boolean }) {
   const { t } = useLang();
   return (
     <div
@@ -26,6 +26,16 @@ export default function Legend({ title }: { title: string }) {
         />
         <span>{t('legend.noData')}</span>
       </div>
+      {missions && (
+        <div className="mt-1 flex items-center gap-2">
+          {/* Same shape as the pins drawn in HexMap */}
+          <svg aria-hidden width="12" height="16" viewBox="0 0 48 64">
+            <path d="M24 62C14 46 4 36 4 22A20 20 0 0 1 44 22C44 36 34 46 24 62Z" fill="var(--brand)" stroke="#FFF" strokeWidth="3" />
+            <circle cx="24" cy="22" r="7" fill="#FFF" />
+          </svg>
+          <span>{t('legend.mission')}</span>
+        </div>
+      )}
     </div>
   );
 }

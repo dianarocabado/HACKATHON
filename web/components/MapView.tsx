@@ -2,13 +2,14 @@
 // Map page body: loads layers, shows toggles + legend + hexagon panel + first-visit intro, handles loading and retry.
 import dynamic from 'next/dynamic';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import type { LayersFile, MissionWithState, Report, Station } from '@contracts/types';
+import type { LayersFile, MissionState, MissionWithState, Report, Station } from '@contracts/types';
 import { api } from '@/lib/client/api';
 import { cityMedians } from '@/lib/client/facts';
 import { CATEGORY } from '@/lib/client/missions';
 import { MAP_LAYERS, type MapLayer } from '@/lib/client/scale';
-import type { MapMarker, MapPick } from './HexMap';
+import type { MapMarker, MapPick, MissionPin } from './HexMap';
 import HexPanel from './HexPanel';
+import MissionSheet from './MissionSheet';
 import ReportPopup from './ReportPopup';
 import LayerToggle from './LayerToggle';
 import Legend from './Legend';
@@ -31,11 +32,24 @@ export default function MapView() {
 
   // Secondary data for the panel; the map works without it.
   const [stations, setStations] = useState<Station[]>([]);
+  useEffect(() => { api.stations().then(setStations).catch(() => {}); }, []);
+
+  // Missions as pins; polled so missions created from new voice reports (A12) appear without a reload.
   const [missions, setMissions] = useState<MissionWithState[]>([]);
+  const [showMissions, setShowMissions] = useState(true);
+  const [openMission, setOpenMission] = useState<string | null>(null);
   useEffect(() => {
-    api.stations().then(setStations).catch(() => {});
-    api.missions().then(setMissions).catch(() => {});
+    const load = () => api.missions().then(setMissions).catch(() => {});
+    load();
+    const id = setInterval(load, 20_000);
+    return () => clearInterval(id);
   }, []);
+  const pins = useMemo<MissionPin[]>(() => (showMissions ? missions : [])
+    .filter((m) => m.state.status !== 'verified')
+    .map((m) => ({ id: m.id, lat: m.lat, lng: m.lng, colour: CATEGORY[m.category].colour })), [missions, showMissions]);
+  const mission = missions.find((m) => m.id === openMission) ?? null;
+  const updateMission = (state: MissionState) =>
+    setMissions((all) => all.map((m) => (m.id === state.missionId ? { ...m, state } : m)));
 
   // Reports at their exact coordinates; refreshed so a report sent from this phone shows on return.
   const [reports, setReports] = useState<Report[]>([]);
@@ -50,8 +64,10 @@ export default function MapView() {
     ...(selected ? [{ id: 'tap', lat: selected.lat, lng: selected.lng, colour: '', kind: 'tap' as const }] : []),
   ], [reports, selected]);
   const report = reports.find((r) => r.id === openReport) ?? null;
-  const pick = (p: MapPick | null) => { setOpenReport(null); setSelected(p); };
-  const showReport = (id: string) => { setSelected(null); setOpenReport(id); };
+  // One sheet at a time: hexagon panel, report popup or mission sheet.
+  const pick = (p: MapPick | null) => { setOpenReport(null); setOpenMission(null); setSelected(p); };
+  const showReport = (id: string) => { setSelected(null); setOpenMission(null); setOpenReport(id); };
+  const showMission = (id: string) => { setSelected(null); setOpenReport(null); setOpenMission(id); };
 
   const medians = useMemo(() => cityMedians(data?.cells ?? []), [data]);
   const cell = useMemo(() => data?.cells.find((c) => c.h3 === selected?.h3) ?? null, [data, selected]);
@@ -78,7 +94,7 @@ export default function MapView() {
       {data && (
         <HexMap
           data={data} layer={layer} selected={selected?.h3 ?? null} onSelect={pick}
-          markers={markers} onMarkerClick={showReport} label={t('map.aria')}
+          markers={markers} onMarkerClick={showReport} missions={pins} onMissionClick={showMission} label={t('map.aria')}
         />
       )}
 
@@ -102,6 +118,18 @@ export default function MapView() {
         <div className="pointer-events-auto">
           <LayerToggle value={layer} onChange={setLayer} />
         </div>
+        <button
+          aria-pressed={showMissions}
+          onClick={() => setShowMissions((v) => !v)}
+          className="pointer-events-auto mt-1 inline-flex min-h-11 items-center gap-1 rounded-full border px-4 text-[0.9375rem] shadow-sm"
+          style={{
+            background: showMissions ? 'var(--brand)' : 'var(--surface)',
+            color: showMissions ? 'var(--brand-ink)' : 'var(--text)',
+            borderColor: showMissions ? 'var(--brand)' : 'var(--border)',
+          }}
+        >
+          <span aria-hidden>📍</span> {t('map.missions')}
+        </button>
       </div>
       {/* pb-10 keeps the legend above the OSM attribution line */}
       <div className="pointer-events-none absolute bottom-0 left-0 p-4 pb-10">
@@ -115,7 +143,7 @@ export default function MapView() {
           >
             ?
           </button>
-          <Legend title={label} />
+          <Legend title={label} missions={showMissions} />
         </div>
       </div>
 
@@ -126,6 +154,7 @@ export default function MapView() {
         />
       )}
       {report && <ReportPopup report={report} onClose={() => setOpenReport(null)} />}
+      {mission && <MissionSheet mission={mission} onState={updateMission} onClose={() => setOpenMission(null)} />}
       {welcome && <Welcome onClose={closeWelcome} />}
     </div>
   );
