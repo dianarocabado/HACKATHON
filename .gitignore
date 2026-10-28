@@ -19,6 +19,9 @@ __pycache__/
 node_modules/
 .next/
 
+# Vercel CLI link (vercel link)
+.vercel/
+
 # Editor and OS
 .vscode/
 .DS_Store
