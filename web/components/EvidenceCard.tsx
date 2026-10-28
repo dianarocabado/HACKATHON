@@ -5,8 +5,10 @@ import Bars from './Bars';
 import { useLang } from './LangProvider';
 
 // Evidence from real data (A13): never badged as simulated; caveats and inconclusive results are shown openly.
-export default function EvidenceCard({ item }: { item: EvidenceItem }) {
+export default function EvidenceCard({ item: raw }: { item: EvidenceItem }) {
   const { t, lang } = useLang();
+  // English texts come from the pipeline (`en`); German is the base and the fallback.
+  const item = lang === 'en' && raw.en ? { ...raw, ...raw.en } : raw;
   return (
     <article className="rounded-2xl border p-4" style={{ background: 'var(--surface)', borderColor: 'var(--border)' }}>
       <h2 className="font-semibold">{item.title}</h2>

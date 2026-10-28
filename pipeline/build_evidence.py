@@ -75,12 +75,28 @@ def warmer(x):
     return "wärmer" if x >= 0 else "kühler"
 
 
+def fmt_en(x, digits=1):
+    """English number without sign."""
+    return f"{abs(x):.{digits}f}"
+
+
+def warmer_en(x):
+    return "warmer" if x >= 0 else "cooler"
+
+
+STATION_SOURCE_EN = "senseBox:home Heilbronn (openSenseMap via ATRAI), June–August 2026"
+THW_CAVEAT_EN = ("THW is a different weather station than the senseBox in the city centre; part of the difference "
+                 "may come from the hardware.")
+
+
 def station_items(history, names):
     items = []
     inn, thw, osp = history[INNENSTADT], history[THW], history[OPENSPACE]
-    for key, hours, label in (("uhi_night", NIGHT_UTC, "nachts"), ("uhi_afternoon", AFTERNOON_UTC, "nachmittags")):
+    for key, hours, label, label_en in (("uhi_night", NIGHT_UTC, "nachts", "at night"),
+                                        ("uhi_afternoon", AFTERNOON_UTC, "nachmittags", "in the afternoon")):
         d = paired_daily_diffs(inn, thw, hours)
         mean = round(statistics.mean(d), 2)
+        night = key == "uhi_night"
         items.append({
             "id": key,
             "title": f"Innenstadt {label} wärmer",
@@ -96,6 +112,15 @@ def station_items(history, names):
             "method": "Differenz zur selben Stunde, Tagesmittel, 95-%-Bootstrap über Tage",
             "caveat": "THW ist eine andere Wetterstation als die senseBox in der Innenstadt; ein Teil der "
                       "Differenz kann an der Hardware liegen.",
+            "en": {
+                "title": f"City centre warmer {label_en}",
+                "finding": f"In summer the city centre was on average {fmt_en(mean)} °C {warmer_en(mean)} {label_en} "
+                           f"than the edge of town (THW), measured at the same hour.",
+                "unit": "°C", "nLabel": "summer nights" if night else "summer days",
+                "source": STATION_SOURCE_EN,
+                "method": "Difference at the same hour, daily means, 95 % bootstrap over days",
+                "caveat": THW_CAVEAT_EN,
+            },
         })
 
     d = paired_daily_diffs(inn, osp, AFTERNOON_UTC)
@@ -108,6 +133,13 @@ def station_items(history, names):
                    f"als der OpenSpace.",
         "value": mean, "unit": "°C", "ci95": ci, "n": len(d), "nLabel": "Sommertage", "conclusive": ci[0] > 0,
         "source": STATION_SOURCE, "method": "wie oben, beide Stationen senseBox:home",
+        "en": {
+            "title": "City centre vs. OpenSpace (same senseBox)",
+            "finding": f"With identical sensors, the city centre was {fmt_en(mean)} °C {warmer_en(mean)} than the "
+                       f"OpenSpace on summer afternoons.",
+            "unit": "°C", "nLabel": "summer days", "source": STATION_SOURCE_EN,
+            "method": "as above, both stations senseBox:home",
+        },
     })
 
     ni, nt = night_minima(inn), night_minima(thw)
@@ -122,6 +154,14 @@ def station_items(history, names):
         "compare": [{"label": names[INNENSTADT], "value": ti}, {"label": names[THW], "value": tt}],
         "source": STATION_SOURCE, "method": "Nachtminimum 20–8 Uhr Ortszeit ≥ 20 °C, nur gemeinsame Nächte",
         "caveat": "Andere Hardware am Stadtrand (siehe oben).",
+        "en": {
+            "title": "Tropical nights",
+            "finding": f"In {len(common)} summer nights with data at both stations, the temperature in the city centre "
+                       f"stayed at or above 20 °C {ti} times, at the edge of town only {tt} times.",
+            "unit": "nights", "nLabel": "summer nights", "source": STATION_SOURCE_EN,
+            "method": "Night minimum 8 pm–8 am local time ≥ 20 °C, shared nights only",
+            "caveat": "Different hardware at the edge of town (see above).",
+        },
     })
     return items
 
@@ -167,6 +207,20 @@ def heat_walk_item():
                   "≥ 20 % vs. < 5 %; Vergleich innerhalb jedes Spaziergangs, 95-%-Bootstrap über Spaziergänge",
         "caveat": "Messungen zwischen 10:30 und 14 Uhr; Hitzeinseln sind nachmittags und nachts am stärksten. "
                   "Nächster Spaziergang am späten Nachmittag.",
+        "en": {
+            "title": "Heat walk: shady green vs. sealed",
+            "finding": (f"On the heat walks in September (mornings), it was on average {fmt_en(mean)} °C "
+                        f"{warmer_en(mean)} next to woods, parks and cemeteries than on sealed stretches – no clear "
+                        f"cooling effect was measurable at that time of day.") if not conclusive else
+                       (f"On the heat walks it was on average {fmt_en(mean)} °C {warmer_en(mean)} next to woods, "
+                        f"parks and cemeteries than on sealed stretches."),
+            "unit": "°C", "nLabel": "walks",
+            "source": "Green City Heilbronn Summer School, heat walks 1–3 September 2026",
+            "method": "Deviation from the rest of the walk (A4); share of wood/park/garden/cemetery green within 50 m "
+                      "≥ 20 % vs. < 5 %; compared within each walk, 95 % bootstrap over walks",
+            "caveat": "Measured between 10:30 am and 2 pm; heat islands are strongest in the afternoon and at night. "
+                      "Next walk: late afternoon.",
+        },
     }
 
 
@@ -183,6 +237,14 @@ def overtaking_item(segments):
         "source": "senseBox:bike Heilbronn (ATRAI), Dez 2025 – Okt 2026",
         "method": "Summe der Histogramme aller Straßenabschnitte, Klassen 0–150 cm",
         "caveat": "Gemessen auf den Strecken der Teilnehmenden, nicht flächendeckend.",
+        "en": {
+            "title": "Overtaking too closely",
+            "finding": f"{pct:.0f}% of {total:,} measured overtakings were closer than the legal 150 cm.",
+            "unit": "%", "nLabel": "overtakings",
+            "source": "senseBox:bike Heilbronn (ATRAI), Dec 2025 – Oct 2026",
+            "method": "Sum of the histograms of all street segments, bins 0–150 cm",
+            "caveat": "Measured on the participants' routes, not citywide.",
+        },
     }
 
 

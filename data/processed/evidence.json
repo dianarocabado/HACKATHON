@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-27T17:00:07Z",
+ "generatedAt": "2026-10-28T14:00:31Z",
  "items": [
   {
    "id": "uhi_night",
@@ -26,7 +26,16 @@
    ],
    "source": "senseBox:home Heilbronn (openSenseMap via ATRAI), Juni–August 2026",
    "method": "Differenz zur selben Stunde, Tagesmittel, 95-%-Bootstrap über Tage",
-   "caveat": "THW ist eine andere Wetterstation als die senseBox in der Innenstadt; ein Teil der Differenz kann an der Hardware liegen."
+   "caveat": "THW ist eine andere Wetterstation als die senseBox in der Innenstadt; ein Teil der Differenz kann an der Hardware liegen.",
+   "en": {
+    "title": "City centre warmer at night",
+    "finding": "In summer the city centre was on average 3.3 °C warmer at night than the edge of town (THW), measured at the same hour.",
+    "unit": "°C",
+    "nLabel": "summer nights",
+    "source": "senseBox:home Heilbronn (openSenseMap via ATRAI), June–August 2026",
+    "method": "Difference at the same hour, daily means, 95 % bootstrap over days",
+    "caveat": "THW is a different weather station than the senseBox in the city centre; part of the difference may come from the hardware."
+   }
   },
   {
    "id": "uhi_afternoon",
@@ -53,7 +62,16 @@
    ],
    "source": "senseBox:home Heilbronn (openSenseMap via ATRAI), Juni–August 2026",
    "method": "Differenz zur selben Stunde, Tagesmittel, 95-%-Bootstrap über Tage",
-   "caveat": "THW ist eine andere Wetterstation als die senseBox in der Innenstadt; ein Teil der Differenz kann an der Hardware liegen."
+   "caveat": "THW ist eine andere Wetterstation als die senseBox in der Innenstadt; ein Teil der Differenz kann an der Hardware liegen.",
+   "en": {
+    "title": "City centre warmer in the afternoon",
+    "finding": "In summer the city centre was on average 2.1 °C warmer in the afternoon than the edge of town (THW), measured at the same hour.",
+    "unit": "°C",
+    "nLabel": "summer days",
+    "source": "senseBox:home Heilbronn (openSenseMap via ATRAI), June–August 2026",
+    "method": "Difference at the same hour, daily means, 95 % bootstrap over days",
+    "caveat": "THW is a different weather station than the senseBox in the city centre; part of the difference may come from the hardware."
+   }
   },
   {
    "id": "uhi_same_hardware",
@@ -69,7 +87,15 @@
    "nLabel": "Sommertage",
    "conclusive": true,
    "source": "senseBox:home Heilbronn (openSenseMap via ATRAI), Juni–August 2026",
-   "method": "wie oben, beide Stationen senseBox:home"
+   "method": "wie oben, beide Stationen senseBox:home",
+   "en": {
+    "title": "City centre vs. OpenSpace (same senseBox)",
+    "finding": "With identical sensors, the city centre was 0.7 °C warmer than the OpenSpace on summer afternoons.",
+    "unit": "°C",
+    "nLabel": "summer days",
+    "source": "senseBox:home Heilbronn (openSenseMap via ATRAI), June–August 2026",
+    "method": "as above, both stations senseBox:home"
+   }
   },
   {
    "id": "tropical_nights",
@@ -92,7 +118,16 @@
    ],
    "source": "senseBox:home Heilbronn (openSenseMap via ATRAI), Juni–August 2026",
    "method": "Nachtminimum 20–8 Uhr Ortszeit ≥ 20 °C, nur gemeinsame Nächte",
-   "caveat": "Andere Hardware am Stadtrand (siehe oben)."
+   "caveat": "Andere Hardware am Stadtrand (siehe oben).",
+   "en": {
+    "title": "Tropical nights",
+    "finding": "In 47 summer nights with data at both stations, the temperature in the city centre stayed at or above 20 °C 25 times, at the edge of town only 7 times.",
+    "unit": "nights",
+    "nLabel": "summer nights",
+    "source": "senseBox:home Heilbronn (openSenseMap via ATRAI), June–August 2026",
+    "method": "Night minimum 8 pm–8 am local time ≥ 20 °C, shared nights only",
+    "caveat": "Different hardware at the edge of town (see above)."
+   }
   },
   {
    "id": "heat_walk_canopy",
@@ -109,7 +144,16 @@
    "conclusive": false,
    "source": "Green City Heilbronn Summerschool, Hitzespaziergänge 1.–3. September 2026",
    "method": "Abweichung vom Rest des Spaziergangs (A4); Grünanteil Wald/Park/Garten/Friedhof im 50-m-Radius ≥ 20 % vs. < 5 %; Vergleich innerhalb jedes Spaziergangs, 95-%-Bootstrap über Spaziergänge",
-   "caveat": "Messungen zwischen 10:30 und 14 Uhr; Hitzeinseln sind nachmittags und nachts am stärksten. Nächster Spaziergang am späten Nachmittag."
+   "caveat": "Messungen zwischen 10:30 und 14 Uhr; Hitzeinseln sind nachmittags und nachts am stärksten. Nächster Spaziergang am späten Nachmittag.",
+   "en": {
+    "title": "Heat walk: shady green vs. sealed",
+    "finding": "On the heat walks in September (mornings), it was on average 0.2 °C warmer next to woods, parks and cemeteries than on sealed stretches – no clear cooling effect was measurable at that time of day.",
+    "unit": "°C",
+    "nLabel": "walks",
+    "source": "Green City Heilbronn Summer School, heat walks 1–3 September 2026",
+    "method": "Deviation from the rest of the walk (A4); share of wood/park/garden/cemetery green within 50 m ≥ 20 % vs. < 5 %; compared within each walk, 95 % bootstrap over walks",
+    "caveat": "Measured between 10:30 am and 2 pm; heat islands are strongest in the afternoon and at night. Next walk: late afternoon."
+   }
   },
   {
    "id": "overtaking_under_150",
@@ -122,7 +166,16 @@
    "conclusive": true,
    "source": "senseBox:bike Heilbronn (ATRAI), Dez 2025 – Okt 2026",
    "method": "Summe der Histogramme aller Straßenabschnitte, Klassen 0–150 cm",
-   "caveat": "Gemessen auf den Strecken der Teilnehmenden, nicht flächendeckend."
+   "caveat": "Gemessen auf den Strecken der Teilnehmenden, nicht flächendeckend.",
+   "en": {
+    "title": "Overtaking too closely",
+    "finding": "80% of 4,721 measured overtakings were closer than the legal 150 cm.",
+    "unit": "%",
+    "nLabel": "overtakings",
+    "source": "senseBox:bike Heilbronn (ATRAI), Dec 2025 – Oct 2026",
+    "method": "Sum of the histograms of all street segments, bins 0–150 cm",
+    "caveat": "Measured on the participants' routes, not citywide."
+   }
   }
  ]
 }

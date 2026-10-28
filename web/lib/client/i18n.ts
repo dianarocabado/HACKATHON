@@ -1,5 +1,5 @@
 // Interface strings, German by default with an English toggle (CLAUDE.md). Data content
-// (mission titles, evidence findings, report summaries) arrives in German and is not translated.
+// (mission titles, report summaries) arrives in German and is not translated; evidence findings carry an `en` version.
 export type Lang = 'de' | 'en';
 export const LANG_KEY = 'hw-lang';
 
@@ -402,7 +402,7 @@ const en: Record<MessageKey, string> = {
   'report.another': 'Report something else',
 
   'impact.title': 'What the data shows',
-  'impact.lead': 'Analysed from real measurements in Heilbronn – with uncertainty and limits. Findings are in German.',
+  'impact.lead': 'Analysed from real measurements in Heilbronn – with uncertainty and limits.',
   'impact.loading': 'Loading analysis …',
   'impact.loadError': 'The analysis is not loading right now. Please try again later.',
   'evidence.noEffect': 'No clear effect',

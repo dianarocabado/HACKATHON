@@ -52,3 +52,8 @@ def test_build_station_items():
     assert set(items) == {"uhi_night", "uhi_afternoon", "uhi_same_hardware", "tropical_nights", "overtaking_under_150"}
     assert all({"id", "title", "finding", "value", "unit", "n", "nLabel", "conclusive", "source", "method"} <= set(i)
                for i in ev["items"])
+    # every item carries English texts; caveats are translated where there is one
+    assert all({"title", "finding", "unit", "nLabel", "source", "method"} <= set(i["en"]) for i in ev["items"])
+    assert all(("caveat" in i) == ("caveat" in i["en"]) for i in ev["items"])
+    assert "2.0 °C warmer in the afternoon" in items["uhi_afternoon"]["en"]["finding"]
+    assert items["overtaking_under_150"]["en"]["finding"].startswith("50% of 2 ")
