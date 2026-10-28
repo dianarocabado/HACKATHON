@@ -65,6 +65,21 @@ def test_hot_dense_cell_triggers_all_cell_rules():
     assert "placeName" not in m["shade_bus_stop"]["en"]  # a real name needs no translation
 
 
+def test_temperature_names_its_sensor_distance_and_period():
+    hot = layer_cell(tempAfternoonC=31.9, tempFrom="2026-07-17", tempTo="2026-08-31",
+                     nearestStationId="s1", nearestStationDistM=154)
+    d = {**data([hot]), "station_names": {"s1": "Innenstadt"}}
+    m = by_type(build(d, TODAY, None)[0])
+    assert ("nachmittags im Sommer im Schnitt 31,9 °C (Sensor „Innenstadt“, 150 m entfernt, 17.07.–31.08.2026)"
+            in m["shade_bus_stop"]["description"])
+    assert ("summer afternoons average 31.9 °C (sensor “Innenstadt”, 150 m away, 17 Jul–31 Aug 2026)"
+            in m["green_schoolyard"]["en"]["description"])
+    assert m["shade_bus_stop"]["reason"]["evidence"]["nearestStationDistM"] == 154
+    # without a temperature the sentence has no sensor part
+    plain = by_type(build(data([layer_cell()]), TODAY, None)[0])
+    assert "°C" not in plain["shade_bus_stop"]["description"]
+
+
 def test_cool_cell_without_weather_triggers_nothing_hot():
     missions, info = build(data([layer_cell(heat=0.3, distToGreenM=50, sensitivePlaces=1)]), TODAY, None)
     assert missions == [] and info["dryDays"] is None

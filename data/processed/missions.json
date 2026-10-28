@@ -3,7 +3,7 @@
   "id": "shade_bus_stop-891faa02a13ffff",
   "type": "shade_bus_stop",
   "title": "Schatten für die Haltestelle Harmonie/Kunsthalle",
-  "description": "Die Umgebung ist stark versiegelt (Hitzewert 1,00), nachmittags im Sommer im Schnitt 31,9 °C. Ein Sonnensegel, ein Baum oder ein begrüntes Dach hilft Wartenden.",
+  "description": "Die Umgebung ist stark versiegelt (Hitzewert 1,00), nachmittags im Sommer im Schnitt 31,9 °C (Sensor „Innenstadt“, 150 m entfernt, 17.07.–31.08.2026). Ein Sonnensegel, ein Baum oder ein begrüntes Dach hilft Wartenden.",
   "h3": "891faa02a13ffff",
   "lat": 49.142824,
   "lng": 9.222727,
@@ -12,13 +12,14 @@
    "evidence": {
     "heat": 1.0,
     "busStops": 6,
-    "tempAfternoonC": 31.9
+    "tempAfternoonC": 31.9,
+    "nearestStationDistM": 154
    }
   },
   "source": "pipeline",
   "en": {
    "title": "Shade for the Harmonie/Kunsthalle bus stop",
-   "description": "The area is heavily sealed (heat score 1.00), summer afternoons average 31.9 °C. A sun sail, a tree or a green roof helps people waiting.",
+   "description": "The area is heavily sealed (heat score 1.00), summer afternoons average 31.9 °C (sensor “Innenstadt”, 150 m away, 17 Jul–31 Aug 2026). A sun sail, a tree or a green roof helps people waiting.",
    "rule": "Heat score ≥ 0.7 and a bus stop"
   },
   "category": "heat",
@@ -35,7 +36,7 @@
   "id": "shade_bus_stop-891faa02a1bffff",
   "type": "shade_bus_stop",
   "title": "Schatten für die Haltestelle Wollhausplatz",
-  "description": "Die Umgebung ist stark versiegelt (Hitzewert 1,00), nachmittags im Sommer im Schnitt 31,9 °C. Ein Sonnensegel, ein Baum oder ein begrüntes Dach hilft Wartenden.",
+  "description": "Die Umgebung ist stark versiegelt (Hitzewert 1,00), nachmittags im Sommer im Schnitt 31,9 °C (Sensor „Innenstadt“, 190 m entfernt, 17.07.–31.08.2026). Ein Sonnensegel, ein Baum oder ein begrüntes Dach hilft Wartenden.",
   "h3": "891faa02a1bffff",
   "lat": 49.139403,
   "lng": 9.220626,
@@ -44,13 +45,14 @@
    "evidence": {
     "heat": 1.0,
     "busStops": 11,
-    "tempAfternoonC": 31.9
+    "tempAfternoonC": 31.9,
+    "nearestStationDistM": 191
    }
   },
   "source": "pipeline",
   "en": {
    "title": "Shade for the Wollhausplatz bus stop",
-   "description": "The area is heavily sealed (heat score 1.00), summer afternoons average 31.9 °C. A sun sail, a tree or a green roof helps people waiting.",
+   "description": "The area is heavily sealed (heat score 1.00), summer afternoons average 31.9 °C (sensor “Innenstadt”, 190 m away, 17 Jul–31 Aug 2026). A sun sail, a tree or a green roof helps people waiting.",
    "rule": "Heat score ≥ 0.7 and a bus stop"
   },
   "category": "heat",
@@ -157,38 +159,6 @@
   "urgency": 2
  },
  {
-  "id": "shade_bus_stop-891faa02a57ffff",
-  "type": "shade_bus_stop",
-  "title": "Schatten für die Haltestelle Cäcilienstraße West",
-  "description": "Die Umgebung ist stark versiegelt (Hitzewert 0,99), nachmittags im Sommer im Schnitt 31,9 °C. Ein Sonnensegel, ein Baum oder ein begrüntes Dach hilft Wartenden.",
-  "h3": "891faa02a57ffff",
-  "lat": 49.13698,
-  "lng": 9.219246,
-  "reason": {
-   "rule": "Hitzewert ≥ 0,7 und Bushaltestelle",
-   "evidence": {
-    "heat": 0.989,
-    "busStops": 3,
-    "tempAfternoonC": 31.9
-   }
-  },
-  "source": "pipeline",
-  "en": {
-   "title": "Shade for the Cäcilienstraße West bus stop",
-   "description": "The area is heavily sealed (heat score 0.99), summer afternoons average 31.9 °C. A sun sail, a tree or a green roof helps people waiting.",
-   "rule": "Heat score ≥ 0.7 and a bus stop"
-  },
-  "category": "heat",
-  "effort": "project",
-  "suitedFor": [
-   "company",
-   "city",
-   "club"
-  ],
-  "placeName": "Cäcilienstraße West",
-  "urgency": 2
- },
- {
   "id": "shade_bus_stop-891faa02e4bffff",
   "type": "shade_bus_stop",
   "title": "Schatten für die Haltestelle Mittlerer Weg",
@@ -217,7 +187,7 @@
    "club"
   ],
   "placeName": "Mittlerer Weg",
-  "urgency": 1
+  "urgency": 2
  },
  {
   "id": "shade_bus_stop-891faa02573ffff",
@@ -251,10 +221,41 @@
   "urgency": 1
  },
  {
+  "id": "shade_bus_stop-891faa02c47ffff",
+  "type": "shade_bus_stop",
+  "title": "Schatten für die Haltestelle Rötelstraße",
+  "description": "Die Umgebung ist stark versiegelt (Hitzewert 0,97). Ein Sonnensegel, ein Baum oder ein begrüntes Dach hilft Wartenden.",
+  "h3": "891faa02c47ffff",
+  "lat": 49.17105,
+  "lng": 9.218502,
+  "reason": {
+   "rule": "Hitzewert ≥ 0,7 und Bushaltestelle",
+   "evidence": {
+    "heat": 0.967,
+    "busStops": 2
+   }
+  },
+  "source": "pipeline",
+  "en": {
+   "title": "Shade for the Rötelstraße bus stop",
+   "description": "The area is heavily sealed (heat score 0.97). A sun sail, a tree or a green roof helps people waiting.",
+   "rule": "Heat score ≥ 0.7 and a bus stop"
+  },
+  "category": "heat",
+  "effort": "project",
+  "suitedFor": [
+   "company",
+   "city",
+   "club"
+  ],
+  "placeName": "Rötelstraße",
+  "urgency": 1
+ },
+ {
   "id": "green_schoolyard-891faa02a0bffff",
   "type": "green_schoolyard",
   "title": "Schulhof begrünen: Kita Uhlandstraße",
-  "description": "Schule oder Kita in einem heißen, versiegelten Bereich (Hitzewert 1,00). Bäume, Hochbeete und entsiegelte Flächen kühlen den Hof und laden zum Lernen draußen ein.",
+  "description": "Schule oder Kita in einem heißen, versiegelten Bereich (Hitzewert 1,00), nachmittags im Sommer im Schnitt 31,9 °C (Sensor „Innenstadt“, 460 m entfernt, 17.07.–31.08.2026). Bäume, Hochbeete und entsiegelte Flächen kühlen den Hof und laden zum Lernen draußen ein.",
   "h3": "891faa02a0bffff",
   "lat": 49.138895,
   "lng": 9.222962,
@@ -263,13 +264,14 @@
    "evidence": {
     "heat": 1.0,
     "schools": 1,
-    "tempAfternoonC": 31.9
+    "tempAfternoonC": 31.9,
+    "nearestStationDistM": 458
    }
   },
   "source": "pipeline",
   "en": {
    "title": "Green the schoolyard: Kita Uhlandstraße",
-   "description": "A school or nursery in a hot, sealed area (heat score 1.00). Trees, raised beds and unsealed ground cool the yard and invite learning outdoors.",
+   "description": "A school or nursery in a hot, sealed area (heat score 1.00), summer afternoons average 31.9 °C (sensor “Innenstadt”, 460 m away, 17 Jul–31 Aug 2026). Trees, raised beds and unsealed ground cool the yard and invite learning outdoors.",
    "rule": "Heat score ≥ 0.6 and a school or nursery"
   },
   "category": "heat",
@@ -286,7 +288,7 @@
   "id": "green_schoolyard-891faa02a13ffff",
   "type": "green_schoolyard",
   "title": "Schulhof begrünen: Gebrüder-Grimm-Schule",
-  "description": "Schule oder Kita in einem heißen, versiegelten Bereich (Hitzewert 1,00). Bäume, Hochbeete und entsiegelte Flächen kühlen den Hof und laden zum Lernen draußen ein.",
+  "description": "Schule oder Kita in einem heißen, versiegelten Bereich (Hitzewert 1,00), nachmittags im Sommer im Schnitt 31,9 °C (Sensor „Innenstadt“, 150 m entfernt, 17.07.–31.08.2026). Bäume, Hochbeete und entsiegelte Flächen kühlen den Hof und laden zum Lernen draußen ein.",
   "h3": "891faa02a13ffff",
   "lat": 49.144688,
   "lng": 9.224421,
@@ -295,13 +297,14 @@
    "evidence": {
     "heat": 1.0,
     "schools": 1,
-    "tempAfternoonC": 31.9
+    "tempAfternoonC": 31.9,
+    "nearestStationDistM": 154
    }
   },
   "source": "pipeline",
   "en": {
    "title": "Green the schoolyard: Gebrüder-Grimm-Schule",
-   "description": "A school or nursery in a hot, sealed area (heat score 1.00). Trees, raised beds and unsealed ground cool the yard and invite learning outdoors.",
+   "description": "A school or nursery in a hot, sealed area (heat score 1.00), summer afternoons average 31.9 °C (sensor “Innenstadt”, 150 m away, 17 Jul–31 Aug 2026). Trees, raised beds and unsealed ground cool the yard and invite learning outdoors.",
    "rule": "Heat score ≥ 0.6 and a school or nursery"
   },
   "category": "heat",
@@ -377,42 +380,10 @@
   "urgency": 2
  },
  {
-  "id": "green_schoolyard-891faa02a43ffff",
-  "type": "green_schoolyard",
-  "title": "Schulhof begrünen: Rosenauschule",
-  "description": "Schule oder Kita in einem heißen, versiegelten Bereich (Hitzewert 0,97). Bäume, Hochbeete und entsiegelte Flächen kühlen den Hof und laden zum Lernen draußen ein.",
-  "h3": "891faa02a43ffff",
-  "lat": 49.136132,
-  "lng": 9.215714,
-  "reason": {
-   "rule": "Hitzewert ≥ 0,6 und Schule oder Kita",
-   "evidence": {
-    "heat": 0.972,
-    "schools": 4,
-    "tempAfternoonC": 31.9
-   }
-  },
-  "source": "pipeline",
-  "en": {
-   "title": "Green the schoolyard: Rosenauschule",
-   "description": "A school or nursery in a hot, sealed area (heat score 0.97). Trees, raised beds and unsealed ground cool the yard and invite learning outdoors.",
-   "rule": "Heat score ≥ 0.6 and a school or nursery"
-  },
-  "category": "heat",
-  "effort": "project",
-  "suitedFor": [
-   "school",
-   "company",
-   "city"
-  ],
-  "placeName": "Rosenauschule",
-  "urgency": 2
- },
- {
   "id": "green_schoolyard-891faa02a8fffff",
   "type": "green_schoolyard",
   "title": "Schulhof begrünen: Christliche KITA Fidelis",
-  "description": "Schule oder Kita in einem heißen, versiegelten Bereich (Hitzewert 0,96). Bäume, Hochbeete und entsiegelte Flächen kühlen den Hof und laden zum Lernen draußen ein.",
+  "description": "Schule oder Kita in einem heißen, versiegelten Bereich (Hitzewert 0,96), nachmittags im Sommer im Schnitt 31,9 °C (Sensor „Innenstadt“, 500 m entfernt, 17.07.–31.08.2026). Bäume, Hochbeete und entsiegelte Flächen kühlen den Hof und laden zum Lernen draußen ein.",
   "h3": "891faa02a8fffff",
   "lat": 49.147301,
   "lng": 9.224596,
@@ -421,13 +392,14 @@
    "evidence": {
     "heat": 0.965,
     "schools": 1,
-    "tempAfternoonC": 31.9
+    "tempAfternoonC": 31.9,
+    "nearestStationDistM": 495
    }
   },
   "source": "pipeline",
   "en": {
    "title": "Green the schoolyard: Christliche KITA Fidelis",
-   "description": "A school or nursery in a hot, sealed area (heat score 0.96). Trees, raised beds and unsealed ground cool the yard and invite learning outdoors.",
+   "description": "A school or nursery in a hot, sealed area (heat score 0.96), summer afternoons average 31.9 °C (sensor “Innenstadt”, 500 m away, 17 Jul–31 Aug 2026). Trees, raised beds and unsealed ground cool the yard and invite learning outdoors.",
    "rule": "Heat score ≥ 0.6 and a school or nursery"
   },
   "category": "heat",
@@ -444,7 +416,7 @@
   "id": "green_schoolyard-891faa02a8bffff",
   "type": "green_schoolyard",
   "title": "Schulhof begrünen: Dammschule",
-  "description": "Schule oder Kita in einem heißen, versiegelten Bereich (Hitzewert 0,94). Bäume, Hochbeete und entsiegelte Flächen kühlen den Hof und laden zum Lernen draußen ein.",
+  "description": "Schule oder Kita in einem heißen, versiegelten Bereich (Hitzewert 0,94), nachmittags im Sommer im Schnitt 31,9 °C (Sensor „Innenstadt“, 400 m entfernt, 17.07.–31.08.2026). Bäume, Hochbeete und entsiegelte Flächen kühlen den Hof und laden zum Lernen draußen ein.",
   "h3": "891faa02a8bffff",
   "lat": 49.147062,
   "lng": 9.219809,
@@ -453,13 +425,14 @@
    "evidence": {
     "heat": 0.943,
     "schools": 1,
-    "tempAfternoonC": 31.9
+    "tempAfternoonC": 31.9,
+    "nearestStationDistM": 399
    }
   },
   "source": "pipeline",
   "en": {
    "title": "Green the schoolyard: Dammschule",
-   "description": "A school or nursery in a hot, sealed area (heat score 0.94). Trees, raised beds and unsealed ground cool the yard and invite learning outdoors.",
+   "description": "A school or nursery in a hot, sealed area (heat score 0.94), summer afternoons average 31.9 °C (sensor “Innenstadt”, 400 m away, 17 Jul–31 Aug 2026). Trees, raised beds and unsealed ground cool the yard and invite learning outdoors.",
    "rule": "Heat score ≥ 0.6 and a school or nursery"
   },
   "category": "heat",
@@ -470,7 +443,7 @@
    "city"
   ],
   "placeName": "Dammschule",
-  "urgency": 1
+  "urgency": 2
  },
  {
   "id": "green_schoolyard-891faa001afffff",
@@ -501,6 +474,37 @@
    "city"
   ],
   "placeName": "Katholisches Freies Bildungszentrum St. Kilian",
+  "urgency": 1
+ },
+ {
+  "id": "green_schoolyard-891faa02a43ffff",
+  "type": "green_schoolyard",
+  "title": "Schulhof begrünen: Rosenauschule",
+  "description": "Schule oder Kita in einem heißen, versiegelten Bereich (Hitzewert 0,94). Bäume, Hochbeete und entsiegelte Flächen kühlen den Hof und laden zum Lernen draußen ein.",
+  "h3": "891faa02a43ffff",
+  "lat": 49.136132,
+  "lng": 9.215714,
+  "reason": {
+   "rule": "Hitzewert ≥ 0,6 und Schule oder Kita",
+   "evidence": {
+    "heat": 0.942,
+    "schools": 4
+   }
+  },
+  "source": "pipeline",
+  "en": {
+   "title": "Green the schoolyard: Rosenauschule",
+   "description": "A school or nursery in a hot, sealed area (heat score 0.94). Trees, raised beds and unsealed ground cool the yard and invite learning outdoors.",
+   "rule": "Heat score ≥ 0.6 and a school or nursery"
+  },
+  "category": "heat",
+  "effort": "project",
+  "suitedFor": [
+   "school",
+   "company",
+   "city"
+  ],
+  "placeName": "Rosenauschule",
   "urgency": 1
  },
  {
@@ -1371,39 +1375,6 @@
   "placeName": "Nähe Haltestelle Schmidbergstraße West"
  },
  {
-  "id": "host_sensor-891faa02a43ffff",
-  "type": "host_sensor",
-  "title": "senseBox aufhängen",
-  "description": "Hier gibt es 4 empfindliche Orte (Schulen, Kitas, Pflegeheime, Spielplätze), aber die nächste Messstation ist 0,9 km entfernt. Eine senseBox am Fenster liefert echte Werte für die Nachbarschaft.",
-  "h3": "891faa02a43ffff",
-  "lat": 49.13531,
-  "lng": 9.217059,
-  "reason": {
-   "rule": "keine Messstation im Umkreis von 500 m, mindestens 2 empfindliche Orte",
-   "evidence": {
-    "sensitivePlaces": 4,
-    "stationDistM": 874,
-    "need": 0.802
-   }
-  },
-  "source": "pipeline",
-  "en": {
-   "title": "Put up a senseBox",
-   "description": "There are 4 sensitive places here (schools, nurseries, care homes, playgrounds), but the nearest measuring station is 0.9 km away. A senseBox at a window delivers real values for the neighbourhood.",
-   "rule": "No measuring station within 500 m, at least 2 sensitive places",
-   "placeName": "Near bus stop Südstraße West"
-  },
-  "category": "other",
-  "effort": "hour",
-  "suitedFor": [
-   "resident",
-   "school",
-   "company"
-  ],
-  "urgency": 2,
-  "placeName": "Nähe Haltestelle Südstraße West"
- },
- {
   "id": "host_sensor-891faa024b7ffff",
   "type": "host_sensor",
   "title": "senseBox aufhängen",
@@ -1435,6 +1406,39 @@
   ],
   "urgency": 2,
   "placeName": "Nähe Haltestelle Biberach Hahnenäckerstraße"
+ },
+ {
+  "id": "host_sensor-891faa02a43ffff",
+  "type": "host_sensor",
+  "title": "senseBox aufhängen",
+  "description": "Hier gibt es 4 empfindliche Orte (Schulen, Kitas, Pflegeheime, Spielplätze), aber die nächste Messstation ist 0,9 km entfernt. Eine senseBox am Fenster liefert echte Werte für die Nachbarschaft.",
+  "h3": "891faa02a43ffff",
+  "lat": 49.13531,
+  "lng": 9.217059,
+  "reason": {
+   "rule": "keine Messstation im Umkreis von 500 m, mindestens 2 empfindliche Orte",
+   "evidence": {
+    "sensitivePlaces": 4,
+    "stationDistM": 874,
+    "need": 0.791
+   }
+  },
+  "source": "pipeline",
+  "en": {
+   "title": "Put up a senseBox",
+   "description": "There are 4 sensitive places here (schools, nurseries, care homes, playgrounds), but the nearest measuring station is 0.9 km away. A senseBox at a window delivers real values for the neighbourhood.",
+   "rule": "No measuring station within 500 m, at least 2 sensitive places",
+   "placeName": "Near bus stop Südstraße West"
+  },
+  "category": "other",
+  "effort": "hour",
+  "suitedFor": [
+   "resident",
+   "school",
+   "company"
+  ],
+  "urgency": 2,
+  "placeName": "Nähe Haltestelle Südstraße West"
  },
  {
   "id": "host_sensor-891faa02a7bffff",
