@@ -12,6 +12,10 @@ const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
     "/api/**": ["./public/data/**/*.json", "../contracts/samples/missions.json"],
   },
+  // Kiosk concept for the pitch: a static page outside the React app.
+  async rewrites() {
+    return [{ source: "/terminal", destination: "/terminal.html" }];
+  },
   turbopack: {
     root: repoRoot,
     rules: {

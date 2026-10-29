@@ -189,11 +189,40 @@ footer strong { color: var(--ink); }
   function save() { try { localStorage.setItem('hw-terminal', JSON.stringify(state)); } catch (e) {} }
   function $(id) { return document.getElementById(id); }
   function fmtTemp(t) { var s = Number(t).toFixed(1); return (state.lang === 'de' ? s.replace('.', ',') : s) + ' °C'; }
+  // Live value from our own API for the selected place; null = use the manual value from the settings.
+  var PLACES = {
+    'Haltestelle Harmonie': [49.14229, 9.22227],
+    'Haltestelle Etzelstraße': [49.151351, 9.215650],
+    'Theodor-Heuss-Gymnasium': [49.14256, 9.22696]
+  };
+  var live = null, names = null;
+  function currentTemp() { return live ? live.temp : state.temp; }
+  function loadNames() {
+    if (names) return Promise.resolve(names);
+    return fetch('/data/stations.json').then(function (r) { return r.ok ? r.json() : []; }).then(function (list) {
+      names = {}; list.forEach(function (s) { names[s.id] = s.name; }); return names;
+    }).catch(function () { return {}; });
+  }
+  function refreshSensor() {
+    var place = state.place, p = PLACES[place];
+    if (!p) { live = null; render(); return; }
+    fetch('/api/sensor-check?lat=' + p[0] + '&lng=' + p[1] + '&category=heat', { cache: 'no-store' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (c) {
+        if (place !== state.place) return;
+        if (!c || c.status === 'no_sensor' || typeof c.value !== 'number') { live = null; render(); return; }
+        return loadNames().then(function (n) {
+          if (place !== state.place) return;
+          live = { temp: c.value, station: n[c.stationId] || 'senseBox' }; render();
+        });
+      })
+      .catch(function () { if (place === state.place) { live = null; render(); } });
+  }
   function render() {
     var L = T[state.lang];
     document.documentElement.lang = state.lang;
     $('question').textContent = L.q; $('cityLine').textContent = L.city; $('conceptChip').textContent = L.chip;
-    $('sensorLabel').textContent = L.sensor; $('sensorValue').textContent = fmtTemp(state.temp); $('sensorSource').textContent = L.source;
+    $('sensorLabel').textContent = L.sensor; $('sensorValue').textContent = fmtTemp(currentTemp()); $('sensorSource').textContent = live ? 'senseBox · ' + live.station : L.source;
     $('t-cool').textContent = L.cool; $('t-mid').textContent = L.mid; $('t-hot').textContent = L.hot;
     $('footLine').textContent = L.foot; $('footNote').textContent = L.note; $('langBtn').textContent = L.lang;
     $('placeName').textContent = state.place;
@@ -206,10 +235,10 @@ footer strong { color: var(--ink); }
     var L = T[state.lang];
     state.votes[v] = (state.votes[v] || 0) + 1; save();
     var n = state.votes.cool + state.votes.mid + state.votes.hot;
-    var hotByTemp = state.temp >= 28, coolByTemp = state.temp < 24;
+    var t = currentTemp(), hotByTemp = t >= 28, coolByTemp = t < 24;
     var agrees = (v === 'hot' && hotByTemp) || (v === 'cool' && coolByTemp) || (v === 'mid' && !hotByTemp && !coolByTemp);
     $('thxTitle').textContent = L.thx;
-    $('thxMatch').innerHTML = (agrees ? L.agree : L.disagree)(fmtTemp(state.temp));
+    $('thxMatch').innerHTML = (agrees ? L.agree : L.disagree)(fmtTemp(t));
     var pc = function (k) { return Math.round(state.votes[k] / n * 100); };
     $('barCool').style.width = pc('cool') + '%'; $('barMid').style.width = pc('mid') + '%'; $('barHot').style.width = pc('hot') + '%';
     $('lgCool').textContent = pc('cool') + ' % ' + L.lg[0]; $('lgMid').textContent = pc('mid') + ' % ' + L.lg[1]; $('lgHot').textContent = pc('hot') + ' % ' + L.lg[2];
@@ -225,8 +254,8 @@ footer strong { color: var(--ink); }
   $('langBtn').addEventListener('click', function () { state.lang = state.lang === 'de' ? 'en' : 'de'; save(); render(); });
   $('setBtn').addEventListener('click', function () { $('settings').hidden = !$('settings').hidden; });
   $('closeSet').addEventListener('click', function () { $('settings').hidden = true; });
-  $('placeSel').addEventListener('change', function () { state.place = this.value; save(); render(); });
-  $('tempIn').addEventListener('input', function () { var v = parseFloat(this.value); if (isFinite(v)) { state.temp = v; save(); $('sensorValue').textContent = fmtTemp(v); } });
+  $('placeSel').addEventListener('change', function () { state.place = this.value; live = null; save(); render(); refreshSensor(); });
+  $('tempIn').addEventListener('input', function () { var v = parseFloat(this.value); if (isFinite(v)) { state.temp = v; save(); if (!live) $('sensorValue').textContent = fmtTemp(v); } });
   $('resetBtn').addEventListener('click', function () { state.votes = Object.assign({}, DEFAULT_VOTES); save(); });
   $('fsBtn').addEventListener('click', function () {
     var el = document.documentElement;
@@ -237,6 +266,8 @@ footer strong { color: var(--ink); }
     try { if (!wake && navigator.wakeLock) navigator.wakeLock.request('screen').then(function (w) { wake = w; w.addEventListener('release', function () { wake = null; }); }).catch(function () {}); } catch (e) {}
   }
   render();
+  refreshSensor();
+  setInterval(refreshSensor, 5 * 60 * 1000);
 })();
 </script>
 </body>
